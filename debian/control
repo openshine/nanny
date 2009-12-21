@@ -1,0 +1,17 @@
+Source: nanny 
+Section: net 
+Priority: optional
+Maintainer: Roberto Majadas <roberto.majadas@openshine.com>
+Build-Depends: debhelper (>= 5), cdbs, python-gtk2-dev, python-dbus , python-gnome2-dev, python-sqlite, libdbus-1-dev, gnome-doc-utils, libsqlite3-dev, python-twisted-core, python-twisted-web, python-imaging
+Build-Depends-Indep: python-dev (>= 2.5), python-central (>= 0.5.10), intltool (>= 0.35)
+Standards-Version: 3.7.2
+XS-Python-Version: current
+
+Package: nanny
+Architecture: any
+XB-Python-Version: ${python:Versions}
+Depends: ${python:Depends}, python-gtk2, python-gnome2, python-glade2, gnome-icon-theme, libgtk2.0-bin, libgnome2-0, python-dbus, python-sqlite, python-twisted-core, python-twisted-web, python-imaging, ${shlibs:Depends}, ${misc:Depends}
+Description: Nanny - Parental Control System
+ Nanny is a Parental Control System.
+ With Nanny you can control de content and time access of
+ your system users

@@ -1,0 +1,269 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY appversion "0.1">
+  <!ENTITY manrevision "0.1">
+  <!ENTITY date "December 2009">
+  <!ENTITY app "<application>GNOME Nanny</application>">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="en">
+  <articleinfo> 
+    <title>&app; Manual v&manrevision;</title>       
+
+    <copyright> 
+      <year>2009</year> 
+      <holder>Roberto Majadas</holder> 
+      <holder>Luis de Bethencourt</holder> 
+      <holder>Cesar Garcia</holder> 
+    </copyright>
+    <copyright> 
+      <year>2009</year> 
+      <holder>openshine.com</holder> 
+    </copyright>
+
+<!-- translators: uncomment this:
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+   -->
+    <publisher> 
+      <publishername>openshine.com </publishername> 
+    </publisher> 
+
+   &legal;
+    <releaseinfo>This manual describes version &appversion; of GNOME Nanny.
+    </releaseinfo> 
+    <legalnotice> 
+      <title>Feedback</title> 
+      <para>To report a bug or make a suggestion regarding the &app; application or
+      this manual, follow the directions in the <ulink url="ghelp:gnome-feedback"
+	  type="help">GNOME Feedback Page</ulink>. 
+      </para>
+    </legalnotice> 
+  </articleinfo> 
+
+  <indexterm zone="index"> 
+    <primary>GNOME Nanny</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+    <primary>GNOME Nanny</primary> 
+  </indexterm>
+
+<!-- ============= Document Body ============================= -->
+
+<!-- ============= Introduction ============================== -->
+  <sect1 id="myapp-introduction"> 
+    <title>Introduction</title> 
+    <para>The &app; application enables you to control what system users do. 
+    &app; provides the following features:</para> 
+    <itemizedlist> 
+      <listitem> 
+	  <para>Control which websites the user can and can't access.</para>
+      </listitem> 
+      <listitem> 
+          <para>At what times of the week and for how long a user can:</para> 
+          <itemizedlist> 
+              <listitem> 
+                  <para>Be using the computer</para> 
+              </listitem> 
+              <listitem> 
+                  <para>Browse the web</para> 
+              </listitem> 
+              <listitem> 
+                  <para>Email</para> 
+              </listitem> 
+              <listitem> 
+                  <para>Instant Message</para> 
+              </listitem> 
+          </itemizedlist> 
+      </listitem> 
+    </itemizedlist> 
+  </sect1>
+
+<!-- =========== Getting Started ============================== -->
+  <sect1 id="myapp-getting-started"> 
+    <title>Getting Started</title> 
+
+    <sect2 id="myapp-when-start">
+    <title>Running &app;</title>
+    <para>Notice that after installation the GNOME Nanny daemon will be running in the background at all times. This is so to always control system users.
+    </para>
+    <para>To configure GNOME Nanny and decide which users to watch and what they can and can't do, you need to run the GNOME Nanny administration console.
+    </para>
+
+    <sect2 id="myapp-start">
+    <title>To Start GNOME Nanny administration console</title>
+    <para>You can start the <application>GNOME Nanny administration console</application> in the following ways:
+    </para> 
+    <variablelist>
+    	<varlistentry>
+    		<term><guimenu>Applications</guimenu> menu</term>
+    		<listitem>
+    		<para>Choose 
+    		<menuchoice>
+    		<guisubmenu>Submenu Name </guisubmenu>
+    		<guimenuitem>GNOME Nanny</guimenuitem>
+    		</menuchoice>. </para>
+    		</listitem>
+    	</varlistentry>
+    	<varlistentry>
+    		<term>Command line</term>
+    		<listitem>
+    		<para>To start <application>&app;</application> from a command line, type the following command, 
+    		then press <keycap>Return</keycap>:</para>
+    		<para> 
+			<command>gnome-nanny-admin-console</command> 
+    		</para> 
+    		</listitem>
+    	</varlistentry>
+    </variablelist>
+    </sect2>
+
+    </sect2>
+  </sect1>
+
+<!-- ================ Usage ================================ -->
+  <sect1 id="myapp-usage"> 
+    <title>Usage</title> 
+    <para>You can use the &app; application to
+      control the following per computer user: 
+      <itemizedlist> 
+	<listitem> 
+	  <para><xref linkend="nanny-time-usage"/>: Control time of computer usage.</para> 
+	</listitem> 
+	<listitem> 
+	  <para><xref linkend="nanny-apps-usage"/>: Control what the person can do.</para> 
+	</listitem> 
+	<listitem> 
+	  <para><xref linkend="nanny-web-access"/>: Control web access.</para> 
+	</listitem> 
+      </itemizedlist> </para>
+
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="nanny-time-usage"> 
+      <title>Control time of computer usage</title> 
+      <para>This is is the GNOME Administration Console.
+       The window is divided into two sections, users and actions. The users
+      are listed in the column of the left, and the actions are divided in the
+      tabs at the top of the window.
+      </para>
+      <figure id="nanny-session">
+        <title>PC use time</title>
+          <screenshot>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="nanny-session.png" format="PNG"/>
+              </imageobject>
+              <textobject>
+                <phrase>PC use control tab.</phrase>
+              </textobject>
+              <caption>
+                <para>This tab controls the maximum number of hours a person can use the computer each day and at what times.</para>
+                <para>Change the number at the top to control for how long a person can use the computer. This is a total number, so the user can use this time in a non-stop session or break it in several.</para>
+                <para>In the weekly time grid red means blocked time, and green means permitted time.</para>
+                <para>The Apply button needs to be pressed for the changes to be made effective.</para>
+              </caption>
+            </mediaobject>
+          </screenshot>
+      </figure>
+
+    </sect2> 
+
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="nanny-apps-usage"> 
+      <title>Control what the person can do.</title> 
+      <para>Application use can be controlled in the same way, as defined in <xref linkend="nanny-time-usage"/>. Each tab controls a different application.
+      </para>
+      <figure id="nanny-browser">
+        <title>Application use time</title>
+          <screenshot>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="nanny-browser.png" format="PNG"/>
+              </imageobject>
+              <textobject>
+                <phrase>Application use.</phrase>
+              </textobject>
+              <caption>
+                <para>Notice, each tab has a different 'maxmimum hours a day' option and weekly time grid. Have in mind no applications will be used during the blocked times of PC usage.</para>
+                <para>You can select web content filtering, <xref linkend="nanny-time-usage"/> explains the window which opens if you click in the Configure button.</para>
+              </caption>
+            </mediaobject>
+          </screenshot>
+      </figure>
+
+    </sect2> 
+
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="nanny-web-access"> 
+      <title>Control web access.</title> 
+      <figure id="nanny-browser">
+        <title>Web content filtering</title>
+          <screenshot>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="nanny-web-content-filtering.png" format="PNG"/>
+              </imageobject>
+              <textobject>
+                <phrase>Application use.</phrase>
+              </textobject>
+              <caption>
+                <para>In this window you can handle the list of forbidden and allowed sites, each list being in its own tab. Add elements to the list, edit them or remove them.</para>
+              </caption>
+            </mediaobject>
+          </screenshot>
+      </figure>
+      <figure id="nanny-browser">
+        <title>Add web to filter</title>
+          <screenshot>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="nanny-add-web-to-filter.png" format="PNG"/>
+              </imageobject>
+              <textobject>
+                <phrase>Application use.</phrase>
+              </textobject>
+              <caption>
+                <para>Add or eddit a website from the above mentioned lists. There are two types of filters: bundled lists that you can find in the internet or manual entries.</para>
+                <para>It is normally best to write the domain in the URL field.</para> 
+                <para>For example: http://www.badweb.com, because then all the subpages will be blocked (like http://www.badweb.com/asdas/page01/something.hmtl).
+                </para>
+              </caption>
+            </mediaobject>
+          </screenshot>
+      </figure>
+    </sect2> 
+  </sect1> 
+
+<!-- ============= About ================================== -->
+  <sect1 id="myapp-about"> 
+    <title>About &app;</title> 
+    <para> &app; was written by Roberto Majadas <email>roberto.majadas@openshine.com</email>, Luis de Bethencourt <email>luisbg@openshine.com</email> and Cesar Garcia <email>cesar.garcia.tapia@openshine.com</email>.
+      To find more information about
+      &app;, please visit the 
+      <ulink url="http://projects.gnome.org/nanny" type="http">GNOME Nanny Web
+	page</ulink>. </para>
+    <para>
+      To report a bug or make a suggestion regarding this application or
+      this manual, follow the directions in this 
+      <ulink url="ghelp:gnome-feedback"   type="help">document</ulink>.
+    </para>
+
+    <para> This program is distributed under the terms of the GNU
+      General Public license as published by the Free Software
+      Foundation; either version 2 of the License, or (at your option)
+      any later version. A copy of this license can be found at this
+      <ulink url="ghelp:gpl" type="help">link</ulink>, or in the file
+      COPYING included with the source code of this program. </para>
+
+  </sect1> 
+</article>

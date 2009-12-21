@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:gnome="http://api.gnome.org/doap-extensions#"
+         xmlns="http://usefulinc.com/ns/doap#">
+
+  <name xml:lang="en">nanny</name>
+  <shortdesc xml:lang="en">Gnome Parental Control</shortdesc>
+
+  <homepage rdf:resource="http://projects.gnome.org/nanny" />
+  <mailing-list rdf:resource="http://mail.gnome.org/mailman/" />
+  <category rdf:resource="http://api.gnome.org/doap-extensions#admin" />
+
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Roberto Majadas</foaf:name>
+      <foaf:mbox rdf:resource="mailto:roberto.majadas@openshine.com" />
+      <gnome:userid>telemaco</gnome:userid>
+    </foaf:Person>
+  </maintainer>
+</Project>
+

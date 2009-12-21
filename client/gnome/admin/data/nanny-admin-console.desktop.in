@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Parental Control
+Comment=Nanny parental control admin console
+Exec=gksu --description /usr/share/applications/nanny-admin-console.desktop NannyAdminConsole
+Icon=config-users
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;System;Settings;
+StartupNotify=true
+Encoding=UTF-8

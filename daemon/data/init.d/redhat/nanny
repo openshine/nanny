@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# nanny-daemon:    NannyDaemon 
+#
+# chkconfig: 345 99 50 
+# description: Run NannyDaemon 
+#
+# processname: NannyDaemon
+# pidfile: /var/run/nanny/NannyDaemon.pid 
+#

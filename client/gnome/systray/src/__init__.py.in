@@ -1,0 +1,11 @@
+import os.path
+import gettext
+
+from SystrayNanny import SystrayNanny
+
+icons_files_dir= os.path.join("@prefix@","share/icons/hicolor")
+
+GETTEXT_DOMAIN = 'nanny'
+locale_dir = os.path.join("@prefix@", "share/" ,"locale/")
+gettext.bindtextdomain(GETTEXT_DOMAIN, locale_dir)
+gettext.textdomain(GETTEXT_DOMAIN)

@@ -1,0 +1,35 @@
+GNOME-NANNY
+===========
+
+Gnome-Nanny is a parental control system designed for the Gnome Desktop
+
+Compile in developer mode 
+-------------------------
+
+./autogen.sh --prefix=/usr --sysconfdir=/etc --with-init-scripts=debian
+make
+make install or sudo make install
+
+You can change debian for redhat or suse or another one distro supported.
+If you don't use the init-scripts flag, the init scripts will not be installed.
+
+Gnome-Nanny currently requires:
+   - python2.4 >= 2.6
+   - glib-2.0 >= 2.16.0
+   - gobject-2.0 >= 2.12.0
+   - gio-2.0 >= 2.16.0
+   - gtk+-2.0 >= 2.17.4
+   - gdk-2.0 >= 2.14.0
+   - gnome-desktop-2.0 >= 2.26.0
+   - gconf-2.0 >= 2.16.0
+   - dbus-1
+   - dbus-glib-1
+   - glade
+   - twisted
+   - python-imaging
+   - gtop
+   - pango
+   - cairo
+
+The official website is:
+   http://projects.gnome.org/nanny
