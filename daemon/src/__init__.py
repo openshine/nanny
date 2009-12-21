@@ -1,4 +1,4 @@
-from UsersManager import UsersManager
+from LinuxUsersManager import LinuxUsersManager as UsersManager
 from QuarterBack import QuarterBack
 from Daemon import Daemon
 
