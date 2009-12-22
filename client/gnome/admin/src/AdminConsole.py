@@ -41,6 +41,7 @@ class AdminConsole:
             self.dbus_client = nanny.client.common.DBusClient ()
         except:
             d = gtk.MessageDialog(None, gtk.DIALOG_MODAL, type=gtk.MESSAGE_WARNING, buttons=gtk.BUTTONS_OK)
+            d.set_property("icon-name", "nanny")
             d.set_markup(_("<b>Nanny daemon is not started</b>"))
             d.format_secondary_markup(_("To use the parental control, please start up the daemon."))
             d.run()
@@ -264,6 +265,7 @@ class AdminConsole:
 
         dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_INFO, gtk.BUTTONS_CLOSE,
                                    _("Your configuration has been saved") )
+        dialog.set_property("icon-name", "nanny")
         dialog.set_default_response(gtk.RESPONSE_CLOSE)
         dialog.run()
         dialog.destroy()
@@ -273,6 +275,7 @@ class AdminConsole:
         if self.__selected_user_id is not None:
             if self.__config_changed:
                 dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_INFO, gtk.BUTTONS_YES_NO)
+                dialog.set_property("icon-name", "nanny")
                 dialog.set_markup (_('<b>User change</b>'))
                 dialog.format_secondary_markup (_("If you don't press the 'Apply' button, your changes will be lost.\nAre you sure?") )
                 dialog.set_default_response(gtk.RESPONSE_YES)
