@@ -40,6 +40,7 @@ class ConfigureProxyDialog (gtk.Dialog):
                 glade_file = os.path.join (nanny.client.gnome.admin.glade_files_dir, "nac_wcf_dialog.glade"),
                 prefix = "wcfd")
 
+        self.set_property("icon-name", "nanny")
         self.dbus_client = nanny.client.common.DBusClient ()
         self.__selected_user_id = selected_user_id
 
@@ -304,6 +305,8 @@ class ProgressDialog (gtk.Window):
     def __init__ (self, text):
         gtk.Window.__init__ (self)
 
+        self.set_property("icon-name", "nanny")
+        self.set_title(text)
         self.set_decorated (False)
         self.resize (150, 50)
         self.set_position (gtk.WIN_POS_CENTER)
