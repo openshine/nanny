@@ -207,9 +207,9 @@ class ConfigureProxyDialog (gtk.Dialog):
         if ret != gtk.RESPONSE_OK:
             return
 
+        self.progress_dialog = ProgressDialog (_("Removing filter. Please, wait..."))
         selection = self.blacklist_treeview.get_selection()
         if selection.count_selected_rows () > 0:
-            self.progress_dialog = ProgressDialog (_("Downloading the list. Please, wait..."))
             model, paths = selection.get_selected_rows()
             if paths:
                 for path in paths:
@@ -217,8 +217,7 @@ class ConfigureProxyDialog (gtk.Dialog):
                     self.dbus_client.remove_filter (id,
                                                     self.__on_remove_filter_reply,
                                                     self.__on_remove_filter_error)
-
-        self.__fill_treeviews ()
+                    
 
     def __on_whitelist_remove_button_clicked (self, widget, data=None):
         dlg = gtk.MessageDialog(type=gtk.MESSAGE_WARNING, buttons=gtk.BUTTONS_OK_CANCEL)
@@ -230,9 +229,9 @@ class ConfigureProxyDialog (gtk.Dialog):
         if ret != gtk.RESPONSE_OK:
             return
 
+        self.progress_dialog = ProgressDialog (_("Removing filter. Please, wait..."))
         selection = self.whitelist_treeview.get_selection()
         if selection.count_selected_rows () > 0:
-            self.progress_dialog = ProgressDialog (_("Downloading the list. Please, wait..."))
             model, paths = selection.get_selected_rows()
             if paths:
                 for path in paths:
@@ -240,8 +239,6 @@ class ConfigureProxyDialog (gtk.Dialog):
                     self.dbus_client.remove_filter (id,
                                                     self.__on_remove_filter_reply,
                                                     self.__on_remove_filter_error)
-
-        self.__fill_treeviews ()
 
     def __on_remove_filter_reply (self, value):
         self.progress_dialog.destroy()
@@ -289,7 +286,7 @@ class ConfigureProxyDialog (gtk.Dialog):
 
         store = gtk.ListStore (gobject.TYPE_INT, gobject.TYPE_STRING)
         store.append ((0, _("Download list from the Internet")))
-        store.append ((1, _("Insert manual URL")))
+        store.append ((1, _("Insert manual domain or URL")))
 
         combobox = xml.get_object ('wcfed_type_combobox')
         cell = gtk.CellRendererText()

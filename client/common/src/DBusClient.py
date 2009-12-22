@@ -137,7 +137,7 @@ class DBusClient(gobject.GObject):
         return self.nanny_wcf.ListFilters (uid)
 
     def remove_filter (self, filter_id, reply_handler, error_handler):
-        return self.nanny_wcf.RemoveFilter (filter_id, reply_handler=reply_handler, error_handler=error_handler)
+        return self.nanny_wcf.RemoveFilter (filter_id, reply_handler=reply_handler, error_handler=error_handler, timeout=2000000)
 
     def __on_user_notification_cb (self, block_status, user_id, app_id, next_change, available_time):
         self.emit ('user-notification', block_status, user_id, app_id, next_change, available_time)
