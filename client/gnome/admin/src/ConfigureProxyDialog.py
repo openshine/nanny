@@ -129,6 +129,8 @@ class ConfigureProxyDialog (gtk.Dialog):
                                                         url,
                                                         self.__on_add_dansguardian_list_reply,
                                                         self.__on_add_dansguardian_list_error)
+                self.proxy_rule_dialog.destroy()
+                self.proxy_rule_dialog = None
             elif type == 1:
                 self.dbus_client.add_custom_filter (self.__selected_user_id, True, name, description, url)
                 self.__fill_treeviews ()
@@ -158,12 +160,13 @@ class ConfigureProxyDialog (gtk.Dialog):
             name = name_entry.get_text()
             description = description_entry.get_text()
             url = url_entry.get_text()
+            dialog.destroy()
 
             self.dbus_client.add_custom_filter (self.__selected_user_id, False, name, description, url)
 
             self.__fill_treeviews ()
-        
-        dialog.destroy()
+        else:
+            dialog.destroy()
 
     def __on_add_dansguardian_list_reply (self, value):
         self.progress_dialog.destroy()
