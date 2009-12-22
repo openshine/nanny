@@ -284,6 +284,26 @@ class WebDatabase:
 
     def __add_custom_filter_cb(self, txn, uid, is_black, name, description, regex):
         timestamp = int(time.time())
+        if "/" in regex :
+            t="url"
+            if regex.startswith("http://") :
+                body = regex.replace("http://", "")
+            elif regex.startswith("https://") :
+                body = regex.replace("https://", "")
+            else:
+                body = regex
+            
+            description = description + " (url : %s)" % regex
+        else:
+            t="domain"
+            if regex.startswith("http://") :
+                body = regex.replace("http://", "")
+            elif regex.startswith("https://") :
+                body = regex.replace("https://", "")
+            else:
+                body = regex
+            description = description + " (%s)" % regex
+            
         sql="INSERT INTO Origin ('name', 'uid', 'timestamp', 'description', 'is_black') VALUES ('%s', '%s', %s, '%s', %s)" % (name, uid, timestamp, description, int(is_black))
         txn.execute(sql)
 
@@ -291,9 +311,6 @@ class WebDatabase:
         ret = txn.fetchall()
 
         origin_id = ret[0][0]
-        
-        t="url"
-        body = "%" + regex + "%"
 
         sql="INSERT INTO Website ('is_black', 'uid', 'origin_id', 'category', 'type', 'body') VALUES (%s, '%s', %s, '%s', '%s', '%s')" % (int(is_black), uid, int(origin_id), "manual", t, body)
         txn.execute(sql)
@@ -313,6 +330,7 @@ class WebDatabase:
         txn.execute("DELETE FROM Origin WHERE id=%s" % list_id)
 
     def add_dans_guardian_list(self, uid, name, description, list_url):
+        description = description + " (%s)" % list_url
         dgi = DansGuardianImporter(self.dbpool, list_url, uid, name, description)
         try:
             ret = dgi.blockOn()
