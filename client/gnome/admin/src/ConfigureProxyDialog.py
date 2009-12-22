@@ -46,6 +46,9 @@ class ConfigureProxyDialog (gtk.Dialog):
         self.main_notebook.unparent()
         self.get_content_area().add (self.main_notebook)
 
+        self.blacklist_edit_button.set_no_show_all(True)
+        self.whitelist_edit_button.set_no_show_all(True)
+
         self.blacklist_add_button.connect ('clicked', self.__on_blacklist_add_button_clicked)
         self.blacklist_edit_button.connect ('clicked', self.__on_blacklist_edit_button_clicked)
         self.blacklist_remove_button.connect ('clicked', self.__on_blacklist_remove_button_clicked)

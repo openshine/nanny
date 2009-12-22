@@ -51,7 +51,6 @@
                     <child>
                       <object class="GtkButton" id="wcfd_blacklist_edit_button">
                         <property name="label">gtk-edit</property>
-                        <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="use_stock">True</property>
@@ -138,7 +137,6 @@
                     <child>
                       <object class="GtkButton" id="wcfd_whitelist_edit_button">
                         <property name="label">gtk-edit</property>
-                        <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="use_stock">True</property>
