@@ -20,7 +20,12 @@
 import nanny.daemon
 from twisted.application import internet, service
 
+
 application = service.Application('nanny')
 daemon = nanny.daemon.Daemon(application)
+
+from twisted.internet import reactor
+reactor.suggestThreadPoolSize(30)
+
 
 

@@ -128,7 +128,7 @@ class DBusClient(gobject.GObject):
         return self.nanny_wcf.AddCustomFilter (user_id, color, name, description, url)
 
     def add_dansguardian_list (self, uid, name, description, list_url, reply_handler, error_handler):
-        self.nanny_wcf.AddDansGuardianList (uid, name, description, list_url, reply_handler=reply_handler, error_handler=error_handler)
+        self.nanny_wcf.AddDansGuardianList (uid, name, description, list_url, reply_handler=reply_handler, error_handler=error_handler, timeout=2000000)
 
     def check_web_access (self, uid, url):
         return self.nanny_wcf.CheckWebAccess (uid, url)

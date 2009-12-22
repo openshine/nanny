@@ -147,10 +147,33 @@ class DansGuardianImporter(object):
                 else:
                     continue
 
+                regex_list = []
+                i = 0
                 for line in m_fd.readlines() :
                     regex = line.replace("\r","").replace("\n", "").replace(" ","")
                     if len(regex) > 0 :
-                        query = self.dbpool.runInteraction(self.__register_dg_website , is_black, uid, origin_id, category, regex_type, regex)
+                        regex_list.append((regex.decode("iso8859-15".lower()),))
+
+                    if len(regex_list) >= 10000 :
+                        query = self.dbpool.runInteraction(self.__register_dg_website , is_black, uid, origin_id, category, regex_type, regex_list)
+                        block_d = BlockingDeferred(query)
+                        reg_web_id = None
+                        try:
+                            reg_web_id = block_d.blockOn()
+                        except:
+                            print "Something wrong registering web regex : (%s, %s, %s)" % (len(regex_list), category, i)
+                        regex_list = []
+                        i = i + 1
+                    
+                
+                query = self.dbpool.runInteraction(self.__register_dg_website , is_black, uid, origin_id, category, regex_type, regex_list)
+                block_d = BlockingDeferred(query)
+                reg_web_id = None
+                try:
+                    reg_web_id = block_d.blockOn()
+                except:
+                    print "Something wrong registering web regex : (%s, %s, %s)" % (len(regex_list), category, i)
+                
 
             print "Imported '%s' List" % name
             self.finished = True
@@ -171,11 +194,14 @@ class DansGuardianImporter(object):
         origin_id = ret[0][0]
         return origin_id
 
-    def __register_dg_website(self, txn, is_black, uid, origin_id, category, regex_type, regex):
-        body = "%" + regex + "%"
+    def __register_dg_website(self, txn, is_black, uid, origin_id, category, regex_type, regex_list):
+        if len(regex_list) == 0 :
+            return
 
-        sql="INSERT INTO Website ('is_black', 'uid', 'origin_id', 'category', 'type', 'body') VALUES (%s, '%s', %s, '%s', '%s', '%s')" % (int(is_black), uid, int(origin_id), category, regex_type, body)
-        txn.execute(sql)
+        #print "Registering %s websites (%s)" % (category, len(regex_list))
+        sql="INSERT INTO Website ('is_black', 'uid', 'origin_id', 'category', 'type', 'body') VALUES (%s, '%s', %s, '%s', '%s', ?)" % (int(is_black), uid, int(origin_id), category, regex_type)
+        txn.executemany(sql, regex_list)
+        
 
     def gotFailure(self, f):
         self.finished = True

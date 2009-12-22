@@ -27,14 +27,18 @@ from twisted.internet import reactor
 from twisted.web import proxy, resource, server
 from twisted.enterprise import adbapi
 from twisted.application import internet, service
-
+from twisted.python.lockfile import FilesystemLock, isLocked
+from twisted.internet.defer import DeferredFilesystemLock 
 import urlparse
 from urllib import quote as urlquote
 
 import os
-from tempfile import TemporaryFile
+from tempfile import TemporaryFile, gettempdir
+import time
 
 import Image, ImageDraw, ImageFilter
+
+from Controllers import BlockingDeferred
 
 BAD_WEB_TEMPLATE='''
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -106,7 +110,14 @@ class BadBoyResponseFilterImage(BadBoyResponseFilter) :
         im_format = im.format
 
         draw = ImageDraw.Draw(im)
-        draw.rectangle((0, 0) + im.size, fill="#FFFFFF")
+        try:
+            draw.rectangle((0, 0) + im.size, fill="#FFFFFF")
+        except:
+            try:
+                draw.rectangle((0, 0) + im.size, fill="255")
+            except:
+                pass
+            
         draw.line((0, 0) + im.size, fill=128, width=10)
         draw.line((0, im.size[1], im.size[0], 0), fill=128, width=10)
         del draw 
@@ -187,15 +198,50 @@ class ReverseProxyResource(resource.Resource) :
 
     proxyClientFactoryClass = ProxyClientFactory
 
-    def __init__(self, uid, dbpool, reactor=reactor):
+    def __init__(self, uid, dbpool, reactor=reactor, domain_level=0, pre_check=[False, False]):
         resource.Resource.__init__(self)
         self.reactor = reactor
         self.uid = uid
         self.url = ''
         self.dbpool = dbpool
+        self.domain_level = domain_level
+        self.pre_check = pre_check
+        self.domains_blocked_cache = {}
         
     def getChild(self, path, request):
-        return ReverseProxyResource(self.uid, self.dbpool, reactor=reactor)
+        pre_check=[False, False]
+        host, port = self.__get_host_info(request)
+        if self.domain_level ==0 :
+            ts = reactor.seconds()
+            
+            if self.domains_blocked_cache.has_key(host) and ( ts - self.domains_blocked_cache[host][0] ) <= 120  :
+                print self.domains_blocked_cache[host][1]
+                block_d = BlockingDeferred(self.domains_blocked_cache[host][1])
+                try:
+                    pre_check = block_d.blockOn()
+                    print "Host %s , verified [cached] (pre_check=%s)" % (host, pre_check)
+                except:
+                    print "Something wrong validating domain %s" % host
+                    pre_check = [False, False]
+            else:
+                query = self.dbpool.runInteraction(self.__validate_site, host)
+                self.domains_blocked_cache[host]=[reactor.seconds(), query]
+                
+                block_d = BlockingDeferred(query)
+                try:
+                    pre_check = block_d.blockOn()
+                    print "Host %s , verified (pre_check=%s)" % (host, pre_check)
+                except:
+                    print "Something wrong validating domain %s" % host
+                    pre_check = [False, False]
+                
+            return ReverseProxyResource(self.uid, self.dbpool, reactor=reactor,
+                                        domain_level=self.domain_level + 1,
+                                        pre_check=pre_check)
+        else:
+            return ReverseProxyResource(self.uid, self.dbpool, reactor=reactor,
+                                        domain_level=self.domain_level + 1,
+                                        pre_check=self.pre_check)
 
     def render(self, request):
         host, port = self.__get_host_info(request)
@@ -212,32 +258,68 @@ class ReverseProxyResource(resource.Resource) :
             
         self.request = request
 
-	query = self.dbpool.runInteraction(self.__validate_uri, host, port, request, rest)
+        query = self.dbpool.runInteraction(self.__validate_uri, host, port, request, rest, self.pre_check)
         query.addCallback(self.__validate_request_cb)
 
         return server.NOT_DONE_YET
- 
-    def __validate_uri(self, txn, host, port, request, rest):
+
+    def __validate_site(self, txn, host):
         found = False
-        uri = host + request.uri
-        is_ok = True
+        block_domain = False
+        may_block_url = False
         
-        sql="SELECT * FROM Website WHERE is_black = 0 AND uid = '%s' AND '%s' LIKE body" % (self.uid, uri)
+        sql="SELECT * FROM Website WHERE uid = '%s' AND ((type = 'domain' AND '%s' GLOB body) OR (type = 'domain' AND '%s' GLOB '*.' || body) OR (type = 'url' AND body GLOB '%s'))" % (self.uid, host, host, "*" + host + "*")
         txn.execute(sql)
     	select = txn.fetchall()
-        for web in select:
-            is_ok = True
-            found = True
-            break
 
-        if not found:
-            sql="SELECT * FROM Website WHERE is_black = 1 AND uid = '%s' AND '%s' LIKE body" % (self.uid, uri)
-            txn.execute(sql)
-            select = txn.fetchall()
+        if len(select) > 0 :
             for web in select:
-                print '    BLOCKING ENTRY WAS FOUND : ' + web[6]
-                is_ok = False
-                break
+                if web[1] == True and web[5] == "domain" :
+                    block_domain = True
+                    break
+            
+            for web in select:
+                if web[1] == True and web[5] == "url" :
+                    may_block_url = True
+                    break
+                
+            for web in select:
+                if web[1] == False and web[5] == "domain" :
+                    print "Domain WhiteListed : %s"  % host
+                    block_domain = False
+                    break
+            
+        return block_domain, may_block_url
+ 
+    def __validate_uri(self, txn, host, port, request, rest, pre_check):
+        if pre_check[0] == True :
+            print 'Uri Validation stopped because domain is blocked, %s' % (host + request.uri)
+            return False, request, rest, host, port
+
+        if pre_check[1] == False :
+            print 'Uri validation verified in pre-check %s' % (host + request.uri)
+            return True, request, rest, host, port
+    
+        uri = host + request.uri
+        is_ok = True
+
+        sql="SELECT * FROM Website WHERE uid = '%s' AND type = 'url' AND '%s' GLOB '*' || body || '*' " % (self.uid, uri)
+        txn.execute(sql)
+    	select = txn.fetchall()
+
+        if len(select) > 0 :
+            for web in select:
+                if web[1] == True :
+                    print 'Uri blocked : %s ' % (web[6])
+                    is_ok = False
+                    break
+            
+            for web in select:
+                if web[1] == False :
+                    print 'Uri WhiteListed : %s ' % (web[6])
+                    is_ok = False
+                    break
+            
         return is_ok, request, rest, host, port
 
     def __validate_request_cb(self, data):
