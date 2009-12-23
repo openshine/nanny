@@ -2,7 +2,7 @@
 Name=Parental Control
 Comment=Nanny parental control admin console
 Exec=gksu --description /usr/share/applications/nanny-admin-console.desktop NannyAdminConsole
-Icon=config-users
+Icon=nanny
 Terminal=false
 Type=Application
 Categories=GNOME;GTK;System;Settings;
