@@ -145,7 +145,7 @@ AC_SUBST(GETTEXT_PACKAGE)
 GNOME_DOC_INIT
 
 dnl Add the languages which your application supports here.
-ALL_LINGUAS="es"
+ALL_LINGUAS="es vi"
 
 AM_GLIB_GNU_GETTEXT
 AC_PROG_INTLTOOL
