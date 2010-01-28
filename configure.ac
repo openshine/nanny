@@ -34,6 +34,15 @@ PKG_CHECK_MODULES(PYDBUS, dbus-python >= 0.80)
 AC_SUBST(PYDBUS_CFLAGS)
 AC_SUBST(PYDBUS_LIBS)
 
+dnl check for glib
+dnl -----------------------------
+GLIB_REQUIRED=2.12.0
+
+PKG_CHECK_MODULES(GLIB, glib-2.0 >= $GLIB_REQUIRED gobject-2.0 >= $GLIB_REQUIRED)
+
+AC_SUBST(GLIB_CFLAGS)
+AC_SUBST(GLIB_LIBS)
+
 dnl check for python headers
 dnl ------------------------------
 AC_MSG_CHECKING(for shared library Python stuff)
@@ -95,6 +104,28 @@ then
 else
   AC_MSG_RESULT(not found)
   AC_MSG_ERROR([You need to have python-imaging installed])
+fi
+
+dnl check for python-hachoir-regex
+dnl -----------------------------------------
+AC_MSG_CHECKING(for python-hachoir-regex)
+prog="
+import sys
+try:
+  from hachoir_regex import parse, createRange, createString
+except RuntimeError:
+  sys.exit(0)
+except ImportError:
+  sys.exit(1)
+sys.exit(0)
+"
+   
+if $PYTHON -c "$prog" 1>&AC_FD_CC 2>&AC_FD_CC
+then
+  AC_MSG_RESULT(found)
+else
+  AC_MSG_RESULT(not found)
+  AC_MSG_ERROR([You need to have python-hachoir-regex installed])
 fi
 
 
