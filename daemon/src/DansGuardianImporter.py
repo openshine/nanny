@@ -21,6 +21,7 @@
 #
 
 import os
+import time
 import tempfile
 import tarfile
 
@@ -44,10 +45,13 @@ class DansGuardianImporter (gobject.GObject):
         self.conn = None
 
     def run(self):
+        t0 = time.time()
         self.__create_sqlite()
         self.__copy_dansguardian_file()
         self.__dansguardian_2_sqlite()
         self.conn.close()
+        print "---------------------------------"
+        print "Time : %s" % ((time.time() - t0) / 60.0)
 
     def __create_sqlite(self):
         if os.path.exists(self.out_path) :
@@ -83,14 +87,19 @@ class DansGuardianImporter (gobject.GObject):
                 m_fd = tfile.extractfile(member.name)
                 itype = "url"
                 category = os.path.basename(os.path.dirname(member.name))
+                t0 = time.time()
+                print "Importing urls [%s]" % category
                 self.__add_items_2_sqlite(m_fd, category, is_black, itype)
+                print "Imported urls [%s] (t: %s)" % (category, time.time() - t0)
                 
             elif os.path.basename(member.name) == "domains" and member.isfile():
                 m_fd = tfile.extractfile(member.name)
                 itype = "domain"
                 category = os.path.basename(os.path.dirname(member.name))
+                t0 = time.time()
+                print "Importing domains [%s]" % category
                 self.__add_items_2_sqlite(m_fd, category, is_black, itype)
-                
+                print "Imported domains [%s] (t: %s)" % (category, time.time() - t0)
             else:
                 continue
 
@@ -116,21 +125,32 @@ class DansGuardianImporter (gobject.GObject):
             for domain in domains :
                 p.addString(str(domain))
                 i = i + 1
+                if i < 1500 :
+                    continue
+                
                 if step == False and i % 500 == 0 :
                     if len(str(p.regex)) > 20000 :
+                        if len(str(p.regex)) > 24000 :
+                            print "\tDomains -> To sqlite!! (%s, %s)"  % (i, len(str(p.regex)))
+                            self.__insert_domain_into_sqlite(category, str(p.regex), is_black)
+                            p = PatternMatching()
+                            step = False
+                            i = 0
+                            continue
+                        
                         step = True
                         continue
                     
                 elif step == True and i % 100 == 0 :
-                    if len(str(p.regex)) > 30000 :
-                        print "Domains -> To sqlite!! (%s, %s)"  % (i, len(str(p.regex)))
+                    if len(str(p.regex)) > 25000 :
+                        print "\tDomains -> To sqlite!! (%s, %s)"  % (i, len(str(p.regex)))
                         self.__insert_domain_into_sqlite(category, str(p.regex), is_black)
                         p = PatternMatching()
                         step = False
                         i = 0
             
             if len(str(p.regex)) > 0 :
-                print "Domains -> To sqlite!! (%s, %s)"  % (i, len(str(p.regex)))
+                print "\tDomains -> To sqlite!! (%s, %s)"  % (i, len(str(p.regex)))
                 self.__insert_domain_into_sqlite(category, str(p.regex), is_black)
         else:
             domain_set = set()
@@ -159,14 +179,14 @@ class DansGuardianImporter (gobject.GObject):
                 i = i + 1
 
                 if i % 100 == 0 :
-                    if len(str(p.regex)) > 30000 :
-                        print "Urls -> To sqlite!! (%s, %s)"  % (i, len(str(p.regex)))
+                    if len(str(p.regex)) > 25000 :
+                        print "\tUrls -> To sqlite!! (%s, %s)"  % (i, len(str(p.regex)))
                         self.__insert_url_into_sqlite(category, str(p.regex), is_black)
                         p = PatternMatching()
                         i = 0
 
             if len(str(p.regex)) > 0 :
-                print "Urls -> To sqlite!! (%s, %s)"  % (i, len(str(p.regex)))
+                print "\tUrls -> To sqlite!! (%s, %s)"  % (i, len(str(p.regex)))
                 self.__insert_url_into_sqlite(category, str(p.regex), is_black)
                 
             if is_black == True:
@@ -180,44 +200,61 @@ class DansGuardianImporter (gobject.GObject):
                 for domain in domains :
                     p.addString(str(domain))
                     i = i + 1
+                    if i < 1500 :
+                        continue
+                    
                     if step == False and i % 500 == 0 :
                         if len(str(p.regex)) > 20000 :
+                            if len(str(p.regex)) > 24000 :
+                                print "\tMay url block -> To sqlite!! (%s, %s)"  % (i, len(str(p.regex)))
+                                self.__insert_domain_into_sqlite("may_url_blocked", str(p.regex), is_black)
+                                p = PatternMatching()
+                                step = False
+                                i = 0
+                                continue
+                                
                             step = True
                             continue
 
                     elif step == True and i % 100 == 0 :
-                        if len(str(p.regex)) > 30000 :
-                            print "May url block -> To sqlite!! (%s, %s)"  % (i, len(str(p.regex)))
+                        if len(str(p.regex)) > 25000 :
+                            print "\tMay url block -> To sqlite!! (%s, %s)"  % (i, len(str(p.regex)))
                             self.__insert_domain_into_sqlite("may_url_blocked", str(p.regex), is_black)
                             p = PatternMatching()
                             step = False
                             i = 0
 
                 if len(str(p.regex)) > 0 :
-                    print "May url block -> To sqlite!! (%s, %s)"  % (i, len(str(p.regex)))
+                    print "\tMay url block -> To sqlite!! (%s, %s)"  % (i, len(str(p.regex)))
                     self.__insert_domain_into_sqlite("may_url_blocked", str(p.regex), is_black)        
             
 
     def __insert_domain_into_sqlite(self, category, regexp, is_black):
-        c = self.conn.cursor()
-        if is_black == True :
-            c.execute('insert into black_domains values ("%s", "%s")' % (category, regexp))
-        else:
-            c.execute('insert into white_domains values ("%s", "%s")' % (category, regexp))
+        try:
+            c = self.conn.cursor()
+            if is_black == True :
+                c.execute('insert into black_domains values ("%s", "%s")' % (category, regexp))
+            else:
+                c.execute('insert into white_domains values ("%s", "%s")' % (category, regexp))
 
-        self.conn.commit()
+            self.conn.commit()
+        except :
+            print "Something wrong in sqlite inserting domains :\nCategory : %s\nREGEX %s" (category, regexp)
 
     def __insert_url_into_sqlite(self, category, regexp, is_black):
-        c = self.conn.cursor()
-        if is_black == True :
-            c.execute('insert into black_urls values ("%s", "%s")' % (category, regexp))
-        else:
-            c.execute('insert into white_urlss values ("%s", "%s")' % (category, regexp))
-
-        self.conn.commit()
+        try:
+            c = self.conn.cursor()
+            if is_black == True :
+                c.execute('insert into black_urls values ("%s", "%s")' % (category, regexp))
+            else:
+                c.execute('insert into white_urlss values ("%s", "%s")' % (category, regexp))
+        
+            self.conn.commit()
+        except :
+            print "Something wrong in sqlite inserting urls :\nCategory : %s\nREGEX %s" (category, regexp)
             
 gobject.type_register(DansGuardianImporter)
 
 if __name__ == '__main__':
-    d = DansGuardianImporter("/var/www/prueba3.tgz","/tmp/prueba.sqlite")
+    d = DansGuardianImporter("/var/www/pets.tgz","/tmp/pets.sqlite")
     d.run()
