@@ -6,6 +6,8 @@ corelib_PYTHON =	 __init__.py 			\
                         Daemon.py         		\
 			NannyDBus.py			\
 			QuarterBack.py			\
+			BlockingDeferred.py		\
+			FilterManager.py		\
 			LinuxFiltering.py		\
 			LinuxWebContentFiltering.py 	\
 			LinuxUsersManager.py		\
