@@ -69,7 +69,8 @@ class FilterManager (gobject.GObject) :
     #------------------------------------
 
     def __get_custom_filters_db(self):
-        if os.path.exists("/var/lib/nanny/customfilters.db") :
+        path = "/var/lib/nanny/customfilters.db"
+        if os.path.exists(path) :
             return adbapi.ConnectionPool('sqlite3', path,
                                          check_same_thread=False,
                                          cp_openfun=on_db_connect)
@@ -82,11 +83,13 @@ class FilterManager (gobject.GObject) :
             return db
 
     def add_custom_filter(self, uid, is_black, name, description, regex):
-        query = self.custom_filters_db.runQuery('insert into customfilters values ("%s", %s, "%s", "%s", "%s")' % (str(uid),
-                                                                                                                   bool(is_black),
-                                                                                                                   name,
-                                                                                                                   description,
-                                                                                                                   regex))
+        sql_query = 'insert into customfilters ("uid", "is_black", "name", "description", "regexp") values ("%s", %s, "%s", "%s", "%s")' % (str(uid),
+                                                                                                                                            int(is_black),
+                                                                                                                                            name,
+                                                                                                                                            description,
+                                                                                                                                            regex)
+        print sql_query
+        query = self.custom_filters_db.runQuery(sql_query)
         block_d = BlockingDeferred(query)
         try:
             qr = block_d.blockOn()
@@ -95,7 +98,7 @@ class FilterManager (gobject.GObject) :
             print "Something goes wrong Adding Custom Filters"
             return False
         
-    def list_custom_filter(self, uid):
+    def list_custom_filters(self, uid):
         query = self.custom_filters_db.runQuery("select * from customfilters where uid = '%s'" % str(uid))
         block_d = BlockingDeferred(query)
         ret = []
