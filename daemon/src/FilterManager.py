@@ -47,11 +47,12 @@ class FilterManager (gobject.GObject) :
         reactor.addSystemEventTrigger("before", "shutdown", self.stop)
 
     def start(self):
+        print "Start Filter Manager"
         os.system("mkdir -p /var/lib/nanny/lists")
         self.custom_filters_db = self.__get_custom_filters_db()
 
     def stop(self):
-        pass
+        print "Stop Filter Manager"
 
     def check_domain(self, user_id, domain):
         pass

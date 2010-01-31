@@ -34,6 +34,7 @@ from LinuxFiltering import LinuxFiltering as FirewallFilter
 from LinuxWebContentFiltering import LinuxWebContentFiltering as WebContentFilter
 from LinuxUsersManager import LinuxUsersManager as UsersManager
 from LinuxSessionFiltering import LinuxSessionFiltering as SessionFilter
+from FilterManager import FilterManager as FilterManager
 
 from Chrono import Chrono
 
@@ -94,6 +95,7 @@ class QuarterBack(gobject.GObject) :
         self.chrono = Chrono(self)
         
         self.firewall_filter = FirewallFilter(self)
+        self.filter_manager = FilterManager(self)
         self.webcontent_filter = WebContentFilter(self, app)
         self.session_filter = SessionFilter(self)
         
