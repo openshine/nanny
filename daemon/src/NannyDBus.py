@@ -109,18 +109,32 @@ class NannyDBus(dbus.service.Object):
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='sbsss', out_signature='b')
     def AddCustomFilter(self, uid, is_black, name, description, regex):
-        return self.quarterback.webcontent_filter.webdb.add_custom_filter(str(uid), bool(is_black), str(name),
+        return self.quarterback.filter_manager.add_custom_filter(str(uid), bool(is_black), str(name),
                                                                           str(description), str(regex))
 
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='s', out_signature='a(issb)')
-    def ListFilters(self, uid):
-        return self.quarterback.webcontent_filter.webdb.list_filters(int(uid))
+    def ListCustomFilters(self, uid):
+        return self.quarterback.filter_manager.list_custom_filters(int(uid))
 
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='i', out_signature='b')
+    def RemoveCustomFilter(self, list_id):
+        return self.quarterback.filter_manager.remove_custom_filter(int(list_id))
+    
+    #DEPRECATED
+    @dbus.service.method("org.gnome.Nanny.WebDatabase",
+                         in_signature='s', out_signature='a(issb)')
+    def ListFilters(self, uid):
+        return self.quarterback.filter_manager.list_custom_filters(int(uid))
+
+    #DEPRECATED
+    @dbus.service.method("org.gnome.Nanny.WebDatabase",
+                         in_signature='i', out_signature='b')
     def RemoveFilter(self, list_id):
-        return self.quarterback.webcontent_filter.webdb.remove_filter(int(list_id))
+        return self.quarterback.filter_manager.remove_custom_filter(int(list_id))
+
+    
 
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='ssss', out_signature='b')

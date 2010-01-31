@@ -82,11 +82,18 @@ class FilterManager (gobject.GObject) :
             return db
 
     def add_custom_filter(self, uid, is_black, name, description, regex):
-        self.custom_filters_db.runOperation('insert into customfilters values ("%s", %s, "%s", "%s", "%s")' % (str(uid),
-                                                                                                               bool(is_black),
-                                                                                                               name,
-                                                                                                               description,
-                                                                                                               regex))                                  
+        query = self.custom_filters_db.runQuery('insert into customfilters values ("%s", %s, "%s", "%s", "%s")' % (str(uid),
+                                                                                                                   bool(is_black),
+                                                                                                                   name,
+                                                                                                                   description,
+                                                                                                                   regex))
+        block_d = BlockingDeferred(query)
+        try:
+            qr = block_d.blockOn()
+            return True
+        except:
+            print "Something goes wrong Adding Custom Filters"
+            return False
         
     def list_custom_filter(self, uid):
         query = self.custom_filters_db.runQuery("select * from customfilters where uid = '%s'" % str(uid))
@@ -106,7 +113,14 @@ class FilterManager (gobject.GObject) :
         
 
     def remove_custom_filter(self, list_id):
-        self.custom_filters_db.runOperation('delete from customfilters where id=%s' % int(list_id))    
+        query = self.custom_filters_db.runQuery('delete from customfilters where id=%s' % int(list_id))
+        block_d = BlockingDeferred(query)
+        try:
+            qr = block_d.blockOn()
+            return True
+        except:
+            print "Something goes wrong Removing Custom Filters"
+            return False
     
         
 
