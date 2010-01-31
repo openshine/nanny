@@ -121,6 +121,15 @@ class NannyDBus(dbus.service.Object):
                          in_signature='i', out_signature='b')
     def RemoveCustomFilter(self, list_id):
         return self.quarterback.filter_manager.remove_custom_filter(int(list_id))
+
+    
+    @dbus.service.method("org.gnome.Nanny.WebDatabase",
+                         in_signature='isss', out_signature='b')
+    def UpdateCustomFilter(self, list_id, name, description, regex):
+        return self.quarterback.filter_manager.update_custom_filter(int(list_id),
+                                                                    str(name),
+                                                                    str(description),
+                                                                    str(regex))
     
     #DEPRECATED
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
@@ -134,7 +143,6 @@ class NannyDBus(dbus.service.Object):
     def RemoveFilter(self, list_id):
         return self.quarterback.filter_manager.remove_custom_filter(int(list_id))
 
-    
 
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='ssss', out_signature='b')

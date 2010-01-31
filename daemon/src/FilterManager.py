@@ -124,7 +124,20 @@ class FilterManager (gobject.GObject) :
         except:
             print "Something goes wrong Removing Custom Filters"
             return False
-    
-        
 
+    def update_custom_filter(self, list_id, name, description, regex):
+        sql_query = 'update customfilters set name="%s", description="%s", regexp="%s" where id=%s' % (name,
+                                                                                                      description,
+                                                                                                      regex,
+                                                                                                      int(list_id))
+
+        print sql_query
+        query = self.custom_filters_db.runQuery(sql_query)
+        block_d = BlockingDeferred(query)
+        try:
+            qr = block_d.blockOn()
+            return True
+        except:
+            print "Something goes wrong Updating Custom Filter"
+            return False
     
