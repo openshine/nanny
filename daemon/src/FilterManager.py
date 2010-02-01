@@ -281,16 +281,33 @@ class FilterManager (gobject.GObject) :
                 user_categories = self.pkg_filters_conf[pkg_id]["users_info"][uid]
             else:
                 user_categories = []
+
+            if not set(user_categories).issubset(set(categories)) :
+                tmp_user_categories = []
+                for ucat in user_categories :
+                    if ucat in categories:
+                        tmp_user_categories.append(ucat)
+                user_categories = tmp_user_categories
+                self.pkg_filters_conf[pkg_id]["users_info"][uid] = user_categories
+                self.__save_pkg_filters_conf()
+            
         except:
             return [[], []]
             
         return [categories, user_categories]
 
-    def set_pkg_filter_user_categories(self, pkg_id, uid, list_categories):
-        self.pkg_filters_conf[pkg_id]["users_info"][uid] = list_categories
+    def set_pkg_filter_user_categories(self, pkg_id, uid, user_categories):
+        categories = self.__get_categories_from_db(pkg_id)
+        tmp_user_categories = []
+        
+        if not set(user_categories).issubset(set(categories)) :
+            for ucat in user_categories :
+                if ucat in categories:
+                    tmp_user_categories.append(ucat)
+        else:
+            user_categories = tmp_user_categories
+        
+        self.pkg_filters_conf[pkg_id]["users_info"][uid] = user_categories
         self.__save_pkg_filters_conf()
         return True
-    
-    
-    
-        
+
