@@ -372,8 +372,8 @@ class FilterManager (gobject.GObject) :
             
     def get_pkg_filter_user_categories(self, pkg_id, uid):
         try:
-            name = ""
-            description = ""
+            return_categories = []
+
             categories = self.__get_categories_from_db(pkg_id)
             if self.pkg_filters_conf[pkg_id]["users_info"].has_key(uid) :
                 user_categories = self.pkg_filters_conf[pkg_id]["users_info"][uid]
@@ -388,11 +388,17 @@ class FilterManager (gobject.GObject) :
                 user_categories = tmp_user_categories
                 self.pkg_filters_conf[pkg_id]["users_info"][uid] = user_categories
                 self.__save_pkg_filters_conf()
+
+            for category in categories:
+                if category in user_categories:
+                    return_categories.append ((category, True))
+                else:
+                    return_categories.append ((category, False))
+
+            return return_categories
             
         except:
-            return [[], []]
-            
-        return [categories, user_categories]
+            return []
 
     def set_pkg_filter_user_categories(self, pkg_id, uid, user_categories):
         categories = self.__get_categories_from_db(pkg_id)

@@ -134,17 +134,17 @@ class NannyDBus(dbus.service.Object):
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='sss', out_signature='b')
     def AddPkgFilter(self, name, description, path):
-        return self.quarterback.filter_manager.add_pkg_filter(name, description, path)
+        return self.quarterback.filter_manager.add_pkg_filter(unicode(name), unicode(description), str(path))
 
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='s', out_signature='b')
     def RemovePkgFilter(self, pkg_id):
-        return self.quarterback.filter_manager.remove_pkg_filter(pkg_id)
+        return self.quarterback.filter_manager.remove_pkg_filter(str(pkg_id))
 
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='ss', out_signature='b')
     def UpdatePkgFilter(self, pkg_id, new_db_path):
-        return self.quarterback.filter_manager.update_pkg_filter(pkg_id, new_db_path)
+        return self.quarterback.filter_manager.update_pkg_filter(str(pkg_id), str (new_db_path))
     
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='', out_signature='a(sb)')
@@ -154,15 +154,15 @@ class NannyDBus(dbus.service.Object):
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='s', out_signature='ss')
     def GetPkgFilterMetadata(self, pkg_id):
-        return self.quarterback.filter_manager.get_pkg_filter_metadata(pkg_id)
+        return self.quarterback.filter_manager.get_pkg_filter_metadata(str(pkg_id))
 
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='sss', out_signature='b')
     def SetPkgFilterMetadata(self, pkg_id, name, description):
-        return self.quarterback.filter_manager.set_pkg_filter_metadata(pkg_id, name, description)
+        return self.quarterback.filter_manager.set_pkg_filter_metadata(str(pkg_id), unicode(name), unicode(description))
 
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
-                         in_signature='ss', out_signature='asas')
+                         in_signature='ss', out_signature='a(sb)')
     def GetPkgFilterUserCategories(self, pkg_id, uid):
         return self.quarterback.filter_manager.get_pkg_filter_user_categories(unicode(pkg_id),
                                                                               str(uid)

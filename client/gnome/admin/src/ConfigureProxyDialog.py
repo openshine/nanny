@@ -54,23 +54,29 @@ class ConfigureProxyDialog (gtk.Dialog):
         self.custom_whitelist_edit_button.connect ('clicked', self.__on_custom_whitelist_edit_button_clicked)
         self.custom_whitelist_remove_button.connect ('clicked', self.__on_custom_whitelist_remove_button_clicked)
 
-        self.__init_treeview (self.custom_blacklist_treeview)
-        self.__init_treeview (self.custom_whitelist_treeview)
-        self.__init_treeview (self.packaged_blacklist_treeview)
+        self.__init_custom_treeview (self.custom_blacklist_treeview)
+        self.__init_custom_treeview (self.custom_whitelist_treeview)
+        self.__init_pkg_treeview (self.packaged_blacklist_treeview)
+        self.__init_pkg_categories_treeview (self.packaged_blacklist_categories_treeview)
         self.__fill_treeviews ()
 
         selection = self.custom_blacklist_treeview.get_selection()
         selection.connect ('changed', self.__on_custom_blacklist_selection_changed)
         self.__on_custom_blacklist_selection_changed (selection)
+
         selection = self.custom_whitelist_treeview.get_selection()
         selection.connect ('changed', self.__on_custom_whitelist_selection_changed)
         self.__on_custom_whitelist_selection_changed (selection)
+
+        selection = self.packaged_blacklist_treeview.get_selection()
+        selection.connect ('changed', self.__on_packaged_blacklist_selection_changed)
+        self.__on_packaged_blacklist_selection_changed (selection)
 
         self.resize (700, 460)
 
         self.show_all ()
 
-    def __init_treeview (self, treeview):
+    def __init_custom_treeview (self, treeview):
         base_id = 0
         for field in ["id", "description"]:
             col = gtk.TreeViewColumn(field)
@@ -94,6 +100,50 @@ class ConfigureProxyDialog (gtk.Dialog):
 
         treeview.set_model (store)
 
+    def __init_pkg_treeview (self, treeview):
+        base_id = 0
+        for field in ["id", "description"]:
+            col = gtk.TreeViewColumn(field)
+            treeview.append_column(col)
+            cell = gtk.CellRendererText()
+            cell.set_property("ellipsize", pango.ELLIPSIZE_END)
+            col.pack_start(cell, True)
+            col.add_attribute(cell, 'markup', base_id)
+            if field != "id":
+                col.set_visible (True)
+            else:
+                col.set_visible (False)
+            
+            base_id = base_id + 1
+
+        store = gtk.ListStore (gobject.TYPE_STRING,
+                               gobject.TYPE_STRING)
+
+        treeview.set_model (store)
+
+    def __init_pkg_categories_treeview (self, treeview):
+        base_id = 0
+        for field in ["selected", "description"]:
+            col = gtk.TreeViewColumn(field)
+            treeview.append_column(col)
+            if field == "description":
+                cell = gtk.CellRendererText()
+                cell.set_property("ellipsize", pango.ELLIPSIZE_END)
+                col.pack_start(cell, True)
+                col.add_attribute(cell, 'markup', base_id)
+            else:
+                cell = gtk.CellRendererToggle()
+                col.pack_start(cell, True)
+                col.add_attribute(cell, 'active', base_id)
+            col.set_visible (True)
+            
+            base_id = base_id + 1
+
+        store = gtk.ListStore (gobject.TYPE_BOOLEAN,
+                               gobject.TYPE_STRING)
+
+        treeview.set_model (store)
+
     def __fill_treeviews (self):
         custom_blacklist_model = self.custom_blacklist_treeview.get_model()
         custom_blacklist_model.clear()
@@ -101,12 +151,20 @@ class ConfigureProxyDialog (gtk.Dialog):
         custom_whitelist_model = self.custom_whitelist_treeview.get_model()
         custom_whitelist_model.clear()
 
+        packaged_blacklist_model = self.packaged_blacklist_treeview.get_model()
+        packaged_blacklist_model.clear()
+
         filters = self.dbus_client.list_custom_filters (self.__selected_user_id)
         for filter_id, filter_name, filter_description, filter_regex, is_black in filters:
             if is_black:
                 custom_blacklist_model.append ((filter_id, "<b>%s</b>\n   %s" % (filter_name, filter_description), filter_name, filter_description, filter_regex))
             else:
                 custom_whitelist_model.append ((filter_id, "<b>%s</b>\n   %s" % (filter_name, filter_description), filter_name, filter_description, filter_regex))
+
+        pkg_filters = self.dbus_client.list_pkg_filters ()
+        for filter_id, readonly in pkg_filters:
+            filter_name, filter_description = self.dbus_client.get_pkg_filter_metadata(filter_id)
+            packaged_blacklist_model.append ((filter_id, "<b>%s</b>\n   %s" % (filter_name, filter_description)))
 
     def __on_custom_blacklist_add_button_clicked (self, widget, data=None):
         xml = self.__load_dialog ()
@@ -357,6 +415,19 @@ class ConfigureProxyDialog (gtk.Dialog):
         else:
             self.custom_whitelist_edit_button.set_sensitive (False)
             self.custom_whitelist_remove_button.set_sensitive (False)
+
+    def __on_packaged_blacklist_selection_changed (self, selection, data=None):
+        packaged_blacklist_categories_model = self.packaged_blacklist_categories_treeview.get_model()
+        packaged_blacklist_categories_model.clear()
+
+        if selection.count_selected_rows () > 0:
+            model, iter = selection.get_selected()
+            if iter:
+                filter_id = model.get_value (iter, 0)
+
+                categories = self.dbus_client.get_pkg_filter_user_categories (filter_id, self.__selected_user_id) 
+                for category, user_category in categories:
+                    packaged_blacklist_categories_model.append ((user_category, category))
 
     def __load_dialog (self):
         glade_file = os.path.join (nanny.client.gnome.admin.glade_files_dir, "nac_wcf_edit_dialog.glade")

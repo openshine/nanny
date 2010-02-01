@@ -137,6 +137,30 @@ class DBusClient(gobject.GObject):
     def remove_custom_filter (self, filter_id, reply_handler, error_handler):
         return self.nanny_wcf.RemoveCustomFilter (filter_id, reply_handler=reply_handler, error_handler=error_handler, timeout=2000000)
 
+    def add_pkg_filter (self, name, description, path):
+        return self.nanny_wcf.AddPkgFilter(name, description, path)
+
+    def remove_pkg_filter (self, pkg_id):
+        return self.nanny_wcf.RemovePkgFilter(pkg_id)
+    
+    def update_pkg_filter (self, pkg_id, new_db_path):
+        return self.nanny_wcf.UpdatePkgFilter(pkg_id, new_db_path)
+    
+    def list_pkg_filters (self):
+        return self.nanny_wcf.ListPkgFilters()
+    
+    def get_pkg_filter_metadata (self, pkg_id):
+        return self.nanny_wcf.GetPkgFilterMetadata(pkg_id)
+
+    def set_pkg_filter_metadata (self, pkg_id, name, description):
+        return self.nanny_wcf.SetPkgFilterMetadata(pkg_id, name, description)
+    
+    def get_pkg_filter_user_categories (self, pkg_id, uid):
+        return self.nanny_wcf.GetPkgFilterUserCategories(pkg_id, uid)
+
+    def set_pkg_filter_user_categories (self, pkg_id, uid, list_categories):
+        return self.nanny_wcf.SetPkgFilterUserCategories(pkg_id, uid, list_categories)
+
     def add_dansguardian_list (self, uid, name, description, list_url, reply_handler, error_handler):
         self.nanny_wcf.AddDansGuardianList (uid, name, description, list_url, reply_handler=reply_handler, error_handler=error_handler, timeout=2000000)
 
