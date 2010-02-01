@@ -32,6 +32,13 @@ import sqlite3
 
 from hachoir_regex import PatternMatching
 
+def try_to_str(string):
+    try:
+        return str(string)
+    except:
+        print "Error importing : %s" % string
+        return None
+
 class DansGuardianImporter (gobject.GObject):
     __gsignals__ = {
         'progress-status' : (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
@@ -111,7 +118,7 @@ class DansGuardianImporter (gobject.GObject):
         if itype == "domain" :
             domains = []
             for line in fd.readlines() :
-                dg_domain=line.replace("\r","").replace("\n", "").replace(" ","").decode("iso8859-15").lower()
+                dg_domain=line.replace("\r","").replace("\n", "").replace(" ","")
                 tmp_domain=''
                 tmp_domain_item_list = dg_domain.split(".")
                 tmp_domain_item_list.reverse()
@@ -129,7 +136,11 @@ class DansGuardianImporter (gobject.GObject):
             current = 0
             
             for domain in domains :
-                p.addString(str(domain))
+                string = try_to_str(domain)
+                if string == None :
+                    continue
+                
+                p.addString(string)
                 i = i + 1
                 current = current + 1 
                 if i < 1500 :
@@ -184,7 +195,11 @@ class DansGuardianImporter (gobject.GObject):
                 total = len(urls)
 
             for url in urls :
-                p.addString(str(url))
+                string = try_to_str(url)
+                if string == None :
+                    continue
+                
+                p.addString(string)
                 i = i + 1
                 current = current + 1
                 
@@ -206,7 +221,11 @@ class DansGuardianImporter (gobject.GObject):
                 step = False
 
                 for domain in domains :
-                    p.addString(str(domain))
+                    string = try_to_str(domain)
+                    if string == None :
+                        continue
+                    
+                    p.addString(string)
                     i = i + 1
                     current = current + 1
                     if i < 1500 :
