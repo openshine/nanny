@@ -24,11 +24,14 @@
 # USA
 
 import gobject
+import gio
 import os
+import shutil
 import pickle
+import tempfile
 from glob import glob
 
-from twisted.internet import reactor
+from twisted.internet import reactor, threads
 from twisted.enterprise import adbapi
 
 import nanny.gregex
@@ -193,8 +196,44 @@ class FilterManager (gobject.GObject) :
             print "Something goes wrong getting categories from %s" % db
             return []
         
-    def add_pkg_filter(self, path, name, description):
-        pass
+    def add_pkg_filter(self, name, description, path):
+        temp_dir = tempfile.mkdtemp(prefix="filter_", dir="/var/lib/nanny/pkg_filters/")
+        try:
+            d = threads.deferToThread(self.__copy_pkg_filter, path, os.path.join(temp_dir, "filters.db"))
+            block_d = BlockingDeferred(d)
+            qr = block_d.blockOn()
+            if qr == True :
+                fd = open(os.path.join(temp_dir, "filters.metadata"), "w")
+                fd.write("Name=%s\n" % name)
+                fd.write("Comment=%s\n" % description)
+                fd.close()
+            else:
+                shutil.rmtree(temp_dir)
+                return False
+                
+            self.db_pools[os.path.join(temp_dir, "filters.db")] = adbapi.ConnectionPool('sqlite3',
+                                                                                        os.path.join(temp_dir, "filters.db"),
+                                                                                        check_same_thread=False,
+                                                                                        cp_openfun=on_db_connect)
+            self.pkg_filters_conf[os.path.join(temp_dir, "filters.db")] = {"categories" : [],
+                                                                           "users_info" : {}
+                                                                           }
+            self.__save_pkg_filters_conf()
+            return True
+        except:
+            print "Something goes wrong Adding PKG Filter"
+            shutil.rmtree(temp_dir)
+            return False
+        
+    def __copy_pkg_filter(self, orig, dest):
+        try:
+            print "Coping %s" % orig
+            gio.File(orig).copy(gio.File(dest))
+            print "Copied %s in %s" % (orig, dest)
+            return True
+        except:
+            print "Copy failed! (%s, %s)" % (orig, dest)
+            return False
 
     def remove_pkg_filter(self):
         pass
@@ -210,8 +249,8 @@ class FilterManager (gobject.GObject) :
             
     def get_pkg_filter_user_categories(self, pkg_id, uid):
         try:
-            name = "Here the name"
-            description = "Here the description"
+            name = ""
+            description = ""
             categories = self.__get_categories_from_db(pkg_id)
             if self.pkg_filters_conf[pkg_id]["users_info"].has_key(uid) :
                 user_categories = self.pkg_filters_conf[pkg_id]["users_info"][uid]

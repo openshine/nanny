@@ -130,6 +130,12 @@ class NannyDBus(dbus.service.Object):
                                                                     unicode(name),
                                                                     unicode(description),
                                                                     unicode(regex))
+
+    @dbus.service.method("org.gnome.Nanny.WebDatabase",
+                         in_signature='sss', out_signature='b')
+    def AddPkgFilter(self, name, description, path):
+        return self.quarterback.filter_manager.add_pkg_filter(name, description, path)
+    
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='', out_signature='as')
     def ListPkgFilters(self):
