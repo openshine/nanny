@@ -248,15 +248,20 @@ class FilterManager (gobject.GObject) :
                 ro = True
             else:
                 ro = False
-                
-            path = os.path.dirname(x)
-            if not os.path.exists(os.path.join(path, "filters.metadata")) :
-                ret.append([unicode(x), "", "", ro])
-                continue
-
-            name = ""
-            description = ""
             
+            ret.append([unicode(x), ro])
+                
+        return ret
+
+    def get_pkg_filter_metadata(self, pkg_id):
+        path = os.path.dirname(pkg_id)
+        if not os.path.exists(path) :
+            return ['', '']
+        
+        name = ""
+        description = ""
+        
+        if os.path.exists(os.path.join(path, "filters.metadata")) :
             fd = open(os.path.join(path, "filters.metadata"), "r")
             for line in fd.readlines():
                 l = line.strip("\n")
@@ -267,10 +272,21 @@ class FilterManager (gobject.GObject) :
                 else:
                     continue
             fd.close()
-            
-            ret.append([unicode(x), name, description, ro])
-                
-        return ret
+
+        return [name, description]
+
+    def set_pkg_filter_metadata(self, pkg_id, name, description):
+        for id, ro in self.list_pkg_filter() :
+            if id == pkg_id and ro == False:
+                path = os.path.dirname(pkg_id)
+                if os.path.exists(path) :
+                    fd = open(os.path.join(path, "filters.metadata"), "w")
+                    fd.write("Name=%s\n" % name)
+                    fd.write("Comment=%s\n" % description)
+                    fd.close()
+                    return True
+        
+        return False
             
     def get_pkg_filter_user_categories(self, pkg_id, uid):
         try:
