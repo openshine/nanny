@@ -479,7 +479,7 @@ class FilterManager (gobject.GObject) :
 
         if custom_black == True :
             print "Custom BlackListed"
-            return [True, True, []]
+            return [True, False, []]
 
         #Search in blacklists
         for db in self.pkg_filters_conf.keys():
@@ -492,7 +492,7 @@ class FilterManager (gobject.GObject) :
                             category_c = category_c + " OR " + "category='%s' " % cat
                         else:
                             category_c = "category='%s' " % cat
-                    #category_c = category_c + "OR category='may_url_blocked'"
+                    category_c = category_c + "OR category='may_url_blocked'"
                             
                     regexp_c = 'gregexp(regexp || "(|\..+)" , "%s")' % idomain
                     sql_query = 'select distinct category from black_domains where (%s) AND (%s)' % (category_c, regexp_c)
@@ -501,6 +501,7 @@ class FilterManager (gobject.GObject) :
                     
                     try:
                         qr = block_d.blockOn()
+                        print qr
                         for cat in qr :
                             blacklisted_categories.append(cat[0])
                     except:
@@ -508,7 +509,14 @@ class FilterManager (gobject.GObject) :
                         return [False, False, []]
 
         if len (blacklisted_categories) > 0 :
-            return [True, True, blacklisted_categories]
+            if "may_url_blocked" in blacklisted_categories :
+                blacklisted_categories.pop(blacklisted_categories.index("may_url_blocked"))
+                if len (blacklisted_categories) > 0 :
+                    return [True, True, blacklisted_categories]
+                else:
+                    return [False, True, blacklisted_categories]
+            else:
+                return [True, False, blacklisted_categories]
 
         return [False, False, []]
                 

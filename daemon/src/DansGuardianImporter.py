@@ -172,7 +172,7 @@ class DansGuardianImporter (gobject.GObject):
             
             urls = []
             for line in fd.readlines() :
-                dg_url = line.replace("\r","").replace("\n", "").replace(" ","").decode("iso8859-15").lower()
+                dg_url = line.replace("\r","").replace("\n", "").replace(" ","")
                 urls.append(dg_url)
 
                 if is_black == True:
@@ -181,8 +181,8 @@ class DansGuardianImporter (gobject.GObject):
                     tmp_domain_item_list.reverse()
                     for x in tmp_domain_item_list:
                         tmp_domain = tmp_domain + x + "."
-                        tmp_domain=tmp_domain[:-1]                
-                        domain_set.add(tmp_domain)
+                    tmp_domain=tmp_domain[:-1]                
+                    domain_set.add(tmp_domain)
 
             urls.sort()
             
