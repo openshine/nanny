@@ -434,7 +434,11 @@ class ConfigureProxyDialog (gtk.Dialog):
                     packaged_blacklist_categories_model.append ((False, _('<b>Select all the categories</b>'), 'ALL'))
 
                 for category, user_category in categories:
-                    packaged_blacklist_categories_model.append ((user_category, category, category))
+                    if category in nanny.client.common.Categories.category_strings:
+                        category_name, category_description = nanny.client.common.Categories.category_strings[category]
+                        packaged_blacklist_categories_model.append ((user_category, "%s - %s" % (category_name, category_description), category))
+                    else:
+                        packaged_blacklist_categories_model.append ((user_category, category, category))
             else:
                 self.selected_packaged_filter_id = None
         else:
