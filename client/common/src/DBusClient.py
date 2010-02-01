@@ -124,20 +124,24 @@ class DBusClient(gobject.GObject):
     def list_WCF (self):
         return self.nanny_admin.ListWCF ()
 
+    def list_custom_filters (self, uid):
+        return self.nanny_wcf.ListCustomFilters (uid)
+
     def add_custom_filter (self, user_id, color, name, description, url):
+        print name
         return self.nanny_wcf.AddCustomFilter (user_id, color, name, description, url)
+
+    def update_custom_filter (self, filter_id, name, description, url):
+        return self.nanny_wcf.UpdateCustomFilter (filter_id, name, description, url)
+
+    def remove_custom_filter (self, filter_id, reply_handler, error_handler):
+        return self.nanny_wcf.RemoveCustomFilter (filter_id, reply_handler=reply_handler, error_handler=error_handler, timeout=2000000)
 
     def add_dansguardian_list (self, uid, name, description, list_url, reply_handler, error_handler):
         self.nanny_wcf.AddDansGuardianList (uid, name, description, list_url, reply_handler=reply_handler, error_handler=error_handler, timeout=2000000)
 
     def check_web_access (self, uid, url):
         return self.nanny_wcf.CheckWebAccess (uid, url)
-
-    def list_filters (self, uid):
-        return self.nanny_wcf.ListFilters (uid)
-
-    def remove_filter (self, filter_id, reply_handler, error_handler):
-        return self.nanny_wcf.RemoveFilter (filter_id, reply_handler=reply_handler, error_handler=error_handler, timeout=2000000)
 
     def __on_user_notification_cb (self, block_status, user_id, app_id, next_change, available_time):
         self.emit ('user-notification', block_status, user_id, app_id, next_change, available_time)

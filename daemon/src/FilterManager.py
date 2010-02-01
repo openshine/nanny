@@ -107,7 +107,7 @@ class FilterManager (gobject.GObject) :
             qr = block_d.blockOn()
             
             for f in qr :
-                ret.append([ int(f[0]), str(f[3]), str(f[4]), bool(f[2]) ])
+                ret.append([ int(f[0]), unicode(f[3]), unicode(f[4]), unicode(f[5]), bool(f[2]) ])
 
             return ret
         except:

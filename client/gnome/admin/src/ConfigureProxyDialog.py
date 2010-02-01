@@ -47,26 +47,24 @@ class ConfigureProxyDialog (gtk.Dialog):
         self.main_notebook.unparent()
         self.get_content_area().add (self.main_notebook)
 
-        self.blacklist_edit_button.set_no_show_all(True)
-        self.whitelist_edit_button.set_no_show_all(True)
+        self.custom_blacklist_add_button.connect ('clicked', self.__on_custom_blacklist_add_button_clicked)
+        self.custom_blacklist_edit_button.connect ('clicked', self.__on_custom_blacklist_edit_button_clicked)
+        self.custom_blacklist_remove_button.connect ('clicked', self.__on_custom_blacklist_remove_button_clicked)
+        self.custom_whitelist_add_button.connect ('clicked', self.__on_custom_whitelist_add_button_clicked)
+        self.custom_whitelist_edit_button.connect ('clicked', self.__on_custom_whitelist_edit_button_clicked)
+        self.custom_whitelist_remove_button.connect ('clicked', self.__on_custom_whitelist_remove_button_clicked)
 
-        self.blacklist_add_button.connect ('clicked', self.__on_blacklist_add_button_clicked)
-        self.blacklist_edit_button.connect ('clicked', self.__on_blacklist_edit_button_clicked)
-        self.blacklist_remove_button.connect ('clicked', self.__on_blacklist_remove_button_clicked)
-        self.whitelist_add_button.connect ('clicked', self.__on_whitelist_add_button_clicked)
-        self.whitelist_edit_button.connect ('clicked', self.__on_whitelist_edit_button_clicked)
-        self.whitelist_remove_button.connect ('clicked', self.__on_whitelist_remove_button_clicked)
-
-        self.__init_treeview (self.blacklist_treeview)
-        self.__init_treeview (self.whitelist_treeview)
+        self.__init_treeview (self.custom_blacklist_treeview)
+        self.__init_treeview (self.custom_whitelist_treeview)
+        self.__init_treeview (self.packaged_blacklist_treeview)
         self.__fill_treeviews ()
 
-        selection = self.blacklist_treeview.get_selection()
-        selection.connect ('changed', self.__on_blacklist_selection_changed)
-        self.__on_blacklist_selection_changed (selection)
-        selection = self.whitelist_treeview.get_selection()
-        selection.connect ('changed', self.__on_whitelist_selection_changed)
-        self.__on_whitelist_selection_changed (selection)
+        selection = self.custom_blacklist_treeview.get_selection()
+        selection.connect ('changed', self.__on_custom_blacklist_selection_changed)
+        self.__on_custom_blacklist_selection_changed (selection)
+        selection = self.custom_whitelist_treeview.get_selection()
+        selection.connect ('changed', self.__on_custom_whitelist_selection_changed)
+        self.__on_custom_whitelist_selection_changed (selection)
 
         self.resize (700, 460)
 
@@ -89,85 +87,81 @@ class ConfigureProxyDialog (gtk.Dialog):
             base_id = base_id + 1
 
         store = gtk.ListStore (gobject.TYPE_INT,
+                               gobject.TYPE_STRING,
+                               gobject.TYPE_STRING,
+                               gobject.TYPE_STRING,
                                gobject.TYPE_STRING)
 
         treeview.set_model (store)
 
     def __fill_treeviews (self):
-        blacklist_model = self.blacklist_treeview.get_model()
-        blacklist_model.clear()
+        custom_blacklist_model = self.custom_blacklist_treeview.get_model()
+        custom_blacklist_model.clear()
 
-        whitelist_model = self.whitelist_treeview.get_model()
-        whitelist_model.clear()
+        custom_whitelist_model = self.custom_whitelist_treeview.get_model()
+        custom_whitelist_model.clear()
 
-        filters = self.dbus_client.list_filters (self.__selected_user_id)
-        for filter_id, filter_name, filter_description, is_black in filters:
+        filters = self.dbus_client.list_custom_filters (self.__selected_user_id)
+        for filter_id, filter_name, filter_description, filter_regex, is_black in filters:
             if is_black:
-                blacklist_model.append ((filter_id, "<b>%s</b>\n   %s" % (filter_name, filter_description)))
+                custom_blacklist_model.append ((filter_id, "<b>%s</b>\n   %s" % (filter_name, filter_description), filter_name, filter_description, filter_regex))
             else:
-                whitelist_model.append ((filter_id, "<b>%s</b>\n   %s" % (filter_name, filter_description)))
+                custom_whitelist_model.append ((filter_id, "<b>%s</b>\n   %s" % (filter_name, filter_description), filter_name, filter_description, filter_regex))
 
-    def __on_blacklist_add_button_clicked (self, widget, data=None):
+    def __on_custom_blacklist_add_button_clicked (self, widget, data=None):
         xml = self.__load_dialog ()
         self.proxy_rule_dialog = xml.get_object ('wcfed_dialog')
-        ret = self.proxy_rule_dialog.run()
-        if ret == 2:
-            combobox = xml.get_object ('wcfed_type_combobox')
-            name_entry = xml.get_object ('wcfed_name_entry')
-            description_entry = xml.get_object ('wcfed_description_entry')
-            url_entry = xml.get_object ('wcfed_url_entry')
+        warning_label = xml.get_object ("wcfed_warning_label")
+        warning_label.hide ()
+        while True:
+            ret = self.proxy_rule_dialog.run()
+            if ret == 2:
+                name_entry = xml.get_object ('wcfed_name_entry')
+                description_entry = xml.get_object ('wcfed_description_entry')
+                url_entry = xml.get_object ('wcfed_url_entry')
 
-            name = name_entry.get_text()
-            type = combobox.get_active ()
-            description = description_entry.get_text()
-            url = url_entry.get_text()
+                name = name_entry.get_text().strip()
+                description = description_entry.get_text().strip()
+                url = url_entry.get_text().strip()
 
-            if type == 0:
-                self.progress_dialog = ProgressDialog (_("Downloading the list. Please, wait..."))
-                self.dbus_client.add_dansguardian_list (self.__selected_user_id,
-                                                        name,
-                                                        description,
-                                                        url,
-                                                        self.__on_add_dansguardian_list_reply,
-                                                        self.__on_add_dansguardian_list_error)
-                self.proxy_rule_dialog.destroy()
-                self.proxy_rule_dialog = None
-            elif type == 1:
+                if name == "" or description == "" or url == "":
+                    warning_label.show()
+                    continue
+
                 self.dbus_client.add_custom_filter (self.__selected_user_id, True, name, description, url)
                 self.__fill_treeviews ()
                 self.proxy_rule_dialog.destroy()
-                self.proxy_rule_dialog = None
-        else:
-            self.proxy_rule_dialog.destroy()
-            self.proxy_rule_dialog = None
+                break
+            else:
+                self.proxy_rule_dialog.destroy()
+                break
         
-        
-    def __on_whitelist_add_button_clicked (self, widget, data=None):
+    def __on_custom_whitelist_add_button_clicked (self, widget, data=None):
         xml = self.__load_dialog ()
         dialog = xml.get_object ('wcfed_dialog')
+        warning_label = xml.get_object ("wcfed_warning_label")
+        warning_label.hide ()
 
-        type_label = xml.get_object ('wcfed_type_label')
-        type_label.hide()
-        combobox = xml.get_object ('wcfed_type_combobox')
-        combobox.hide()
+        while True:
+            ret = dialog.run()
+            if ret == 2:
+                name_entry = xml.get_object ('wcfed_name_entry')
+                description_entry = xml.get_object ('wcfed_description_entry')
+                url_entry = xml.get_object ('wcfed_url_entry')
 
-        dialog = xml.get_object ('wcfed_dialog')
-        ret = dialog.run()
-        if ret == 2:
-            name_entry = xml.get_object ('wcfed_name_entry')
-            description_entry = xml.get_object ('wcfed_description_entry')
-            url_entry = xml.get_object ('wcfed_url_entry')
+                name = name_entry.get_text().strip()
+                description = description_entry.get_text().strip()
+                url = url_entry.get_text().strip()
 
-            name = name_entry.get_text()
-            description = description_entry.get_text()
-            url = url_entry.get_text()
-            dialog.destroy()
+                if name == "" or description == "" or url == "":
+                    warning_label.show()
+                    continue
 
-            self.dbus_client.add_custom_filter (self.__selected_user_id, False, name, description, url)
-
-            self.__fill_treeviews ()
-        else:
-            dialog.destroy()
+                self.dbus_client.add_custom_filter (self.__selected_user_id, False, name, description, url)
+                self.__fill_treeviews ()
+                dialog.destroy()
+            else:
+                dialog.destroy()
 
     def __on_add_dansguardian_list_reply (self, value):
         self.progress_dialog.destroy()
@@ -197,13 +191,91 @@ class ConfigureProxyDialog (gtk.Dialog):
         dlg.run()
         dlg.destroy()
 
-    def __on_blacklist_edit_button_clicked (self, widget, data=None):
-        pass
+    def __on_custom_blacklist_edit_button_clicked (self, widget, data=None):
+        xml = self.__load_dialog ()
+        self.proxy_rule_dialog = xml.get_object ('wcfed_dialog')
+        warning_label = xml.get_object ("wcfed_warning_label")
+        warning_label.hide ()
 
-    def __on_whitelist_edit_button_clicked (self, widget, data=None):
-        pass
+        name_entry = xml.get_object ('wcfed_name_entry')
+        description_entry = xml.get_object ('wcfed_description_entry')
+        url_entry = xml.get_object ('wcfed_url_entry')
 
-    def __on_blacklist_remove_button_clicked (self, widget, data=None):
+        selection = self.custom_blacklist_treeview.get_selection()
+        if selection.count_selected_rows () > 0:
+            model, iter = selection.get_selected()
+            if iter:
+                filter_id = model.get_value (iter, 0)
+                filter_name = model.get_value (iter, 2)
+                filter_description = model.get_value (iter, 3)
+                filter_regex = model.get_value (iter, 4)
+
+                name_entry.set_text (filter_name)
+                description_entry.set_text (filter_description)
+                url_entry.set_text (filter_regex)
+
+        while True:
+            ret = self.proxy_rule_dialog.run()
+            if ret == 2:
+                filter_name = name_entry.get_text().strip()
+                filter_description = description_entry.get_text().strip()
+                filter_url = url_entry.get_text().strip()
+
+                if filter_name == "" or filter_description == "" or filter_url == "":
+                    warning_label.show()
+                    continue
+
+                self.dbus_client.update_custom_filter (filter_id, filter_name, filter_description, filter_url)
+                self.__fill_treeviews ()
+                self.proxy_rule_dialog.destroy()
+                break
+            else:
+                self.proxy_rule_dialog.destroy()
+                break
+
+    def __on_custom_whitelist_edit_button_clicked (self, widget, data=None):
+        xml = self.__load_dialog ()
+        self.proxy_rule_dialog = xml.get_object ('wcfed_dialog')
+        warning_label = xml.get_object ("wcfed_warning_label")
+        warning_label.hide ()
+
+        name_entry = xml.get_object ('wcfed_name_entry')
+        description_entry = xml.get_object ('wcfed_description_entry')
+        url_entry = xml.get_object ('wcfed_url_entry')
+
+        selection = self.custom_whitelist_treeview.get_selection()
+        if selection.count_selected_rows () > 0:
+            model, iter = selection.get_selected()
+            if iter:
+                filter_id = model.get_value (iter, 0)
+                filter_name = model.get_value (iter, 2)
+                filter_description = model.get_value (iter, 3)
+                filter_regex = model.get_value (iter, 4)
+
+                name_entry.set_text (filter_name)
+                description_entry.set_text (filter_description)
+                url_entry.set_text (filter_regex)
+
+        while True:
+            ret = self.proxy_rule_dialog.run()
+            if ret == 2:
+                filter_name = name_entry.get_text().strip()
+                filter_description = description_entry.get_text().strip()
+                filter_url = url_entry.get_text().strip()
+
+                if filter_name == "" or filter_description == "" or filter_url == "":
+                    warning_label.show()
+                    continue
+
+                self.dbus_client.update_custom_filter (filter_id, filter_name, filter_description, filter_url)
+                self.__fill_treeviews ()
+                self.proxy_rule_dialog.destroy()
+                break
+            else:
+                self.proxy_rule_dialog.destroy()
+                break
+
+    def __on_custom_blacklist_remove_button_clicked (self, widget, data=None):
         dlg = gtk.MessageDialog(type=gtk.MESSAGE_WARNING, buttons=gtk.BUTTONS_OK_CANCEL)
         dlg.set_property("icon-name", "nanny")
         dlg.set_markup(_("<b>Are you sure you want to delete this filter?</b>"))
@@ -215,18 +287,16 @@ class ConfigureProxyDialog (gtk.Dialog):
             return
 
         self.progress_dialog = ProgressDialog (_("Removing filter. Please, wait..."))
-        selection = self.blacklist_treeview.get_selection()
+        selection = self.custom_blacklist_treeview.get_selection()
         if selection.count_selected_rows () > 0:
-            model, paths = selection.get_selected_rows()
-            if paths:
-                for path in paths:
-                    id = model.get_value (model.get_iter(path), 0)
-                    self.dbus_client.remove_filter (id,
-                                                    self.__on_remove_filter_reply,
-                                                    self.__on_remove_filter_error)
-                    
+            model, iter = selection.get_selected()
+            if iter:
+                id = model.get_value (iter, 0)
+                self.dbus_client.remove_custom_filter (id,
+                                                       self.__on_remove_filter_reply,
+                                                       self.__on_remove_filter_error)
 
-    def __on_whitelist_remove_button_clicked (self, widget, data=None):
+    def __on_custom_whitelist_remove_button_clicked (self, widget, data=None):
         dlg = gtk.MessageDialog(type=gtk.MESSAGE_WARNING, buttons=gtk.BUTTONS_OK_CANCEL)
         dlg.set_property("icon-name", "nanny")
         dlg.set_markup(_("<b>Are you sure you want to delete this filter?</b>"))
@@ -238,15 +308,14 @@ class ConfigureProxyDialog (gtk.Dialog):
             return
 
         self.progress_dialog = ProgressDialog (_("Removing filter. Please, wait..."))
-        selection = self.whitelist_treeview.get_selection()
+        selection = self.custom_whitelist_treeview.get_selection()
         if selection.count_selected_rows () > 0:
-            model, paths = selection.get_selected_rows()
-            if paths:
-                for path in paths:
-                    id = model.get_value (model.get_iter(path), 0)
-                    self.dbus_client.remove_filter (id,
-                                                    self.__on_remove_filter_reply,
-                                                    self.__on_remove_filter_error)
+            model, iter = selection.get_selected()
+            if iter:
+                id = model.get_value (iter, 0)
+                self.dbus_client.remove_custom_filter (id,
+                                                       self.__on_remove_filter_reply,
+                                                       self.__on_remove_filter_error)
 
     def __on_remove_filter_reply (self, value):
         self.progress_dialog.destroy()
@@ -273,37 +342,26 @@ class ConfigureProxyDialog (gtk.Dialog):
         dlg.run()
         dlg.destroy()
 
-    def __on_blacklist_selection_changed (self, selection, data=None):
+    def __on_custom_blacklist_selection_changed (self, selection, data=None):
         if selection.count_selected_rows () > 0:
-            self.blacklist_edit_button.set_sensitive (True)
-            self.blacklist_remove_button.set_sensitive (True)
+            self.custom_blacklist_edit_button.set_sensitive (True)
+            self.custom_blacklist_remove_button.set_sensitive (True)
         else:
-            self.blacklist_edit_button.set_sensitive (False)
-            self.blacklist_remove_button.set_sensitive (False)
+            self.custom_blacklist_edit_button.set_sensitive (False)
+            self.custom_blacklist_remove_button.set_sensitive (False)
 
-    def __on_whitelist_selection_changed (self, selection, data=None):
+    def __on_custom_whitelist_selection_changed (self, selection, data=None):
         if selection.count_selected_rows () > 0:
-            self.whitelist_edit_button.set_sensitive (True)
-            self.whitelist_remove_button.set_sensitive (True)
+            self.custom_whitelist_edit_button.set_sensitive (True)
+            self.custom_whitelist_remove_button.set_sensitive (True)
         else:
-            self.whitelist_edit_button.set_sensitive (False)
-            self.whitelist_remove_button.set_sensitive (False)
+            self.custom_whitelist_edit_button.set_sensitive (False)
+            self.custom_whitelist_remove_button.set_sensitive (False)
 
     def __load_dialog (self):
         glade_file = os.path.join (nanny.client.gnome.admin.glade_files_dir, "nac_wcf_edit_dialog.glade")
         xml = gtk.Builder ()
         xml.add_from_file (glade_file)
-
-        store = gtk.ListStore (gobject.TYPE_INT, gobject.TYPE_STRING)
-        store.append ((0, _("Download list from the Internet")))
-        store.append ((1, _("Insert manual domain or URL")))
-
-        combobox = xml.get_object ('wcfed_type_combobox')
-        cell = gtk.CellRendererText()
-        combobox.pack_start(cell, True)
-        combobox.add_attribute(cell, 'text', 1)
-        combobox.set_model (store)
-        combobox.set_active (0)
 
         return xml
 

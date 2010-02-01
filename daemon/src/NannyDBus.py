@@ -109,11 +109,11 @@ class NannyDBus(dbus.service.Object):
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='sbsss', out_signature='b')
     def AddCustomFilter(self, uid, is_black, name, description, regex):
-        return self.quarterback.filter_manager.add_custom_filter(str(uid), bool(is_black), str(name),
-                                                                          str(description), str(regex))
+        return self.quarterback.filter_manager.add_custom_filter(str(uid), bool(is_black), unicode(name),
+                                                                          unicode(description), unicode(regex))
 
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
-                         in_signature='s', out_signature='a(issb)')
+                         in_signature='s', out_signature='a(isssb)')
     def ListCustomFilters(self, uid):
         return self.quarterback.filter_manager.list_custom_filters(int(uid))
 
@@ -127,9 +127,9 @@ class NannyDBus(dbus.service.Object):
                          in_signature='isss', out_signature='b')
     def UpdateCustomFilter(self, list_id, name, description, regex):
         return self.quarterback.filter_manager.update_custom_filter(int(list_id),
-                                                                    str(name),
-                                                                    str(description),
-                                                                    str(regex))
+                                                                    unicode(name),
+                                                                    unicode(description),
+                                                                    unicode(regex))
     
     #DEPRECATED
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
@@ -148,6 +148,6 @@ class NannyDBus(dbus.service.Object):
                          in_signature='ssss', out_signature='b')
     def AddDansGuardianList(self, uid, name, description, list_url):
         return self.quarterback.webcontent_filter.webdb.add_dans_guardian_list(str(uid),
-                                                                               str(name),
-                                                                               str(description),
-                                                                               str(list_url))
+                                                                               unicode(name),
+                                                                               unicode(description),
+                                                                               unicode(list_url))
