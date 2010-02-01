@@ -137,12 +137,12 @@ class NannyDBus(dbus.service.Object):
         return self.quarterback.filter_manager.add_pkg_filter(name, description, path)
     
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
-                         in_signature='', out_signature='as')
+                         in_signature='', out_signature='a(sssb)')
     def ListPkgFilters(self):
         return self.quarterback.filter_manager.list_pkg_filter()
 
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
-                         in_signature='ss', out_signature='ssasas')
+                         in_signature='ss', out_signature='asas')
     def GetPkgFilterUserCategories(self, pkg_id, uid):
         return self.quarterback.filter_manager.get_pkg_filter_user_categories(unicode(pkg_id),
                                                                               str(uid)

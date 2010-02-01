@@ -242,10 +242,35 @@ class FilterManager (gobject.GObject) :
         pass
 
     def list_pkg_filter(self):
-        ids = []
+        ret = []
         for x in self.pkg_filters_conf.keys():
-            ids.append(unicode(x))
-        return ids
+            if x.startswith("/usr") :
+                ro = True
+            else:
+                ro = False
+                
+            path = os.path.dirname(x)
+            if not os.path.exists(os.path.join(path, "filters.metadata")) :
+                ret.append([unicode(x), "", "", ro])
+                continue
+
+            name = ""
+            description = ""
+            
+            fd = open(os.path.join(path, "filters.metadata"), "r")
+            for line in fd.readlines():
+                l = line.strip("\n")
+                if l.startswith("Name=") :
+                    name = l.replace("Name=", "")
+                elif l.startswith("Comment=") :
+                    description = l.replace("Comment=", "")
+                else:
+                    continue
+            fd.close()
+            
+            ret.append([unicode(x), name, description, ro])
+                
+        return ret
             
     def get_pkg_filter_user_categories(self, pkg_id, uid):
         try:
@@ -257,9 +282,9 @@ class FilterManager (gobject.GObject) :
             else:
                 user_categories = []
         except:
-            return ["", "", [], []]
+            return [[], []]
             
-        return [name, description, categories, user_categories]
+        return [categories, user_categories]
 
     def set_pkg_filter_user_categories(self, pkg_id, uid, list_categories):
         self.pkg_filters_conf[pkg_id]["users_info"][uid] = list_categories
