@@ -165,8 +165,18 @@ class FilterManager (gobject.GObject) :
         else:
             db = open("/var/lib/nanny/pkg_filters/conf", 'rb')
             self.pkg_filters_conf = pickle.load(db)
-            print self.pkg_filters_conf
             db.close()
+            for rdb in list(set(self.pkg_filters_conf.keys()) - set(ddbb)) :
+                print "Remove conf of pkg_list (%s)" % rdb
+                self.pkg_filters_conf.pop(rdb)
+            for db in ddbb :
+                if not self.pkg_filters_conf.has_key(db) :
+                    print "Add missing conf of pkg_list (%s)" % db
+                    self.pkg_filters_conf[db] = {"categories" : [],
+                                                 "users_info" : {}
+                                                 }
+            self.__save_pkg_filters_conf()
+            
 
     def __save_pkg_filters_conf(self):
         output = open("/var/lib/nanny/pkg_filters/conf", 'wb')
