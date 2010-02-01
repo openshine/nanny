@@ -228,18 +228,38 @@ class FilterManager (gobject.GObject) :
     def __copy_pkg_filter(self, orig, dest):
         try:
             print "Coping %s" % orig
+            if os.path.exists(dest) :
+                print "Making Backup file"
+                gio.File(dest).move(gio.File(dest + ".bak"))
+                
             gio.File(orig).copy(gio.File(dest))
             print "Copied %s in %s" % (orig, dest)
+            
+            if os.path.exists(dest + ".bak") :
+                print "Removing Backup file"
+                os.unlink(dest + ".bak")
             return True
         except:
             print "Copy failed! (%s, %s)" % (orig, dest)
+            if os.path.exists(dest + ".bak") :
+                print "Revert to backup file"
+                gio.File(dest + ".bak").move(gio.File(dest))
             return False
 
-    def remove_pkg_filter(self):
+    def remove_pkg_filter(self, pkg_id):
         pass
 
-    def update_pkg_filter(self):
-        pass
+    def update_pkg_filter(self, pkg_id, new_db):
+        for id, ro in self.list_pkg_filter() :
+            if id == pkg_id and ro == False:
+                d = threads.deferToThread(self.__copy_pkg_filter, new_db, pkg_id)
+                block_d = BlockingDeferred(d)
+                qr = block_d.blockOn()
+                if qr == True :
+                    return True
+                else:
+                    return False
+        return False
 
     def list_pkg_filter(self):
         ret = []

@@ -135,6 +135,11 @@ class NannyDBus(dbus.service.Object):
                          in_signature='sss', out_signature='b')
     def AddPkgFilter(self, name, description, path):
         return self.quarterback.filter_manager.add_pkg_filter(name, description, path)
+
+    @dbus.service.method("org.gnome.Nanny.WebDatabase",
+                         in_signature='ss', out_signature='b')
+    def UpdatePkgFilter(self, pkg_id, new_db_path):
+        return self.quarterback.filter_manager.update_pkg_filter(pkg_id, new_db_path)
     
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='', out_signature='a(sb)')
