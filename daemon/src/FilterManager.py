@@ -41,7 +41,7 @@ def regexp(expr, item):
     return bool(nanny.gregex.regexp(expr, item))
 
 def on_db_connect(conn):
-    conn.create_function("regexp", 2, regexp)
+    conn.create_function("gregexp", 2, regexp)
 
 class FilterManager (gobject.GObject) :
     def __init__(self, quarterback):
@@ -62,12 +62,6 @@ class FilterManager (gobject.GObject) :
 
     def stop(self):
         print "Stop Filter Manager"
-
-    def check_domain(self, user_id, domain):
-        pass
-
-    def check_url(self, user_id, url):
-        pass
 
 
     #Custom Filters methods
@@ -414,3 +408,95 @@ class FilterManager (gobject.GObject) :
         self.__save_pkg_filters_conf()
         return True
 
+    #Check methods
+    #------------------------------------
+
+    def check_domain(self, uid, domain):
+        print "Check Domain"
+        
+        idomain = ''
+        domain_list = domain.split(".")
+        domain_list.reverse()
+        for x in domain_list:
+            idomain = idomain + x + "."
+        idomain = idomain[:-1]
+
+        print "Idomain : %s" % idomain
+
+        blacklisted_categories = []
+        custom_black=False
+        
+        #Search in customfilters
+        sql_query = 'select distinct is_black from customfilters where uid="%s" and gregexp( "(.+\.|)" || regexp || ".*" , "%s")' % (uid, domain)
+        query = self.custom_filters_db.runQuery(sql_query)
+        block_d = BlockingDeferred(query)
+        try:
+            qr = block_d.blockOn()
+            if len(qr) > 0 :
+                for x in qr :
+                    if x[0] == 0:
+                        print "Custom WhiteListed"
+                        return [False, False, []]
+                    if x[0] == 1:
+                        custom_black = True
+                
+        except:
+            print "Something goes wrong checking Custom Filters"
+            return [False, False, []]
+        
+
+        #Search in whitelists
+        for db in self.pkg_filters_conf.keys():
+            if self.pkg_filters_conf[db]["users_info"].has_key(uid) :
+                if len(self.pkg_filters_conf[db]["users_info"][uid]) > 0 :
+                    sql_query = 'select distinct category from white_domains where gregexp(regexp || "(|\..+)" , "%s")' % idomain
+                    query = self.db_pools[db].runQuery(sql_query)
+                    block_d = BlockingDeferred(query)
+                    
+                    try:
+                        qr = block_d.blockOn()
+                        if len(qr) > 0:
+                            return [False, False, []]
+                        
+                    except:
+                        print "Something goes wrong checking domains"
+                        return [False, False, []]
+
+        if custom_black == True :
+            print "Custom BlackListed"
+            return [True, True, []]
+
+        #Search in blacklists
+        for db in self.pkg_filters_conf.keys():
+            if self.pkg_filters_conf[db]["users_info"].has_key(uid) :
+                if len(self.pkg_filters_conf[db]["users_info"][uid]) > 0 :
+                    
+                    category_c = ''
+                    for cat in self.pkg_filters_conf[db]["users_info"][uid] :
+                        if category_c != '' :
+                            category_c = category_c + " OR " + "category='%s' " % cat
+                        else:
+                            category_c = "category='%s' " % cat
+                    #category_c = category_c + "OR category='may_url_blocked'"
+                            
+                    regexp_c = 'gregexp(regexp || "(|\..+)" , "%s")' % idomain
+                    sql_query = 'select distinct category from black_domains where (%s) AND (%s)' % (category_c, regexp_c)
+                    query = self.db_pools[db].runQuery(sql_query)
+                    block_d = BlockingDeferred(query)
+                    
+                    try:
+                        qr = block_d.blockOn()
+                        for cat in qr :
+                            blacklisted_categories.append(cat[0])
+                    except:
+                        print "Something goes wrong checking domains"
+                        return [False, False, []]
+
+        if len (blacklisted_categories) > 0 :
+            return [True, True, blacklisted_categories]
+
+        return [False, False, []]
+                
+
+    def check_url(self, uid, url):
+        pass

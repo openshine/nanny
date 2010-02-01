@@ -276,7 +276,7 @@ class DansGuardianImporter (gobject.GObject):
             if is_black == True :
                 c.execute('insert into black_urls values ("%s", "%s")' % (category, regexp))
             else:
-                c.execute('insert into white_urlss values ("%s", "%s")' % (category, regexp))
+                c.execute('insert into white_urls values ("%s", "%s")' % (category, regexp))
         
             self.conn.commit()
             self.emit("progress-status",

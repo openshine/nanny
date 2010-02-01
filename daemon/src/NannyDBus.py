@@ -178,6 +178,11 @@ class NannyDBus(dbus.service.Object):
         return self.quarterback.filter_manager.set_pkg_filter_user_categories(unicode(pkg_id),
                                                                               str(uid),
                                                                               list_c)
+
+    @dbus.service.method("org.gnome.Nanny.WebDatabase",
+                         in_signature='ss', out_signature='bbas')
+    def CheckDomain(self, uid, domain):
+        return self.quarterback.filter_manager.check_domain(uid, domain)
                                                                               
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='ssss', out_signature='b')
