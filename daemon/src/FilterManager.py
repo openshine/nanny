@@ -176,7 +176,48 @@ class FilterManager (gobject.GObject) :
                                                  "users_info" : {}
                                                  }
             self.__save_pkg_filters_conf()
-            
+
+        gobject.timeout_add(5000, self.__check_external_dbs)
+
+    def __check_external_dbs(self):
+        ddbb = glob('/usr/share/nanny/pkg_filters/*/filters.db')
+        if len(ddbb) == 0 :
+            for db in self.pkg_filters_conf.keys() :
+                if db.startswith("/usr/share/nanny/pkg_filters/") :
+                    print "Remove conf of pkg_list (%s)" % db
+                    self.pkg_filters_conf.pop(db)
+                    self.__save_pkg_filters_conf()
+
+            for db in self.db_pools.keys() :
+                if db.startswith("/usr/share/nanny/pkg_filters/"):
+                    print "Closing database of pkg_list (%s)" % db
+                    self.db_pools.pop(db).close()
+        else:
+            for db in self.pkg_filters_conf.keys() :
+                if db.startswith("/usr/share/nanny/pkg_filters/") and db not in ddbb :
+                    print "Remove conf of pkg_list (%s)" % db
+                    self.pkg_filters_conf.pop(db)
+                    self.__save_pkg_filters_conf()
+
+            for db in self.db_pools.keys() :
+                if db.startswith("/usr/share/nanny/pkg_filters/") and db not in ddbb:
+                    print "Closing database of pkg_list (%s)" % db
+                    self.db_pools.pop(db).close()
+
+            for db in ddbb :
+                if db not in self.pkg_filters_conf.keys() :
+                    print "Add missing conf of pkg_list (%s)" % db
+                    self.pkg_filters_conf[db] = {"categories" : [],
+                                                 "users_info" : {}
+                                                 }
+                    self.__save_pkg_filters_conf()
+                
+                if db not in self.db_pools.keys():
+                    print "Opening database of pkg_list (%s)" % db
+                    self.db_pools[db] = adbapi.ConnectionPool('sqlite3', db,
+                                                              check_same_thread=False,
+                                                              cp_openfun=on_db_connect)
+        return True
 
     def __save_pkg_filters_conf(self):
         output = open("/var/lib/nanny/pkg_filters/conf", 'wb')
