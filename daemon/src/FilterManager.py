@@ -408,7 +408,6 @@ class FilterManager (gobject.GObject) :
             for ucat in user_categories :
                 if ucat in categories:
                     tmp_user_categories.append(ucat)
-        else:
             user_categories = tmp_user_categories
         
         self.pkg_filters_conf[pkg_id]["users_info"][uid] = user_categories

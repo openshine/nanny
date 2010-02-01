@@ -133,13 +133,17 @@ class ConfigureProxyDialog (gtk.Dialog):
                 col.add_attribute(cell, 'markup', base_id)
             else:
                 cell = gtk.CellRendererToggle()
+                cell.connect( 'toggled', self.__on_packaged_blacklist_categories_toggled)
                 col.pack_start(cell, True)
                 col.add_attribute(cell, 'active', base_id)
+                col.add_attribute (cell, 'activatable', True)
+
             col.set_visible (True)
             
             base_id = base_id + 1
 
         store = gtk.ListStore (gobject.TYPE_BOOLEAN,
+                               gobject.TYPE_STRING,
                                gobject.TYPE_STRING)
 
         treeview.set_model (store)
@@ -423,11 +427,46 @@ class ConfigureProxyDialog (gtk.Dialog):
         if selection.count_selected_rows () > 0:
             model, iter = selection.get_selected()
             if iter:
-                filter_id = model.get_value (iter, 0)
+                self.selected_packaged_filter_id = model.get_value (iter, 0)
 
-                categories = self.dbus_client.get_pkg_filter_user_categories (filter_id, self.__selected_user_id) 
+                categories = self.dbus_client.get_pkg_filter_user_categories (self.selected_packaged_filter_id, self.__selected_user_id) 
+                if len (categories) > 0:
+                    packaged_blacklist_categories_model.append ((False, _('<b>Select all the categories</b>'), 'ALL'))
+
                 for category, user_category in categories:
-                    packaged_blacklist_categories_model.append ((user_category, category))
+                    packaged_blacklist_categories_model.append ((user_category, category, category))
+            else:
+                self.selected_packaged_filter_id = None
+        else:
+            self.selected_packaged_filter_id = None
+    
+    def __on_packaged_blacklist_categories_toggled (self, cell, path, data=None):
+        packaged_blacklist_categories_model = self.packaged_blacklist_categories_treeview.get_model()
+        packaged_blacklist_categories_model[path][0] = not packaged_blacklist_categories_model[path][0]
+
+        active_categories = []
+        is_all_cell = packaged_blacklist_categories_model[path][2] == 'ALL'
+        if is_all_cell:
+            check_all_cells = packaged_blacklist_categories_model[path][0]
+            packaged_blacklist_categories_model.foreach (self.__check_all_packaged_blacklist_categories, (check_all_cells, active_categories))
+        else:
+            packaged_blacklist_categories_model.foreach (self.__get_packaged_blacklist_categories, active_categories)
+
+        self.dbus_client.set_pkg_filter_user_categories (self.selected_packaged_filter_id, self.__selected_user_id, active_categories)
+
+    def __check_all_packaged_blacklist_categories (self, model, path, iter, data=None):
+        check_all_cells, active_categories = data
+        model[path][0] = check_all_cells 
+        if check_all_cells:
+            category_name = model[path][1]
+            active_categories.append (category_name)
+
+    def __get_packaged_blacklist_categories (self, model, path, iter, active_categories):
+        category_active = model.get_value (iter, 0)
+        category_name = model.get_value (iter, 1)
+
+        if category_active:
+            active_categories.append (category_name)
 
     def __load_dialog (self):
         glade_file = os.path.join (nanny.client.gnome.admin.glade_files_dir, "nac_wcf_edit_dialog.glade")
