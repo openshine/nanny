@@ -25,6 +25,9 @@
 
 import gobject
 import os
+import pickle
+from glob import glob
+
 from twisted.internet import reactor
 from twisted.enterprise import adbapi
 
@@ -42,14 +45,17 @@ class FilterManager (gobject.GObject) :
         gobject.GObject.__init__(self)
         self.quarterback = quarterback
         self.custom_filters_db = None
+        self.db_pools = {}
+        self.pkg_filters_conf = {}
 
         reactor.addSystemEventTrigger("before", "startup", self.start)
         reactor.addSystemEventTrigger("before", "shutdown", self.stop)
 
     def start(self):
         print "Start Filter Manager"
-        os.system("mkdir -p /var/lib/nanny/lists")
+        os.system("mkdir -p /var/lib/nanny/pkg_filters")
         self.custom_filters_db = self.__get_custom_filters_db()
+        self.__start_packaged_filters()
 
     def stop(self):
         print "Stop Filter Manager"
@@ -60,10 +66,6 @@ class FilterManager (gobject.GObject) :
     def check_url(self, user_id, url):
         pass
 
-    def __open_db_pool(self, path):
-        return adbapi.ConnectionPool('sqlite3', path,
-                                     check_same_thread=False,
-                                     cp_openfun=on_db_connect)
 
     #Custom Filters methods
     #------------------------------------
@@ -141,3 +143,90 @@ class FilterManager (gobject.GObject) :
             print "Something goes wrong Updating Custom Filter"
             return False
     
+
+    #Packaged filters
+    #-----------------------------------
+
+    def __start_packaged_filters(self):
+        ddbb = glob('/var/lib/nanny/pkg_filters/*/filters.db') + glob('/usr/share/nanny/pkg_filters/*/filters.db')
+        for db in ddbb :
+            self.db_pools[db] = adbapi.ConnectionPool('sqlite3', db,
+                                                      check_same_thread=False,
+                                                      cp_openfun=on_db_connect)
+
+        if not os.path.exists("/var/lib/nanny/pkg_filters/conf") :
+            for db in ddbb :
+                self.pkg_filters_conf[db] = {"categories" : [],
+                                             "users_info" : {}
+                                             }
+        else:
+            db = open("/var/lib/nanny/pkg_filters/conf", 'rb')
+            self.pkg_filters_conf = pickle.load(db)
+            print self.pkg_filters_conf
+            db.close()
+
+    def __save_pkg_filters_conf(self):
+        output = open("/var/lib/nanny/pkg_filters/conf", 'wb')
+        pickle.dump(self.pkg_filters_conf, output)
+        output.close()
+    
+    def __get_categories_from_db(self, db):
+        if len(self.pkg_filters_conf[db]["categories"]) == 2 :
+            if os.path.getmtime(db) == self.pkg_filters_conf[db]["categories"][0] :
+                return self.pkg_filters_conf[db]["categories"][1]
+            
+        sql_query = 'SELECT category FROM black_domains UNION SELECT category FROM black_urls UNION SELECT category FROM white_domains UNION SELECT category FROM white_urls'
+        query = self.db_pools[db].runQuery(sql_query)
+        block_d = BlockingDeferred(query)
+        try:
+            qr = block_d.blockOn()
+            cats = []
+            for c in qr :
+                if c[0] != "may_url_blocked" :
+                    cats.append(c[0])
+                
+            tmp_cat = [os.path.getmtime(db), cats]
+            self.pkg_filters_conf[db]["categories"] = tmp_cat
+            self.__save_pkg_filters_conf()
+            return self.pkg_filters_conf[db]["categories"][1]
+        except:
+            print "Something goes wrong getting categories from %s" % db
+            return []
+        
+    def add_pkg_filter(self, path, name, description):
+        pass
+
+    def remove_pkg_filter(self):
+        pass
+
+    def update_pkg_filter(self):
+        pass
+
+    def list_pkg_filter(self):
+        ids = []
+        for x in self.pkg_filters_conf.keys():
+            ids.append(unicode(x))
+        return ids
+            
+    def get_pkg_filter_user_categories(self, pkg_id, uid):
+        try:
+            name = "Here the name"
+            description = "Here the description"
+            categories = self.__get_categories_from_db(pkg_id)
+            if self.pkg_filters_conf[pkg_id]["users_info"].has_key(uid) :
+                user_categories = self.pkg_filters_conf[pkg_id]["users_info"][uid]
+            else:
+                user_categories = []
+        except:
+            return ["", "", [], []]
+            
+        return [name, description, categories, user_categories]
+
+    def set_pkg_filter_user_categories(self, pkg_id, uid, list_categories):
+        self.pkg_filters_conf[pkg_id]["users_info"][uid] = list_categories
+        self.__save_pkg_filters_conf()
+        return True
+    
+    
+    
+        

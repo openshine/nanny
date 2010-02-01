@@ -130,20 +130,29 @@ class NannyDBus(dbus.service.Object):
                                                                     unicode(name),
                                                                     unicode(description),
                                                                     unicode(regex))
-    
-    #DEPRECATED
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
-                         in_signature='s', out_signature='a(issb)')
-    def ListFilters(self, uid):
-        return self.quarterback.filter_manager.list_custom_filters(int(uid))
+                         in_signature='', out_signature='as')
+    def ListPkgFilters(self):
+        return self.quarterback.filter_manager.list_pkg_filter()
 
-    #DEPRECATED
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
-                         in_signature='i', out_signature='b')
-    def RemoveFilter(self, list_id):
-        return self.quarterback.filter_manager.remove_custom_filter(int(list_id))
+                         in_signature='ss', out_signature='ssasas')
+    def GetPkgFilterUserCategories(self, pkg_id, uid):
+        return self.quarterback.filter_manager.get_pkg_filter_user_categories(unicode(pkg_id),
+                                                                              str(uid)
+                                                                              )
 
-
+    @dbus.service.method("org.gnome.Nanny.WebDatabase",
+                         in_signature='ssas', out_signature='b')
+    def SetPkgFilterUserCategories(self, pkg_id, uid, list_categories):
+        list_c = []
+        for x in list_categories :
+            list_c.append(unicode(x))
+            
+        return self.quarterback.filter_manager.set_pkg_filter_user_categories(unicode(pkg_id),
+                                                                              str(uid),
+                                                                              list_c)
+                                                                              
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='ssss', out_signature='b')
     def AddDansGuardianList(self, uid, name, description, list_url):
