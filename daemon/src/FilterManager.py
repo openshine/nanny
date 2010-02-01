@@ -247,7 +247,18 @@ class FilterManager (gobject.GObject) :
             return False
 
     def remove_pkg_filter(self, pkg_id):
-        pass
+        for id, ro in self.list_pkg_filter() :
+             if id == pkg_id and ro == False:
+                 if self.db_pools.has_key(pkg_id) :
+                     db = self.db_pools.pop(pkg_id)
+                     db.close()
+                     self.pkg_filters_conf.pop(pkg_id)
+                     self.__save_pkg_filters_conf()
+                     db_dir = os.path.dirname(pkg_id)
+                     print "Removing dir %s" % db_dir
+                     shutil.rmtree(db_dir)
+                     return True
+        
 
     def update_pkg_filter(self, pkg_id, new_db):
         for id, ro in self.list_pkg_filter() :
