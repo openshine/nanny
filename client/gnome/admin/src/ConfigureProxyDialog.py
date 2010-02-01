@@ -222,8 +222,10 @@ class ConfigureProxyDialog (gtk.Dialog):
                 self.dbus_client.add_custom_filter (self.__selected_user_id, False, name, description, url)
                 self.__fill_treeviews ()
                 dialog.destroy()
+                break
             else:
                 dialog.destroy()
+                break
 
     def __on_add_dansguardian_list_reply (self, value):
         self.progress_dialog.destroy()

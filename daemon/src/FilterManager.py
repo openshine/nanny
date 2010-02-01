@@ -29,6 +29,7 @@ import os
 import shutil
 import pickle
 import tempfile
+import tarfile
 from glob import glob
 
 from twisted.internet import reactor, threads
@@ -241,18 +242,18 @@ class FilterManager (gobject.GObject) :
             print "Something goes wrong getting categories from %s" % db
             return []
         
-    def add_pkg_filter(self, name, description, path):
+    def add_pkg_filter(self, path):
         temp_dir = tempfile.mkdtemp(prefix="filter_", dir="/var/lib/nanny/pkg_filters/")
         try:
-            d = threads.deferToThread(self.__copy_pkg_filter, path, os.path.join(temp_dir, "filters.db"))
+            if not tarfile.is_tarfile (path): 
+                print "The file has not in the correct format"
+                shutil.rmtree(temp_dir)
+                return False
+
+            d = threads.deferToThread(self.__copy_pkg_filter, path, os.path.join(temp_dir, "filters.tgz"))
             block_d = BlockingDeferred(d)
             qr = block_d.blockOn()
-            if qr == True :
-                fd = open(os.path.join(temp_dir, "filters.metadata"), "w")
-                fd.write("Name=%s\n" % name)
-                fd.write("Comment=%s\n" % description)
-                fd.close()
-            else:
+            if qr != True :
                 shutil.rmtree(temp_dir)
                 return False
                 
@@ -272,23 +273,36 @@ class FilterManager (gobject.GObject) :
         
     def __copy_pkg_filter(self, orig, dest):
         try:
-            print "Coping %s" % orig
-            if os.path.exists(dest) :
-                print "Making Backup file"
-                gio.File(dest).move(gio.File(dest + ".bak"))
+            basedir = os.path.dirname (dest)
+            if os.path.exists(basedir) :
+                files = os.listdir (basedir)
+                for file in files:
+                    file_name = os.path.join (basedir, file)
+                    gio.File(file_name).move(gio.File(file_name + ".bak"))
                 
             gio.File(orig).copy(gio.File(dest))
             print "Copied %s in %s" % (orig, dest)
+
+            tfile = tarfile.open (dest, 'r')
+            tfile.extractall (path=os.path.dirname(dest))
+            os.unlink(dest)
             
-            if os.path.exists(dest + ".bak") :
-                print "Removing Backup file"
-                os.unlink(dest + ".bak")
+            print "Removing Backup files"
+            files = os.listdir (basedir)
+            for file in files:
+                if file.endswith ('.bak'):
+                    file_name = os.path.join (basedir, file)
+                    os.unlink(file_name)
+
             return True
         except:
             print "Copy failed! (%s, %s)" % (orig, dest)
-            if os.path.exists(dest + ".bak") :
-                print "Revert to backup file"
-                gio.File(dest + ".bak").move(gio.File(dest))
+            print "Revert to backup files"
+            files = os.listdir (basedir)
+            for file in files:
+                if file.endswith ('.bak'):
+                    gio.File(file).move(gio.File(file[:-4]))
+
             return False
 
     def remove_pkg_filter(self, pkg_id):
@@ -308,7 +322,8 @@ class FilterManager (gobject.GObject) :
     def update_pkg_filter(self, pkg_id, new_db):
         for id, ro in self.list_pkg_filter() :
             if id == pkg_id and ro == False:
-                d = threads.deferToThread(self.__copy_pkg_filter, new_db, pkg_id)
+                basedir = os.path.dirname (pkg_id)
+                d = threads.deferToThread(self.__copy_pkg_filter, new_db, os.path.join(basedir, "filters.tgz"))
                 block_d = BlockingDeferred(d)
                 qr = block_d.blockOn()
                 if qr == True :
