@@ -464,12 +464,12 @@ class ConfigureProxyDialog (gtk.Dialog):
         check_all_cells, active_categories = data
         model[path][0] = check_all_cells 
         if check_all_cells:
-            category_name = model[path][1]
+            category_name = model[path][2]
             active_categories.append (category_name)
 
     def __get_packaged_blacklist_categories (self, model, path, iter, active_categories):
         category_active = model.get_value (iter, 0)
-        category_name = model.get_value (iter, 1)
+        category_name = model.get_value (iter, 2)
 
         if category_active:
             active_categories.append (category_name)
