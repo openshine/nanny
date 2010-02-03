@@ -198,12 +198,12 @@ class ReverseProxyResource(resource.Resource) :
 
     proxyClientFactoryClass = ProxyClientFactory
 
-    def __init__(self, uid, dbpool, reactor=reactor, domain_level=0, pre_check=[False, False]):
+    def __init__(self, uid, filter_manager, reactor=reactor, domain_level=0, pre_check=[False, False]):
         resource.Resource.__init__(self)
         self.reactor = reactor
         self.uid = uid
         self.url = ''
-        self.dbpool = dbpool
+        self.filter_manager = filter_manager
         self.domain_level = domain_level
         self.pre_check = pre_check
         self.domains_blocked_cache = {}
@@ -214,32 +214,32 @@ class ReverseProxyResource(resource.Resource) :
         if self.domain_level ==0 :
             ts = reactor.seconds()
             
-            if self.domains_blocked_cache.has_key(host) and ( ts - self.domains_blocked_cache[host][0] ) <= 120  :
+            if self.domains_blocked_cache.has_key(host) and ( ts - self.domains_blocked_cache[host][0] ) <= 10  :
                 print self.domains_blocked_cache[host][1]
                 block_d = BlockingDeferred(self.domains_blocked_cache[host][1])
                 try:
-                    pre_check = block_d.blockOn()
+                    pre_check, categories = block_d.blockOn()
                     print "Host %s , verified [cached] (pre_check=%s)" % (host, pre_check)
                 except:
                     print "Something wrong validating domain %s" % host
                     pre_check = [False, False]
             else:
-                query = self.dbpool.runInteraction(self.__validate_site, host)
+                query = self.filter_manager.check_domain_defer(self.uid, host)
                 self.domains_blocked_cache[host]=[reactor.seconds(), query]
                 
                 block_d = BlockingDeferred(query)
                 try:
-                    pre_check = block_d.blockOn()
+                    pre_check, categories = block_d.blockOn()
                     print "Host %s , verified (pre_check=%s)" % (host, pre_check)
                 except:
                     print "Something wrong validating domain %s" % host
                     pre_check = [False, False]
                 
-            return ReverseProxyResource(self.uid, self.dbpool, reactor=reactor,
+            return ReverseProxyResource(self.uid, self.filter_manager, reactor=reactor,
                                         domain_level=self.domain_level + 1,
                                         pre_check=pre_check)
         else:
-            return ReverseProxyResource(self.uid, self.dbpool, reactor=reactor,
+            return ReverseProxyResource(self.uid, self.filter_manager, reactor=reactor,
                                         domain_level=self.domain_level + 1,
                                         pre_check=self.pre_check)
 
@@ -258,70 +258,11 @@ class ReverseProxyResource(resource.Resource) :
             
         self.request = request
 
-        query = self.dbpool.runInteraction(self.__validate_uri, host, port, request, rest, self.pre_check)
-        query.addCallback(self.__validate_request_cb)
+        d = self.filter_manager.check_url_defer (self.uid, host, port, request, rest, self.pre_check)
+        d.addCallback(self.__validate_request_cb)
 
         return server.NOT_DONE_YET
-
-    def __validate_site(self, txn, host):
-        found = False
-        block_domain = False
-        may_block_url = False
-        
-        sql="SELECT * FROM Website WHERE uid = '%s' AND ((type = 'domain' AND '%s' GLOB body) OR (type = 'domain' AND '%s' GLOB '*.' || body) OR (type = 'url' AND body GLOB '%s'))" % (self.uid, host, host, "*" + host + "*")
-        txn.execute(sql)
-    	select = txn.fetchall()
-
-        if len(select) > 0 :
-            for web in select:
-                if web[1] == True and web[5] == "domain" :
-                    block_domain = True
-                    break
-            
-            for web in select:
-                if web[1] == True and web[5] == "url" :
-                    may_block_url = True
-                    break
-                
-            for web in select:
-                if web[1] == False and web[5] == "domain" :
-                    print "Domain WhiteListed : %s"  % host
-                    block_domain = False
-                    break
-            
-        return block_domain, may_block_url
  
-    def __validate_uri(self, txn, host, port, request, rest, pre_check):
-        if pre_check[0] == True :
-            print 'Uri Validation stopped because domain is blocked, %s' % (host + request.uri)
-            return False, request, rest, host, port
-
-        if pre_check[1] == False :
-            print 'Uri validation verified in pre-check %s' % (host + request.uri)
-            return True, request, rest, host, port
-    
-        uri = host + request.uri
-        is_ok = True
-
-        sql="SELECT * FROM Website WHERE uid = '%s' AND type = 'url' AND '%s' GLOB '*' || body || '*' " % (self.uid, uri)
-        txn.execute(sql)
-    	select = txn.fetchall()
-
-        if len(select) > 0 :
-            for web in select:
-                if web[1] == True :
-                    print 'Uri blocked : %s ' % (web[6])
-                    is_ok = False
-                    break
-            
-            for web in select:
-                if web[1] == False :
-                    print 'Uri WhiteListed : %s ' % (web[6])
-                    is_ok = False
-                    break
-            
-        return is_ok, request, rest, host, port
-
     def __validate_request_cb(self, data):
         is_ok = data[0]
         request = data[1]
@@ -353,13 +294,3 @@ class ReverseProxyResource(resource.Resource) :
 
         return host, port
 
-if __name__ == "__main__" :
-    import sys
-    from twisted.python import log
-    log.startLogging(sys.stdout)
-
-    dbpool = adbapi.ConnectionPool('sqlite3', '/var/lib/nanny/webs.db', check_same_thread=False)
-    root = ReverseProxyResource("1001", dbpool)
-    site = server.Site(root)
-    reactor.listenTCP(8080, site)
-    reactor.run()

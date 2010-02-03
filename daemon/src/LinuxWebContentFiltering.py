@@ -76,7 +76,7 @@ class LinuxWebContentFiltering(gobject.GObject) :
 
     def __start_proxy(self, quarterback, uid):
         if not self.services.has_key(uid) :
-            root = ProxyService(uid, self.dbpool)
+            root = ProxyService(uid, quarterback.filter_manager)
             sc = service.IServiceCollection(self.app)
             site = server.Site(root)
             

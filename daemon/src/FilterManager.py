@@ -32,7 +32,7 @@ import tempfile
 import tarfile
 from glob import glob
 
-from twisted.internet import reactor, threads
+from twisted.internet import reactor, threads, defer
 from twisted.enterprise import adbapi
 
 import nanny.gregex
@@ -426,6 +426,16 @@ class FilterManager (gobject.GObject) :
     #Check methods
     #------------------------------------
 
+    def check_domain_defer (self, uid, domain):
+        d = defer.Deferred()
+        reactor.callLater(0.05, d.callback, self.check_domain(uid, domain))
+        return d
+
+    def check_url_defer(self, uid, host, port, request, rest, pre_check):     
+        d = defer.Deferred()
+        reactor.callLater(0.05, d.callback, self.check_url(uid, host, port, request, rest, pre_check))
+        return d
+        
     def check_domain(self, uid, domain):
         print "Check Domain"
         
@@ -457,7 +467,7 @@ class FilterManager (gobject.GObject) :
                 
         except:
             print "Something goes wrong checking Custom Filters"
-            return [False, False, []]
+            return [[False, False], []]
         
 
         #Search in whitelists
@@ -471,15 +481,15 @@ class FilterManager (gobject.GObject) :
                     try:
                         qr = block_d.blockOn()
                         if len(qr) > 0:
-                            return [False, False, []]
+                            return [[False, False], []]
                         
                     except:
                         print "Something goes wrong checking domains"
-                        return [False, False, []]
+                        return [[False, False], []]
 
         if custom_black == True :
             print "Custom BlackListed"
-            return [True, False, []]
+            return [[True, False], []]
 
         #Search in blacklists
         for db in self.pkg_filters_conf.keys():
@@ -506,20 +516,32 @@ class FilterManager (gobject.GObject) :
                             blacklisted_categories.append(cat[0])
                     except:
                         print "Something goes wrong checking domains"
-                        return [False, False, []]
+                        return [[False, False], []]
 
         if len (blacklisted_categories) > 0 :
             if "may_url_blocked" in blacklisted_categories :
                 blacklisted_categories.pop(blacklisted_categories.index("may_url_blocked"))
                 if len (blacklisted_categories) > 0 :
-                    return [True, True, blacklisted_categories]
+                    return [[True, True], blacklisted_categories]
                 else:
-                    return [False, True, blacklisted_categories]
+                    return [[False, True], blacklisted_categories]
             else:
-                return [True, False, blacklisted_categories]
+                return [[True, False], blacklisted_categories]
 
-        return [False, False, []]
+        return [[False, False], []]
                 
 
-    def check_url(self, uid, url):
-        pass
+    def check_url(self, uid, host, port, request, rest, pre_check):
+        if pre_check[0] == True :
+            print 'Uri Validation stopped because domain is blocked, %s' % (host + request.uri)
+            return False, request, rest, host, port
+
+        if pre_check[1] == False :
+            print 'Uri validation verified in pre-check %s' % (host + request.uri)
+            return True, request, rest, host, port
+
+        uri = host + request.uri
+        is_ok = True
+        
+        print 'Uri validation passed by default  %s' % (host + request.uri)
+        return True, request, rest, host, port
