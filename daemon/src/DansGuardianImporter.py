@@ -118,7 +118,7 @@ class DansGuardianImporter (gobject.GObject):
         if itype == "domain" :
             domains = []
             for line in fd.readlines() :
-                dg_domain=line.replace("\r","").replace("\n", "").replace(" ","")
+                dg_domain=line.replace("\r","").replace("\n", "").replace(" ","").replace('"','').replace("'",'')
                 tmp_domain=''
                 tmp_domain_item_list = dg_domain.split(".")
                 tmp_domain_item_list.reverse()
@@ -172,7 +172,7 @@ class DansGuardianImporter (gobject.GObject):
             
             urls = []
             for line in fd.readlines() :
-                dg_url = line.replace("\r","").replace("\n", "").replace(" ","")
+                dg_url = line.replace("\r","").replace("\n", "").replace(" ","").replace('"','').replace("'",'')
                 urls.append(dg_url)
 
                 if is_black == True:
@@ -268,7 +268,7 @@ class DansGuardianImporter (gobject.GObject):
                       _("Importing domains [category: %s] (%s%%)" % (category, current * 100 / total)))
                       
         except :
-            print "Something wrong in sqlite inserting domains :\nCategory : %s\nREGEX %s" (category, regexp)
+            print "Something wrong in sqlite inserting domains :\nCategory : %s\nREGEX %s" % (category, regexp)
 
     def __insert_url_into_sqlite(self, category, regexp, is_black, current, total):
         try:
@@ -283,7 +283,7 @@ class DansGuardianImporter (gobject.GObject):
                       (self.dg_current_file * 97 / self.dg_files) + 2,
                       _("Importing urls [category: %s] (%s%%)" % (category, current * 100 / total)))
         except :
-            print "Something wrong in sqlite inserting urls :\nCategory : %s\nREGEX %s" (category, regexp)
+            print "Something wrong in sqlite inserting urls :\nCategory : %s\nREGEX %s" % (category, regexp)
             
 gobject.type_register(DansGuardianImporter)
 
@@ -295,6 +295,6 @@ if __name__ == '__main__':
     def progress_cb(dg, percent, status_msg, data):
         print "[%s%%] -> %s" % (percent, status_msg)
     
-    d = DansGuardianImporter("/var/www/pets.tgz","/tmp/pets.sqlite")
+    d = DansGuardianImporter("/var/www/bigblacklist.tgz","/home/telemaco/Escritorio/dansguardian.db")
     d.connect("progress-status", progress_cb, None)
     d.run()
