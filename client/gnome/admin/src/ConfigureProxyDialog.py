@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2009 Junta de Andalucia
+# Copyright (C) 2009,2010 Junta de Andalucia
 # 
 # Authors:
 #   Roberto Majadas <roberto.majadas at openshine.com>
