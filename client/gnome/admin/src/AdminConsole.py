@@ -276,7 +276,7 @@ class AdminConsole:
             if self.__config_changed:
                 dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_INFO, gtk.BUTTONS_YES_NO)
                 dialog.set_property("icon-name", "nanny")
-                dialog.set_markup (_('<b>User change</b>'))
+                dialog.set_markup (_('<b>You have made changes</b>'))
                 dialog.format_secondary_markup (_("If you don't press the 'Apply' button, your changes will be lost.\nAre you sure?") )
                 dialog.set_default_response(gtk.RESPONSE_YES)
                 ret = dialog.run()
