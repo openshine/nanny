@@ -18,8 +18,6 @@ daemon/src/DansGuardianImporter.py
 daemon/src/NannyDBus.py
 daemon/src/QuarterBack.py
 daemon/src/LinuxFiltering.py
-daemon/src/contrib/daemon.py
-daemon/src/contrib/__init__.py
 daemon/src/LinuxUsersManager.py
 daemon/src/Chrono.py
 daemon/src/LinuxSessionFiltering.py
