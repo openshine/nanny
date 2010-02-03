@@ -28,6 +28,10 @@
       <year>2009</year> 
       <holder>openshine.com</holder> 
     </copyright>
+    <abstract role="description">
+       <para><application>&app;</application> enables you to control what system users do.
+       </para>
+    </abstract>
 
 <!-- translators: uncomment this:
   <copyright>
@@ -39,7 +43,41 @@
       <publishername>openshine.com </publishername> 
     </publisher> 
 
-   &legal;
+<!--   &legal; -->
+
+   <authorgroup>
+       <author role="maintainer">
+         <firstname>Luis</firstname>
+         <surname>de Bethencourt</surname>
+         <affiliation>
+           <orgname>GNOME Documentation Project</orgname>
+         </affiliation>
+         <email>luisbg@openshine.com</email>
+       </author>
+       <author>
+         <firstname>Roberto</firstname>
+         <surname>Majadas</surname>
+         <affiliation>
+           <orgname>GNOME Documentation project</orgname>
+         </affiliation>
+         <contrib>Update documentation</contrib>
+         <email>roberto.majadas@openshine.com</email>
+       </author>
+   </authorgroup>
+
+   <revhistory>
+      <revision>
+        <revnumber>&app; Manual V1.0</revnumber>
+        <date>January 2010</date>
+        <revdescription>
+          <para role="author">Luis de Bethencourt
+            <email>luisbg@openshine.com</email>
+          </para>
+          <para role="publisher">GNOME Documentation Project</para>
+        </revdescription>
+      </revision>
+   </revhistory>
+
     <releaseinfo>This manual describes version &appversion; of GNOME Nanny.
     </releaseinfo> 
     <legalnotice> 
@@ -206,7 +244,7 @@
     <!-- ================ Usage Subsection ================================ -->
     <sect2 id="nanny-web-access"> 
       <title>Control web access.</title> 
-      <figure id="nanny-browser">
+      <figure id="nanny-browser-b">
         <title>Web content filtering</title>
           <screenshot>
             <mediaobject>
@@ -222,7 +260,7 @@
             </mediaobject>
           </screenshot>
       </figure>
-      <figure id="nanny-browser">
+      <figure id="nanny-browser-c">
         <title>Add web to filter</title>
           <screenshot>
             <mediaobject>

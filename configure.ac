@@ -8,6 +8,7 @@ AC_SUBST(VERSION)
 
 AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
 AM_CONFIG_HEADER(config.h)
+AC_CONFIG_MACRO_DIR([m4])
 
 AM_MAINTAINER_MODE
 
@@ -20,6 +21,8 @@ AC_PROG_LIBTOOL
 AC_ARG_WITH(init-scripts,
   [  --with-init-scripts=[redhat/debian/suse/None]  Install init.d scripts [default=None]],,
   with_init_scripts=None)
+
+GNOME_DOC_INIT
 
 dnl check for python
 dnl ----------------------------
