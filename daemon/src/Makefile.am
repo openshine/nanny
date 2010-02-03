@@ -1,4 +1,4 @@
-SUBDIRS=contrib proxy 
+SUBDIRS=proxy 
 
 corelibdir = $(pythondir)/nanny/daemon
 corelib_PYTHON =	 __init__.py 			\

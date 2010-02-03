@@ -218,7 +218,6 @@ daemon/data/init.d/debian/Makefile
 daemon/data/init.d/redhat/Makefile
 daemon/data/init.d/suse/Makefile
 daemon/src/Makefile
-daemon/src/contrib/Makefile
 daemon/src/proxy/Makefile
 help/Makefile
 man/Makefile
