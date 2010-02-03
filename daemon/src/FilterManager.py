@@ -542,6 +542,46 @@ class FilterManager (gobject.GObject) :
 
         uri = host + request.uri
         is_ok = True
+        blacklisted_categories = []
+
+        #Search in whitelists
+        for db in self.pkg_filters_conf.keys():
+            if self.pkg_filters_conf[db]["users_info"].has_key(uid) :
+                if len(self.pkg_filters_conf[db]["users_info"][uid]) > 0 :
+                    sql_query = 'select distinct category from white_urls where gregexp(regexp || ".*" , "%s")' % uri
+                    query = self.db_pools[db].runQuery(sql_query)
+                    block_d = BlockingDeferred(query)
+                    
+                    try:
+                        qr = block_d.blockOn()
+                        if len(qr) > 0:
+                            print 'Uri validation verified whitelisted %s' % (host + request.uri)
+                            return True, request, rest, host, port
+                        
+                    except:
+                        print "Something goes wrong checking whitelisted urls"
+                        return True, request, rest, host, port
+        
+        #Search in blacklists
+        for db in self.pkg_filters_conf.keys():
+            if self.pkg_filters_conf[db]["users_info"].has_key(uid) :
+                if len(self.pkg_filters_conf[db]["users_info"][uid]) > 0 :
+                    sql_query = 'select distinct category from black_urls where gregexp(regexp || ".*" , "%s")' % uri
+                    query = self.db_pools[db].runQuery(sql_query)
+                    block_d = BlockingDeferred(query)
+                    
+                    try:
+                        qr = block_d.blockOn()
+                        if len(qr) > 0:
+                            for cat in qr :
+                                blacklisted_categories.append(cat[0])
+                    except:
+                        print "Something goes wrong checking blacklisted urls"
+                        return True, request, rest, host, port
+
+        if len (blacklisted_categories) > 0 :
+            print 'Uri validation stopped because is blacklisted %s [%s]' % (host + request.uri, blacklisted_categories)
+            return False, request, rest, host, port
         
         print 'Uri validation passed by default  %s' % (host + request.uri)
         return True, request, rest, host, port
