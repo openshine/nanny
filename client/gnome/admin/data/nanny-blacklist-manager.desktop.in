@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=BlackLists
+Comment=Nanny parental control blacklists manager
+Exec=gksu --description /usr/share/applications/nanny-blacklist-manager.desktop NannyBlacklistManager
+Icon=nanny
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;System;Settings;
+StartupNotify=true
+Encoding=UTF-8
