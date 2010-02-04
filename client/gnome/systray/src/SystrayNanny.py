@@ -90,11 +90,11 @@ class SystrayNanny(gtk.StatusIcon):
                 if len (mssg) > 0:
                     mssg += "\n"
                 if self.times_left[app_id][1]:
-                    # To translators: In x-minutes the access to <apps> will be granted
-                    mssg += _("In %s the access to <b>%s</b> will be granted.") % (time, self.app_names[app_id])
+                    # To translators: In x-minutes the access to <app> will be granted
+                    mssg += _("In %s the access to %s will be granted.") % (time, self.app_names[app_id])
                 else:
-                    # To translators: In x-minutes the access to <apps> will be denied
-                    mssg += _("In %s the access to <b>%s</b> will be denied.") % (time, self.app_names[app_id])
+                    # To translators: In x-minutes the access to <app> will be denied
+                    mssg += _("In %s the access to %s will be denied.") % (time, self.app_names[app_id])
 
         if mssg_ready:
             self.__showNotification( mssg )
