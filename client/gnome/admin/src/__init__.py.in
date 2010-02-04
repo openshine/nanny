@@ -25,6 +25,7 @@ import gettext
 from AdminConsole import AdminConsole
 from ConfigureProxyDialog import ConfigureProxyDialog
 from ScheduleCalendar import ScheduleCalendar
+from BlacklistManager import BlacklistManager
 
 share_files_dir= os.path.join("@prefix@","share/","nanny/client/gnome/admin/")
 glade_files_dir= os.path.join(share_files_dir,"glade/")

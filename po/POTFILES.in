@@ -6,10 +6,13 @@ client/common/src/__init__.py
 client/gnome/admin/data/glade/nanny_admin_console.glade
 client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade
 client/gnome/admin/data/glade/nac_wcf_dialog.glade
+client/gnome/admin/data/glade/nbm_pbl_dialog.glade
+client/gnome/admin/data/glade/nbm_pbl_edit_dialog.glade
 client/gnome/admin/src/__init__.py.in
 client/gnome/admin/src/ScheduleCalendar.py
 client/gnome/admin/src/ConfigureProxyDialog.py
 client/gnome/admin/src/AdminConsole.py
+client/gnome/admin/src/BlacklistManager.py
 client/gnome/systray/src/__init__.py.in
 client/gnome/systray/src/SystrayNanny.py
 client/gnome/__init__.py

@@ -136,8 +136,8 @@ class DBusClient(gobject.GObject):
     def remove_custom_filter (self, filter_id, reply_handler, error_handler):
         return self.nanny_wcf.RemoveCustomFilter (filter_id, reply_handler=reply_handler, error_handler=error_handler, timeout=2000000)
 
-    def add_pkg_filter (self, name, description, path):
-        return self.nanny_wcf.AddPkgFilter(name, description, path)
+    def add_pkg_filter (self, name):
+        return self.nanny_wcf.AddPkgFilter(name)
 
     def remove_pkg_filter (self, pkg_id):
         return self.nanny_wcf.RemovePkgFilter(pkg_id)

@@ -1,5 +1,5 @@
 SUBDIRS=data src
 
-sbin_SCRIPTS = NannyAdminConsole
+sbin_SCRIPTS = NannyAdminConsole NannyBlacklistManager
 
-EXTRA_DIST = NannyAdminConsole
+EXTRA_DIST = NannyAdminConsole NannyBlacklistManager
