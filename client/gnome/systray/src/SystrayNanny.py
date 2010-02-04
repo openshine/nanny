@@ -32,6 +32,9 @@ import gobject
 
 import nanny.client.common
 import nanny.client.gnome.systray
+import gettext
+
+ngettext = gettext.ngettext
 
 class SystrayNanny(gtk.StatusIcon):
     def __init__(self):
@@ -104,24 +107,17 @@ class SystrayNanny(gtk.StatusIcon):
 
         time = ""
         if d > 0:
-            if d == 1:
-                time += _("1 day")
-            else:
-                time += _("%s days") % d
+            time += ngettext("%s day", "%s days", d) % d
+            
         if h > 0:
             if len(time) > 0:
                 time += ", "
-            if h == 1:
-                time += _("1 hour")
-            else:
-                time += _("%s hours") % h
+            time += ngettext("%s hour", "%s hours", h) % h
+            
         if m > 0:
             if len(time) > 0:
                 time += ", "
-            if m == 1:
-                time += _("1 minute")
-            else:
-                time += _("%s minutes") % m
+            time += ngettext("%s minute", "%s minutes", m) % m
 
         return time
 
