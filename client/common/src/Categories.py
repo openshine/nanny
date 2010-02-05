@@ -28,78 +28,152 @@ import __builtin__
 __builtin__._ = gettext.gettext
 
 category_strings = {
-	"abortion": (_("abortion"), _("Abortion information excluding when related to religion")),
-	"ads": (_("ads"), _("Advert servers and banned URLs")),
-	"adult": (_("adult"), _("Sites containing adult material such as swearing but not porn")),
-	"aggressive": (_("aggressive"), _("Similar to violence but more promoting than depicting")),
-	"antispyware": (_("antispyware"), _("Sites that remove spyware")),
-	"artnudes": (_("artnudes"), _("Art sites containing artistic nudity")),
-	"astrology": (_("astrology"), _("Astrology websites")),
-	"audio-video": (_("audio-video"), _("Sites with audio or video downloads")),
-	"banking": (_("banking"), _("Banking websites")),
-	"beerliquorinfo": (_("beerliquorinfo"), _("Sites with information only on beer or liquors")),
-	"beerliquorsale": (_("beerliquorsale"), _("Sites with beer or liquors for sale")),
-	"blog": (_("blog"), _("Journal/Diary websites")),
-	"cellphones": (_("cellphones"), _("stuff for mobile/cell phones")),
-	"chat": (_("chat"), _("Sites with chat rooms etc")),
-	"childcare": (_("childcare"), _("Sites to do with childcare")),
-	"cleaning": (_("cleaning"), _("Sites to do with cleaning")),
-	"clothing": (_("clothing"), _("Sites about and selling clothing")),
-	"contraception": (_("contraception"), _("Information about contraception")),
-	"culnary": (_("culnary"), _("Sites about cooking et al")),
-	"dating": (_("dating"), _("Sites about dating")),
-	"desktopsillies": (_("desktopsillies"), _("Sites containing screen savers, backgrounds, cursers, pointers. desktop themes and similar timewasting and potentially dangerous content")),
-	"dialers": (_("dialers"), _("Sites with dialers such as those for pornography or trojans")),
-	"drugs": (_("drugs"), _("Drug related sites")),
-	"ecommerce": (_("ecommerce"), _("Sites that provide online shopping")),
-	"entertainment": (_("entertainment"), _("Sites that promote movies, books, magazine, humor")),
-	"filehosting": (_("filehosting"), _("Sites to do with filehosting")),
-	"frencheducation": (_("frencheducation"), _("Sites to do with french education")),
-	"gambling": (_("gambling"), _("Gambling sites including stocks and shares")),
-	"games": (_("games"), _("Game related sites")),
-	"gardening": (_("gardening"), _("Gardening sites")),
-	"government": (_("government"), _("Military and schools etc")),
-	"guns": (_("guns"), _("Sites with guns")),
-	"hacking": (_("hacking"), _("Hacking/cracking information")),
-	"homerepair": (_("homerepair"), _("Sites about home repair")),
-	"hygiene": (_("hygiene"), _("Sites about hygiene and other personal grooming related stuff")),
-	"instantmessaging": (_("instantmessaging"), _("Sites that contain messenger client download and web-based messaging sites")),
-	"jewelry": (_("jewelry"), _("Sites about and selling jewelry")),
-	"jobsearch": (_("jobsearch"), _("Sites for finding jobs")),
-	"kidstimewasting": (_("kidstimewasting"), _("Sites kids often waste time on")),
-	"mail": (_("mail"), _("Webmail and email sites")),
-	"marketingware": (_("marketingware"), _("Sites about marketing products")),
-	"medical": (_("medical"), _("Medical websites")),
-	"mixed_adult": (_("mixed_adult"), _("Mixed adult content sites")),
-	"mobile-phone": (_("mobile-phone"), _("Sites to do with mobile phones")),
-	"naturism": (_("naturism"), _("Sites that contain nude pictures and/or promote a nude lifestyle")),
-	"news": (_("news"), _("News sites")),
-	"onlineauctions": (_("onlineauctions"), _("Online auctions")),
-	"onlinegames": (_("onlinegames"), _("Online gaming sites")),
-	"onlinepayment": (_("onlinepayment"), _("Online payment sites")),
-	"personalfinance": (_("personalfinance"), _("Personal finance sites")),
-	"pets": (_("pets"), _("Pet sites")),
-	"phishing": (_("phishing"), _("Sites attempting to trick people into giving out private information.")),
-	"porn": (_("porn"), _("Pornography")),
-	"proxy": (_("proxy"), _("Sites with proxies to bypass filters")),
-	"radio": (_("radio"), _("non-news related radio and television")),
-	"religion": (_("religion"), _("Sites promoting religion")),
-	"ringtones": (_("ringtones"), _("Sites containing ring tones, games, pictures and other")),
-	"searchengines": (_("searchengines"), _("Search engines such as google")),
-	"sect": (_("sect"), _("Sites about eligious groups")),
-	"sexuality": (_("sexuality"), _("Sites dedicated to sexuality, possibly including adult material")),
-	"shopping": (_("shopping"), _("Shopping sites")),
-	"socialnetworking": (_("socialnetworking"), _("Social networking websites")),
-	"sportnews": (_("sportnews"), _("Sport news sites")),
-	"sports": (_("sports"), _("All sport sites")),
-	"spyware": (_("spyware"), _("Sites who run or have spyware software to download")),
-	"updatesites": (_("updatesites"), _("Sites where software updates are downloaded from including virus sigs")),
-	"vacation": (_("vacation"), _("Sites about going on holiday")),
-	"violence": (_("violence"), _("Sites containing violence")),
-	"virusinfected": (_("virusinfected"), _("Sites who host virus infected files")),
-	"warez": (_("warez"), _("Sites with illegal pirate software")),
-	"weather": (_("weather"), _("Weather news sites and weather related")),
-	"weapons": (_("weapons"), _("Sites detailing or selling weapons")),
-	"webmail": (_("webmail"), _("Just webmail sites")),
-	"whitelist": (_("whitelist"), _("Contains site specifically 100% suitable for kids"))
+    # To translators : This string is a category name or a category description
+    "abortion": (_("abortion"), _("Abortion information excluding when related to religion")),
+    # To translators : This string is a category name or a category description
+    "ads": (_("ads"), _("Advert servers and banned URLs")),
+    # To translators : This string is a category name or a category description
+    "adult": (_("adult"), _("Sites containing adult material such as swearing but not porn")),
+    # To translators : This string is a category name or a category description
+    "aggressive": (_("aggressive"), _("Similar to violence but more promoting than depicting")),
+    # To translators : This string is a category name or a category description
+    "antispyware": (_("antispyware"), _("Sites that remove spyware")),
+    # To translators : This string is a category name or a category description
+    "artnudes": (_("artnudes"), _("Art sites containing artistic nudity")),
+    # To translators : This string is a category name or a category description
+    "astrology": (_("astrology"), _("Astrology websites")),
+    # To translators : This string is a category name or a category description
+    "audio-video": (_("audio-video"), _("Sites with audio or video downloads")),
+    # To translators : This string is a category name or a category description
+    "banking": (_("banking"), _("Banking websites")),
+    # To translators : This string is a category name or a category description
+    "beerliquorinfo": (_("beerliquorinfo"), _("Sites with information only on beer or liquors")),
+    # To translators : This string is a category name or a category description
+    "beerliquorsale": (_("beerliquorsale"), _("Sites with beer or liquors for sale")),
+    # To translators : This string is a category name or a category description
+    "blog": (_("blog"), _("Journal/Diary websites")),
+    # To translators : This string is a category name or a category description
+    "cellphones": (_("cellphones"), _("stuff for mobile/cell phones")),
+    # To translators : This string is a category name or a category description
+    "chat": (_("chat"), _("Sites with chat rooms etc")),
+    # To translators : This string is a category name or a category description
+    "childcare": (_("childcare"), _("Sites to do with childcare")),
+    # To translators : This string is a category name or a category description
+    "cleaning": (_("cleaning"), _("Sites to do with cleaning")),
+    # To translators : This string is a category name or a category description
+    "clothing": (_("clothing"), _("Sites about and selling clothing")),
+    # To translators : This string is a category name or a category description
+    "contraception": (_("contraception"), _("Information about contraception")),
+    # To translators : This string is a category name or a category description
+    "culnary": (_("culnary"), _("Sites about cooking et al")),
+    # To translators : This string is a category name or a category description
+    "dating": (_("dating"), _("Sites about dating")),
+    # To translators : This string is a category name or a category description
+    "desktopsillies": (_("desktopsillies"), _("Sites containing screen savers, backgrounds, cursers, pointers. desktop themes and similar timewasting and potentially dangerous content")),
+    # To translators : This string is a category name or a category description
+    "dialers": (_("dialers"), _("Sites with dialers such as those for pornography or trojans")),
+    # To translators : This string is a category name or a category description
+    "drugs": (_("drugs"), _("Drug related sites")),
+    # To translators : This string is a category name or a category description
+    "ecommerce": (_("ecommerce"), _("Sites that provide online shopping")),
+    # To translators : This string is a category name or a category description
+    "entertainment": (_("entertainment"), _("Sites that promote movies, books, magazine, humor")),
+    # To translators : This string is a category name or a category description
+    "filehosting": (_("filehosting"), _("Sites to do with filehosting")),
+    # To translators : This string is a category name or a category description
+    "frencheducation": (_("frencheducation"), _("Sites to do with french education")),
+    # To translators : This string is a category name or a category description
+    "gambling": (_("gambling"), _("Gambling sites including stocks and shares")),
+    # To translators : This string is a category name or a category description
+    "games": (_("games"), _("Game related sites")),
+    # To translators : This string is a category name or a category description
+    "gardening": (_("gardening"), _("Gardening sites")),
+    # To translators : This string is a category name or a category description
+    "government": (_("government"), _("Military and schools etc")),
+    # To translators : This string is a category name or a category description
+    "guns": (_("guns"), _("Sites with guns")),
+    # To translators : This string is a category name or a category description
+    "hacking": (_("hacking"), _("Hacking/cracking information")),
+    # To translators : This string is a category name or a category description
+    "homerepair": (_("homerepair"), _("Sites about home repair")),
+    # To translators : This string is a category name or a category description
+    "hygiene": (_("hygiene"), _("Sites about hygiene and other personal grooming related stuff")),
+    # To translators : This string is a category name or a category description
+    "instantmessaging": (_("instantmessaging"), _("Sites that contain messenger client download and web-based messaging sites")),
+    # To translators : This string is a category name or a category description
+    "jewelry": (_("jewelry"), _("Sites about and selling jewelry")),
+    # To translators : This string is a category name or a category description
+    "jobsearch": (_("jobsearch"), _("Sites for finding jobs")),
+    # To translators : This string is a category name or a category description
+    "kidstimewasting": (_("kidstimewasting"), _("Sites kids often waste time on")),
+    # To translators : This string is a category name or a category description
+    "mail": (_("mail"), _("Webmail and email sites")),
+    # To translators : This string is a category name or a category description
+    "marketingware": (_("marketingware"), _("Sites about marketing products")),
+    # To translators : This string is a category name or a category description
+    "medical": (_("medical"), _("Medical websites")),
+    # To translators : This string is a category name or a category description
+    "mixed_adult": (_("mixed_adult"), _("Mixed adult content sites")),
+    # To translators : This string is a category name or a category description
+    "mobile-phone": (_("mobile-phone"), _("Sites to do with mobile phones")),
+    # To translators : This string is a category name or a category description
+    "naturism": (_("naturism"), _("Sites that contain nude pictures and/or promote a nude lifestyle")),
+    # To translators : This string is a category name or a category description
+    "news": (_("news"), _("News sites")),
+    # To translators : This string is a category name or a category description
+    "onlineauctions": (_("onlineauctions"), _("Online auctions")),
+    # To translators : This string is a category name or a category description
+    "onlinegames": (_("onlinegames"), _("Online gaming sites")),
+    # To translators : This string is a category name or a category description
+    "onlinepayment": (_("onlinepayment"), _("Online payment sites")),
+    # To translators : This string is a category name or a category description
+    "personalfinance": (_("personalfinance"), _("Personal finance sites")),
+    # To translators : This string is a category name or a category description
+    "pets": (_("pets"), _("Pet sites")),
+    # To translators : This string is a category name or a category description
+    "phishing": (_("phishing"), _("Sites attempting to trick people into giving out private information.")),
+    # To translators : This string is a category name or a category description
+    "porn": (_("porn"), _("Pornography")),
+    # To translators : This string is a category name or a category description
+    "proxy": (_("proxy"), _("Sites with proxies to bypass filters")),
+    # To translators : This string is a category name or a category description
+    "radio": (_("radio"), _("non-news related radio and television")),
+    # To translators : This string is a category name or a category description
+    "religion": (_("religion"), _("Sites promoting religion")),
+    # To translators : This string is a category name or a category description
+    "ringtones": (_("ringtones"), _("Sites containing ring tones, games, pictures and other")),
+    # To translators : This string is a category name or a category description
+    "searchengines": (_("searchengines"), _("Search engines such as google")),
+    # To translators : This string is a category name or a category description
+    "sect": (_("sect"), _("Sites about eligious groups")),
+    # To translators : This string is a category name or a category description
+    "sexuality": (_("sexuality"), _("Sites dedicated to sexuality, possibly including adult material")),
+    # To translators : This string is a category name or a category description
+    "shopping": (_("shopping"), _("Shopping sites")),
+    # To translators : This string is a category name or a category description
+    "socialnetworking": (_("socialnetworking"), _("Social networking websites")),
+    # To translators : This string is a category name or a category description
+    "sportnews": (_("sportnews"), _("Sport news sites")),
+    # To translators : This string is a category name or a category description
+    "sports": (_("sports"), _("All sport sites")),
+    # To translators : This string is a category name or a category description
+    "spyware": (_("spyware"), _("Sites who run or have spyware software to download")),
+    # To translators : This string is a category name or a category description
+    "updatesites": (_("updatesites"), _("Sites where software updates are downloaded from including virus sigs")),
+    # To translators : This string is a category name or a category description
+    "vacation": (_("vacation"), _("Sites about going on holiday")),
+    # To translators : This string is a category name or a category description
+    "violence": (_("violence"), _("Sites containing violence")),
+    # To translators : This string is a category name or a category description
+    "virusinfected": (_("virusinfected"), _("Sites who host virus infected files")),
+    # To translators : This string is a category name or a category description
+    "warez": (_("warez"), _("Sites with illegal pirate software")),
+    # To translators : This string is a category name or a category description
+    "weather": (_("weather"), _("Weather news sites and weather related")),
+    # To translators : This string is a category name or a category description
+    "weapons": (_("weapons"), _("Sites detailing or selling weapons")),
+    # To translators : This string is a category name or a category description
+    "webmail": (_("webmail"), _("Just webmail sites")),
+    # To translators : This string is a category name or a category description
+    "whitelist": (_("whitelist"), _("Contains site specifically 100% suitable for kids"))
 }
