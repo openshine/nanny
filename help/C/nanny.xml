@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY appversion "0.1">
+  <!ENTITY appversion "2.29.2">
   <!ENTITY manrevision "0.1">
   <!ENTITY date "December 2009">
   <!ENTITY app "<application>GNOME Nanny</application>">
@@ -144,23 +144,14 @@
     </para> 
     <variablelist>
     	<varlistentry>
-    		<term><guimenu>Applications</guimenu> menu</term>
+    		<term><guimenu>System</guimenu> menu</term>
     		<listitem>
     		<para>Choose 
     		<menuchoice>
-    		<guisubmenu>Submenu Name </guisubmenu>
-    		<guimenuitem>GNOME Nanny</guimenuitem>
+    		<guisubmenu>System</guisubmenu>
+    		<guisubmenu>Administration</guisubmenu>
+    		<guimenuitem>Parental Control</guimenuitem>
     		</menuchoice>. </para>
-    		</listitem>
-    	</varlistentry>
-    	<varlistentry>
-    		<term>Command line</term>
-    		<listitem>
-    		<para>To start <application>&app;</application> from a command line, type the following command, 
-    		then press <keycap>Return</keycap>:</para>
-    		<para> 
-			<command>gnome-nanny-admin-console</command> 
-    		</para> 
     		</listitem>
     	</varlistentry>
     </variablelist>
@@ -174,45 +165,30 @@
     <title>Usage</title> 
     <para>You can use the &app; application to
       control the following per computer user: 
-      <itemizedlist> 
-	<listitem> 
-	  <para><xref linkend="nanny-time-usage"/>: Control time of computer usage.</para> 
-	</listitem> 
-	<listitem> 
-	  <para><xref linkend="nanny-apps-usage"/>: Control what the person can do.</para> 
-	</listitem> 
-	<listitem> 
-	  <para><xref linkend="nanny-web-access"/>: Control web access.</para> 
-	</listitem> 
-      </itemizedlist> </para>
+    </para>
 
     <!-- ================ Usage Subsection ================================ -->
     <sect2 id="nanny-time-usage"> 
       <title>Control time of computer usage</title> 
-      <para>This is is the GNOME Administration Console.
+      <para>This is is the GNOME Nanny Administration Console.
        The window is divided into two sections, users and actions. The users
       are listed in the column of the left, and the actions are divided in the
       tabs at the top of the window.
       </para>
       <figure id="nanny-session">
-        <title>PC use time</title>
+        <title>Administration Console</title>
           <screenshot>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="nanny-session.png" format="PNG"/>
+                <imagedata fileref="figures/nanny-session.png" format="PNG"/>
               </imageobject>
-              <textobject>
-                <phrase>PC use control tab.</phrase>
-              </textobject>
-              <caption>
-                <para>This tab controls the maximum number of hours a person can use the computer each day and at what times.</para>
-                <para>Change the number at the top to control for how long a person can use the computer. This is a total number, so the user can use this time in a non-stop session or break it in several.</para>
-                <para>In the weekly time grid red means blocked time, and green means permitted time.</para>
-                <para>The Apply button needs to be pressed for the changes to be made effective.</para>
-              </caption>
             </mediaobject>
           </screenshot>
       </figure>
+      <para>This tab controls the maximum number of hours a person can use the computer each day and at what times.</para>
+      <para>Change the number at the top to control for how long a person can use the computer. This is a total number, so the user can use this time in a non-stop session or break it in several.</para>
+      <para>In the weekly time grid red means blocked time, and green means permitted time.</para>
+      <para>The Apply button needs to be pressed for the changes to be made effective.</para>
 
     </sect2> 
 
@@ -221,23 +197,8 @@
       <title>Control what the person can do.</title> 
       <para>Application use can be controlled in the same way, as defined in <xref linkend="nanny-time-usage"/>. Each tab controls a different application.
       </para>
-      <figure id="nanny-browser">
-        <title>Application use time</title>
-          <screenshot>
-            <mediaobject>
-              <imageobject>
-                <imagedata fileref="nanny-browser.png" format="PNG"/>
-              </imageobject>
-              <textobject>
-                <phrase>Application use.</phrase>
-              </textobject>
-              <caption>
-                <para>Notice, each tab has a different 'maxmimum hours a day' option and weekly time grid. Have in mind no applications will be used during the blocked times of PC usage.</para>
-                <para>You can select web content filtering, <xref linkend="nanny-time-usage"/> explains the window which opens if you click in the Configure button.</para>
-              </caption>
-            </mediaobject>
-          </screenshot>
-      </figure>
+      <para>Notice, each tab has a different 'maximum hours a day' option and weekly time grid. Have in mind no applications will be used during the blocked times of PC usage.</para>
+      <para>In the Web Browser action tab there is a 'Use web content filtering' button, this will enable the control of web filtering, meaning which sites can and which can't be browed by the user. <xref linkend="nanny-web-access"/> explains how to do this.</para>
 
     </sect2> 
 
@@ -245,40 +206,50 @@
     <sect2 id="nanny-web-access"> 
       <title>Control web access.</title> 
       <figure id="nanny-browser-b">
-        <title>Web content filtering</title>
+        <title>Web filtering, Forbidden sites</title>
           <screenshot>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="nanny-web-content-filtering.png" format="PNG"/>
+                <imagedata fileref="figures/nanny-add-forbidden-site.png" format="PNG"/>
               </imageobject>
-              <textobject>
-                <phrase>Application use.</phrase>
-              </textobject>
-              <caption>
-                <para>In this window you can handle the list of forbidden and allowed sites, each list being in its own tab. Add elements to the list, edit them or remove them.</para>
-              </caption>
             </mediaobject>
           </screenshot>
       </figure>
-      <figure id="nanny-browser-c">
-        <title>Add web to filter</title>
+      <para>In the Web Content Filter Configuration you can handle which websites are allowed to be browsed by the user and which websites aren't. To do this you have three lists divided in tabs: the lists of forbidden sites, allowed sites, and the blacklists. </para>
+      <para>Inside the Forbidden sites and Allowed sites tabs you can add elements to the list, edit them or remove them.</para>
+      <para> When adding or edditing a website, it is normally best to write the domain in the URL field. For example: http://www.badweb.com, because then all the subpages will be blocked (like http://www.badweb.com/asdas/page01/something.hmtl).</para>
+
+      <figure id="nanny-browser-d">
+        <title>Blacklists configuration</title>
           <screenshot>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="nanny-add-web-to-filter.png" format="PNG"/>
+                <imagedata fileref="figures/nanny-web-content-filter-blacklists.png" format="PNG"/>
               </imageobject>
-              <textobject>
-                <phrase>Application use.</phrase>
-              </textobject>
-              <caption>
-                <para>Add or eddit a website from the above mentioned lists. There are two types of filters: bundled lists that you can find in the internet or manual entries.</para>
-                <para>It is normally best to write the domain in the URL field.</para> 
-                <para>For example: http://www.badweb.com, because then all the subpages will be blocked (like http://www.badweb.com/asdas/page01/something.hmtl).
-                </para>
-              </caption>
             </mediaobject>
           </screenshot>
       </figure>
+      <para>In the Blacklists tab you can apply the available blacklists and the groups contained in these blacklists.</para>
+      <para>Importing of the blacklists is explained in <xref linkend="nanny-blacklist-importing"/></para>
+    </sect2> 
+
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="nanny-blacklist-importing"> 
+      <title>Blacklist Configuration.</title> 
+      <para>The Blacklist Configuration window is accesible from System > Administration > Blacklists. This is where you can import, edit and remove blacklists.</para>
+
+      <figure id="nanny-blacklist-b">
+        <title>Blacklist importing</title>
+          <screenshot>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="figures/nanny-select-file-to-import.png" format="PNG"/>
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+      </figure>
+
+      <para>Blacklists are imported from files. In this example a blacklist file has been downloaded from dansguardian and is being imported into GNOME Nanny. It is recommended to keep the blacklists as up to date as possible.</para>
     </sect2> 
   </sect1> 
 
