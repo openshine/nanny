@@ -175,5 +175,7 @@ category_strings = {
     # To translators : This string is a category name or a category description
     "webmail": (_("webmail"), _("Just webmail sites")),
     # To translators : This string is a category name or a category description
-    "whitelist": (_("whitelist"), _("Contains site specifically 100% suitable for kids"))
+    "whitelist": (_("whitelist"),
+                  # xgettext:no-python-format
+                  _("Contains site specifically 100% suitable for kids"))
 }
