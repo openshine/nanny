@@ -75,7 +75,7 @@ class DBusClient(gobject.GObject):
         msg = gtk.MessageDialog(parent=None, flags=0,
                                 type=gtk.MESSAGE_ERROR,
                                 buttons=gtk.BUTTONS_CLOSE, message_format=None)
-        msg.set_markup(_(u"<b>NannyDaemon unavailable</b>"))
+        msg.set_markup(u"<b>%s</b>" % _(u"NannyDaemon unavailable"))
         msg.format_secondary_markup(_(u"NannyDaemon is not activated or does not work properly.\nPlease try to reactivate it."))
         ret = msg.run()
         msg.destroy()

@@ -239,7 +239,7 @@ class ConfigureProxyDialog (gtk.Dialog):
         else:
             dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
             dlg.set_property("icon-name", "nanny")
-            dlg.set_markup(_("<b>Error while importing list from the Internet</b>"))
+            dlg.set_markup("<b>%s</b>" % _("Error while importing list from the Internet"))
             dlg.format_secondary_markup(_("Some error has occured while downloading the list.\nPlease verify the URL and try again."))
             dlg.run()
             dlg.destroy()
@@ -250,7 +250,7 @@ class ConfigureProxyDialog (gtk.Dialog):
 
         dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
         dlg.set_property("icon-name", "nanny")
-        dlg.set_markup(_("<b>Error while importing list from the Internet</b>"))
+        dlg.set_markup("<b>%s</b>" % _("Error while importing list from the Internet"))
         dlg.format_secondary_markup(_("Some error has occured while downloading the list.\nPlease verify the URL and try again."))
         dlg.run()
         dlg.destroy()
@@ -342,7 +342,7 @@ class ConfigureProxyDialog (gtk.Dialog):
     def __on_custom_blacklist_remove_button_clicked (self, widget, data=None):
         dlg = gtk.MessageDialog(type=gtk.MESSAGE_WARNING, buttons=gtk.BUTTONS_OK_CANCEL)
         dlg.set_property("icon-name", "nanny")
-        dlg.set_markup(_("<b>Are you sure you want to delete this filter?</b>"))
+        dlg.set_markup("<b>%s</b>" % _("Are you sure you want to delete this filter?"))
         dlg.format_secondary_markup(_("You will not be able to undo this action."))
         ret = dlg.run()
         dlg.destroy()
@@ -363,7 +363,7 @@ class ConfigureProxyDialog (gtk.Dialog):
     def __on_custom_whitelist_remove_button_clicked (self, widget, data=None):
         dlg = gtk.MessageDialog(type=gtk.MESSAGE_WARNING, buttons=gtk.BUTTONS_OK_CANCEL)
         dlg.set_property("icon-name", "nanny")
-        dlg.set_markup(_("<b>Are you sure you want to delete this filter?</b>"))
+        dlg.set_markup("<b>%s</b>" % _("Are you sure you want to delete this filter?"))
         dlg.format_secondary_markup(_("You will not be able to undo this action."))
         ret = dlg.run()
         dlg.destroy()
@@ -390,7 +390,7 @@ class ConfigureProxyDialog (gtk.Dialog):
         else:
             dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
             dlg.set_property("icon-name", "nanny")
-            dlg.set_markup(_("<b>Error while deleting filters</b>"))
+            dlg.set_markup("<b>%s</b>" % _("Error while deleting filters"))
             dlg.format_secondary_markup(_("Some error has occured while deleting filters.\nPlease try again."))
             dlg.run()
             dlg.destroy()
@@ -401,7 +401,7 @@ class ConfigureProxyDialog (gtk.Dialog):
 
         dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
         dlg.set_property("icon-name", "nanny")
-        dlg.set_markup(_("<b>Error while deleting filters</b>"))
+        dlg.set_markup("<b>%s</b>" % _("Error while deleting filters"))
         dlg.format_secondary_markup(_("Some error has occured while deleting filters.\nPlease try again."))
         dlg.run()
         dlg.destroy()

@@ -42,7 +42,7 @@ class AdminConsole:
         except:
             d = gtk.MessageDialog(None, gtk.DIALOG_MODAL, type=gtk.MESSAGE_WARNING, buttons=gtk.BUTTONS_OK)
             d.set_property("icon-name", "nanny")
-            d.set_markup(_("<b>Nanny daemon is not started</b>"))
+            d.set_markup("<b>%s</b>" % _("Nanny daemon is not started"))
             d.format_secondary_markup(_("To use the parental control, please start up the daemon."))
             d.run()
             d.destroy()
@@ -276,7 +276,7 @@ class AdminConsole:
             if self.__config_changed:
                 dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_INFO, gtk.BUTTONS_YES_NO)
                 dialog.set_property("icon-name", "nanny")
-                dialog.set_markup (_('<b>You have made changes</b>'))
+                dialog.set_markup ("<b>%s</b>" % _('You have made changes'))
                 dialog.format_secondary_markup (_("If you don't press the 'Apply' button, your changes will be lost.\nAre you sure?") )
                 dialog.set_default_response(gtk.RESPONSE_YES)
                 ret = dialog.run()

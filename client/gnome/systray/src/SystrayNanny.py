@@ -29,6 +29,7 @@ import os.path
 import gtk
 import pynotify
 import gobject
+from gettext import ngettext
 
 import nanny.client.common
 import nanny.client.gnome.systray
@@ -91,10 +92,10 @@ class SystrayNanny(gtk.StatusIcon):
                     mssg += "\n"
                 if self.times_left[app_id][1]:
                     # To translators: In x-minutes the access to <app> will be granted
-                    mssg += _("In %s the access to %s will be granted.") % (time, self.app_names[app_id])
+                    mssg += _("In %(time)s the access to %(app)s will be granted.") % {'time': time, 'app': self.app_names[app_id]}
                 else:
                     # To translators: In x-minutes the access to <app> will be denied
-                    mssg += _("In %s the access to %s will be denied.") % (time, self.app_names[app_id])
+                    mssg += _("In %(time)s the access to %(app)s will be denied.") % {'time': time, 'app': self.app_names[app_id]}
 
         if mssg_ready:
             self.__showNotification( mssg )
@@ -105,19 +106,15 @@ class SystrayNanny(gtk.StatusIcon):
         h, m = divmod(minutes, 60)
         d, h = divmod (h, 24)
 
-        time = ""
+        time_list = []
         if d > 0:
-            time += ngettext("%s day", "%s days", d) % d
-            
+            time_list.append(ngettext("%d day", "%d days", d) % d)
         if h > 0:
-            if len(time) > 0:
-                time += ", "
-            time += ngettext("%s hour", "%s hours", h) % h
-            
+            time_list.append(ngettext("%d hour", "%d hours", h) % h)
         if m > 0:
-            if len(time) > 0:
-                time += ", "
-            time += ngettext("%s minute", "%s minutes", m) % m
+            time_list.append(ngettext("%d minute", "%d minutes", m) % m)
+        # Translators: This is the separator between time strings, like '1 day, 2 hours, 3 minutes'
+        time = _(", ").join(time_list)
 
         return time
 
