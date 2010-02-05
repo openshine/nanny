@@ -1,14 +1,14 @@
 # Swedish translation for nanny.
-# Copyright (C) 2009 Free Software Foundation, Inc.
+# Copyright (C) 2009, 2010 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nanny package.
-# Daniel Nylander <po@danielnylander.se>, 2009.
+# Daniel Nylander <po@danielnylander.se>, 2009, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nanny\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-27 18:19+0100\n"
-"PO-Revision-Date: 2009-12-28 10:51+0100\n"
+"POT-Creation-Date: 2010-02-05 19:24+0100\n"
+"PO-Revision-Date: 2010-02-05 19:30+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -16,11 +16,685 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../client/common/src/DBusClient.py:79
-msgid "<b>NannyDaemon unavailable</b>"
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:32
+msgid "abortion"
+msgstr "aborter"
+
+#: ../client/common/src/Categories.py:32
+msgid "Abortion information excluding when related to religion"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:34
+msgid "ads"
+msgstr "reklam"
+
+#: ../client/common/src/Categories.py:34
+msgid "Advert servers and banned URLs"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:36
+msgid "adult"
+msgstr "vuxet material"
+
+#: ../client/common/src/Categories.py:36
+msgid "Sites containing adult material such as swearing but not porn"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:38
+msgid "aggressive"
+msgstr "aggressiva"
+
+#: ../client/common/src/Categories.py:38
+msgid "Similar to violence but more promoting than depicting"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:40
+msgid "antispyware"
+msgstr ""
+
+#: ../client/common/src/Categories.py:40
+msgid "Sites that remove spyware"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:42
+msgid "artnudes"
+msgstr ""
+
+#: ../client/common/src/Categories.py:42
+msgid "Art sites containing artistic nudity"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:44
+msgid "astrology"
+msgstr "astrologi"
+
+#: ../client/common/src/Categories.py:44
+#, fuzzy
+msgid "Astrology websites"
+msgstr "Tillåtna webbplatser"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:46
+msgid "audio-video"
+msgstr "ljud-video"
+
+#: ../client/common/src/Categories.py:46
+msgid "Sites with audio or video downloads"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:48
+msgid "banking"
+msgstr "bank och finans"
+
+#: ../client/common/src/Categories.py:48
+msgid "Banking websites"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:50
+msgid "beerliquorinfo"
+msgstr ""
+
+#: ../client/common/src/Categories.py:50
+msgid "Sites with information only on beer or liquors"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:52
+msgid "beerliquorsale"
+msgstr ""
+
+#: ../client/common/src/Categories.py:52
+msgid "Sites with beer or liquors for sale"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:54
+msgid "blog"
+msgstr "blogg"
+
+#: ../client/common/src/Categories.py:54
+msgid "Journal/Diary websites"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:56
+msgid "cellphones"
+msgstr "mobiltelefoner"
+
+#: ../client/common/src/Categories.py:56
+msgid "stuff for mobile/cell phones"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:58
+msgid "chat"
+msgstr "chatt"
+
+#: ../client/common/src/Categories.py:58
+msgid "Sites with chat rooms etc"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:60
+msgid "childcare"
+msgstr ""
+
+#: ../client/common/src/Categories.py:60
+msgid "Sites to do with childcare"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:62
+msgid "cleaning"
+msgstr ""
+
+#: ../client/common/src/Categories.py:62
+msgid "Sites to do with cleaning"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:64
+msgid "clothing"
+msgstr "kläder"
+
+#: ../client/common/src/Categories.py:64
+msgid "Sites about and selling clothing"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:66
+msgid "contraception"
+msgstr ""
+
+#: ../client/common/src/Categories.py:66
+msgid "Information about contraception"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:68
+#, fuzzy
+msgid "culnary"
+msgstr "Söndag"
+
+#: ../client/common/src/Categories.py:68
+msgid "Sites about cooking et al"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:70
+msgid "dating"
+msgstr "dejter"
+
+#: ../client/common/src/Categories.py:70
+msgid "Sites about dating"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:72
+msgid "desktopsillies"
+msgstr ""
+
+#: ../client/common/src/Categories.py:72
+msgid "Sites containing screen savers, backgrounds, cursers, pointers. desktop themes and similar timewasting and potentially dangerous content"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:74
+msgid "dialers"
+msgstr ""
+
+#: ../client/common/src/Categories.py:74
+msgid "Sites with dialers such as those for pornography or trojans"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:76
+msgid "drugs"
+msgstr "droger"
+
+#: ../client/common/src/Categories.py:76
+msgid "Drug related sites"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:78
+msgid "ecommerce"
+msgstr ""
+
+#: ../client/common/src/Categories.py:78
+msgid "Sites that provide online shopping"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:80
+msgid "entertainment"
+msgstr "underhållning"
+
+#: ../client/common/src/Categories.py:80
+msgid "Sites that promote movies, books, magazine, humor"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:82
+msgid "filehosting"
+msgstr ""
+
+#: ../client/common/src/Categories.py:82
+msgid "Sites to do with filehosting"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:84
+msgid "frencheducation"
+msgstr ""
+
+#: ../client/common/src/Categories.py:84
+msgid "Sites to do with french education"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:86
+msgid "gambling"
+msgstr "spel och dobbel"
+
+#: ../client/common/src/Categories.py:86
+msgid "Gambling sites including stocks and shares"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:88
+msgid "games"
+msgstr "spel"
+
+#: ../client/common/src/Categories.py:88
+msgid "Game related sites"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:90
+msgid "gardening"
+msgstr ""
+
+#: ../client/common/src/Categories.py:90
+#, fuzzy
+msgid "Gardening sites"
+msgstr "Förbjudna webbplatser"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:92
+msgid "government"
+msgstr ""
+
+#: ../client/common/src/Categories.py:92
+msgid "Military and schools etc"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:94
+msgid "guns"
+msgstr "vapen"
+
+#: ../client/common/src/Categories.py:94
+msgid "Sites with guns"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:96
+msgid "hacking"
+msgstr "hacking"
+
+#: ../client/common/src/Categories.py:96
+msgid "Hacking/cracking information"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:98
+msgid "homerepair"
+msgstr ""
+
+#: ../client/common/src/Categories.py:98
+msgid "Sites about home repair"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:100
+msgid "hygiene"
+msgstr "hygien"
+
+#: ../client/common/src/Categories.py:100
+msgid "Sites about hygiene and other personal grooming related stuff"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:102
+msgid "instantmessaging"
+msgstr "snabbmeddelanden"
+
+#: ../client/common/src/Categories.py:102
+msgid "Sites that contain messenger client download and web-based messaging sites"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:104
+msgid "jewelry"
+msgstr ""
+
+#: ../client/common/src/Categories.py:104
+msgid "Sites about and selling jewelry"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:106
+msgid "jobsearch"
+msgstr "jobbsökning"
+
+#: ../client/common/src/Categories.py:106
+msgid "Sites for finding jobs"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:108
+msgid "kidstimewasting"
+msgstr ""
+
+#: ../client/common/src/Categories.py:108
+msgid "Sites kids often waste time on"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:110
+msgid "mail"
+msgstr "e-post"
+
+#: ../client/common/src/Categories.py:110
+msgid "Webmail and email sites"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:112
+msgid "marketingware"
+msgstr ""
+
+#: ../client/common/src/Categories.py:112
+msgid "Sites about marketing products"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:114
+msgid "medical"
+msgstr ""
+
+#: ../client/common/src/Categories.py:114
+msgid "Medical websites"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:116
+msgid "mixed_adult"
+msgstr ""
+
+#: ../client/common/src/Categories.py:116
+msgid "Mixed adult content sites"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:118
+msgid "mobile-phone"
+msgstr "mobiltelefon"
+
+#: ../client/common/src/Categories.py:118
+msgid "Sites to do with mobile phones"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:120
+msgid "naturism"
+msgstr ""
+
+#: ../client/common/src/Categories.py:120
+msgid "Sites that contain nude pictures and/or promote a nude lifestyle"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:122
+msgid "news"
+msgstr "nyheter"
+
+#: ../client/common/src/Categories.py:122
+msgid "News sites"
+msgstr "Nyheter"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:124
+msgid "onlineauctions"
+msgstr ""
+
+#: ../client/common/src/Categories.py:124
+msgid "Online auctions"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:126
+msgid "onlinegames"
+msgstr ""
+
+#: ../client/common/src/Categories.py:126
+msgid "Online gaming sites"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:128
+msgid "onlinepayment"
+msgstr ""
+
+#: ../client/common/src/Categories.py:128
+msgid "Online payment sites"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:130
+msgid "personalfinance"
+msgstr ""
+
+#: ../client/common/src/Categories.py:130
+msgid "Personal finance sites"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:132
+msgid "pets"
+msgstr "husdjur"
+
+#: ../client/common/src/Categories.py:132
+#, fuzzy
+msgid "Pet sites"
+msgstr "Tillåtna webbplatser"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:134
+msgid "phishing"
+msgstr "nätfiske"
+
+#: ../client/common/src/Categories.py:134
+msgid "Sites attempting to trick people into giving out private information."
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:136
+msgid "porn"
+msgstr "pornografi"
+
+#: ../client/common/src/Categories.py:136
+msgid "Pornography"
+msgstr "Pornografi"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:138
+msgid "proxy"
+msgstr ""
+
+#: ../client/common/src/Categories.py:138
+msgid "Sites with proxies to bypass filters"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:140
+msgid "radio"
+msgstr "radio"
+
+#: ../client/common/src/Categories.py:140
+msgid "non-news related radio and television"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:142
+msgid "religion"
+msgstr "religion"
+
+#: ../client/common/src/Categories.py:142
+msgid "Sites promoting religion"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:144
+msgid "ringtones"
+msgstr "ringsignaler"
+
+#: ../client/common/src/Categories.py:144
+msgid "Sites containing ring tones, games, pictures and other"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:146
+msgid "searchengines"
+msgstr "sökmotorer"
+
+#: ../client/common/src/Categories.py:146
+msgid "Search engines such as google"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:148
+msgid "sect"
+msgstr ""
+
+#: ../client/common/src/Categories.py:148
+msgid "Sites about eligious groups"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:150
+msgid "sexuality"
+msgstr "sexualitet"
+
+#: ../client/common/src/Categories.py:150
+msgid "Sites dedicated to sexuality, possibly including adult material"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:152
+msgid "shopping"
+msgstr "shopping"
+
+#: ../client/common/src/Categories.py:152
+#, fuzzy
+msgid "Shopping sites"
+msgstr "Förbjudna webbplatser"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:154
+msgid "socialnetworking"
+msgstr "sociala nätverk"
+
+#: ../client/common/src/Categories.py:154
+msgid "Social networking websites"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:156
+msgid "sportnews"
+msgstr "sportnyheter"
+
+#: ../client/common/src/Categories.py:156
+msgid "Sport news sites"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:158
+msgid "sports"
+msgstr "sport"
+
+#: ../client/common/src/Categories.py:158
+#, fuzzy
+msgid "All sport sites"
+msgstr "Tillåtna webbplatser"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:160
+msgid "spyware"
+msgstr ""
+
+#: ../client/common/src/Categories.py:160
+msgid "Sites who run or have spyware software to download"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:162
+msgid "updatesites"
+msgstr ""
+
+#: ../client/common/src/Categories.py:162
+msgid "Sites where software updates are downloaded from including virus sigs"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:164
+msgid "vacation"
+msgstr "semester"
+
+#: ../client/common/src/Categories.py:164
+msgid "Sites about going on holiday"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:166
+msgid "violence"
+msgstr "våld"
+
+#: ../client/common/src/Categories.py:166
+msgid "Sites containing violence"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:168
+msgid "virusinfected"
+msgstr ""
+
+#: ../client/common/src/Categories.py:168
+msgid "Sites who host virus infected files"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:170
+msgid "warez"
+msgstr ""
+
+#: ../client/common/src/Categories.py:170
+msgid "Sites with illegal pirate software"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:172
+msgid "weather"
+msgstr "väder"
+
+#: ../client/common/src/Categories.py:172
+msgid "Weather news sites and weather related"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:174
+msgid "weapons"
+msgstr "vapen"
+
+#: ../client/common/src/Categories.py:174
+msgid "Sites detailing or selling weapons"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:176
+msgid "webmail"
+msgstr ""
+
+#: ../client/common/src/Categories.py:176
+msgid "Just webmail sites"
+msgstr ""
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:178
+msgid "whitelist"
+msgstr "vitlista"
+
+#: ../client/common/src/Categories.py:178
+#, python-format
+msgid "Contains site specifically 100% suitable for kids"
+msgstr ""
+
+#: ../client/common/src/DBusClient.py:78
+#, fuzzy
+msgid "NannyDaemon unavailable"
 msgstr "<b>NannyDaemon är inte tillgänglig</b>"
 
-#: ../client/common/src/DBusClient.py:80
+#: ../client/common/src/DBusClient.py:79
 msgid ""
 "NannyDaemon is not activated or does not work properly.\n"
 "Please try to reactivate it."
@@ -65,7 +739,7 @@ msgid "Use web content filtering"
 msgstr "Använd innehållsfiltrering för webb"
 
 #: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:10
-#: ../client/gnome/systray/src/SystrayNanny.py:43
+#: ../client/gnome/systray/src/SystrayNanny.py:46
 msgid "Web browser"
 msgstr "Webbläsare"
 
@@ -74,16 +748,18 @@ msgid "hours a day"
 msgstr "timmar per dag"
 
 #: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:1
+msgid "<span color=\"red\">All the fields are mandatory. Please fill all of them.</span>"
+msgstr "<span color=\"red\">Alla fält är obligatoriska. Fyll i alla.</span>"
+
+#: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:2
+#: ../client/gnome/admin/data/glade/nbm_pbl_edit_dialog.glade.h:1
 msgid "Description:"
 msgstr "Beskrivning:"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:2
+#: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:3
+#: ../client/gnome/admin/data/glade/nbm_pbl_edit_dialog.glade.h:2
 msgid "Name:"
 msgstr "Namn:"
-
-#: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:3
-msgid "Type of filter:"
-msgstr "Typ av filter:"
 
 #: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:4
 msgid "URL:"
@@ -94,8 +770,16 @@ msgid "Allowed sites"
 msgstr "Tillåtna webbplatser"
 
 #: ../client/gnome/admin/data/glade/nac_wcf_dialog.glade.h:2
+msgid "Blacklists"
+msgstr "Svartlistor"
+
+#: ../client/gnome/admin/data/glade/nac_wcf_dialog.glade.h:3
 msgid "Forbidden sites"
 msgstr "Förbjudna webbplatser"
+
+#: ../client/gnome/admin/data/glade/nac_wcf_dialog.glade.h:4
+msgid "Here you can apply the available blacklists for the selected user. If you want to add new blacklists please go to System > Administration > Blacklists."
+msgstr ""
 
 #: ../client/gnome/admin/src/ScheduleCalendar.py:292
 msgid "Monday"
@@ -129,17 +813,14 @@ msgstr "Söndag"
 msgid "Web Content Filter Configuration"
 msgstr "Konfiguration av innehållsfiltrering för webb"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:126
-msgid "Downloading the list. Please, wait..."
-msgstr "Hämtar listan. Vänta..."
-
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:184
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:195
-msgid "<b>Error while importing list from the Internet</b>"
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:242
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:253
+#, fuzzy
+msgid "Error while importing list from the Internet"
 msgstr "<b>Fel vid importering av lista från Internet</b>"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:185
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:196
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:243
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:254
 msgid ""
 "Some error has occured while downloading the list.\n"
 "Please verify the URL and try again."
@@ -147,28 +828,29 @@ msgstr ""
 "Fel har inträffat vid hämtning av listan.\n"
 "Verifiera URL:en och försök igen."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:209
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:232
-msgid "<b>Are you sure you want to delete this filter?</b>"
-msgstr "<b>Är du säker på att du vill ta bort detta filter?</b>"
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:345
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:366
+msgid "Are you sure you want to delete this filter?"
+msgstr "Är du säker på att du vill ta bort detta filter?"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:210
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:233
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:346
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:367
 msgid "You will not be able to undo this action."
 msgstr "Du kommer inte kunna ångra denna åtgärd."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:217
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:240
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:353
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:374
 msgid "Removing filter. Please, wait..."
 msgstr "Tar bort filter. Vänta..."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:260
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:271
-msgid "<b>Error while deleting filters</b>"
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:393
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:404
+#, fuzzy
+msgid "Error while deleting filters"
 msgstr "<b>Fel vid borttagning av filter</b>"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:261
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:272
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:394
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:405
 msgid ""
 "Some error has occured while deleting filters.\n"
 "Please try again."
@@ -176,16 +858,13 @@ msgstr ""
 "Fel har inträffat vid borttagning av filter.\n"
 "Försök igen."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:298
-msgid "Download list from the Internet"
-msgstr "Hämta list från Internet"
-
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:299
-msgid "Insert manual domain or URL"
-msgstr "Infoga domän eller URL manuellt"
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:436
+msgid "<b>Select all the categories</b>"
+msgstr "<b>Markera alla kategorier</b>"
 
 #: ../client/gnome/admin/src/AdminConsole.py:45
-msgid "<b>Nanny daemon is not started</b>"
+#, fuzzy
+msgid "Nanny daemon is not started"
 msgstr "<b>Nanny-demonen är inte startad</b>"
 
 #: ../client/gnome/admin/src/AdminConsole.py:46
@@ -202,8 +881,8 @@ msgid "Your configuration has been saved"
 msgstr "Din konfiguration har sparats"
 
 #: ../client/gnome/admin/src/AdminConsole.py:279
-msgid "<b>User change</b>"
-msgstr ""
+msgid "You have made changes"
+msgstr "Du har gjort ändringar"
 
 #: ../client/gnome/admin/src/AdminConsole.py:280
 msgid ""
@@ -220,55 +899,133 @@ msgstr ""
 msgid "Nanny Admin Console"
 msgstr ""
 
+#: ../client/gnome/admin/src/BlacklistManager.py:37
+#: ../client/gnome/admin/src/BlacklistManager.py:131
+#, fuzzy
+msgid "Blacklist Filter Configuration"
+msgstr "Konfiguration av innehållsfiltrering för webb"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:98
+#, python-format
+msgid ""
+"<b>%s (Read only)</b>\n"
+"   %s"
+msgstr ""
+"<b>%s (skrivskyddad)</b>\n"
+"   %s"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:103
+msgid "Select file to import"
+msgstr "Välj fil att importera"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:123
+#, fuzzy
+msgid "<b>Error importing blacklist file</b>"
+msgstr "<b>Fel vid importering av lista från Internet</b>"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:124
+#, fuzzy
+msgid "Some error has occured importing the blacklist file."
+msgstr ""
+"Fel har inträffat vid borttagning av filter.\n"
+"Försök igen."
+
+#: ../client/gnome/admin/src/BlacklistManager.py:162
+msgid "<b>Are you sure you want to delete this blacklist?</b>"
+msgstr "<b>Är du säker på att du vill ta bort denna svartlista?</b>"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:163
+msgid "This action will remove all the user configuration linked to the blacklist."
+msgstr ""
+
 #. atributes
 #. cuanto falta
 #. cuanto quedaba cuando se mostro
-#: ../client/gnome/systray/src/SystrayNanny.py:42
+#: ../client/gnome/systray/src/SystrayNanny.py:45
 msgid "Session"
 msgstr "Session"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:44
+#: ../client/gnome/systray/src/SystrayNanny.py:47
 msgid "e-Mail"
 msgstr ""
 
-#: ../client/gnome/systray/src/SystrayNanny.py:45
+#: ../client/gnome/systray/src/SystrayNanny.py:48
 msgid "Instant messanger"
 msgstr "Snabbmeddelandeklient"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:91
+#. To translators: In x-minutes the access to <app> will be granted
+#: ../client/gnome/systray/src/SystrayNanny.py:95
 #, python-format
-msgid "In %s the access to <b>%s</b> will be granted."
+msgid "In %(time)s the access to %(app)s will be granted."
 msgstr ""
 
-#: ../client/gnome/systray/src/SystrayNanny.py:93
+#. To translators: In x-minutes the access to <app> will be denied
+#: ../client/gnome/systray/src/SystrayNanny.py:98
 #, python-format
-msgid "In %s the access to <b>%s</b> will be denied."
+msgid "In %(time)s the access to %(app)s will be denied."
 msgstr ""
 
-#: ../client/gnome/systray/src/SystrayNanny.py:107
-msgid "1 day"
-msgstr "Ett dygn"
-
-#: ../client/gnome/systray/src/SystrayNanny.py:109
+#: ../client/gnome/systray/src/SystrayNanny.py:111
 #, python-format
-msgid "%s days"
-msgstr "%s dygn"
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d dygn"
+msgstr[1] "%d dygn"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:114
-msgid "1 hour"
-msgstr "En timme"
-
-#: ../client/gnome/systray/src/SystrayNanny.py:116
+#: ../client/gnome/systray/src/SystrayNanny.py:113
 #, python-format
-msgid "%s hours"
-msgstr "%s timmar"
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d timme"
+msgstr[1] "%d timmar"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:121
-msgid "1 minute"
-msgstr "En minut"
-
-#: ../client/gnome/systray/src/SystrayNanny.py:123
+#: ../client/gnome/systray/src/SystrayNanny.py:115
 #, python-format
-msgid "%s minutes"
-msgstr "%s minuter"
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d minut"
+msgstr[1] "%d minuter"
+
+#. Translators: This is the separator between time strings, like '1 day, 2 hours, 3 minutes'
+#: ../client/gnome/systray/src/SystrayNanny.py:117
+msgid ", "
+msgstr ""
+
+#: ../daemon/src/DansGuardianImporter.py:63
+msgid "Blacklist imported"
+msgstr ""
+
+#: ../daemon/src/DansGuardianImporter.py:76
+msgid "Nanny file created"
+msgstr ""
+
+#: ../daemon/src/DansGuardianImporter.py:79
+#, python-format
+msgid "Downloading file (%s%%)"
+msgstr "Hämtar fil (%s%%)"
+
+#: ../daemon/src/DansGuardianImporter.py:271
+#, python-format
+msgid "Importing domains [category: %s] (%s%%)"
+msgstr "Importerar domäner [kategori: %s] (%s%%)"
+
+#: ../daemon/src/DansGuardianImporter.py:287
+#, python-format
+msgid "Importing urls [category: %s] (%s%%)"
+msgstr "Importerar url:er [kategori: %s] (%s%%)"
+
+#~ msgid "Type of filter:"
+#~ msgstr "Typ av filter:"
+#~ msgid "Downloading the list. Please, wait..."
+#~ msgstr "Hämtar listan. Vänta..."
+#~ msgid "Download list from the Internet"
+#~ msgstr "Hämta list från Internet"
+#~ msgid "Insert manual domain or URL"
+#~ msgstr "Infoga domän eller URL manuellt"
+#~ msgid "1 day"
+#~ msgstr "Ett dygn"
+#~ msgid "1 hour"
+#~ msgstr "En timme"
+#~ msgid "1 minute"
+#~ msgstr "En minut"
 
