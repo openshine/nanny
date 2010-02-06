@@ -689,7 +689,7 @@ msgstr "beli seznam"
 #: ../client/common/src/Categories.py:178
 #, python-format
 msgid "Contains site specifically 100% suitable for kids"
-msgstr "Vsebuje strani popolnoma primerne za otroke"
+msgstr "Vsebuje strani 100% primerne za otroke"
 
 #: ../client/common/src/DBusClient.py:78
 msgid "NannyDaemon unavailable"
