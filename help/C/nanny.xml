@@ -4,7 +4,7 @@
   <!ENTITY appversion "2.29.2">
   <!ENTITY manrevision "0.1">
   <!ENTITY date "December 2009">
-  <!ENTITY app "<application>GNOME Nanny</application>">
+  <!ENTITY app "Nanny">
 ]>
 <!-- 
       (Do not remove this comment block.)
@@ -52,7 +52,6 @@
          <affiliation>
            <orgname>GNOME Documentation Project</orgname>
          </affiliation>
-         <email>luisbg@openshine.com</email>
        </author>
        <author>
          <firstname>Roberto</firstname>
@@ -61,7 +60,6 @@
            <orgname>GNOME Documentation project</orgname>
          </affiliation>
          <contrib>Update documentation</contrib>
-         <email>roberto.majadas@openshine.com</email>
        </author>
    </authorgroup>
 
@@ -137,6 +135,7 @@
     </para>
     <para>To configure GNOME Nanny and decide which users to watch and what they can and can't do, you need to run the GNOME Nanny administration console.
     </para>
+    </sect2>
 
     <sect2 id="myapp-start">
     <title>To Start GNOME Nanny administration console</title>
@@ -155,8 +154,6 @@
     		</listitem>
     	</varlistentry>
     </variablelist>
-    </sect2>
-
     </sect2>
   </sect1>
 
