@@ -7,13 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nanny.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 01:53+0100\n"
+"POT-Creation-Date: 2010-02-10 02:39+0100\n"
 "PO-Revision-Date: 2010-02-09 13:31+0100\n"
 "Last-Translator: Roberto Majadas <roberto.majadas@openshine.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:32
@@ -984,7 +985,7 @@ msgstr "En %(time)s el acceso a %(app)s será denegado."
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d día"
-msgstr[1] "%s días"
+msgstr[1] "%d días"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:113
 #, python-format
