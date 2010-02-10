@@ -27,13 +27,25 @@ import os
 import gtk
 
 def ui_magic(object, ui_file, prefix):
-    main_ui_filename = ui_file
-    object.xml = gtk.Builder ()
-    object.xml.add_from_file (main_ui_filename)
-    objects = object.xml.get_objects()
-    for content in objects:
-        if isinstance (content, gtk.Widget):
-            widget_name = content.get_name ()
-            if widget_name.startswith (prefix):
-                widget_name = widget_name[len(prefix)+1:]
-                exec ('object.%s = content' % widget_name)
+     main_ui_filename = ui_file
+     object.xml = gtk.Builder ()
+     object.xml.add_from_file (main_ui_filename)
+     objects = object.xml.get_objects()
+     for content in objects:
+          try:
+               if isinstance(content, gtk.Label):
+                    content.set_markup(_(content.get_label()))
+               elif isinstance(content, gtk.Button):
+                    content.set_label(_(content.get_label()))
+               else:
+                    content.set_text(_(content.get_text()))
+                    
+          except AttributeError:
+               pass
+          
+          if isinstance (content, gtk.Widget):
+               widget_name = content.get_name ()
+               if widget_name.startswith (prefix):
+                    widget_name = widget_name[len(prefix)+1:]
+                    exec ('object.%s = content' % widget_name)
+                    

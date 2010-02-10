@@ -23,9 +23,9 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 # USA
 
-import gettext
-import __builtin__
-__builtin__._ = gettext.gettext
+#import gettext
+#import __builtin__
+#__builtin__._ = gettext.gettext
 
 category_strings = {
     # To translators : This string is a category name or a category description

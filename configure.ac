@@ -173,7 +173,7 @@ AM_CONDITIONAL(NANNY_INIT_SCRIPTS_DEBIAN, test x$with_init_scripts = xdebian)
 dnl *******************************
 dnl Internationalization
 dnl *******************************
-GETTEXT_PACKAGE=gnome-nanny
+GETTEXT_PACKAGE=nanny
 AC_DEFINE(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", "nanny")
 AC_SUBST(GETTEXT_PACKAGE)
 GNOME_DOC_INIT
