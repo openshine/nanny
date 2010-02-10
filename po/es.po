@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nanny.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 02:56+0100\n"
+"POT-Creation-Date: 2010-02-10 03:10+0100\n"
 "PO-Revision-Date: 2010-02-10 02:52+0100\n"
 "Last-Translator: Roberto Majadas <roberto.majadas@openshine.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
@@ -814,6 +814,10 @@ msgstr ""
 "Aquí usted puede aplicar las listas negras disponibles para el usuario "
 "seleccionado. Si usted quiere añadir una nueva lista negra, por favor vaya a "
 "Sistema > Administración > Listas Negras"
+
+#: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
+msgid "Import..."
+msgstr "Importar..."
 
 #: ../client/gnome/admin/src/ScheduleCalendar.py:292
 msgid "Monday"
