@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=BlackLists
-Comment=Nanny parental control blacklists manager
+_Name=BlackLists
+_Comment=Nanny parental control blacklists manager
 Exec=gksu --description /usr/share/applications/nanny-blacklist-manager.desktop NannyBlacklistManager
 Icon=nanny
 Terminal=false

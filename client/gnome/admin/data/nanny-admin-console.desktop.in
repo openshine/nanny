@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Parental Control
-Comment=Nanny parental control admin console
+_Name=Parental Control
+_Comment=Nanny parental control admin console
 Exec=gksu --description /usr/share/applications/nanny-admin-console.desktop NannyAdminConsole
 Icon=nanny
 Terminal=false
