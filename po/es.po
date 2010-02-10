@@ -3,25 +3,706 @@
 # This file is distributed under the same license as the GNOME Nanny package.
 # Juanje Ojeda Croissier <jojeda@emergya.es>, 2010.
 # Jorge González <jorgegonz@svn.gnome.org>, 2010.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: nanny.HEAD\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=nanny&component=general\n"
-"POT-Creation-Date: 2009-12-28 09:51+0000\n"
-"PO-Revision-Date: 2010-01-06 13:01+0100\n"
-"Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-02-10 01:53+0100\n"
+"PO-Revision-Date: 2010-02-09 13:31+0100\n"
+"Last-Translator: Roberto Majadas <roberto.majadas@openshine.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../client/common/src/DBusClient.py:79
-msgid "<b>NannyDaemon unavailable</b>"
-msgstr "<b>No demonio de Nanny no está disponible</b>"
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:32
+msgid "abortion"
+msgstr "aborto"
 
-#: ../client/common/src/DBusClient.py:80
+#: ../client/common/src/Categories.py:32
+msgid "Abortion information excluding when related to religion"
+msgstr ""
+"Información sobre el aborto excepto cuando estén relacionados con la religión"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:34
+msgid "ads"
+msgstr "anuncios"
+
+#: ../client/common/src/Categories.py:34
+msgid "Advert servers and banned URLs"
+msgstr "Servidores de anuncio y urls bloqueadas"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:36
+msgid "adult"
+msgstr "adultos"
+
+#: ../client/common/src/Categories.py:36
+msgid "Sites containing adult material such as swearing but not porn"
+msgstr "Sitios que contengan material para adultos, pero no porno"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:38
+msgid "aggressive"
+msgstr "agresivo"
+
+#: ../client/common/src/Categories.py:38
+msgid "Similar to violence but more promoting than depicting"
+msgstr "Similar a la violencia, pero más que describir la promocionan"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:40
+msgid "antispyware"
+msgstr "antispyware"
+
+#: ../client/common/src/Categories.py:40
+msgid "Sites that remove spyware"
+msgstr "Los sitios que eliminar el software espía"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:42
+msgid "artnudes"
+msgstr "desnudos artísticos"
+
+#: ../client/common/src/Categories.py:42
+msgid "Art sites containing artistic nudity"
+msgstr "Los sitios de arte que contengan desnudos artísticos"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:44
+msgid "astrology"
+msgstr "astrología"
+
+#: ../client/common/src/Categories.py:44
+msgid "Astrology websites"
+msgstr "Sitios web de astrología"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:46
+msgid "audio-video"
+msgstr "audio-video"
+
+#: ../client/common/src/Categories.py:46
+msgid "Sites with audio or video downloads"
+msgstr "Sitios con descargas de audio o de vídeo"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:48
+msgid "banking"
+msgstr "banca"
+
+#: ../client/common/src/Categories.py:48
+msgid "Banking websites"
+msgstr "Sitios web de Banca"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:50
+msgid "beerliquorinfo"
+msgstr "Cerveza y licores"
+
+#: ../client/common/src/Categories.py:50
+msgid "Sites with information only on beer or liquors"
+msgstr "Sitios con información sólo de cerveza o licores"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:52
+msgid "beerliquorsale"
+msgstr "venta de bebidas alcoholicas"
+
+#: ../client/common/src/Categories.py:52
+msgid "Sites with beer or liquors for sale"
+msgstr "Sitios con cerveza o licores para la venta"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:54
+msgid "blog"
+msgstr "blog"
+
+#: ../client/common/src/Categories.py:54
+msgid "Journal/Diary websites"
+msgstr "Revista / Diario de sitios web"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:56
+msgid "cellphones"
+msgstr "teléfonos móviles"
+
+#: ../client/common/src/Categories.py:56
+msgid "stuff for mobile/cell phones"
+msgstr "Cosas para teléfonos móviles"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:58
+msgid "chat"
+msgstr "chat"
+
+#: ../client/common/src/Categories.py:58
+msgid "Sites with chat rooms etc"
+msgstr "Los sitios con salas de chat, etc"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:60
+msgid "childcare"
+msgstr "cuidado de los niños"
+
+#: ../client/common/src/Categories.py:60
+msgid "Sites to do with childcare"
+msgstr "Sitios que ver con el cuidado de los niños"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:62
+msgid "cleaning"
+msgstr "limpieza"
+
+#: ../client/common/src/Categories.py:62
+msgid "Sites to do with cleaning"
+msgstr "Sitios que ver con la limpieza"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:64
+msgid "clothing"
+msgstr "prendas de vestir"
+
+#: ../client/common/src/Categories.py:64
+msgid "Sites about and selling clothing"
+msgstr "Sitios sobre ropa y su venta"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:66
+msgid "contraception"
+msgstr "anticoncepción"
+
+#: ../client/common/src/Categories.py:66
+msgid "Information about contraception"
+msgstr "Información acerca de la anticoncepción"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:68
+msgid "culnary"
+msgstr "cocina"
+
+#: ../client/common/src/Categories.py:68
+msgid "Sites about cooking et al"
+msgstr "Sitios de cocina y otros"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:70
+msgid "dating"
+msgstr "contactos"
+
+#: ../client/common/src/Categories.py:70
+msgid "Sites about dating"
+msgstr "Sitios de contactos y citas"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:72
+msgid "desktopsillies"
+msgstr "aparariencia del escritorio"
+
+#: ../client/common/src/Categories.py:72
+msgid ""
+"Sites containing screen savers, backgrounds, cursers, pointers. desktop "
+"themes and similar timewasting and potentially dangerous content"
+msgstr ""
+"Sitios que contienen protectores de pantalla, fondos, cursores, los "
+"punteros. temas de escritorio y perdidas de tiempo similares y "
+"potencialmente peligrosos de contenido"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:74
+msgid "dialers"
+msgstr "dialers"
+
+#: ../client/common/src/Categories.py:74
+msgid "Sites with dialers such as those for pornography or trojans"
+msgstr "Sitios con marcadores como los de pornografía o troyanos"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:76
+msgid "drugs"
+msgstr "drogas"
+
+#: ../client/common/src/Categories.py:76
+msgid "Drug related sites"
+msgstr "Sitios relacionados con la droga"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:78
+msgid "ecommerce"
+msgstr "comercio electrónico"
+
+#: ../client/common/src/Categories.py:78
+msgid "Sites that provide online shopping"
+msgstr "Sitios que ofrecen compras en línea"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:80
+msgid "entertainment"
+msgstr "entretenimiento"
+
+#: ../client/common/src/Categories.py:80
+msgid "Sites that promote movies, books, magazine, humor"
+msgstr "Los sitios que promocionan películas, libros, revistas, humor"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:82
+msgid "filehosting"
+msgstr "filehosting"
+
+#: ../client/common/src/Categories.py:82
+msgid "Sites to do with filehosting"
+msgstr "Sitios que ver con filehosting"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:84
+msgid "frencheducation"
+msgstr "educación francesa"
+
+#: ../client/common/src/Categories.py:84
+msgid "Sites to do with french education"
+msgstr "Sitios que ver con la educación en francés"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:86
+msgid "gambling"
+msgstr "juegos de azar"
+
+#: ../client/common/src/Categories.py:86
+msgid "Gambling sites including stocks and shares"
+msgstr "Las páginas de juego incluyendo acciones y participaciones"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:88
+msgid "games"
+msgstr "juegos"
+
+#: ../client/common/src/Categories.py:88
+msgid "Game related sites"
+msgstr "Páginas de juegos"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:90
+msgid "gardening"
+msgstr "jardinería"
+
+#: ../client/common/src/Categories.py:90
+msgid "Gardening sites"
+msgstr "Sitios sobre jardinería "
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:92
+msgid "government"
+msgstr "Gobierno"
+
+#: ../client/common/src/Categories.py:92
+msgid "Military and schools etc"
+msgstr "Militares y las escuelas, etc"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:94
+msgid "guns"
+msgstr "armas"
+
+#: ../client/common/src/Categories.py:94
+msgid "Sites with guns"
+msgstr "Sitios con armas de fuego"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:96
+msgid "hacking"
+msgstr "hacking"
+
+#: ../client/common/src/Categories.py:96
+msgid "Hacking/cracking information"
+msgstr "Información sobre hacking/cracking"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:98
+msgid "homerepair"
+msgstr "hogar reparaciones"
+
+#: ../client/common/src/Categories.py:98
+msgid "Sites about home repair"
+msgstr "Sitios sobre reparaciones en el hogar"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:100
+msgid "hygiene"
+msgstr "higiene"
+
+#: ../client/common/src/Categories.py:100
+msgid "Sites about hygiene and other personal grooming related stuff"
+msgstr "Sitios acerca de la higiene personal y otras cosas relacionadas"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:102
+msgid "instantmessaging"
+msgstr "mensajería instantanea"
+
+#: ../client/common/src/Categories.py:102
+msgid ""
+"Sites that contain messenger client download and web-based messaging sites"
+msgstr ""
+"Los sitios que contienen clientes de mensajería basada en web de sitios de "
+"mensajería"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:104
+msgid "jewelry"
+msgstr "joyería"
+
+#: ../client/common/src/Categories.py:104
+msgid "Sites about and selling jewelry"
+msgstr "Sitios sobre joyas y su venta"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:106
+msgid "jobsearch"
+msgstr "búsqueda de empleo"
+
+#: ../client/common/src/Categories.py:106
+msgid "Sites for finding jobs"
+msgstr "Sitios para encontrar trabajos"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:108
+msgid "kidstimewasting"
+msgstr "kidstimewasting"
+
+#: ../client/common/src/Categories.py:108
+msgid "Sites kids often waste time on"
+msgstr "Sitios para niños donde suelen perder el tiempo"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:110
+msgid "mail"
+msgstr "correo electrónico "
+
+#: ../client/common/src/Categories.py:110
+msgid "Webmail and email sites"
+msgstr "Correo web y sitios de e-mail"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:112
+msgid "marketingware"
+msgstr "marketing"
+
+#: ../client/common/src/Categories.py:112
+msgid "Sites about marketing products"
+msgstr "Sitios sobre la comercialización de productos"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:114
+msgid "medical"
+msgstr "medicina"
+
+#: ../client/common/src/Categories.py:114
+msgid "Medical websites"
+msgstr "Sitios web de medicina"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:116
+msgid "mixed_adult"
+msgstr "adultos mix"
+
+#: ../client/common/src/Categories.py:116
+msgid "Mixed adult content sites"
+msgstr "Mezcla de  sitios de contenido adulto"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:118
+msgid "mobile-phone"
+msgstr "telefonía móvil"
+
+#: ../client/common/src/Categories.py:118
+msgid "Sites to do with mobile phones"
+msgstr "Sitios que ver con los teléfonos móviles"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:120
+msgid "naturism"
+msgstr "naturismo"
+
+#: ../client/common/src/Categories.py:120
+msgid "Sites that contain nude pictures and/or promote a nude lifestyle"
+msgstr ""
+"Los sitios que contienen imágenes de desnudos y / o promover un estilo de "
+"vida naturista"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:122
+msgid "news"
+msgstr "noticias"
+
+#: ../client/common/src/Categories.py:122
+msgid "News sites"
+msgstr "Los sitios de noticias"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:124
+msgid "onlineauctions"
+msgstr "subastas"
+
+#: ../client/common/src/Categories.py:124
+msgid "Online auctions"
+msgstr "Sitios de subastas en línea"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:126
+msgid "onlinegames"
+msgstr "juegos online"
+
+#: ../client/common/src/Categories.py:126
+msgid "Online gaming sites"
+msgstr "Sitios de juegos en línea"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:128
+msgid "onlinepayment"
+msgstr "pago en línea"
+
+#: ../client/common/src/Categories.py:128
+msgid "Online payment sites"
+msgstr "Sitios de pago en línea"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:130
+msgid "personalfinance"
+msgstr "finanzas personales"
+
+#: ../client/common/src/Categories.py:130
+msgid "Personal finance sites"
+msgstr "Sitios de finanzas personales"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:132
+msgid "pets"
+msgstr "mascotas"
+
+#: ../client/common/src/Categories.py:132
+msgid "Pet sites"
+msgstr "Sitios de mascotas"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:134
+msgid "phishing"
+msgstr "phishing"
+
+#: ../client/common/src/Categories.py:134
+msgid "Sites attempting to trick people into giving out private information."
+msgstr ""
+"Sitios que pueden intentar engañar a las personas obteniendo información "
+"privada."
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:136
+msgid "porn"
+msgstr "pornografía"
+
+#: ../client/common/src/Categories.py:136
+msgid "Pornography"
+msgstr "Sitios con contenidos pornograficos"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:138
+msgid "proxy"
+msgstr "proxy"
+
+#: ../client/common/src/Categories.py:138
+msgid "Sites with proxies to bypass filters"
+msgstr "Sitios con capacidad para evitar los filtros"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:140
+msgid "radio"
+msgstr "radio"
+
+#: ../client/common/src/Categories.py:140
+msgid "non-news related radio and television"
+msgstr "Sitios de radio y televisión no relacionados con noticias"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:142
+msgid "religion"
+msgstr "religión"
+
+#: ../client/common/src/Categories.py:142
+msgid "Sites promoting religion"
+msgstr "Sitios que promueven la religión"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:144
+msgid "ringtones"
+msgstr "tonos"
+
+#: ../client/common/src/Categories.py:144
+msgid "Sites containing ring tones, games, pictures and other"
+msgstr "Sitios de tonos de llamada que contiene, juegos, imágenes y otros"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:146
+msgid "searchengines"
+msgstr "buscadores"
+
+#: ../client/common/src/Categories.py:146
+msgid "Search engines such as google"
+msgstr "Los motores de búsqueda como Google"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:148
+msgid "sect"
+msgstr "secta"
+
+#: ../client/common/src/Categories.py:148
+msgid "Sites about eligious groups"
+msgstr "Sitios acerca de los grupos sectareos"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:150
+msgid "sexuality"
+msgstr "sexualidad"
+
+#: ../client/common/src/Categories.py:150
+msgid "Sites dedicated to sexuality, possibly including adult material"
+msgstr ""
+"Sitios dedicados a la sexualidad, que pueden incluir material para adultos"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:152
+msgid "shopping"
+msgstr "compras"
+
+#: ../client/common/src/Categories.py:152
+msgid "Shopping sites"
+msgstr "Sitios de compras"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:154
+msgid "socialnetworking"
+msgstr "redes sociales"
+
+#: ../client/common/src/Categories.py:154
+msgid "Social networking websites"
+msgstr "Sitios web de redes sociales"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:156
+msgid "sportnews"
+msgstr "noticias deportes"
+
+#: ../client/common/src/Categories.py:156
+msgid "Sport news sites"
+msgstr "Sitios de noticias de Deportes"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:158
+msgid "sports"
+msgstr "deportes"
+
+#: ../client/common/src/Categories.py:158
+msgid "All sport sites"
+msgstr "Todos los sitios de deporte"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:160
+msgid "spyware"
+msgstr "spyware"
+
+#: ../client/common/src/Categories.py:160
+msgid "Sites who run or have spyware software to download"
+msgstr "Sitios que tienen software espía para descargar"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:162
+msgid "updatesites"
+msgstr "updatesites"
+
+#: ../client/common/src/Categories.py:162
+msgid "Sites where software updates are downloaded from including virus sigs"
+msgstr ""
+"Sitios donde se descargan las actualizaciones de software de la inclusión de "
+"firmas de virus"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:164
+msgid "vacation"
+msgstr "vacaciones"
+
+#: ../client/common/src/Categories.py:164
+msgid "Sites about going on holiday"
+msgstr "Sitios acerca de salir de vacaciones"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:166
+msgid "violence"
+msgstr "violencia"
+
+#: ../client/common/src/Categories.py:166
+msgid "Sites containing violence"
+msgstr "Sitios que contienen violencia"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:168
+msgid "virusinfected"
+msgstr "infectados virus"
+
+#: ../client/common/src/Categories.py:168
+msgid "Sites who host virus infected files"
+msgstr "Sitios que contienen archivos infectados por virus"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:170
+msgid "warez"
+msgstr "software ilegal"
+
+#: ../client/common/src/Categories.py:170
+msgid "Sites with illegal pirate software"
+msgstr "Sitios con software pirata ilegal"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:172
+msgid "weather"
+msgstr "tiempo"
+
+#: ../client/common/src/Categories.py:172
+msgid "Weather news sites and weather related"
+msgstr "Sitios de noticias del tiempo y el clima"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:174
+msgid "weapons"
+msgstr "armas"
+
+#: ../client/common/src/Categories.py:174
+msgid "Sites detailing or selling weapons"
+msgstr "Sitios sobre información o venta de armas"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:176
+msgid "webmail"
+msgstr "webmail"
+
+#: ../client/common/src/Categories.py:176
+msgid "Just webmail sites"
+msgstr "Sólo sitios de correo web"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:178
+msgid "whitelist"
+msgstr "lista blanca"
+
+#: ../client/common/src/Categories.py:180
+#, no-python-format
+msgid "Contains site specifically 100% suitable for kids"
+msgstr "Contiene sitios 100% apropiados para los niños"
+
+#: ../client/common/src/DBusClient.py:78
+msgid "NannyDaemon unavailable"
+msgstr "No demonio de Nanny no está disponible"
+
+#: ../client/common/src/DBusClient.py:79
 msgid ""
 "NannyDaemon is not activated or does not work properly.\n"
 "Please try to reactivate it."
@@ -29,74 +710,93 @@ msgstr ""
 "El demonio de Nanny no está activo o no funciona correctamente.\n"
 "Intente reactivarlo de nuevo."
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:1
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
 msgid "Configure"
 msgstr "Configurar"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:2
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:2
 msgid "Instant messaging"
 msgstr "Mensajería instantánea"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:3
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:3
 msgid "Mail client"
 msgstr "Cliente de correo"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:4
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
 msgid "PC use time"
 msgstr "Uso del PC"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:5
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
 msgid "Use the computer"
 msgstr "Uso del equipo"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:6
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
 msgid "Use the instant messaging"
 msgstr "Uso de la mensajería instantánea"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:7
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
 msgid "Use the mail client"
 msgstr "Uso del cliente de correo"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:8
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
 msgid "Use the web browser"
 msgstr "Uso del navegador"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:9
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
 msgid "Use web content filtering"
-msgstr ""
+msgstr "Usar filtrado de contenidos web"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:10
-#: ../client/gnome/systray/src/SystrayNanny.py:43
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
+#: ../client/gnome/systray/src/SystrayNanny.py:46
 msgid "Web browser"
 msgstr "Navegador web"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:11
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
 msgid "hours a day"
 msgstr "horas al día"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:1
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:1
+msgid ""
+"<span color=\"red\">All the fields are mandatory. Please fill all of them.</"
+"span>"
+msgstr ""
+"<span color=\"red\">Todos los campos son obligatorios. Rellenelos todos por "
+"favor.</span>"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:2
+#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:1
 msgid "Description:"
 msgstr "Descripción:"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:2
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:3
+#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:2
 msgid "Name:"
 msgstr "Nombre:"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:3
-msgid "Type of filter:"
-msgstr "Tipo de filtro:"
-
-#: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:4
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:4
 msgid "URL:"
 msgstr "URL:"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_dialog.glade.h:1
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:1
 msgid "Allowed sites"
 msgstr "Sitios permitidos"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_dialog.glade.h:2
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:2
+msgid "Blacklists"
+msgstr "Listas negras"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:3
 msgid "Forbidden sites"
 msgstr "Sitios prohibidos"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
+msgid ""
+"Here you can apply the available blacklists for the selected user. If you "
+"want to add new blacklists please go to System > Administration > Blacklists."
+msgstr ""
+"Aquí usted puede aplicar las listas negras disponibles para el usuario "
+"seleccionado. Si usted quiere añadir una nueva lista negra, por favor vaya a "
+"Sistema > Administración > Listas Negras"
 
 #: ../client/gnome/admin/src/ScheduleCalendar.py:292
 msgid "Monday"
@@ -130,17 +830,13 @@ msgstr "Domingo"
 msgid "Web Content Filter Configuration"
 msgstr "Configuración del filtro de contenidos web"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:126
-msgid "Downloading the list. Please, wait..."
-msgstr "Descargando la lista. Por favor, espere…"
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:242
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:253
+msgid "Error while importing list from the Internet"
+msgstr "Error al importar la lista desde internet"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:184
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:195
-msgid "<b>Error while importing list from the Internet</b>"
-msgstr "<b>Error al importar la lista desde internet</b>"
-
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:185
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:196
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:243
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:254
 msgid ""
 "Some error has occured while downloading the list.\n"
 "Please verify the URL and try again."
@@ -148,28 +844,28 @@ msgstr ""
 "Ocurrió un error al descargar la lista. \n"
 "Compruebe el URL e inténtelo de nuevo."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:209
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:232
-msgid "<b>Are you sure you want to delete this filter?</b>"
-msgstr "<b>¿Está seguro de que desea borrar este filtro?</b>"
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:345
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:366
+msgid "Are you sure you want to delete this filter?"
+msgstr "¿Está seguro de que desea borrar este filtro?"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:210
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:233
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:346
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:367
 msgid "You will not be able to undo this action."
 msgstr "No podrá deshacer esta acción."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:217
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:240
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:353
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:374
 msgid "Removing filter. Please, wait..."
 msgstr "Quitando el filtro. Espere..."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:260
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:271
-msgid "<b>Error while deleting filters</b>"
-msgstr "<b>Error al borrar los filtros</b>"
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:393
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:404
+msgid "Error while deleting filters"
+msgstr "Error al borrar los filtros"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:261
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:272
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:394
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:405
 msgid ""
 "Some error has occured while deleting filters.\n"
 "Please try again."
@@ -177,17 +873,13 @@ msgstr ""
 "Ocurrió un error al borrar los filtros\n"
 "Inténtelo de nuevo."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:298
-msgid "Download list from the Internet"
-msgstr "Descargar lista de Internet"
-
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:299
-msgid "Insert manual domain or URL"
-msgstr "Introducir manualmente un dominio o URL"
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:436
+msgid "<b>Select all the categories</b>"
+msgstr "<b>Seleccione todas las categorías</b>"
 
 #: ../client/gnome/admin/src/AdminConsole.py:45
-msgid "<b>Nanny daemon is not started</b>"
-msgstr "<b>No se ha iniciado el demonio Nanny</b>"
+msgid "Nanny daemon is not started"
+msgstr "No se ha iniciado el demonio Nanny"
 
 #: ../client/gnome/admin/src/AdminConsole.py:46
 msgid "To use the parental control, please start up the daemon."
@@ -203,14 +895,16 @@ msgid "Your configuration has been saved"
 msgstr "Se ha guardado su configuración"
 
 #: ../client/gnome/admin/src/AdminConsole.py:279
-msgid "<b>User change</b>"
-msgstr ""
+msgid "You have made changes"
+msgstr "Usted ha realizado cambios"
 
 #: ../client/gnome/admin/src/AdminConsole.py:280
 msgid ""
 "If you don't press the 'Apply' button, your changes will be lost.\n"
 "Are you sure?"
 msgstr ""
+"Si usted no presiona el botón 'Aplicar', sus cambios serán perdidos. ¿Esta "
+"usted seguro?"
 
 #: ../client/gnome/admin/src/AdminConsole.py:309
 #, python-format
@@ -221,54 +915,115 @@ msgstr "Consola de administración de Nanny: %s"
 msgid "Nanny Admin Console"
 msgstr "Consola de administración de Nanny"
 
+#: ../client/gnome/admin/src/BlacklistManager.py:37
+#: ../client/gnome/admin/src/BlacklistManager.py:131
+msgid "Blacklist Filter Configuration"
+msgstr "Configuración del filtro de contenidos web"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:98
+#, python-format
+msgid ""
+"<b>%s (Read only)</b>\n"
+"   %s"
+msgstr ""
+"<b>%s (Solo lectura)</b>\n"
+"   %s"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:103
+msgid "Select file to import"
+msgstr "Seleccione el archivo para importar"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:123
+msgid "<b>Error importing blacklist file</b>"
+msgstr "<b>Error al importar la lista negra</b>"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:124
+msgid "Some error has occured importing the blacklist file."
+msgstr "Ocurrió un error importando la lista negra."
+
+#: ../client/gnome/admin/src/BlacklistManager.py:162
+msgid "<b>Are you sure you want to delete this blacklist?</b>"
+msgstr "<b>¿Está seguro de que desea borrar esta lista negra?</b>"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:163
+msgid ""
+"This action will remove all the user configuration linked to the blacklist."
+msgstr ""
+"Esta acción borrará todas las configuraciones de usuario relacionadas con "
+"esta lista negra."
+
 #. atributes
 #. cuanto falta
 #. cuanto quedaba cuando se mostro
-#: ../client/gnome/systray/src/SystrayNanny.py:42
+#: ../client/gnome/systray/src/SystrayNanny.py:45
 msgid "Session"
 msgstr "Sesión"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:44
+#: ../client/gnome/systray/src/SystrayNanny.py:47
 msgid "e-Mail"
 msgstr "Correo electrónico"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:45
+#: ../client/gnome/systray/src/SystrayNanny.py:48
 msgid "Instant messanger"
 msgstr "Mensajería instantánea"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:91
+#. To translators: In x-minutes the access to <app> will be granted
+#: ../client/gnome/systray/src/SystrayNanny.py:95
 #, python-format
-msgid "In %s the access to <b>%s</b> will be granted."
-msgstr ""
+msgid "In %(time)s the access to %(app)s will be granted."
+msgstr "En %(time)s el acceso a %(app)s será permitido."
 
-#: ../client/gnome/systray/src/SystrayNanny.py:93
+#. To translators: In x-minutes the access to <app> will be denied
+#: ../client/gnome/systray/src/SystrayNanny.py:98
 #, python-format
-msgid "In %s the access to <b>%s</b> will be denied."
-msgstr ""
+msgid "In %(time)s the access to %(app)s will be denied."
+msgstr "En %(time)s el acceso a %(app)s será denegado."
 
-#: ../client/gnome/systray/src/SystrayNanny.py:107
-msgid "1 day"
-msgstr "1 día"
-
-#: ../client/gnome/systray/src/SystrayNanny.py:109
+#: ../client/gnome/systray/src/SystrayNanny.py:111
 #, python-format
-msgid "%s days"
-msgstr "%s días"
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d día"
+msgstr[1] "%s días"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:114
-msgid "1 hour"
-msgstr "1 hora"
-
-#: ../client/gnome/systray/src/SystrayNanny.py:116
+#: ../client/gnome/systray/src/SystrayNanny.py:113
 #, python-format
-msgid "%s hours"
-msgstr "%s horas"
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d hora"
+msgstr[1] "%d horas"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:121
-msgid "1 minute"
-msgstr "1 minuto"
-
-#: ../client/gnome/systray/src/SystrayNanny.py:123
+#: ../client/gnome/systray/src/SystrayNanny.py:115
 #, python-format
-msgid "%s minutes"
-msgstr "%s minutos"
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d minuto"
+msgstr[1] "%d minutos"
+
+#. Translators: This is the separator between time strings, like '1 day, 2 hours, 3 minutes'
+#: ../client/gnome/systray/src/SystrayNanny.py:117
+msgid ", "
+msgstr ", "
+
+#: ../daemon/src/DansGuardianImporter.py:63
+msgid "Blacklist imported"
+msgstr "Lista negra creada"
+
+#: ../daemon/src/DansGuardianImporter.py:76
+msgid "Nanny file created"
+msgstr "Archivo Nanny creado"
+
+#: ../daemon/src/DansGuardianImporter.py:79
+#, python-format
+msgid "Downloading file (%s%%)"
+msgstr "Descargando archivo (%s%%)"
+
+#: ../daemon/src/DansGuardianImporter.py:271
+#, python-format
+msgid "Importing domains [category: %s] (%s%%)"
+msgstr "Importando dominios  [categoria: %s] (%s%%)"
+
+#: ../daemon/src/DansGuardianImporter.py:287
+#, python-format
+msgid "Importing urls [category: %s] (%s%%)"
+msgstr "Importando urls [categoria: %s] (%s%%)"
