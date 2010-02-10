@@ -36,8 +36,8 @@ class ConfigureProxyDialog (gtk.Dialog):
     def __init__ (self, selected_user_id):
         gtk.Dialog.__init__ (self, title=_("Web Content Filter Configuration"), buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
 
-        nanny.client.common.Utils.glade_magic (self,
-                glade_file = os.path.join (nanny.client.gnome.admin.glade_files_dir, "nac_wcf_dialog.glade"),
+        nanny.client.common.Utils.ui_magic (self,
+                ui_file = os.path.join (nanny.client.gnome.admin.ui_files_dir, "nac_wcf_dialog.ui"),
                 prefix = "wcfd")
 
         self.set_property("icon-name", "nanny")
@@ -475,9 +475,9 @@ class ConfigureProxyDialog (gtk.Dialog):
             active_categories.append (category_name)
 
     def __load_dialog (self):
-        glade_file = os.path.join (nanny.client.gnome.admin.glade_files_dir, "nac_wcf_edit_dialog.glade")
+        ui_file = os.path.join (nanny.client.gnome.admin.ui_files_dir, "nac_wcf_edit_dialog.ui")
         xml = gtk.Builder ()
-        xml.add_from_file (glade_file)
+        xml.add_from_file (ui_file)
 
         return xml
 

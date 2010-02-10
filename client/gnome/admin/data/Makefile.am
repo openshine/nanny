@@ -1,4 +1,4 @@
-SUBDIRS=glade icons
+SUBDIRS=ui icons
 
 desktopdir = $(datadir)/applications/
 desktop_in_files = nanny-admin-console.desktop.in nanny-blacklist-manager.desktop.in 

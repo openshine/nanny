@@ -205,7 +205,7 @@ client/gnome/systray/src/__init__.py
 client/gnome/systray/data/Makefile
 client/gnome/admin/Makefile
 client/gnome/admin/data/Makefile
-client/gnome/admin/data/glade/Makefile
+client/gnome/admin/data/ui/Makefile
 client/gnome/admin/data/icons/Makefile
 client/gnome/admin/src/Makefile
 client/gnome/admin/src/__init__.py

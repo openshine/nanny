@@ -26,8 +26,8 @@
 import os
 import gtk
 
-def glade_magic(object, glade_file, prefix):
-    main_ui_filename = glade_file
+def ui_magic(object, ui_file, prefix):
+    main_ui_filename = ui_file
     object.xml = gtk.Builder ()
     object.xml.add_from_file (main_ui_filename)
     objects = object.xml.get_objects()

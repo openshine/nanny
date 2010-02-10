@@ -1,3 +1,4 @@
+[encoding: UTF-8]
 client/common/src/Categories.py
 client/common/src/Utils.py
 client/common/src/Singleton.py
@@ -5,11 +6,11 @@ client/common/src/DBusClient.py
 client/common/src/__init__.py
 client/gnome/admin/data/nanny-admin-console.desktop.in
 client/gnome/admin/data/nanny-blacklist-manager.desktop.in
-client/gnome/admin/data/glade/nanny_admin_console.glade
-client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade
-client/gnome/admin/data/glade/nac_wcf_dialog.glade
-client/gnome/admin/data/glade/nbm_pbl_dialog.glade
-client/gnome/admin/data/glade/nbm_pbl_edit_dialog.glade
+[type: gettext/glade]client/gnome/admin/data/ui/nanny_admin_console.ui
+[type: gettext/glade]client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui
+[type: gettext/glade]client/gnome/admin/data/ui/nac_wcf_dialog.ui
+[type: gettext/glade]client/gnome/admin/data/ui/nbm_pbl_dialog.ui
+[type: gettext/glade]client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui
 client/gnome/admin/src/__init__.py.in
 client/gnome/admin/src/ScheduleCalendar.py
 client/gnome/admin/src/ConfigureProxyDialog.py

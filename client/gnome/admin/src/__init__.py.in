@@ -34,7 +34,7 @@ from ScheduleCalendar import ScheduleCalendar
 from BlacklistManager import BlacklistManager
 
 share_files_dir= os.path.join("@prefix@","share/","nanny/client/gnome/admin/")
-glade_files_dir= os.path.join(share_files_dir,"glade/")
+ui_files_dir= os.path.join(share_files_dir,"ui/")
 icons_files_dir= os.path.join(share_files_dir,"icons/")
 
 GETTEXT_DOMAIN = 'nanny'

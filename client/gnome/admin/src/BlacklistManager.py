@@ -36,8 +36,8 @@ class BlacklistManager:
     def __init__ (self):
         self.dialog = gtk.Dialog (title=_("Blacklist Filter Configuration"), buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
 
-        nanny.client.common.Utils.glade_magic (self,
-                glade_file = os.path.join (nanny.client.gnome.admin.glade_files_dir, "nbm_pbl_dialog.glade"),
+        nanny.client.common.Utils.ui_magic (self,
+                ui_file = os.path.join (nanny.client.gnome.admin.ui_files_dir, "nbm_pbl_dialog.ui"),
                 prefix = "nbm")
 
         self.dialog.set_property("icon-name", "nanny")
@@ -132,8 +132,8 @@ class BlacklistManager:
                 buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT,
                     gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
 
-        nanny.client.common.Utils.glade_magic (edit_dialog,
-                                  glade_file = os.path.join (nanny.client.gnome.admin.glade_files_dir, "nbm_pbl_edit_dialog.glade"),
+        nanny.client.common.Utils.ui_magic (edit_dialog,
+                                  ui_file = os.path.join (nanny.client.gnome.admin.ui_files_dir, "nbm_pbl_edit_dialog.ui"),
                                   prefix = "nbm")
 
         edit_dialog.main_alignment.unparent()

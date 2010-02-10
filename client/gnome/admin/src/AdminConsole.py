@@ -48,8 +48,8 @@ class AdminConsole:
             d.destroy()
             raise Exception ('DBus not initialized')
 
-        nanny.client.common.Utils.glade_magic (self,
-                                    glade_file = os.path.join (nanny.client.gnome.admin.glade_files_dir, "nanny_admin_console.glade"),
+        nanny.client.common.Utils.ui_magic (self,
+                                    ui_file = os.path.join (nanny.client.gnome.admin.ui_files_dir, "nanny_admin_console.ui"),
                                     prefix = "nac")
 
         self.window.connect ('delete-event', self.__on_close_event)
