@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nanny.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 02:39+0100\n"
-"PO-Revision-Date: 2010-02-09 13:31+0100\n"
+"POT-Creation-Date: 2010-02-10 02:56+0100\n"
+"PO-Revision-Date: 2010-02-10 02:52+0100\n"
 "Last-Translator: Roberto Majadas <roberto.majadas@openshine.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -710,6 +710,22 @@ msgid ""
 msgstr ""
 "El demonio de Nanny no está activo o no funciona correctamente.\n"
 "Intente reactivarlo de nuevo."
+
+#: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:1
+msgid "Nanny parental control admin console"
+msgstr "Consola de administración de Nanny"
+
+#: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:2
+msgid "Parental Control"
+msgstr "Control Parental"
+
+#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:1
+msgid "BlackLists"
+msgstr "Listas negras"
+
+#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:2
+msgid "Nanny parental control blacklists manager"
+msgstr "Gestor de listas negras del control parental Nanny"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
 msgid "Configure"
