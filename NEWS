@@ -1,4 +1,29 @@
 ==============
+Version 2.29.2
+==============
+
+New features
+-----------------------------------
+* New blacklists manager
+* New blacklist format regex based (nbl)
+* Add nanny manual
+* Fix many i18n issues
+* Some bugs fixed
+
+Translations
+-----------------------------------
+- cs, courtesy of Marek Černocký 
+- de, courtesy of Wolfgang Stoeggl 
+- es, courtesy of Roberto Majadas 
+- fr, courtesy of Claude Paroz 
+- nds, courtesy of Nils-Christoph Fiedler 
+- pt_BR, courtesy of Enrico Nicoletto 
+- sl, courtesy of Matej Urbančič 
+- sv, courtesy of Daniel Nylander 
+- vi, courtesy of Nguyễn Thái Ngọc Duy
+
+
+==============
 Version 2.29.1
 ==============
 

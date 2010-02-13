@@ -27,6 +27,7 @@ Gnome-Nanny currently requires:
    - glade
    - twisted
    - python-imaging
+   - python-hachoir-regex >= 1.0
    - gtop
    - pango
    - cairo
