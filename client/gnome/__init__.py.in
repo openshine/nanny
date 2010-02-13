@@ -23,15 +23,14 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 # USA
 
-
 import os
-import gtk
+import gettext
+import __builtin__
 
-share_files_dir= os.path.join("@prefix@","share/","nanny/client/gnome/admin/")
-ui_files_dir= os.path.join(share_files_dir,"ui/")
-icons_files_dir= os.path.join(share_files_dir,"icons/")
+__builtin__._ = gettext.gettext
 
-from AdminConsole import AdminConsole
-from ConfigureProxyDialog import ConfigureProxyDialog
-from ScheduleCalendar import ScheduleCalendar
-from BlacklistManager import BlacklistManager
+GETTEXT_DOMAIN = 'nanny'
+locale_dir = os.path.join("@prefix@", "share/" ,"locale/")
+
+gettext.bindtextdomain(GETTEXT_DOMAIN, locale_dir)
+gettext.textdomain(GETTEXT_DOMAIN)

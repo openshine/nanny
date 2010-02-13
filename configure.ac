@@ -199,6 +199,7 @@ client/common/icons/48x48/Makefile
 client/common/icons/256x256/Makefile
 client/common/icons/scalable/Makefile
 client/gnome/Makefile
+client/gnome/__init__.py
 client/gnome/systray/Makefile
 client/gnome/systray/src/Makefile
 client/gnome/systray/src/__init__.py
