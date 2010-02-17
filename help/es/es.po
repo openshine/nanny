@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nanny.help.master\n"
 "POT-Creation-Date: 2010-02-16 16:12+0000\n"
-"PO-Revision-Date: 2010-02-16 18:37+0100\n"
+"PO-Revision-Date: 2010-02-17 21:24+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -157,14 +157,17 @@ msgid ""
 "The Nanny application enables you to control what system users do. Nanny "
 "provides the following features:"
 msgstr ""
+"La aplicación Nanny le permite controlar lo que hacen los usuarios. Nanny "
+"proporciona las siguientes características:"
 
 #: C/nanny.xml:106(para)
 msgid "Control which websites the user can and can't access."
-msgstr ""
+msgstr "Controlar a qué páginas web puede acceder el usuario y a cuáles no."
 
 #: C/nanny.xml:109(para)
 msgid "At what times of the week and for how long a user can:"
 msgstr ""
+"Durante qué horas de la semana y durante cuánto tiempo el usuario puede:"
 
 #: C/nanny.xml:112(para)
 msgid "Be using the computer"
@@ -176,11 +179,11 @@ msgstr "Navegar por la web"
 
 #: C/nanny.xml:118(para)
 msgid "Email"
-msgstr "Correo-e"
+msgstr "Enviar correos electróncios"
 
 #: C/nanny.xml:121(para)
 msgid "Instant Message"
-msgstr "Mensajería instantánea"
+msgstr "Usar la mensajería instantánea"
 
 #: C/nanny.xml:130(title)
 msgid "Getting Started"
@@ -195,12 +198,17 @@ msgid ""
 "Notice that after installation the GNOME Nanny daemon will be running in the "
 "background at all times. This is so to always control system users."
 msgstr ""
+"Note que después de la instalación el demonio de GNOME Nanny se ejecutará de "
+"fondo todo el tiempo. Esto es para controlar siempre a los usuarios del "
+"sistema."
 
 #: C/nanny.xml:136(para)
 msgid ""
 "To configure GNOME Nanny and decide which users to watch and what they can "
 "and can't do, you need to run the GNOME Nanny administration console."
 msgstr ""
+"Para configurar GNOME Nanny y decidir qué usuarios pueden ver y qué no "
+"pueden hacer, debe ejecutar la consola de administración de GNOME Nanny."
 
 #: C/nanny.xml:141(title)
 msgid "To Start GNOME Nanny administration console"
