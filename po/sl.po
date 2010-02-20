@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nanny master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nanny&component=general\n"
-"POT-Creation-Date: 2010-02-05 16:15+0000\n"
-"PO-Revision-Date: 2010-02-17 10:30+0100\n"
-"Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
+"POT-Creation-Date: 2010-02-17 20:25+0000\n"
+"PO-Revision-Date: 2010-02-20 21:02+0100\n"
+"Last-Translator: Andrej Žnidaršič <andrej.znidarsic@gmail.com>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -682,8 +682,8 @@ msgstr "Samo strani spletne pošte"
 msgid "whitelist"
 msgstr "beli seznam"
 
-#: ../client/common/src/Categories.py:178
-#, python-format
+#: ../client/common/src/Categories.py:180
+#, no-python-format
 msgid "Contains site specifically 100% suitable for kids"
 msgstr "Vsebuje strani 100% sprejemljive za otroke"
 
@@ -699,84 +699,104 @@ msgstr ""
 "Ozadnji program Nanny ni dejaven ali ne deluje pravilno.\n"
 "Poskusite ga ponovno zagnati."
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:1
+#: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:1
+msgid "Nanny parental control admin console"
+msgstr "Skrbniška konzola starševskega nadzora Nanny"
+
+#: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:2
+msgid "Parental Control"
+msgstr "Starševski nadzor"
+
+#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:1
+msgid "BlackLists"
+msgstr "Črni seznami"
+
+#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:2
+msgid "Nanny parental control blacklists manager"
+msgstr "Upravljalnik črnih seznamov starševskega nadzora Nanny"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
 msgid "Configure"
 msgstr "Nastavi"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:2
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:2
 msgid "Instant messaging"
 msgstr "Trenutno sporočanje"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:3
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:3
 msgid "Mail client"
 msgstr "Poštni odjemalec"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:4
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
 msgid "PC use time"
 msgstr "Čas uporabe računalnika"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:5
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
 msgid "Use the computer"
 msgstr "Uporaba računalnika"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:6
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
 msgid "Use the instant messaging"
 msgstr "Uporaba trenutnega sporočanja"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:7
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
 msgid "Use the mail client"
 msgstr "Uporaba poštnega odjemalca"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:8
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
 msgid "Use the web browser"
 msgstr "Uporaba spletnega brskalnika"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:9
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
 msgid "Use web content filtering"
 msgstr "Uporaba filtriranja spletne vsebine"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:10
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
 #: ../client/gnome/systray/src/SystrayNanny.py:46
 msgid "Web browser"
 msgstr "Spletni brskalnik"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:11
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
 msgid "hours a day"
 msgstr "ur na dan"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:1
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:1
 msgid "<span color=\"red\">All the fields are mandatory. Please fill all of them.</span>"
 msgstr "<span color=\"red\">Vsa polja so obvezna. Izpolnite jih.</span>"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:2
-#: ../client/gnome/admin/data/glade/nbm_pbl_edit_dialog.glade.h:1
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:2
+#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:1
 msgid "Description:"
 msgstr "Opis:"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:3
-#: ../client/gnome/admin/data/glade/nbm_pbl_edit_dialog.glade.h:2
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:3
+#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:2
 msgid "Name:"
 msgstr "Ime:"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:4
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:4
 msgid "URL:"
 msgstr "URL:"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_dialog.glade.h:1
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:1
 msgid "Allowed sites"
 msgstr "Dovoljene strani"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_dialog.glade.h:2
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:2
 msgid "Blacklists"
 msgstr "Črni seznami"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_dialog.glade.h:3
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:3
 msgid "Forbidden sites"
 msgstr "Prepovedane strani"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_dialog.glade.h:4
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
 msgid "Here you can apply the available blacklists for the selected user. If you want to add new blacklists please go to System > Administration > Blacklists."
 msgstr "Tukaj je mogoče uporabiti črne sezname za izbranega uporabnika. Za dodajanje novih črnih seznamov pojdite na Sistem > Skrbništvo > Črni seznami."
+
+#: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
+msgid "Import..."
+msgstr "Uvoz ..."
 
 #: ../client/gnome/admin/src/ScheduleCalendar.py:292
 msgid "Monday"
