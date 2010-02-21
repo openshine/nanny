@@ -27,8 +27,6 @@ from twisted.internet import reactor
 from twisted.web import proxy, resource, server
 from twisted.enterprise import adbapi
 from twisted.application import internet, service
-from twisted.python.lockfile import FilesystemLock, isLocked
-from twisted.internet.defer import DeferredFilesystemLock 
 import urlparse
 from urllib import quote as urlquote
 
