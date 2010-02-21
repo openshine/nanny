@@ -348,7 +348,10 @@ class AdminConsole:
             self.im_hoursday_spinbutton.set_sensitive (False)
 
     def __on_help_button_clicked (self, widget, data=None):
-       	gtk.show_uri(None , "ghelp:nanny", gtk.get_current_event_time()) 
+        try:
+            gtk.show_uri(None , "ghelp:nanny", gtk.get_current_event_time())
+        except:
+            os.system("xdg-open ghelp:nanny")
 
     def __on_close_button_clicked (self, widget, data=None):
         gtk.main_quit()
