@@ -1,3 +1,23 @@
+Version 2.29.3
+==============
+
+Bugfixes
+-----------------------------------
+* Fix gettext problem with systray
+* Fix #609925 bug
+
+Translations
+-----------------------------------
+- cs, courtesy of Marek Černocký
+- de, courtesy of Wolfgang Stoeggl
+- es, courtesy of Jorge González & Roberto Majadas
+- fr, courtesy of Claude Paroz
+- nds, courtesy of Nils-Christoph Fiedler
+- pt_BR, courtesy of Enrico Nicoletto
+- sl, courtesy of Matej Urbančič & Andrej Žnidaršič
+- sv, courtesy of Daniel Nylander
+- vi, courtesy of Nguyễn Thái Ngọc Duy
+
 ==============
 Version 2.29.2
 ==============
