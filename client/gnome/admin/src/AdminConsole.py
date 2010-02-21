@@ -351,7 +351,7 @@ class AdminConsole:
         try:
             gtk.show_uri(None , "ghelp:nanny", gtk.get_current_event_time())
         except:
-            os.system("xdg-open ghelp:nanny")
+            os.system("yelp ghelp:nanny")
 
     def __on_close_button_clicked (self, widget, data=None):
         gtk.main_quit()
