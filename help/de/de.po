@@ -1,0 +1,409 @@
+# German translation for nanny.
+# Copyright (C) 2010 nanny's COPYRIGHT HOLDER
+# This file is distributed under the same license as the nanny package.
+# Mario Blättermann <mariobl@gnome.org>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: nanny master\n"
+"POT-Creation-Date: 2010-02-22 14:02+0000\n"
+"PO-Revision-Date: 2010-02-23 18:48+0100\n"
+"Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
+"Language-Team: German <gnome-de@gnome.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/nanny.xml:180(None)
+msgid ""
+"@@image: 'figures/nanny-session.png'; md5=6af68f555e214ab5b56e0aa1ec8c043d"
+msgstr ""
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/nanny.xml:210(None)
+msgid ""
+"@@image: 'figures/nanny-add-forbidden-site.png'; "
+"md5=a505de424850262bf01218efa1594120"
+msgstr ""
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/nanny.xml:224(None)
+msgid ""
+"@@image: 'figures/nanny-web-content-filter-blacklists.png'; "
+"md5=07ddbc0ad4a3c0d4f109dd4841238e72"
+msgstr ""
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/nanny.xml:243(None)
+msgid ""
+"@@image: 'figures/nanny-select-file-to-import.png'; "
+"md5=a01c0376799f435288fb245fde76040d"
+msgstr ""
+
+#: C/nanny.xml:19(title)
+msgid "Nanny Manual v0.1"
+msgstr "Nanny-Handbuch v0.1"
+
+#: C/nanny.xml:22(year) C/nanny.xml:28(year)
+msgid "2009"
+msgstr "2009"
+
+#: C/nanny.xml:23(holder)
+msgid "Roberto Majadas"
+msgstr "Roberto Majadas"
+
+#: C/nanny.xml:24(holder)
+msgid "Luis de Bethencourt"
+msgstr "Luis de Bethencourt"
+
+#: C/nanny.xml:25(holder)
+msgid "Cesar Garcia"
+msgstr "Cesar Garcia"
+
+#: C/nanny.xml:29(holder) C/nanny.xml:43(publishername)
+msgid "openshine.com"
+msgstr "openshine.com"
+
+#: C/nanny.xml:32(para)
+msgid ""
+"<application>Nanny</application> enables you to control what system users do."
+msgstr ""
+"<application>Nanny</application> ermöglicht Ihnen die Kontrolle darüber, was "
+"die Benutzer des Systems tun."
+
+#: C/nanny.xml:50(firstname)
+msgid "Luis"
+msgstr "Luis"
+
+#: C/nanny.xml:51(surname)
+msgid "de Bethencourt"
+msgstr "de Bethencourt"
+
+#: C/nanny.xml:53(orgname) C/nanny.xml:74(para)
+msgid "GNOME Documentation Project"
+msgstr "GNOME-Dokumentationsprojekt"
+
+#: C/nanny.xml:57(firstname)
+msgid "Roberto"
+msgstr "Roberto"
+
+#: C/nanny.xml:58(surname)
+msgid "Majadas"
+msgstr "Majadas"
+
+#: C/nanny.xml:60(orgname)
+msgid "GNOME Documentation project"
+msgstr "GNOME-Dokumentationsprojekt"
+
+#: C/nanny.xml:62(contrib)
+msgid "Update documentation"
+msgstr "Aktualisierung der Dokumentation"
+
+#: C/nanny.xml:68(revnumber)
+msgid "Nanny Manual V1.0"
+msgstr "Nanny-Handbuch V1.0"
+
+#: C/nanny.xml:69(date)
+msgid "January 2010"
+msgstr "Januar 2010"
+
+#: C/nanny.xml:71(para)
+msgid "Luis de Bethencourt <email>luisbg@openshine.com</email>"
+msgstr "Luis de Bethencourt <email>luisbg@openshine.com</email>"
+
+#: C/nanny.xml:79(releaseinfo)
+msgid "This manual describes version 2.29.2 of GNOME Nanny."
+msgstr "Dieses Handbuch beschreibt Version 2.29.2 von GNOME Nanny."
+
+#: C/nanny.xml:82(title)
+msgid "Feedback"
+msgstr "Rückmeldungen"
+
+#: C/nanny.xml:83(para)
+msgid ""
+"To report a bug or make a suggestion regarding the Nanny application or this "
+"manual, follow the directions in the <ulink url=\"ghelp:gnome-feedback\" type="
+"\"help\">GNOME Feedback Page</ulink>."
+msgstr ""
+"Wenn Sie Fehler finden oder Vorschläge zur Anwendung <application>Nanny</"
+"application> oder zu diesem Handbuch haben, folgen Sie den Anweisungen in der "
+"<ulink url=\"ghelp:gnome-feedback\" type=\"help\">GNOME-Seite für "
+"Rückmeldungen</ulink>."
+
+#: C/nanny.xml:91(primary) C/nanny.xml:94(primary)
+msgid "GNOME Nanny"
+msgstr "GNOME Nanny"
+
+#: C/nanny.xml:101(title)
+msgid "Introduction"
+msgstr "Einführung"
+
+#: C/nanny.xml:102(para)
+msgid ""
+"The Nanny application enables you to control what system users do. Nanny "
+"provides the following features:"
+msgstr ""
+"Nanny ermöglicht Ihnen die Kontrolle darüber, was die Benutzer des Systems "
+"tun. Nanny stellt die folgenden Funktionsmerkmale bereit:"
+
+#: C/nanny.xml:106(para)
+msgid "Control which websites the user can and can't access."
+msgstr ""
+
+#: C/nanny.xml:109(para)
+msgid "At what times of the week and for how long a user can:"
+msgstr ""
+
+#: C/nanny.xml:112(para)
+msgid "Be using the computer"
+msgstr ""
+
+#: C/nanny.xml:115(para)
+msgid "Browse the web"
+msgstr ""
+
+#: C/nanny.xml:118(para)
+msgid "Email"
+msgstr ""
+
+#: C/nanny.xml:121(para)
+msgid "Instant Message"
+msgstr ""
+
+#: C/nanny.xml:130(title)
+msgid "Getting Started"
+msgstr "Erste Schritte"
+
+#: C/nanny.xml:133(title)
+msgid "Running Nanny"
+msgstr ""
+
+#: C/nanny.xml:134(para)
+msgid ""
+"Notice that after installation the GNOME Nanny daemon will be running in the "
+"background at all times. This is so to always control system users."
+msgstr ""
+
+#: C/nanny.xml:136(para)
+msgid ""
+"To configure GNOME Nanny and decide which users to watch and what they can "
+"and can't do, you need to run the GNOME Nanny administration console."
+msgstr ""
+
+#: C/nanny.xml:141(title)
+msgid "To Start GNOME Nanny administration console"
+msgstr "Starten der GNOME Nanny-Verwaltungskonsole"
+
+#: C/nanny.xml:142(para)
+msgid ""
+"You can start the <application>GNOME Nanny administration console</"
+"application> in the following ways:"
+msgstr ""
+"Sie können die <application>GNOME Nanny-Verwaltungskonsole</application> auf "
+"folgende Weise starten:"
+
+#: C/nanny.xml:146(term)
+msgid "<guimenu>System</guimenu> menu"
+msgstr "Menü <guimenu>System</guimenu>"
+
+#: C/nanny.xml:148(para)
+msgid ""
+"Choose <menuchoice><guisubmenu>System</guisubmenu><guisubmenu>Administration</"
+"guisubmenu><guimenuitem>Parental Control</guimenuitem></menuchoice>."
+msgstr ""
+
+#: C/nanny.xml:162(title)
+msgid "Usage"
+msgstr "Benutzung"
+
+#: C/nanny.xml:163(para)
+msgid ""
+"You can use the Nanny application to control the following per computer user:"
+msgstr ""
+
+#: C/nanny.xml:169(title)
+msgid "Control time of computer usage"
+msgstr ""
+
+#: C/nanny.xml:170(para)
+msgid ""
+"This is is the GNOME Nanny Administration Console. The window is divided into "
+"two sections, users and actions. The users are listed in the column of the "
+"left, and the actions are divided in the tabs at the top of the window."
+msgstr ""
+
+#: C/nanny.xml:176(title)
+msgid "Administration Console"
+msgstr "Verwaltungskonsole"
+
+#: C/nanny.xml:185(para)
+msgid ""
+"This tab controls the maximum number of hours a person can use the computer "
+"each day and at what times."
+msgstr ""
+
+#: C/nanny.xml:186(para)
+msgid ""
+"Change the number at the top to control for how long a person can use the "
+"computer. This is a total number, so the user can use this time in a non-stop "
+"session or break it in several."
+msgstr ""
+
+#: C/nanny.xml:187(para)
+msgid ""
+"In the weekly time grid red means blocked time, and green means permitted "
+"time."
+msgstr ""
+
+#: C/nanny.xml:188(para)
+msgid ""
+"The Apply button needs to be pressed for the changes to be made effective."
+msgstr ""
+
+#: C/nanny.xml:194(title)
+msgid "Control what the person can do."
+msgstr ""
+
+#: C/nanny.xml:195(para)
+msgid ""
+"Application use can be controlled in the same way, as defined in <xref "
+"linkend=\"nanny-time-usage\"/>. Each tab controls a different application."
+msgstr ""
+
+#: C/nanny.xml:197(para)
+msgid ""
+"Notice, each tab has a different 'maximum hours a day' option and weekly time "
+"grid. Have in mind no applications will be used during the blocked times of "
+"PC usage."
+msgstr ""
+
+#: C/nanny.xml:198(para)
+msgid ""
+"In the Web Browser action tab there is a 'Use web content filtering' button, "
+"this will enable the control of web filtering, meaning which sites can and "
+"which can't be browed by the user. <xref linkend=\"nanny-web-access\"/> "
+"explains how to do this."
+msgstr ""
+
+#: C/nanny.xml:204(title)
+msgid "Control web access."
+msgstr ""
+
+#: C/nanny.xml:206(title)
+msgid "Web filtering, Forbidden sites"
+msgstr ""
+
+#: C/nanny.xml:215(para)
+msgid ""
+"In the Web Content Filter Configuration you can handle which websites are "
+"allowed to be browsed by the user and which websites aren't. To do this you "
+"have three lists divided in tabs: the lists of forbidden sites, allowed "
+"sites, and the blacklists."
+msgstr ""
+
+#: C/nanny.xml:216(para)
+msgid ""
+"Inside the Forbidden sites and Allowed sites tabs you can add elements to the "
+"list, edit them or remove them."
+msgstr ""
+
+#: C/nanny.xml:217(para)
+msgid ""
+"When adding or edditing a website, it is normally best to write the domain in "
+"the URL field. For example: http://www.badweb.com, because then all the "
+"subpages will be blocked (like http://www.badweb.com/asdas/page01/something."
+"hmtl)."
+msgstr ""
+
+#: C/nanny.xml:220(title)
+msgid "Blacklists configuration"
+msgstr ""
+
+#: C/nanny.xml:229(para)
+msgid ""
+"In the Blacklists tab you can apply the available blacklists and the groups "
+"contained in these blacklists."
+msgstr ""
+
+#: C/nanny.xml:230(para)
+msgid ""
+"Importing of the blacklists is explained in <xref linkend=\"nanny-blacklist-"
+"importing\"/>"
+msgstr ""
+
+#: C/nanny.xml:235(title)
+msgid "Blacklist Configuration."
+msgstr ""
+
+#: C/nanny.xml:236(para)
+msgid ""
+"The Blacklist Configuration window is accesible from System &gt; "
+"Administration &gt; Blacklists. This is where you can import, edit and remove "
+"blacklists."
+msgstr ""
+
+#: C/nanny.xml:239(title)
+msgid "Blacklist importing"
+msgstr ""
+
+#: C/nanny.xml:249(para)
+msgid ""
+"Blacklists are imported from files. In this example a blacklist file has been "
+"downloaded from dansguardian and is being imported into GNOME Nanny. It is "
+"recommended to keep the blacklists as up to date as possible."
+msgstr ""
+
+#: C/nanny.xml:255(title)
+msgid "About Nanny"
+msgstr "Info zu Nanny"
+
+#: C/nanny.xml:256(para)
+msgid ""
+"Nanny was written by Roberto Majadas <email>roberto.majadas@openshine.com</"
+"email>, Luis de Bethencourt <email>luisbg@openshine.com</email> and Cesar "
+"Garcia <email>cesar.garcia.tapia@openshine.com</email>. To find more "
+"information about Nanny, please visit the <ulink url=\"http://projects.gnome."
+"org/nanny\" type=\"http\">GNOME Nanny Web page</ulink>."
+msgstr ""
+"Nanny wurde von Roberto Majadas <email>roberto.majadas@openshine.com</email>, "
+"Luis de Bethencourt <email>luisbg@openshine.com</email> und Cesar Garcia "
+"<email>cesar.garcia.tapia@openshine.com</email> geschrieben. Weitere "
+"Informationen über Nanny finden Sie auf der <ulink url=\"http://projects."
+"gnome.org/nanny\" type=\"http\">GNOME Nanny-Webseite</ulink>."
+
+#: C/nanny.xml:261(para)
+msgid ""
+"To report a bug or make a suggestion regarding this application or this "
+"manual, follow the directions in this <ulink url=\"ghelp:gnome-feedback\" "
+"type=\"help\">document</ulink>."
+msgstr ""
+"Um Fehler zu melden oder einen Vorschlag zur dieser Anwendung oder zu diesem "
+"Handbuch zu machen, folgen Sie den Anweisungen in diesem <ulink url=\"ghelp:"
+"gnome-feedback\" type=\"help\">Dokument</ulink>."
+
+#: C/nanny.xml:267(para)
+msgid ""
+"This program is distributed under the terms of the GNU General Public license "
+"as published by the Free Software Foundation; either version 2 of the "
+"License, or (at your option) any later version. A copy of this license can be "
+"found at this <ulink url=\"ghelp:gpl\" type=\"help\">link</ulink>, or in the "
+"file COPYING included with the source code of this program."
+msgstr ""
+"Dieses Programm ist freie Software. Sie können es unter den Bedingungen der "
+"<citetitle>GNU General Public License</citetitle>, wie von der Free Software "
+"Foundation veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß "
+"Version 2 der Lizenz oder (nach Ihrer Option) jeder späteren Version. Eine "
+"Kopie der <citetitle>GNU General Public License</citetitle> finden Sie in der "
+"<ulink url=\"ghelp:gpl\" type=\"help\">GPL</ulink>, oder in der Datei "
+"COPYING, die im Quellcode dieses Programms enthalten ist."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: C/nanny.xml:0(None)
+msgid "translator-credits"
+msgstr "Mario Blättermann <mariobl@gnome.org>, 2010"
