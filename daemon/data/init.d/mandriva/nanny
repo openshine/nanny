@@ -1,0 +1,89 @@
+#!/bin/sh
+#
+# nannydaemon:   Nanny daemon
+#
+# chkconfig: 3457 54 02
+# description:  Nanny daemon is an easy way to control what your kids \
+#               are doing in the computer. \
+#               See http://projects.gnome.org/nanny
+#
+# processname: hald
+# pidfile: /var/run/haldaemon.pid
+### BEGIN INIT INFO
+# Provides: nannydeamon
+# Required-Start: messagebus
+# Required-Stop: messagebus
+# Default-Start: 3 4 5 7
+# Short-Description: Nanny daemon
+# Description: This is a daemon for maintaining information
+#              about parental control.
+#              See http://projects.gnome.org/nanny/
+### END INIT INFO
+#
+
+# so we can rearrange this easily
+processname=NannyDaemon
+servicename=NannyDaemon
+
+NANNY_TAP="/usr/share/nanny/daemon/nanny.tap"
+
+PID_FILE="/var/run/$NAME.pid"
+LOG_FILE="/var/log/nanny.log"
+
+TWISTD=$(which twistd)
+DAEMON="$TWISTD -- --uid root --gid root --pidfile $PID_FILE -r glib2
+--logfile $LOG_FILE -y $NANNY_TAP "
+
+test -e $TWISTD
+test -e $NANNY_TAP
+
+RETVAL=0
+
+start() {
+    gprintf "Starting Nanny daemon: "
+    daemon --check $DAEMON $processname
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch /var/lock/subsys/$servicename
+}
+
+stop() {
+    gprintf "Stopping Nanny daemon: "
+
+    killproc $servicename -TERM
+    RETVAL=$?
+    echo
+    if [ $RETVAL -eq 0 ]; then
+        rm -f /var/lock/subsys/$servicename
+    fi
+}
+
+# See how we were called.
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $processname
+        RETVAL=$?
+        ;;
+    restart)
+        stop
+	sleep 3
+        start
+        ;;
+    condrestart)
+        if [ -f /var/lock/subsys/$servicename ]; then
+            stop
+	    sleep 3
+            start
+        fi
+        ;;
+    *)
+        gprintf "Usage: %s {start|stop|status|restart|condrestart}\n" "$0"
+        ;;
+esac
+exit $RETVAL

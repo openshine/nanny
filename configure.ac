@@ -19,7 +19,7 @@ AM_DISABLE_STATIC
 AC_PROG_LIBTOOL
 
 AC_ARG_WITH(init-scripts,
-  [  --with-init-scripts=[redhat/debian/suse/None]  Install init.d scripts [default=None]],,
+  [  --with-init-scripts=[redhat/debian/suse/mandriva/None]  Install init.d scripts [default=None]],,
   with_init_scripts=None)
 
 GNOME_DOC_INIT
@@ -186,10 +186,18 @@ else
    AC_MSG_RESULT(not found)
 fi
 
+AC_MSG_CHECKING(Checking Mandriva/CaixaMagica)
+if test -f /etc/mandriva-release || test -f $EXPANDED_SYSCONFDIR/mandriva-release ; then
+   AC_MSG_RESULT(found)
+   operative_system=mandriva
+else
+   AC_MSG_RESULT(not found)
+fi
+
 AM_CONDITIONAL(NANNY_INIT_SCRIPTS_RED_HAT, test x$with_init_scripts = xredhat)
 AM_CONDITIONAL(NANNY_INIT_SCRIPTS_SUSE, test x$with_init_scripts = xsuse)
 AM_CONDITIONAL(NANNY_INIT_SCRIPTS_DEBIAN, test x$with_init_scripts = xdebian)
-
+AM_CONDITIONAL(NANNY_INIT_SCRIPTS_MANDRIVA, test x$with_init_scripts = xmandriva)
 
 dnl *******************************
 dnl Internationalization
@@ -239,6 +247,7 @@ daemon/data/init.d/Makefile
 daemon/data/init.d/debian/Makefile
 daemon/data/init.d/redhat/Makefile
 daemon/data/init.d/suse/Makefile
+daemon/data/init.d/mandriva/Makefile
 daemon/src/Makefile
 daemon/src/proxy/Makefile
 help/Makefile

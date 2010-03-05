@@ -10,7 +10,7 @@ Compile in developer mode
 make
 make install or sudo make install
 
-You can change debian for redhat or suse or another one distro supported.
+You can change debian,redhat, suse, mandriva or another one distro supported.
 If you don't use the init-scripts flag, the init scripts will not be installed.
 
 Gnome-Nanny currently requires:
