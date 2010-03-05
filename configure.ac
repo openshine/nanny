@@ -122,14 +122,15 @@ except ImportError:
   sys.exit(1)
 sys.exit(0)
 "
-   
+
 if $PYTHON -c "$prog" 1>&AC_FD_CC 2>&AC_FD_CC
 then
   AC_MSG_RESULT(found)
 else
   AC_MSG_RESULT(not found)
-  AC_MSG_ERROR([You need to have python-hachoir-regex installed])
 fi
+
+AM_CONDITIONAL(HAS_HACHOIR_REGEX, $PYTHON -c "$prog" 1>&AC_FD_CC 2>&AC_FD_CC)
 
 dnl check for python-gtop
 dnl -----------------------------------------

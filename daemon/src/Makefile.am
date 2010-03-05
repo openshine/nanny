@@ -11,8 +11,12 @@ corelib_PYTHON =	 __init__.py 			\
 			LinuxFiltering.py		\
 			LinuxWebContentFiltering.py 	\
 			LinuxUsersManager.py		\
-			LinuxSessionFiltering.py    	\
-			DansGuardianImporter.py
+			LinuxSessionFiltering.py
+
+if HAS_HACHOIR_REGEX
+dgimporterdir = $(pythondir)/nanny/daemon
+dgimporter_PYTHON = DansGuardianImporter.py
+endif
 
 
 INCLUDES =      -I$(top_srcdir)                 \
