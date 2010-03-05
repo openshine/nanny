@@ -98,9 +98,29 @@ class DBusClient(gobject.GObject):
 
             self.nanny_notification.connect_to_signal ('UserNotification', self.__on_user_notification_cb)
 
+            self.dbus.watch_name_owner(NANNY_URI, self.__name_owner_changed_cb)
+
             return True
         except:
             return False
+
+    def __name_owner_changed_cb(self, owner):
+        if owner == None or owner == "" :
+            print "Nanny is not in the house !"
+        else:
+            print "Reconnecting to new nanny server instance"
+            self.nanny_obj = self.dbus.get_object (NANNY_URI,
+                                                   NANNY_PATH)
+            self.nanny_admin = dbus.Interface(self.nanny_obj,
+                                              NANNY_URI)
+            self.nanny_wcf = dbus.Interface(self.nanny_obj,
+                                              NANNY_WCF)
+
+            self.nanny_notification = dbus.Interface(self.nanny_obj,
+                                              NANNY_NOTIFICATION_URI)
+
+            self.nanny_notification.connect_to_signal ('UserNotification', self.__on_user_notification_cb)
+
 
     def list_users(self):
         return self.nanny_admin.ListUsers ()
