@@ -40,8 +40,8 @@ ngettext = gettext.ngettext
 class SystrayNanny(gtk.StatusIcon):
     def __init__(self):
         #atributes
-        self.times_left = { 0:[-1, False], 1:[-1, False], 2:[-1, False] , 3:[-1, False] }#cuanto falta
-        self.times_show = { 0:-1, 1:-1, 2:-1, 3:-1 }#cuanto quedaba cuando se mostro
+        self.times_left = { 0:[-1, False], 1:[-1, False], 2:[-1, False] , 3:[-1, False] }
+        self.times_show = { 0:-1, 1:-1, 2:-1, 3:-1 }
         self.app_names = { 0: _("Session"),
                            1: _("Web browser"),
                            2: _("e-Mail"),
@@ -53,7 +53,7 @@ class SystrayNanny(gtk.StatusIcon):
         gtk.StatusIcon.__init__ (self)
         icon_path = os.path.join (nanny.client.gnome.systray.icons_files_dir, "24x24/apps", "nanny.png")
         self.set_from_file(icon_path)
-        self.set_visible(True)
+        self.set_visible(False)
         self.set_tooltip("")
 
         #dbus
@@ -64,11 +64,14 @@ class SystrayNanny(gtk.StatusIcon):
         gobject.timeout_add(3000, self.__handlerTimer )
 
     def __handlerUserNotification(self, dbus, block_status, user_id, app_id, next_change, available_time):
+        print "handler time"
         uid= str(os.getuid())
         if uid==user_id:
             self.times_left[app_id] = [next_change, block_status]
 
     def __handlerTimer(self):
+        print "timer handler"
+
         mssg=""
         mssg_ready=False
         for app_id in self.times_left:
@@ -99,7 +102,15 @@ class SystrayNanny(gtk.StatusIcon):
 
         if mssg_ready:
             self.__showNotification( mssg )
+
         self.set_tooltip( mssg )
+        if len(mssg) != 0 :
+            print "Set visible True"
+            self.set_visible(True)
+        else:
+            print "Set visible False"
+            self.set_visible(False)
+
         return True
 
     def __format_time (self, minutes):
