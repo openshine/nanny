@@ -64,14 +64,11 @@ class SystrayNanny(gtk.StatusIcon):
         gobject.timeout_add(3000, self.__handlerTimer )
 
     def __handlerUserNotification(self, dbus, block_status, user_id, app_id, next_change, available_time):
-        print "handler time"
         uid= str(os.getuid())
         if uid==user_id:
             self.times_left[app_id] = [next_change, block_status]
 
     def __handlerTimer(self):
-        print "timer handler"
-
         mssg=""
         mssg_ready=False
         for app_id in self.times_left:
@@ -105,10 +102,8 @@ class SystrayNanny(gtk.StatusIcon):
 
         self.set_tooltip( mssg )
         if len(mssg) != 0 :
-            print "Set visible True"
             self.set_visible(True)
         else:
-            print "Set visible False"
             self.set_visible(False)
 
         return True

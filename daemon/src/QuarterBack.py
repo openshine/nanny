@@ -292,6 +292,7 @@ class QuarterBack(gobject.GObject) :
         self.blocks[user_id][app_id] = ret
         self.__save()
         self.emit("update-blocks", self.blocks)
+        self.__refresh_info()
 
     def get_blocks(self, user_id, app_id):
         if not self.blocks.has_key(user_id) :
