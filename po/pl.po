@@ -1,0 +1,1049 @@
+# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Aviary.pl
+# Jeśli masz jakiekolwiek uwagi odnoszące się do tłumaczenia lub chcesz
+# pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas:
+# gnomepl@aviary.pl
+# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+msgid ""
+msgstr ""
+"Project-Id-Version: nanny\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-03-09 11:55+0100\n"
+"PO-Revision-Date: 2010-03-09 11:54+0100\n"
+"Last-Translator: Tomasz Dominikowski <dominikowski@gmail.com>\n"
+"Language-Team: Polish <gnomepl@aviary.pl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Language: Polish\n"
+"X-Poedit-Country: Poland\n"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:32
+msgid "abortion"
+msgstr "aborcja"
+
+#: ../client/common/src/Categories.py:32
+msgid "Abortion information excluding when related to religion"
+msgstr "Informacje o aborcji, wykluczając te związane z religią"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:34
+msgid "ads"
+msgstr "reklamy"
+
+#: ../client/common/src/Categories.py:34
+msgid "Advert servers and banned URLs"
+msgstr "Serwery reklam i zabronione adresu URL"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:36
+msgid "adult"
+msgstr "dla-dorosłych"
+
+#: ../client/common/src/Categories.py:36
+msgid "Sites containing adult material such as swearing but not porn"
+msgstr ""
+"Witryny zawierające materiały dla dorosłych, takie jak przekleństwa, ale nie "
+"pornografię"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:38
+msgid "aggressive"
+msgstr "agresja"
+
+#: ../client/common/src/Categories.py:38
+msgid "Similar to violence but more promoting than depicting"
+msgstr "Podobne do brutalności, ale bardziej promujące niż opisujące"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:40
+msgid "antispyware"
+msgstr "antyspyware"
+
+#: ../client/common/src/Categories.py:40
+msgid "Sites that remove spyware"
+msgstr "Strony usuwające oprogramowanie szpiegowskie"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:42
+msgid "artnudes"
+msgstr "nagość-artystyczna"
+
+#: ../client/common/src/Categories.py:42
+msgid "Art sites containing artistic nudity"
+msgstr "Strony artystyczne zawierające nagość artystyczną"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:44
+msgid "astrology"
+msgstr "astrologia"
+
+#: ../client/common/src/Categories.py:44
+msgid "Astrology websites"
+msgstr "Witryny astrologiczne"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:46
+msgid "audio-video"
+msgstr "Audio-wideo"
+
+#: ../client/common/src/Categories.py:46
+msgid "Sites with audio or video downloads"
+msgstr ""
+"Witryny umożliwiające pobieranie materiałów dźwiękowych lub nagrań wideo"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:48
+msgid "banking"
+msgstr "banki"
+
+#: ../client/common/src/Categories.py:48
+msgid "Banking websites"
+msgstr "Witryny bankowości"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:50
+msgid "beerliquorinfo"
+msgstr "alkohol"
+
+#: ../client/common/src/Categories.py:50
+msgid "Sites with information only on beer or liquors"
+msgstr "Witryny z informacjami o piwach i innych alkoholach"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:52
+msgid "beerliquorsale"
+msgstr "alkohol-sprzedaż"
+
+#: ../client/common/src/Categories.py:52
+msgid "Sites with beer or liquors for sale"
+msgstr "Witryny sprzedające piwo lub inne alkohole"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:54
+msgid "blog"
+msgstr "blogi"
+
+#: ../client/common/src/Categories.py:54
+msgid "Journal/Diary websites"
+msgstr "Witryny dzienników/pamiętników"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:56
+msgid "cellphones"
+msgstr "telefony-komórkowe"
+
+#: ../client/common/src/Categories.py:56
+msgid "stuff for mobile/cell phones"
+msgstr "Rzeczy dla telefonów komórkowych"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:58
+msgid "chat"
+msgstr "chaty"
+
+#: ../client/common/src/Categories.py:58
+msgid "Sites with chat rooms etc"
+msgstr "Witryny z pokojami rozmów itp."
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:60
+msgid "childcare"
+msgstr "opieka-nad-dziećmi"
+
+#: ../client/common/src/Categories.py:60
+msgid "Sites to do with childcare"
+msgstr "Witryny dotyczące opieki nad dziećmi"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:62
+msgid "cleaning"
+msgstr "sprzątanie"
+
+#: ../client/common/src/Categories.py:62
+msgid "Sites to do with cleaning"
+msgstr "Witryny dotyczące sprzątania"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:64
+msgid "clothing"
+msgstr "ubrania"
+
+#: ../client/common/src/Categories.py:64
+msgid "Sites about and selling clothing"
+msgstr "Witryny o ubraniach i je sprzedające"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:66
+msgid "contraception"
+msgstr "antykoncepcja"
+
+#: ../client/common/src/Categories.py:66
+msgid "Information about contraception"
+msgstr "Informacje o antykoncepcji"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:68
+msgid "culnary"
+msgstr "kulinaria"
+
+#: ../client/common/src/Categories.py:68
+msgid "Sites about cooking et al"
+msgstr "Witryny o gotowaniu itp."
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:70
+msgid "dating"
+msgstr "randki"
+
+#: ../client/common/src/Categories.py:70
+msgid "Sites about dating"
+msgstr "Witryny o randkach"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:72
+msgid "desktopsillies"
+msgstr "gadżety-na-pulpit"
+
+#: ../client/common/src/Categories.py:72
+msgid ""
+"Sites containing screen savers, backgrounds, cursers, pointers. desktop "
+"themes and similar timewasting and potentially dangerous content"
+msgstr ""
+"Witryny zawierające wygaszacze ekranu, tła, kursory, motywy pulpitu i tym "
+"podobne marnujące czas i potencjalnie niebezpieczne gadżety"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:74
+msgid "dialers"
+msgstr "dialery"
+
+#: ../client/common/src/Categories.py:74
+msgid "Sites with dialers such as those for pornography or trojans"
+msgstr "Witryny z dialerami, takimi jak do pornografii lub trojany"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:76
+msgid "drugs"
+msgstr "narkotyki"
+
+#: ../client/common/src/Categories.py:76
+msgid "Drug related sites"
+msgstr "Witryny związane z narkotykami"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:78
+msgid "ecommerce"
+msgstr "e-commerce"
+
+#: ../client/common/src/Categories.py:78
+msgid "Sites that provide online shopping"
+msgstr "Witryny umożliwiające dokonywanie zakupów online"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:80
+msgid "entertainment"
+msgstr "rozrywka"
+
+#: ../client/common/src/Categories.py:80
+msgid "Sites that promote movies, books, magazine, humor"
+msgstr "Witryny promujące filmy, książki, magazyny, humor"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:82
+msgid "filehosting"
+msgstr "hostowanie-plików"
+
+#: ../client/common/src/Categories.py:82
+msgid "Sites to do with filehosting"
+msgstr "Witryny związane z hostowaniem plików"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:84
+msgid "frencheducation"
+msgstr "francuska-edukacja"
+
+#: ../client/common/src/Categories.py:84
+msgid "Sites to do with french education"
+msgstr "Witryny związane z francuską edukacją"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:86
+msgid "gambling"
+msgstr "hazard"
+
+#: ../client/common/src/Categories.py:86
+msgid "Gambling sites including stocks and shares"
+msgstr "Witryny hazardowe, w tym giełdy"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:88
+msgid "games"
+msgstr "gry"
+
+#: ../client/common/src/Categories.py:88
+msgid "Game related sites"
+msgstr "Witryny związane z grami"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:90
+msgid "gardening"
+msgstr "ogrodnictwo"
+
+#: ../client/common/src/Categories.py:90
+msgid "Gardening sites"
+msgstr "Witryny ogrodnicze"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:92
+msgid "government"
+msgstr "rząd"
+
+#: ../client/common/src/Categories.py:92
+msgid "Military and schools etc"
+msgstr "Militaria, szkoły itp."
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:94
+msgid "guns"
+msgstr "broń"
+
+#: ../client/common/src/Categories.py:94
+msgid "Sites with guns"
+msgstr "Witryny związane z bronią"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:96
+msgid "hacking"
+msgstr "hacking"
+
+#: ../client/common/src/Categories.py:96
+msgid "Hacking/cracking information"
+msgstr "Informacje o hackerstwie/crackingu"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:98
+msgid "homerepair"
+msgstr "naprawy-domowe"
+
+#: ../client/common/src/Categories.py:98
+msgid "Sites about home repair"
+msgstr "Witryny o dokonywaniu napraw domowych"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:100
+msgid "hygiene"
+msgstr "higiena"
+
+#: ../client/common/src/Categories.py:100
+msgid "Sites about hygiene and other personal grooming related stuff"
+msgstr "Witryny o higienie i innych sprawach osobistych"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:102
+msgid "instantmessaging"
+msgstr "komunikatory"
+
+#: ../client/common/src/Categories.py:102
+msgid ""
+"Sites that contain messenger client download and web-based messaging sites"
+msgstr ""
+"Witryny zawierające komunikatory do pobrania i strony komunikacji przez WWW"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:104
+msgid "jewelry"
+msgstr "jubilerstwo"
+
+#: ../client/common/src/Categories.py:104
+msgid "Sites about and selling jewelry"
+msgstr "Witryny o biżuterii i jej sprzedaży"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:106
+msgid "jobsearch"
+msgstr "szukanie-pracy"
+
+#: ../client/common/src/Categories.py:106
+msgid "Sites for finding jobs"
+msgstr "Witryny o szukaniu pracy"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:108
+msgid "kidstimewasting"
+msgstr "marnowanie-czasu-przez-dzieci"
+
+#: ../client/common/src/Categories.py:108
+msgid "Sites kids often waste time on"
+msgstr "Witryny, na których dzieci często marnują czas"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:110
+msgid "mail"
+msgstr "poczta"
+
+#: ../client/common/src/Categories.py:110
+msgid "Webmail and email sites"
+msgstr "Poczta WWW i strony o poczcie e-mail"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:112
+msgid "marketingware"
+msgstr "marketing"
+
+#: ../client/common/src/Categories.py:112
+msgid "Sites about marketing products"
+msgstr "Witryny o marketingu produktów"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:114
+msgid "medical"
+msgstr "medyczne"
+
+#: ../client/common/src/Categories.py:114
+msgid "Medical websites"
+msgstr "Witryny medyczne"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:116
+msgid "mixed_adult"
+msgstr "mieszane-dla-dorosłych"
+
+#: ../client/common/src/Categories.py:116
+msgid "Mixed adult content sites"
+msgstr "Witryny z mieszaną treścią dla dorosłych"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:118
+msgid "mobile-phone"
+msgstr "telefon-komórkowy"
+
+#: ../client/common/src/Categories.py:118
+msgid "Sites to do with mobile phones"
+msgstr "Witryny dotyczące telefonów komórkowych"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:120
+msgid "naturism"
+msgstr "naturyzm"
+
+#: ../client/common/src/Categories.py:120
+msgid "Sites that contain nude pictures and/or promote a nude lifestyle"
+msgstr "Witryny zawierające nagie zdjęcia i/lub promujące nagi styl zycia"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:122
+msgid "news"
+msgstr "aktualności"
+
+#: ../client/common/src/Categories.py:122
+msgid "News sites"
+msgstr "Witryny aktualności"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:124
+msgid "onlineauctions"
+msgstr "aukcje-online"
+
+#: ../client/common/src/Categories.py:124
+msgid "Online auctions"
+msgstr "Aukcje online"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:126
+msgid "onlinegames"
+msgstr "gry-online"
+
+#: ../client/common/src/Categories.py:126
+msgid "Online gaming sites"
+msgstr "Witryny gier online"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:128
+msgid "onlinepayment"
+msgstr "płatności-online"
+
+#: ../client/common/src/Categories.py:128
+msgid "Online payment sites"
+msgstr "Witryny płatności online"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:130
+msgid "personalfinance"
+msgstr "finanse-osobiste"
+
+#: ../client/common/src/Categories.py:130
+msgid "Personal finance sites"
+msgstr "Witryny finansów osobistych"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:132
+msgid "pets"
+msgstr "zwierzęta"
+
+#: ../client/common/src/Categories.py:132
+msgid "Pet sites"
+msgstr "Witryny o zwierzętach"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:134
+msgid "phishing"
+msgstr "phishing"
+
+#: ../client/common/src/Categories.py:134
+msgid "Sites attempting to trick people into giving out private information."
+msgstr "Witryny próbujące wyłudzić prywatne informacje."
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:136
+msgid "porn"
+msgstr "pornografia"
+
+#: ../client/common/src/Categories.py:136
+msgid "Pornography"
+msgstr "Pornografia"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:138
+msgid "proxy"
+msgstr "pośredniki"
+
+#: ../client/common/src/Categories.py:138
+msgid "Sites with proxies to bypass filters"
+msgstr "Witryny z pośrednikami do obchodzenia filtrów"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:140
+msgid "radio"
+msgstr "radio"
+
+#: ../client/common/src/Categories.py:140
+msgid "non-news related radio and television"
+msgstr "Radio i telewizja nie związana z aktualnościami"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:142
+msgid "religion"
+msgstr "religia"
+
+#: ../client/common/src/Categories.py:142
+msgid "Sites promoting religion"
+msgstr "Witryny promujące religie"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:144
+msgid "ringtones"
+msgstr "dzwonki-telefoniczne"
+
+#: ../client/common/src/Categories.py:144
+msgid "Sites containing ring tones, games, pictures and other"
+msgstr "Witryny zawierające dzwonki, gry, obrazki i inne"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:146
+msgid "searchengines"
+msgstr "wyszukiwarki"
+
+#: ../client/common/src/Categories.py:146
+msgid "Search engines such as google"
+msgstr "Wyszukiwarki, takie jak Google"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:148
+msgid "sect"
+msgstr "sekty"
+
+#: ../client/common/src/Categories.py:148
+msgid "Sites about eligious groups"
+msgstr "Witryny o grupach religijnych"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:150
+msgid "sexuality"
+msgstr "seksualność"
+
+#: ../client/common/src/Categories.py:150
+msgid "Sites dedicated to sexuality, possibly including adult material"
+msgstr ""
+"Witryny poświęcone seksualności, być może zawierające materiały dla dorosłych"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:152
+msgid "shopping"
+msgstr "zakupy"
+
+#: ../client/common/src/Categories.py:152
+msgid "Shopping sites"
+msgstr "Witryny o zakupach"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:154
+msgid "socialnetworking"
+msgstr "witryny-społecznościowe"
+
+#: ../client/common/src/Categories.py:154
+msgid "Social networking websites"
+msgstr "Witryny społecznościowe"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:156
+msgid "sportnews"
+msgstr "aktualności-sportowe"
+
+#: ../client/common/src/Categories.py:156
+msgid "Sport news sites"
+msgstr "Witryny z aktualnościami sportowymi"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:158
+msgid "sports"
+msgstr "sport"
+
+#: ../client/common/src/Categories.py:158
+msgid "All sport sites"
+msgstr "Wszystkie witryny sportowe"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:160
+msgid "spyware"
+msgstr "spyware"
+
+#: ../client/common/src/Categories.py:160
+msgid "Sites who run or have spyware software to download"
+msgstr ""
+"Witryny uruchamiające lub posiadające oprogramowanie szpiegowskie do pobrania"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:162
+msgid "updatesites"
+msgstr "witryny-aktualizacji"
+
+#: ../client/common/src/Categories.py:162
+msgid "Sites where software updates are downloaded from including virus sigs"
+msgstr ""
+"Witryny, z których pobierane są aktualizacje oprogramowania, w tym sygnatury "
+"wirusów"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:164
+msgid "vacation"
+msgstr "wakacje"
+
+#: ../client/common/src/Categories.py:164
+msgid "Sites about going on holiday"
+msgstr "Witryny o wakacjach"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:166
+msgid "violence"
+msgstr "brutalność"
+
+#: ../client/common/src/Categories.py:166
+msgid "Sites containing violence"
+msgstr "Witryny zawierające brutalność"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:168
+msgid "virusinfected"
+msgstr "zainfekowane-wirusami"
+
+#: ../client/common/src/Categories.py:168
+msgid "Sites who host virus infected files"
+msgstr "Witryny przechowujące pliki zainfekowane wirusami"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:170
+msgid "warez"
+msgstr "warez"
+
+#: ../client/common/src/Categories.py:170
+msgid "Sites with illegal pirate software"
+msgstr "Witryny z nielegalnym, pirackim oprogramowaniem"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:172
+msgid "weather"
+msgstr "pogoda"
+
+#: ../client/common/src/Categories.py:172
+msgid "Weather news sites and weather related"
+msgstr "Witryny z aktualnościami o pogodzie i z nią związane"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:174
+msgid "weapons"
+msgstr "broń"
+
+#: ../client/common/src/Categories.py:174
+msgid "Sites detailing or selling weapons"
+msgstr "Witryny o broni lub ją sprzedające"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:176
+msgid "webmail"
+msgstr "poczta-przez-www"
+
+#: ../client/common/src/Categories.py:176
+msgid "Just webmail sites"
+msgstr "Tylko strony poczty e-mail przez WWW"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:178
+msgid "whitelist"
+msgstr "biała-lista"
+
+#: ../client/common/src/Categories.py:180
+#, no-python-format
+msgid "Contains site specifically 100% suitable for kids"
+msgstr "Zawiera strony w 100% odpowiednie dla dzieci"
+
+#: ../client/common/src/DBusClient.py:78
+msgid "NannyDaemon unavailable"
+msgstr "Usługa NannyDaemon jest niedostępna"
+
+#: ../client/common/src/DBusClient.py:79
+msgid ""
+"NannyDaemon is not activated or does not work properly.\n"
+"Please try to reactivate it."
+msgstr ""
+"Usługa NannyDaemon nie jest aktywowana lub nie działa poprawnie.\n"
+"Proszę spróbować ją ponownie aktywować."
+
+#: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:1
+msgid "Nanny parental control admin console"
+msgstr "Konsola administracyjna kontroli rodzicielskiej Nanny"
+
+#: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:2
+msgid "Parental Control"
+msgstr "Kontrola rodzicielska"
+
+#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:1
+msgid "BlackLists"
+msgstr "Czarne listy"
+
+#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:2
+msgid "Nanny parental control blacklists manager"
+msgstr "Menedżer czarnych list kontroli rodzicielskiej Nanny"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
+msgid "Configure"
+msgstr "Skonfiguruj"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:2
+msgid "Instant messaging"
+msgstr "Komunikator"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:3
+msgid "Mail client"
+msgstr "Klient poczty"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
+msgid "PC use time"
+msgstr "Czas używania komputera"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
+msgid "Use the computer"
+msgstr "Używanie komputera"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
+msgid "Use the instant messaging"
+msgstr "Używanie komunikatora"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
+msgid "Use the mail client"
+msgstr "Używanie klienta poczty"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
+msgid "Use the web browser"
+msgstr "Używanie przeglądarki WWW"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
+msgid "Use web content filtering"
+msgstr "Używanie filtrowania treści stron WWW"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
+#: ../client/gnome/systray/src/SystrayNanny.py:46
+msgid "Web browser"
+msgstr "Przeglądarka WWW"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
+msgid "hours a day"
+msgstr "godzin na dzień"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:1
+msgid ""
+"<span color=\"red\">All the fields are mandatory. Please fill all of them.</"
+"span>"
+msgstr ""
+"<span color=\"red\">Wszystkie pola są obowiązkowe. Proszę je wypełnić.</span>"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:2
+#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:1
+msgid "Description:"
+msgstr "Opis:"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:3
+#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:2
+msgid "Name:"
+msgstr "Nazwa:"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:4
+msgid "URL:"
+msgstr "Adres URL:"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:1
+msgid "Allowed sites"
+msgstr "Dozwolone strony"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:2
+msgid "Blacklists"
+msgstr "Czarne listy"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:3
+msgid "Forbidden sites"
+msgstr "Zabronione strony"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
+msgid ""
+"Here you can apply the available blacklists for the selected user. If you "
+"want to add new blacklists please go to System > Administration > Blacklists."
+msgstr ""
+"Tutaj można zastosować dostępne czarne listy dla wybranego użytkownika. Aby "
+"dodać nową listę, należy przejść do System > Administracja > Czarne listy."
+
+#: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
+msgid "Import..."
+msgstr "Zaimportuj..."
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+msgid "Monday"
+msgstr "poniedziałek"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+msgid "Tuesday"
+msgstr "wtorek"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+msgid "Wednesday"
+msgstr "środa"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+msgid "Thursday"
+msgstr "czwartek"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+msgid "Friday"
+msgstr "piątek"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+msgid "Saturday"
+msgstr "sobota"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+msgid "Sunday"
+msgstr "niedziela"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:37
+msgid "Web Content Filter Configuration"
+msgstr "Konfiguracja filtru treści stron WWW"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:242
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:253
+msgid "Error while importing list from the Internet"
+msgstr "Błąd podczas importowania list z Internetu"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:243
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:254
+msgid ""
+"Some error has occured while downloading the list.\n"
+"Please verify the URL and try again."
+msgstr ""
+"Wystąpił błąd podczas pobierania listy.\n"
+"Proszę sprawdzić adres URL i spróbować ponownie."
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:345
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:366
+msgid "Are you sure you want to delete this filter?"
+msgstr "Na pewno usunąć ten filtr?"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:346
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:367
+msgid "You will not be able to undo this action."
+msgstr "Nie będzie można cofnąć tego działania."
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:353
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:374
+msgid "Removing filter. Please, wait..."
+msgstr "Usuwanie filtru. Proszę czekać..."
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:393
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:404
+msgid "Error while deleting filters"
+msgstr "Błąd podczas usuwania filtrów"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:394
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:405
+msgid ""
+"Some error has occured while deleting filters.\n"
+"Please try again."
+msgstr ""
+"Wystąpił błąd podczas usuwania filtrów.\n"
+"Proszę spróbować ponownie."
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:436
+msgid "<b>Select all the categories</b>"
+msgstr "<b>Wybór wszystkich kategorii</b>"
+
+#: ../client/gnome/admin/src/AdminConsole.py:45
+msgid "Nanny daemon is not started"
+msgstr "Usługa Nanny nie jest uruchomiona"
+
+#: ../client/gnome/admin/src/AdminConsole.py:46
+msgid "To use the parental control, please start up the daemon."
+msgstr "Aby użyć kontroli rodzicielskiej, proszę uruchomić usługę."
+
+#. FACE
+#: ../client/gnome/admin/src/AdminConsole.py:112
+msgid "Users"
+msgstr "Użytkownicy"
+
+#: ../client/gnome/admin/src/AdminConsole.py:267
+msgid "Your configuration has been saved"
+msgstr "Konfiguracja została zapisana"
+
+#: ../client/gnome/admin/src/AdminConsole.py:279
+msgid "You have made changes"
+msgstr "Wprowadzono zmiany"
+
+#: ../client/gnome/admin/src/AdminConsole.py:280
+msgid ""
+"If you don't press the 'Apply' button, your changes will be lost.\n"
+"Are you sure?"
+msgstr ""
+"Jeśli przycisk \"Zastosuj\" nie zostanie naciśnięty, zmiany zostaną "
+"utracone.\n"
+"Na pewno?"
+
+#: ../client/gnome/admin/src/AdminConsole.py:309
+#, python-format
+msgid "Nanny Admin Console - %s"
+msgstr "Konsola administracyjna programu Nanny - %s"
+
+#: ../client/gnome/admin/src/AdminConsole.py:312
+msgid "Nanny Admin Console"
+msgstr "Konsola administracyjna programu Nanny"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:37
+#: ../client/gnome/admin/src/BlacklistManager.py:131
+msgid "Blacklist Filter Configuration"
+msgstr "Konfiguracja filtrowania według czarnych list"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:98
+#, python-format
+msgid ""
+"<b>%s (Read only)</b>\n"
+"   %s"
+msgstr ""
+"<b>%s (tylko do odczytu)</b>\n"
+"   %s"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:103
+msgid "Select file to import"
+msgstr "Wybór pliku do zaimportowania"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:123
+msgid "<b>Error importing blacklist file</b>"
+msgstr "<b>Błąd podczas importowania pliku czarnej listy</b>"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:124
+msgid "Some error has occured importing the blacklist file."
+msgstr "Wystąpił błąd podczas importowania pliku czarnej listy."
+
+#: ../client/gnome/admin/src/BlacklistManager.py:162
+msgid "<b>Are you sure you want to delete this blacklist?</b>"
+msgstr "<b>Na pewno usunąć tę czarną listę?</b>"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:163
+msgid ""
+"This action will remove all the user configuration linked to the blacklist."
+msgstr ""
+"Te działanie usunie całą konfigurację użytkownika powiązaną z czarną listą."
+
+#: ../client/gnome/systray/src/SystrayNanny.py:45
+msgid "Session"
+msgstr "Sesja"
+
+#: ../client/gnome/systray/src/SystrayNanny.py:47
+msgid "e-Mail"
+msgstr "poczty e-mail"
+
+#: ../client/gnome/systray/src/SystrayNanny.py:48
+msgid "Instant messanger"
+msgstr "komunikatora"
+
+#. To translators: In x-minutes the access to <app> will be granted
+#: ../client/gnome/systray/src/SystrayNanny.py:95
+#, python-format
+msgid "In %(time)s the access to %(app)s will be granted."
+msgstr "Za %(time)s dostęp do %(app)s zostanie udzielony."
+
+#. To translators: In x-minutes the access to <app> will be denied
+#: ../client/gnome/systray/src/SystrayNanny.py:98
+#, python-format
+msgid "In %(time)s the access to %(app)s will be denied."
+msgstr "Za %(time)s dostęp do %(app)s zostanie zabroniony."
+
+#: ../client/gnome/systray/src/SystrayNanny.py:117
+#, python-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d dzień"
+msgstr[1] "%d dni"
+msgstr[2] "%d dni"
+
+#: ../client/gnome/systray/src/SystrayNanny.py:119
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d godzinę"
+msgstr[1] "%d godziny"
+msgstr[2] "%d godzin"
+
+#: ../client/gnome/systray/src/SystrayNanny.py:121
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d minutę"
+msgstr[1] "%d minuty"
+msgstr[2] "%d minut"
+
+#. Translators: This is the separator between time strings, like '1 day, 2 hours, 3 minutes'
+#: ../client/gnome/systray/src/SystrayNanny.py:123
+msgid ", "
+msgstr ", "
+
+#: ../daemon/src/DansGuardianImporter.py:63
+msgid "Blacklist imported"
+msgstr "Zaimportowano czarną listę"
+
+#: ../daemon/src/DansGuardianImporter.py:76
+msgid "Nanny file created"
+msgstr "Utworzono plik programu Nanny"
+
+#: ../daemon/src/DansGuardianImporter.py:79
+#, python-format
+msgid "Downloading file (%s%%)"
+msgstr "Pobieranie pliku (%s%%)"
+
+#: ../daemon/src/DansGuardianImporter.py:271
+#, python-format
+msgid "Importing domains [category: %s] (%s%%)"
+msgstr "Importowanie domen [kategoria: %s] (%s%%)"
+
+#: ../daemon/src/DansGuardianImporter.py:287
+#, python-format
+msgid "Importing urls [category: %s] (%s%%)"
+msgstr "Importowanie adresów URL [kategoria: %s] (%s%%)"
