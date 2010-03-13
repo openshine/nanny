@@ -33,7 +33,6 @@ def ui_magic(object, ui_file, prefix):
      objects = object.xml.get_objects()
      for content in objects:
           try:
-               print content.get_name()
                if isinstance(content, gtk.Label):
                     if content.get_label() != None and len(content.get_label()) > 0 :
                          content.set_markup(_(content.get_label()))
