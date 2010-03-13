@@ -54,7 +54,6 @@ class NannyDBus(dbus.service.Object):
 
     def __polling_cb(self):
         self.auth_pid_cache = list(set(gtop.proclist()).intersection(set(self.auth_pid_cache)))
-        print self.auth_pid_cache
         return True
 
     # Taken from Jockey 0.5.8.
