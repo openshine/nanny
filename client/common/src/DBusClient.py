@@ -49,7 +49,9 @@ class DBusClient(gobject.GObject):
     def __init__(self):
         gobject.GObject.__init__(self)
         self.dbus = None
-
+        self.policykit = None
+        self.pk_authority = None
+        
         if self.__init_bus() == False:
             raise Exception ('DBus not initialized')
 
@@ -122,55 +124,11 @@ class DBusClient(gobject.GObject):
             self.nanny_notification.connect_to_signal ('UserNotification', self.__on_user_notification_cb)
 
     
-    def check_policy(self, action_id):
-        pk_granted = None
-        pk_other = None
-        pk_details = None
+    def is_unlocked(self):
+        return self.nanny_admin.IsUnLocked()
 
-        try:
-            policykit = self.dbus.get_object("org.freedesktop.PolicyKit1", "/org/freedesktop/PolicyKit1/Authority")
-            pk_authority = dbus.Interface(policykit, "org.freedesktop.PolicyKit1.Authority")
-            pid = os.getpid()
-            (pk_granted,pk_other,pk_details) = pk_authority.CheckAuthorization(
-                ('unix-process',{'pid':dbus.UInt32(pid,variant_level=1),'start-time':dbus.UInt64(0,variant_level=1)}),
-                action_id ,{},dbus.UInt32(0),'',timeout=600)
-
-        except dbus.exceptions.DBusException, e:
-            print "exception: ", e
-            return False
-        except Exception, e:
-            print "other exception: ", e
-            return False
-
-        if pk_granted != None and pk_granted != False :
-            return True
-        else:
-            return False
-
-    def obtain_auth (self, action_id):
-        pk_granted = None
-        pk_other = None
-        pk_details = None
-
-        try:
-            policykit = self.dbus.get_object("org.freedesktop.PolicyKit1", "/org/freedesktop/PolicyKit1/Authority")
-            pk_authority = dbus.Interface(policykit, "org.freedesktop.PolicyKit1.Authority")
-            pid = os.getpid()
-            (pk_granted,pk_other,pk_details) = pk_authority.CheckAuthorization(
-                ('unix-process',{'pid':dbus.UInt32(pid,variant_level=1),'start-time':dbus.UInt64(0,variant_level=1)}),
-                action_id ,{},dbus.UInt32(1),'',timeout=600)
-
-        except dbus.exceptions.DBusException, e:
-            print "exception: ", e
-            return False
-        except Exception, e:
-            print "other exception: ", e
-            return False
-
-        if pk_granted != None and pk_granted != False :
-            return True
-        else:
-            return False
+    def unlock (self):
+        return self.nanny_admin.UnLock()
 
     def list_users(self):
         return self.nanny_admin.ListUsers ()
