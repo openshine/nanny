@@ -24,6 +24,7 @@
 # USA
 
 import os
+import dbus
 
 import gtk
 import pango
@@ -56,6 +57,7 @@ class AdminConsole:
         self.help_button.connect ('clicked', self.__on_help_button_clicked)
         self.close_button.connect ('clicked', self.__on_close_button_clicked)
         self.apply_button.connect ('clicked', self.__on_apply_button_clicked)
+        self.unlock_button.connect('clicked', self.__on_unlock_button_clicked)
 
         self.session_hoursday_checkbutton.connect ('toggled', self.__on_session_hoursday_checkbutton_toggled)
         self.session_hoursday_spinbutton.connect ('value-changed', self.__on_session_hoursday_spinbutton_changed)
@@ -67,6 +69,8 @@ class AdminConsole:
         self.mail_hoursday_spinbutton.connect ('value-changed', self.__on_mail_hoursday_spinbutton_changed)
         self.im_hoursday_checkbutton.connect ('toggled', self.__on_im_hoursday_checkbutton_toggled)
         self.im_hoursday_spinbutton.connect ('value-changed', self.__on_im_hoursday_spinbutton_changed)
+
+        
 
         self.session_schedule_widget = nanny.client.gnome.admin.ScheduleCalendar()
         self.session_schedule_alignment.add (self.session_schedule_widget)
@@ -98,6 +102,33 @@ class AdminConsole:
         self.window.resize (800, 460)
         self.window.set_position (gtk.WIN_POS_CENTER)
         self.window.show_all ()
+
+        self.__lock_widgets()
+
+    def __lock_widgets(self) :
+        lock_status = self.dbus_client.is_unlocked()
+        if lock_status == True :
+            self.unlock_area.hide()
+        else:
+            self.unlock_area.show()
+
+        self.apply_button.set_sensitive(lock_status)
+
+        self.session_hoursday_checkbutton.set_sensitive(lock_status)
+        self.session_hoursday_spinbutton.set_sensitive(lock_status)
+        self.browser_configure_proxy_button.set_sensitive(lock_status)
+        self.browser_use_proxy_checkbutton.set_sensitive(lock_status)
+        self.browser_hoursday_checkbutton.set_sensitive(lock_status)
+        self.browser_hoursday_spinbutton.set_sensitive(lock_status)
+        self.mail_hoursday_checkbutton.set_sensitive(lock_status)
+        self.mail_hoursday_spinbutton.set_sensitive(lock_status)
+        self.im_hoursday_checkbutton.set_sensitive(lock_status)
+        self.im_hoursday_spinbutton.set_sensitive(lock_status)
+
+        self.session_schedule_widget.set_sensitive(lock_status)
+        self.browser_schedule_widget.set_sensitive(lock_status)
+        self.mail_schedule_widget.set_sensitive(lock_status)
+        self.im_schedule_widget.set_sensitive(lock_status)
 
     def __create_users_treeview (self):
         # UID
@@ -311,6 +342,8 @@ class AdminConsole:
             self.__selected_user_id = None
             self.window.set_title (_('Nanny Admin Console'))
 
+        self.__lock_widgets()
+
     def __on_session_hoursday_spinbutton_changed (self, widget, data=None):
         self.__config_changed = True
     def __on_session_hoursday_checkbutton_toggled (self, widget, data=None):
@@ -352,6 +385,11 @@ class AdminConsole:
             gtk.show_uri(None , "ghelp:nanny", gtk.get_current_event_time())
         except:
             os.system("yelp ghelp:nanny")
+
+
+    def __on_unlock_button_clicked (self, widget, data=None):
+        self.dbus_client.unlock()
+        self.__lock_widgets()
 
     def __on_close_button_clicked (self, widget, data=None):
         gtk.main_quit()
