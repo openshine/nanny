@@ -39,10 +39,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkHBox" id="nac_unlock_area">
+                  <object class="GtkHBox" id="nbm_unlock_area">
                     <property name="visible">True</property>
                     <child>
-                      <object class="GtkButton" id="nac_unlock_button">
+                      <object class="GtkButton" id="nbm_unlock_button">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
