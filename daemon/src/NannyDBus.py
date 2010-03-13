@@ -28,6 +28,7 @@ import os
 import dbus
 import dbus.service
 import dbus.mainloop.glib
+import gtop
 
 class PermissionDeniedByPolicy(dbus.DBusException):
     _dbus_error_name = 'org.gnome.nanny.PermissionDeniedByPolicy'
@@ -47,6 +48,14 @@ class NannyDBus(dbus.service.Object):
         
         self.dbus_info = None
         self.polkit = None
+        self.auth_pid_cache = []
+
+        gobject.timeout_add(1000, self.__polling_cb)
+
+    def __polling_cb(self):
+        self.auth_pid_cache = list(set(gtop.proclist()).intersection(set(self.auth_pid_cache)))
+        print self.auth_pid_cache
+        return True
 
     # Taken from Jockey 0.5.8.
     def _check_polkit_privilege(self, sender, conn, privilege):
@@ -69,6 +78,9 @@ class NannyDBus(dbus.service.Object):
             self.dbus_info = dbus.Interface(conn.get_object('org.freedesktop.DBus',
                 '/org/freedesktop/DBus/Bus', False), 'org.freedesktop.DBus')
         pid = self.dbus_info.GetConnectionUnixProcessID(sender)
+
+        if int(pid) in self.auth_pid_cache :
+            return
 
         # query PolicyKit
         if self.polkit is None:
@@ -93,10 +105,43 @@ class NannyDBus(dbus.service.Object):
         if not is_auth:
             print '_check_polkit_privilege: sender %s on connection %s pid %i is not authorized for %s: %s' % (sender, conn, pid, privilege, str(details))
             raise PermissionDeniedByPolicy(privilege)
+        else:
+            if int(pid) not in self.auth_pid_cache :
+                self.auth_pid_cache.append(int(pid))
 
     # org.gnome.Nanny
     # --------------------------------------------------------------
     
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='', out_signature='b',
+                         sender_keyword='sender', connection_keyword='conn')
+    def IsUnLocked(self, sender=None, conn=None):
+        # get peer PID
+        if self.dbus_info is None:
+            self.dbus_info = dbus.Interface(conn.get_object('org.freedesktop.DBus',
+                '/org/freedesktop/DBus/Bus', False), 'org.freedesktop.DBus')
+        pid = self.dbus_info.GetConnectionUnixProcessID(sender)
+
+        if int(pid) in self.auth_pid_cache :
+            return True
+        else:
+            return False
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='', out_signature='b',
+                         sender_keyword='sender', connection_keyword='conn')
+    def UnLock(self, sender=None, conn=None):
+        self._check_polkit_privilege(sender, conn, 'org.gnome.nanny.admin')
+        if self.dbus_info is None:
+            self.dbus_info = dbus.Interface(conn.get_object('org.freedesktop.DBus',
+                '/org/freedesktop/DBus/Bus', False), 'org.freedesktop.DBus')
+        pid = self.dbus_info.GetConnectionUnixProcessID(sender)
+
+        if int(pid) in self.auth_pid_cache :
+            return True
+        else:
+            return False
+
     @dbus.service.method("org.gnome.Nanny",
                          in_signature='', out_signature='a(sss)')
     def ListUsers(self):
