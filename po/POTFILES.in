@@ -20,6 +20,7 @@ client/gnome/systray/src/__init__.py.in
 client/gnome/systray/src/SystrayNanny.py
 client/gnome/__init__.py.in
 client/__init__.py
+daemon/data/org.gnome.nanny.policy.in
 daemon/src/DansGuardianImporter.py
 daemon/src/NannyDBus.py
 daemon/src/QuarterBack.py

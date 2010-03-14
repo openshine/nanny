@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
+
+<policyconfig>
+  <vendor>The Nanny Project</vendor>
+  <vendor_url>http://project.gnome.org/nanny</vendor_url>
+
+  <action id="org.gnome.nanny.admin">
+    <_description>Manage your parental control settings</_description>
+    <_message>You need to authenticate to modify the parental control configuration</_message>
+    <defaults>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+</policyconfig>
+

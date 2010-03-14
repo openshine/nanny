@@ -34,12 +34,14 @@ def ui_magic(object, ui_file, prefix):
      for content in objects:
           try:
                if isinstance(content, gtk.Label):
-                    content.set_markup(_(content.get_label()))
+                    if content.get_label() != None and len(content.get_label()) > 0 :
+                         content.set_markup(_(content.get_label()))
                elif isinstance(content, gtk.Button):
-                    content.set_label(_(content.get_label()))
+                    if content.get_label() != None and len(content.get_label()) > 0 :
+                         content.set_label(_(content.get_label()))
                else:
-                    content.set_text(_(content.get_text()))
-                    
+                    if content.get_text() != None and len(content.get_text()) > 0 :
+                         content.set_text(_(content.get_text()))
           except AttributeError:
                pass
           

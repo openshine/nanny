@@ -49,7 +49,9 @@ class DBusClient(gobject.GObject):
     def __init__(self):
         gobject.GObject.__init__(self)
         self.dbus = None
-
+        self.policykit = None
+        self.pk_authority = None
+        
         if self.__init_bus() == False:
             raise Exception ('DBus not initialized')
 
@@ -121,6 +123,12 @@ class DBusClient(gobject.GObject):
 
             self.nanny_notification.connect_to_signal ('UserNotification', self.__on_user_notification_cb)
 
+    
+    def is_unlocked(self):
+        return self.nanny_admin.IsUnLocked()
+
+    def unlock (self):
+        return self.nanny_admin.UnLock()
 
     def list_users(self):
         return self.nanny_admin.ListUsers ()

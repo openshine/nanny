@@ -46,6 +46,12 @@ PKG_CHECK_MODULES(GLIB, glib-2.0 >= $GLIB_REQUIRED gobject-2.0 >= $GLIB_REQUIRED
 AC_SUBST(GLIB_CFLAGS)
 AC_SUBST(GLIB_LIBS)
 
+dnl policy-kit support
+dnl ------------------------------
+POLKIT_POLICY_DIR="${datadir}/polkit-1/actions/"
+AC_SUBST(POLKIT_POLICY_DIR)
+
+
 dnl check for python headers
 dnl ------------------------------
 AC_MSG_CHECKING(for shared library Python stuff)

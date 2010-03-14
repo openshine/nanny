@@ -49,6 +49,7 @@ class BlacklistManager:
         self.blacklist_import_button.connect ('clicked', self.__on_blacklist_import_button_clicked)
         self.blacklist_edit_button.connect ('clicked', self.__on_blacklist_edit_button_clicked)
         self.blacklist_remove_button.connect ('clicked', self.__on_blacklist_remove_button_clicked)
+        self.unlock_button.connect('clicked', self.__on_unlock_button_clicked)
 
         self.__selected_blacklist = None
 
@@ -60,7 +61,8 @@ class BlacklistManager:
         self.__on_blacklist_selection_changed (selection)
 
         self.dialog.resize (700, 460)
-
+        
+        self.__lock_widgets()
         self.dialog.run ()
         self.dialog.destroy()
 
@@ -85,6 +87,18 @@ class BlacklistManager:
                                gobject.TYPE_STRING)
 
         treeview.set_model (store)
+
+    def __lock_widgets(self) :
+        lock_status = self.dbus_client.is_unlocked()
+        if lock_status == True :
+            self.unlock_area.hide()
+        else:
+            self.unlock_area.show()
+
+        self.blacklist_import_button.set_sensitive(lock_status)
+        self.blacklist_edit_button.set_sensitive(lock_status)
+        self.blacklist_remove_button.set_sensitive(lock_status)
+        
 
     def __fill_treeview (self):
         model = self.blacklist_treeview.get_model()
@@ -185,3 +199,7 @@ class BlacklistManager:
             self.blacklist_edit_button.set_sensitive (False)
             self.blacklist_remove_button.set_sensitive (False)
             self.__selected_blacklist = None
+
+    def __on_unlock_button_clicked (self, widget, data=None):
+        self.dbus_client.unlock()
+        self.__lock_widgets()

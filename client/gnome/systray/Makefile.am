@@ -1,5 +1,5 @@
 SUBDIRS=src data 
 
-bin_SCRIPTS = NannySystray
+bin_SCRIPTS = nanny-systray
 
-EXTRA_DIST = NannySystray
+EXTRA_DIST = nanny-systray
