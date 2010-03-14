@@ -44,10 +44,17 @@ def ui_magic(object, ui_file, prefix):
                          content.set_text(_(content.get_text()))
           except AttributeError:
                pass
-          
-          if isinstance (content, gtk.Widget):
-               widget_name = content.get_name ()
-               if widget_name.startswith (prefix):
-                    widget_name = widget_name[len(prefix)+1:]
-                    exec ('object.%s = content' % widget_name)
-                    
+
+     # This is a workarround. For some reason obj.get_name don't return 
+     # the real name of the widget
+     from xml.etree.ElementTree import ElementTree 
+     xml = ElementTree()
+     xml.parse(main_ui_filename)
+     for obj in xml.findall ('//object'):
+          try:
+               if obj.attrib["id"].startswith(prefix) :
+                    widget = object.xml.get_object(obj.attrib["id"])
+                    widget_name = obj.attrib["id"][len(prefix)+1:]
+                    exec ('object.%s = widget' % widget_name)
+          except:
+               print "Something fails at ui_magic"
