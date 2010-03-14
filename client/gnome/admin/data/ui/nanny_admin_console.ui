@@ -525,7 +525,7 @@
                             <property name="visible">True</property>
                             <property name="xalign">0</property>
                             <property name="xpad">6</property>
-                            <property name="label" translatable="yes">&lt;b&gt;You have not admin privileges&lt;/b&gt;
+                            <property name="label" translatable="yes">&lt;b&gt;You don't have admin privileges&lt;/b&gt;
 Click this button if you want to make changes.</property>
                             <property name="use_markup">True</property>
                           </object>
