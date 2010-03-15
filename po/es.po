@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: nanny.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nanny&component=general\n"
-"POT-Creation-Date: 2010-02-10 02:11+0000\n"
-"PO-Revision-Date: 2010-02-16 18:32+0100\n"
+"POT-Creation-Date: 2010-03-14 15:40+0000\n"
+"PO-Revision-Date: 2010-03-15 19:04+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -700,11 +700,11 @@ msgstr "lista blanca"
 msgid "Contains site specifically 100% suitable for kids"
 msgstr "Contiene sitios 100% apropiados para los niños"
 
-#: ../client/common/src/DBusClient.py:78
+#: ../client/common/src/DBusClient.py:80
 msgid "NannyDaemon unavailable"
 msgstr "El demonio de Nanny no está disponible"
 
-#: ../client/common/src/DBusClient.py:79
+#: ../client/common/src/DBusClient.py:81
 msgid ""
 "NannyDaemon is not activated or does not work properly.\n"
 "Please try to reactivate it."
@@ -729,47 +729,55 @@ msgid "Nanny parental control blacklists manager"
 msgstr "Gestor de listas negras del control parental Nanny"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
+msgid ""
+"<b>You don't have admin privileges</b>\n"
+"Click this button if you want to make changes."
+msgstr ""
+"<b>No tiene privilegios de administración</b>\n"
+"Pulse este botón si quiere realizar los cambios."
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:3
 msgid "Configure"
 msgstr "Configurar"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:2
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
 msgid "Instant messaging"
 msgstr "Mensajería instantánea"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:3
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
 msgid "Mail client"
 msgstr "Cliente de correo"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
 msgid "PC use time"
 msgstr "Uso del PC"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
 msgid "Use the computer"
 msgstr "Uso del equipo"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
 msgid "Use the instant messaging"
 msgstr "Uso de la mensajería instantánea"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
 msgid "Use the mail client"
 msgstr "Uso del cliente de correo"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
 msgid "Use the web browser"
 msgstr "Uso del navegador"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
 msgid "Use web content filtering"
 msgstr "Usar filtrado de contenidos web"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
 #: ../client/gnome/systray/src/SystrayNanny.py:46
 msgid "Web browser"
 msgstr "Navegador web"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:13
 msgid "hours a day"
 msgstr "horas al día"
 
@@ -817,6 +825,14 @@ msgstr ""
 "Administración > Listas negras."
 
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
+msgid ""
+"<b>You have not admin privileges</b>\n"
+"Click this button if you want to make changes."
+msgstr ""
+"<b>Tiene privilegios de administración</b>\n"
+"Pulse este botón si quiere realizar los cambios."
+
+#: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
 msgstr "Importar..."
 
@@ -899,28 +915,28 @@ msgstr ""
 msgid "<b>Select all the categories</b>"
 msgstr "<b>Seleccione todas las categorías</b>"
 
-#: ../client/gnome/admin/src/AdminConsole.py:45
+#: ../client/gnome/admin/src/AdminConsole.py:46
 msgid "Nanny daemon is not started"
 msgstr "No se ha iniciado el demonio Nanny"
 
-#: ../client/gnome/admin/src/AdminConsole.py:46
+#: ../client/gnome/admin/src/AdminConsole.py:47
 msgid "To use the parental control, please start up the daemon."
 msgstr "Para usar el control parental, inicie el demonio."
 
 #. FACE
-#: ../client/gnome/admin/src/AdminConsole.py:112
+#: ../client/gnome/admin/src/AdminConsole.py:143
 msgid "Users"
 msgstr "Usuarios"
 
-#: ../client/gnome/admin/src/AdminConsole.py:267
+#: ../client/gnome/admin/src/AdminConsole.py:298
 msgid "Your configuration has been saved"
 msgstr "Se guardó su configuración"
 
-#: ../client/gnome/admin/src/AdminConsole.py:279
+#: ../client/gnome/admin/src/AdminConsole.py:310
 msgid "You have made changes"
 msgstr "Ha realizado cambios"
 
-#: ../client/gnome/admin/src/AdminConsole.py:280
+#: ../client/gnome/admin/src/AdminConsole.py:311
 msgid ""
 "If you don't press the 'Apply' button, your changes will be lost.\n"
 "Are you sure?"
@@ -928,21 +944,21 @@ msgstr ""
 "Se perderán sus cambios si no pulsa el botón «Aplicar».\n"
 "¿Esta seguro?"
 
-#: ../client/gnome/admin/src/AdminConsole.py:309
+#: ../client/gnome/admin/src/AdminConsole.py:340
 #, python-format
 msgid "Nanny Admin Console - %s"
 msgstr "Consola de administración de Nanny: %s"
 
-#: ../client/gnome/admin/src/AdminConsole.py:312
+#: ../client/gnome/admin/src/AdminConsole.py:343
 msgid "Nanny Admin Console"
 msgstr "Consola de administración de Nanny"
 
 #: ../client/gnome/admin/src/BlacklistManager.py:37
-#: ../client/gnome/admin/src/BlacklistManager.py:131
+#: ../client/gnome/admin/src/BlacklistManager.py:145
 msgid "Blacklist Filter Configuration"
 msgstr "Configuración del filtro de contenidos web"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:98
+#: ../client/gnome/admin/src/BlacklistManager.py:112
 #, python-format
 msgid ""
 "<b>%s (Read only)</b>\n"
@@ -951,32 +967,29 @@ msgstr ""
 "<b>%s (Sólo lectura)</b>\n"
 "   %s"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:103
+#: ../client/gnome/admin/src/BlacklistManager.py:117
 msgid "Select file to import"
 msgstr "Seleccionar el archivo para importar"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:123
+#: ../client/gnome/admin/src/BlacklistManager.py:137
 msgid "<b>Error importing blacklist file</b>"
 msgstr "<b>Error al importar la lista negra</b>"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:124
+#: ../client/gnome/admin/src/BlacklistManager.py:138
 msgid "Some error has occured importing the blacklist file."
 msgstr "Ocurrió un error importando la lista negra."
 
-#: ../client/gnome/admin/src/BlacklistManager.py:162
+#: ../client/gnome/admin/src/BlacklistManager.py:176
 msgid "<b>Are you sure you want to delete this blacklist?</b>"
 msgstr "<b>¿Está seguro de que desea borrar esta lista negra?</b>"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:163
+#: ../client/gnome/admin/src/BlacklistManager.py:177
 msgid ""
 "This action will remove all the user configuration linked to the blacklist."
 msgstr ""
 "Esta acción borrará todas las configuraciones de usuario relacionadas con "
 "esta lista negra."
 
-#. atributes
-#. cuanto falta
-#. cuanto quedaba cuando se mostro
 #: ../client/gnome/systray/src/SystrayNanny.py:45
 msgid "Session"
 msgstr "Sesión"
@@ -1001,21 +1014,21 @@ msgstr "En %(time)s se permitirá el acceso a %(app)s."
 msgid "In %(time)s the access to %(app)s will be denied."
 msgstr "En %(time)s se denegará el acceso a %(app)s."
 
-#: ../client/gnome/systray/src/SystrayNanny.py:111
+#: ../client/gnome/systray/src/SystrayNanny.py:117
 #, python-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d día"
 msgstr[1] "%d días"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:113
+#: ../client/gnome/systray/src/SystrayNanny.py:119
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d hora"
 msgstr[1] "%d horas"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:115
+#: ../client/gnome/systray/src/SystrayNanny.py:121
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1023,9 +1036,19 @@ msgstr[0] "%d minuto"
 msgstr[1] "%d minutos"
 
 #. Translators: This is the separator between time strings, like '1 day, 2 hours, 3 minutes'
-#: ../client/gnome/systray/src/SystrayNanny.py:117
+#: ../client/gnome/systray/src/SystrayNanny.py:123
 msgid ", "
 msgstr ", "
+
+#: ../daemon/data/org.gnome.nanny.policy.in.h:1
+#| msgid "Nanny parental control admin console"
+msgid "Manage your parental control settings"
+msgstr "Gestionar sus ajustes de control parental"
+
+#: ../daemon/data/org.gnome.nanny.policy.in.h:2
+msgid "You need to authenticate to modify the parental control configuration"
+msgstr ""
+"Debe estar autenticado para modificar la configuración del control parental"
 
 #: ../daemon/src/DansGuardianImporter.py:63
 msgid "Blacklist imported"
