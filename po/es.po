@@ -6,9 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nanny.HEAD\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=nanny&component=general\n"
-"POT-Creation-Date: 2010-03-14 15:40+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-03-16 16:49+0100\n"
 "PO-Revision-Date: 2010-03-15 19:04+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
@@ -729,6 +728,7 @@ msgid "Nanny parental control blacklists manager"
 msgstr "Gestor de listas negras del control parental Nanny"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
+#: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
 msgid ""
 "<b>You don't have admin privileges</b>\n"
 "Click this button if you want to make changes."
@@ -823,14 +823,6 @@ msgstr ""
 "Aquí puede aplicar las listas negras disponibles para el usuario "
 "seleccionado. Si quiere añadir una nueva lista negra, vaya a Sistema > "
 "Administración > Listas negras."
-
-#: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
-msgid ""
-"<b>You have not admin privileges</b>\n"
-"Click this button if you want to make changes."
-msgstr ""
-"<b>Tiene privilegios de administración</b>\n"
-"Pulse este botón si quiere realizar los cambios."
 
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
@@ -1041,7 +1033,6 @@ msgid ", "
 msgstr ", "
 
 #: ../daemon/data/org.gnome.nanny.policy.in.h:1
-#| msgid "Nanny parental control admin console"
 msgid "Manage your parental control settings"
 msgstr "Gestionar sus ajustes de control parental"
 
@@ -1072,3 +1063,10 @@ msgstr "Importando dominios [categoria: %s] (%s%%)"
 #, python-format
 msgid "Importing urls [category: %s] (%s%%)"
 msgstr "Importando URL [categoría: %s] (%s%%)"
+
+#~ msgid ""
+#~ "<b>You have not admin privileges</b>\n"
+#~ "Click this button if you want to make changes."
+#~ msgstr ""
+#~ "<b>Tiene privilegios de administración</b>\n"
+#~ "Pulse este botón si quiere realizar los cambios."
