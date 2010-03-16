@@ -168,7 +168,10 @@ class ScheduleCalendar (gtk.EventBox):
         self.schedule_data = copy.deepcopy (self.__origin_schedule_data)
         for h in range (min_hour, max_hour+1):
             for d in range (min_day, max_day+1):
-                self.schedule_data[d][h] = self.__origin_value 
+                try:
+                    self.schedule_data[d][h] = self.__origin_value 
+                except:
+                    break
         self.__reload ()
 
     def __on_button_press_event (self, widget, event, data=None):
