@@ -43,7 +43,7 @@ iptables_weekdays = {"mon" : "Mon",
                      "sat" : "Sat",
                      "sun" : "Sun"}
 
-services_ports = {WEB_APPID : "80, 143, 8080",
+services_ports = {WEB_APPID : "80, 443, 8080",
                   MAIL_APPID : "25, 110, 109, 995, 143, 220, 993, 465",
                   IM_APPID : "1863, 5222, 5269",
                   }
