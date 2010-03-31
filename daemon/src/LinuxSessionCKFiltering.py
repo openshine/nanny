@@ -22,6 +22,7 @@
 
 import gobject
 import os
+import dbus
 
 from twisted.internet import reactor
 from time import localtime, strftime
@@ -113,4 +114,22 @@ class LinuxSessionCKFiltering(gobject.GObject) :
             return
         
     def __logout_session_if_is_running(self, user_id):
-        pass
+        try:
+            d = dbus.SystemBus()
+            manager = dbus.Interface(d.get_object("org.freedesktop.ConsoleKit", "/org/freedesktop/ConsoleKit/Manager"), 
+                                     "org.freedesktop.ConsoleKit.Manager")
+            sessions = manager.GetSessionsForUnixUser(int(user_id))
+            for session_name in sessions :
+                session = dbus.Interface(d.get_object("org.freedesktop.ConsoleKit", session_name),
+                                         "org.freedesktop.ConsoleKit.Session")
+                x11_display = session.GetX11Display()
+                print "session: %s , display: '%s'" % (session_name, x11_display)
+                if x11_display == "":
+                    continue
+
+                os.system("DISPLAY=%s zenity --info" % x11_display)
+                
+        except:
+            print "Crash __logout_session_if_is_running()"
+
+
