@@ -1,12 +1,9 @@
 #!/usr/bin/env python
-
+#
 # Copyright (C) 2009,2010 Junta de Andalucia
 # 
 # Authors:
 #   Roberto Majadas <roberto.majadas at openshine.com>
-#   Cesar Garcia Tapia <cesar.garcia.tapia at openshine.com>
-#   Luis de Bethencourt <luibg at openshine.com>
-#   Pablo Vieytes <pvieytes at openshine.com>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,16 +20,18 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 # USA
 
+import syslog
+import gtk 
+import gettext
+import __builtin__
 
-import os
-import gtk
+import nanny.client.gnome.admin
 
-share_files_dir= os.path.join("@prefix@","share/","nanny/client/gnome/admin/")
-ui_files_dir= os.path.join(share_files_dir,"ui/")
-icons_files_dir= os.path.join(share_files_dir,"icons/")
+if __name__ == '__main__':
+    __builtin__._ = gettext.gettext
 
-from AdminConsole import AdminConsole
-from ConfigureProxyDialog import ConfigureProxyDialog
-from ScheduleCalendar import ScheduleCalendar
-from BlacklistManager import BlacklistManager
-from DesktopBlocker import DesktopBlocker
+    desktop_blocker = nanny.client.gnome.admin.DesktopBlocker()
+    desktop_blocker.show()
+    gtk.gdk.keyboard_grab(desktop_blocker.window)
+    gtk.main()
+
