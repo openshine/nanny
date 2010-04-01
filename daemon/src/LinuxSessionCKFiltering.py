@@ -24,8 +24,10 @@ import gobject
 import os
 import dbus
 
-from twisted.internet import reactor
+from twisted.internet import reactor, threads
 from time import localtime, strftime
+
+import gtop
 
 class LinuxSessionCKFiltering(gobject.GObject) :
     def __init__(self, quarterback) :
@@ -33,6 +35,7 @@ class LinuxSessionCKFiltering(gobject.GObject) :
         self.quarterback = quarterback
 
         self.uids_blocked = []
+        self.desktop_blocked = []
         
         reactor.addSystemEventTrigger("before", "startup", self.start)
         reactor.addSystemEventTrigger("before", "shutdown", self.stop)
@@ -123,13 +126,45 @@ class LinuxSessionCKFiltering(gobject.GObject) :
                 session = dbus.Interface(d.get_object("org.freedesktop.ConsoleKit", session_name),
                                          "org.freedesktop.ConsoleKit.Session")
                 x11_display = session.GetX11Display()
-                print "session: %s , display: '%s'" % (session_name, x11_display)
                 if x11_display == "":
                     continue
 
-                os.system("DISPLAY=%s zenity --info" % x11_display)
-                
+                if session_name not in self.desktop_blocked :
+                    self.desktop_blocked.append(session_name)
+                    t = threads.deferToThread(self.__launch_desktop_blocker, session_name, user_id, x11_display)
+                    t.addCallback(self.__result_of_desktop_blocker)
         except:
             print "Crash __logout_session_if_is_running()"
+            
+    def __launch_desktop_blocker(self, session_name, user_id, x11_display):
+        print "Launch desktop-blocker to '%s'" % session_name
+        ret = os.system("DISPLAY=%s nanny-desktop-blocker" % x11_display)
+        return session_name, user_id, ret
 
+    def __result_of_desktop_blocker(self, result):
+        session_name = result[0]
+        user_id = result[1]
+        ret_code = result[2]
+        print "Results desktop-blocker to '%s' (%s)" % (session_name, ret_code)
+        if ret_code == 0:
+            self.__remote_close_session(user_id)
+
+        if session_name in self.desktop_blocked :
+            self.desktop_blocked.pop(self.desktop_blocked.index(session_name))
+    
+    def __remote_close_session(self, user_id):
+        proclist = gtop.proclist(gtop.PROCLIST_KERN_PROC_UID, int(user_id))
+        for proc in proclist:
+            if gtop.proc_args(proc)[0] == "x-session-manager" or gtop.proc_args(proc)[0] == "gnome-session":
+                users = self.quarterback.usersmanager.get_users()
+                for uid, uname, ufname in users :
+                    if str(uid) == user_id :
+                        print "Sending Force logout petition to '%s'" % uname
+                        cmd='su %s -c "`grep -z DBUS_SESSION_BUS_ADDRESS /proc/%s/environ | sed -e "s:\\r::g"` dbus-send --dest=\'org.gnome.SessionManager\' /org/gnome/SessionManager org.gnome.SessionManager.Logout uint32:1"' % (uname, proc)
+                        os.system(cmd)
+                        return
+        
+            
+    
+        
 
