@@ -31,18 +31,5 @@ import nanny.client.gnome.systray
 
 __builtin__._ = gettext.gettext
 
-try:
-    if os.environ.has_key("LANG") :
-        if not os.path.exists(os.path.join(os.environ["HOME"], ".config", "nanny")):
-            os.system("mkdir -p %s" % os.path.join(os.environ["HOME"], ".config", "nanny"))
-
-        os.system("echo 'LANG=%s' > %s" % (os.environ["LANG"], 
-                                          os.path.join(os.environ["HOME"], ".config", "nanny", "lang")
-                                          )
-                  )
-except:
-    pass
-        
-
 nanny_systray = nanny.client.gnome.systray.SystrayNanny()
 gtk.main()
