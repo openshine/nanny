@@ -17,6 +17,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 # USA
 
+import os
 import gtk
 import gettext
 import __builtin__
@@ -29,6 +30,19 @@ import nanny.client.gnome.systray
 #(options, args) = parser.parse_args()
 
 __builtin__._ = gettext.gettext
+
+try:
+    if os.environ.has_key("LANG") :
+        if not os.path.exists(os.path.join(os.environ["HOME"], ".config", "nanny")):
+            os.system("mkdir -p %s" % os.path.join(os.environ["HOME"], ".config", "nanny"))
+
+        os.system("echo 'LANG=%s' > %s" % (os.environ["LANG"], 
+                                          os.path.join(os.environ["HOME"], ".config", "nanny", "lang")
+                                          )
+                  )
+except:
+    pass
+        
 
 nanny_systray = nanny.client.gnome.systray.SystrayNanny()
 gtk.main()
