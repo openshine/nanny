@@ -106,6 +106,7 @@ class DesktopBlocker(gtk.Window):
     def __timeout_cb(self):
         self.show()
         self.time_button.hide()
+        self.info_label.hide()
         gtk.gdk.keyboard_grab(self.window)
         return False
 

@@ -41,7 +41,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="info_label">
+                      <object class="GtkLabel" id="db_info_label">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">&lt;span foreground="white"&gt;&lt;big&gt;You've time available if you need to close documents or aplications.&lt;/big&gt;&lt;/span&gt;</property>
                         <property name="use_markup">True</property>
