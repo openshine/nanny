@@ -33,7 +33,7 @@ from datetime import datetime, timedelta
 from LinuxFiltering import LinuxFiltering as FirewallFilter
 from LinuxWebContentFiltering import LinuxWebContentFiltering as WebContentFilter
 from LinuxUsersManager import LinuxUsersManager as UsersManager
-from LinuxSessionFiltering import LinuxSessionFiltering as SessionFilter
+from LinuxSessionCKFiltering import LinuxSessionCKFiltering as SessionFilter
 from FilterManager import FilterManager as FilterManager
 
 from Chrono import Chrono

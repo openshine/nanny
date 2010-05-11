@@ -11,7 +11,8 @@ corelib_PYTHON =	 __init__.py 			\
 			LinuxFiltering.py		\
 			LinuxWebContentFiltering.py 	\
 			LinuxUsersManager.py		\
-			LinuxSessionFiltering.py
+			LinuxSessionFiltering.py	\
+			LinuxSessionCKFiltering.py
 
 if HAS_HACHOIR_REGEX
 dgimporterdir = $(pythondir)/nanny/daemon

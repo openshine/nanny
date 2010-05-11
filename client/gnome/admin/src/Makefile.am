@@ -3,4 +3,5 @@ uilib_PYTHON = __init__.py \
 	       AdminConsole.py \
 	       ConfigureProxyDialog.py \
 	       BlacklistManager.py \
-	       ScheduleCalendar.py
+	       ScheduleCalendar.py \
+	       DesktopBlocker.py
