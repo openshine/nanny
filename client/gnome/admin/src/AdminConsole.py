@@ -115,15 +115,31 @@ class AdminConsole:
         self.apply_button.set_sensitive(lock_status)
 
         self.session_hoursday_checkbutton.set_sensitive(lock_status)
-        self.session_hoursday_spinbutton.set_sensitive(lock_status)
+        if lock_status == True:
+            self.session_hoursday_spinbutton.set_sensitive(self.session_hoursday_checkbutton.get_active())
+        else:
+            self.session_hoursday_spinbutton.set_sensitive(lock_status)
+
         self.browser_configure_proxy_button.set_sensitive(lock_status)
         self.browser_use_proxy_checkbutton.set_sensitive(lock_status)
         self.browser_hoursday_checkbutton.set_sensitive(lock_status)
-        self.browser_hoursday_spinbutton.set_sensitive(lock_status)
+        if lock_status == True:
+            self.browser_hoursday_spinbutton.set_sensitive(self.browser_hoursday_checkbutton.get_active())
+        else:
+            self.browser_hoursday_spinbutton.set_sensitive(lock_status)
+        
         self.mail_hoursday_checkbutton.set_sensitive(lock_status)
         self.mail_hoursday_spinbutton.set_sensitive(lock_status)
+        if lock_status == True:
+            self.mail_hoursday_spinbutton.set_sensitive(self.mail_hoursday_checkbutton.get_active())
+        else:
+            self.mail_hoursday_spinbutton.set_sensitive(lock_status)
+
         self.im_hoursday_checkbutton.set_sensitive(lock_status)
-        self.im_hoursday_spinbutton.set_sensitive(lock_status)
+        if lock_status == True:
+            self.im_hoursday_spinbutton.set_sensitive(self.im_hoursday_checkbutton.get_active())
+        else:
+            self.im_hoursday_spinbutton.set_sensitive(lock_status)
 
         self.session_schedule_widget.set_sensitive(lock_status)
         self.browser_schedule_widget.set_sensitive(lock_status)
