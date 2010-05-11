@@ -138,7 +138,16 @@ class LinuxSessionCKFiltering(gobject.GObject) :
             
     def __launch_desktop_blocker(self, session_name, user_id, x11_display):
         print "Launch desktop-blocker to '%s'" % session_name
-        ret = os.system("DISPLAY=%s nanny-desktop-blocker" % x11_display)
+        proclist = gtop.proclist(gtop.PROCLIST_KERN_PROC_UID, int(user_id))
+
+        if len(proclist) > 0 :
+            from subprocess import Popen, PIPE
+
+            lang_var = Popen('cat /proc/%s/environ | tr "\\000" "\\n" | grep ^LANG= ' % proclist[0] , shell=True, stdout=PIPE).stdout.readline().strip("\n")
+            ret = os.system('DISPLAY=%s %s nanny-desktop-blocker' % (x11_display, lang_var))
+        else:
+            ret = os.system('DISPLAY=%s nanny-desktop-blocker' % (x11_display))
+
         return session_name, user_id, ret
 
     def __result_of_desktop_blocker(self, result):
