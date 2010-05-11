@@ -44,6 +44,9 @@ class LinuxSessionCKFiltering(gobject.GObject) :
         self.quarterback.connect("update-blocks", self.__update_blocks_cb)
 
     def start(self):
+        if not os.path.exists("/var/lib/nanny/desktop_blocks_pids") :
+            os.system("mkdir -p /var/lib/nanny/desktop_blocks_pids")
+        
         self.__update_blocks_cb(self.quarterback, self.quarterback.blocks)
         print "Start Linux Session ConsoleKit Filtering"
 
@@ -72,6 +75,7 @@ class LinuxSessionCKFiltering(gobject.GObject) :
                     for uid, uname, ufname in users :
                         if str(uid) == user_id :
                             self.uids_blocked.pop(self.uids_blocked.index(user_id))
+                            self.__kill_desktop_blockers(user_id)
                             print "Unblocked session to user '%s'" % uname
 
 
@@ -101,6 +105,7 @@ class LinuxSessionCKFiltering(gobject.GObject) :
                 for uid, uname, ufname in users :
                     if str(uid) == user_id :
                         self.uids_blocked.pop(self.uids_blocked.index(user_id))
+                        self.__kill_desktop_blockers(user_id)
                         print "Unblocked session to user '%s'" % uname
             return
         else:
@@ -115,6 +120,19 @@ class LinuxSessionCKFiltering(gobject.GObject) :
                     print "blocked session to user '%s'" % uname
 
             return
+
+    def __kill_desktop_blockers(self, user_id):
+        import glob
+        
+        for pid_file in glob.glob("/var/lib/nanny/desktop_blocks_pids/%s.*" % user_id):
+            try:
+                p = open(pid_file, "r")
+                pid = p.read()
+                os.kill(int(pid), 15)
+                print "Send SIGTERM to nanny-desktop-blocker (%s, %s)" % (pid, user_id)
+            except:
+                print "Something wrong killing desktop blocker (%s, %s)" % (pid, user_id)
+            
         
     def __logout_session_if_is_running(self, user_id):
         try:
@@ -138,15 +156,31 @@ class LinuxSessionCKFiltering(gobject.GObject) :
             
     def __launch_desktop_blocker(self, session_name, user_id, x11_display):
         print "Launch desktop-blocker to '%s'" % session_name
+        from os import environ 
+        env = environ.copy()
+        env["DISPLAY"] = x11_display
+
         proclist = gtop.proclist(gtop.PROCLIST_KERN_PROC_UID, int(user_id))
 
         if len(proclist) > 0 :
             from subprocess import Popen, PIPE
-
             lang_var = Popen('cat /proc/%s/environ | tr "\\000" "\\n" | grep ^LANG= ' % proclist[0] , shell=True, stdout=PIPE).stdout.readline().strip("\n")
-            ret = os.system('DISPLAY=%s %s nanny-desktop-blocker' % (x11_display, lang_var))
+            if len(lang_var) > 0 :
+                env["LANG"] = lang_var.replace("LANG=","")
+
+            pid = Popen('nanny-desktop-blocker', env=env).pid
         else:
-            ret = os.system('DISPLAY=%s nanny-desktop-blocker' % (x11_display))
+            pid = Popen('nanny-desktop-blocker', env=env).pid
+        
+        pid_file = "/var/lib/nanny/desktop_blocks_pids/%s.%s" % (user_id, os.path.basename(session_name))
+        fd = open(pid_file, "w")
+        fd.write(str(pid))
+        fd.close()
+
+        pid, ret = os.waitpid(pid, 0)
+        
+        if os.path.exists(pid_file) :
+            os.unlink(pid_file)
 
         return session_name, user_id, ret
 
