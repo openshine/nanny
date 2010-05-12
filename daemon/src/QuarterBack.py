@@ -372,6 +372,8 @@ class QuarterBack(gobject.GObject) :
             if self.chrono_times[userid].has_key(appid):
                 if self.get_available_time(userid, appid) > 0:
                     self.chrono_times[userid][appid]["used_time"] += time
+                    print "Substract time (%s, %s) = %s" % (userid, appid, 
+                                                            self.chrono_times[userid][appid]["used_time"])
         self.__save()
 
     def new_chrono_day(self):

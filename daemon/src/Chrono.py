@@ -30,6 +30,8 @@ import gtop
 import pickle
 import datetime
 
+import dbus
+
 (
 SESSION_APPID,
 WEB_APPID,
@@ -65,15 +67,32 @@ class Chrono(gobject.GObject) :
         if block_status == False:
             app_list = self.__get_application_list(self.categories)
             proclist = gtop.proclist(gtop.PROCLIST_KERN_PROC_UID, int(user_id))
-
-            category = self.categories[app_id]
-            found = False
-            for proc in proclist:
-                if len(gtop.proc_args(proc)) > 0:
-                    process = gtop.proc_args(proc)[0]
-                    if self.is_a_controlled_app(process, category, app_list):
+            
+            if app_id == SESSION_APPID :
+                try:
+                    d = dbus.SystemBus()
+                    manager = dbus.Interface(d.get_object("org.freedesktop.ConsoleKit", "/org/freedesktop/ConsoleKit/Manager"), 
+                                             "org.freedesktop.ConsoleKit.Manager")
+                    sessions = manager.GetSessionsForUnixUser(int(user_id))
+                    for session_name in sessions :
+                        session = dbus.Interface(d.get_object("org.freedesktop.ConsoleKit", session_name),
+                                                 "org.freedesktop.ConsoleKit.Session")
+                        x11_display = session.GetX11Display()
+                        if x11_display == "":
+                            continue
                         self.quarterback.subtract_time(user_id, app_id)
                         break
+                except:
+                    print "Crash Chrono __update_cb"
+            else:
+                category = self.categories[app_id]
+                found = False
+                for proc in proclist:
+                    if len(gtop.proc_args(proc)) > 0:
+                        process = gtop.proc_args(proc)[0]
+                        if self.is_a_controlled_app(process, category, app_list):
+                            self.quarterback.subtract_time(user_id, app_id)
+                            break
 
     def is_a_controlled_app(self, process, category, app_list):
         found = False
