@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nanny master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nanny&component=general\n"
-"POT-Creation-Date: 2010-03-16 17:23+0000\n"
-"PO-Revision-Date: 2010-03-20 17:16+0100\n"
+"POT-Creation-Date: 2010-05-11 18:18+0000\n"
+"PO-Revision-Date: 2010-05-14 19:40+0100\n"
 "Last-Translator: Andrej Žnidaršič <andrej.znidarsic@gmail.com>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -807,6 +807,22 @@ msgstr "Tukaj je mogoče uporabiti črne sezname za izbranega uporabnika. Za dod
 msgid "Import..."
 msgstr "Uvoz ..."
 
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:1
+msgid "5 minutes, please"
+msgstr "5 minut, prosim"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
+msgid "<span foreground=\"white\"><big>You've time available if you need to close documents or aplications.</big></span>"
+msgstr "<span foreground=\"white\"><big>Na voljo imate čas za zaprtje dokumentov ali programov.</big></span>"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
+msgid "<span size=\"25000\" foreground=\"white\"><b>You've used your computer use time</b></span>"
+msgstr "<span size=\"25000\" foreground=\"white\"><b>Porabili ste čas za uporabo vašega računalnika</b></span>"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
+msgid "close session"
+msgstr "zapri sejo"
+
 #: ../client/gnome/admin/src/ScheduleCalendar.py:295
 msgid "Monday"
 msgstr "ponedeljek"
@@ -895,19 +911,19 @@ msgid "To use the parental control, please start up the daemon."
 msgstr "Za uporabo starševskega nadzora zaženite ozadnji program."
 
 #. FACE
-#: ../client/gnome/admin/src/AdminConsole.py:143
+#: ../client/gnome/admin/src/AdminConsole.py:159
 msgid "Users"
 msgstr "Uporabniki"
 
-#: ../client/gnome/admin/src/AdminConsole.py:298
+#: ../client/gnome/admin/src/AdminConsole.py:314
 msgid "Your configuration has been saved"
 msgstr "Nastavitve so bile shranjene"
 
-#: ../client/gnome/admin/src/AdminConsole.py:310
+#: ../client/gnome/admin/src/AdminConsole.py:326
 msgid "You have made changes"
 msgstr "Narejene so bile spremembe"
 
-#: ../client/gnome/admin/src/AdminConsole.py:311
+#: ../client/gnome/admin/src/AdminConsole.py:327
 msgid ""
 "If you don't press the 'Apply' button, your changes will be lost.\n"
 "Are you sure?"
@@ -915,12 +931,12 @@ msgstr ""
 "V primeru, da gumba 'Uporabi' ne pritisnete, bodo vaše spremembe izgubljene.\n"
 "Ali ste prepričani, da želite nadaljevati?"
 
-#: ../client/gnome/admin/src/AdminConsole.py:340
+#: ../client/gnome/admin/src/AdminConsole.py:356
 #, python-format
 msgid "Nanny Admin Console - %s"
 msgstr "Konzola skrbnika Nanny - %s"
 
-#: ../client/gnome/admin/src/AdminConsole.py:343
+#: ../client/gnome/admin/src/AdminConsole.py:359
 msgid "Nanny Admin Console"
 msgstr "Skrbniška konzola Nanny"
 
