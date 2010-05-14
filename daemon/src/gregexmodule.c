@@ -28,8 +28,10 @@ static PyObject*
 py_regexp(PyObject* self, PyObject* args){
         char *exp;
 	char *str;
-
-        PyArg_ParseTuple(args, "ss", &exp, &str);
+        if (!PyArg_ParseTuple(args, "es|es", "utf-8", &exp, "utf-8",  &str)) {
+		printf("gregexpodule (fail) : %s\n", exp);
+		return Py_BuildValue("i", FALSE);
+	}
         return Py_BuildValue("i", g_regex_match_simple(exp, str, 0, 0));
 }
 
