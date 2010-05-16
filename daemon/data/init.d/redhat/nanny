@@ -1,10 +1,93 @@
 #!/bin/sh
 #
-# nanny-daemon:    NannyDaemon 
+# nanny:    nanny daemon 
 #
 # chkconfig: 345 99 50 
-# description: Run NannyDaemon 
+# description: Run nanny daemon 
 #
-# processname: NannyDaemon
-# pidfile: /var/run/nanny/NannyDaemon.pid 
+# processname: nanny
+# pidfile: /var/run/nanny.pid 
 #
+
+# Sanity checks.
+TWISTD_BINARY=`which twistd`
+[ -x $TWISTD_BINARY ] || (echo "missing twistd" && exit 1)
+
+TWISTED_FILE="/usr/share/nanny/daemon/nanny.tap"
+if [ -e /usr/local/share/nanny/daemon/nanny.tap ] ;
+then
+    TWISTED_FILE="/usr/local/share/nanny/daemon/nanny.tap"
+fi
+[ -x $TWISTD_FILE ] || (echo "missing nanny" && exit 1)
+
+
+#Twisted INFO
+TWISTED_NAME='nanny'
+TWISTED_PID_DIR='/var/run/'
+TWISTED_PID="$TWISTED_PID_DIR/nanny.pid"
+TWISTED_LOG='/var/log/nanny.log'
+
+USER=`id -u root`
+GROUP=`id -g root`
+
+# Source function library.
+if [ -f /etc/rc.d/init.d/functions ]
+then
+	. /etc/rc.d/init.d/functions
+	START="daemon"
+	STOP="killproc -p $TWISTED_PID -d 10 twistd"
+	START="$START \"$TWISTD_BINARY -r glib2 -y $TWISTED_FILE --pidfile=$TWISTED_PID --logfile=$TWISTED_LOG -u $USER -g $GROUP\""
+else
+	. /lib/lsb/init-functions
+	START="start-stop-daemon --start --pidfile=$TWISTED_PID --exec"
+	STOP="start-stop-daemon --stop --pidfile=$TWISTED_PID -n twistd"
+	START="$START $TWISTD_BINARY -- -r glib2 -y $TWISTED_FILE --pidfile=$TWISTED_PID --logfile=$TWISTED_LOG -u $USER -g $GROUP"
+fi
+
+start() {
+    echo -n "Starting $TWISTED_NAME: "
+    [ -d $TWISTED_PID_DIR ] || mkdir -p $TWISTED_PID_DIR
+	$START
+	RETVAL=$?
+	if [ -f $TWISTED_PID ] 
+	then
+		chown $USER:$GROUP $TWISTED_PID
+	fi
+	echo
+	return $RETVAL
+}
+
+stop() {
+    echo -n "Stopping $TWISTED_NAME: "
+	$STOP
+	RETVAL=$?
+	rm -f $TWISTED_PID
+	echo
+	return $RETVAL
+}
+
+# See how we were called.
+case "$1" in
+    start)
+	start
+	;;
+    stop)
+	stop
+	;;
+    status)
+		status -p $TWISTED_PID $TWISTED_NAME
+        RETVAL=$?
+        ;;
+    restart)
+	stop
+	start
+	;;
+    condrestart)
+	;;
+    reload)
+        ;;
+    *)
+	echo $"Usage: $0 {start|stop|status|restart|condrestart|reload}"
+	;;
+esac
+exit $RETVAL
