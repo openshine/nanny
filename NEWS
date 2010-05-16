@@ -1,3 +1,35 @@
+Version 2.29.4
+==============
+
+Features
+-----------------------------------
+* Add desktop blocker system
+* Remove pam.d stuff
+* Console-kit support
+* Policy-kit support
+* Support for Mandriva/CaixaMagica 
+  - (Special thanks to Luis Medinas and CaixaMagica.pt guys :) )
+* Support for redhat/fedora
+
+Bugfixes
+-----------------------------------
+* Fix gtkbuilder bug
+* Fix dbus restart tolerance
+* Fix help button crash
+* Fix https blocking
+
+Translations
+-----------------------------------
+- cs, courtesy of Marek Černocký 
+- de, courtesy of Mario Blättermann 
+- de, courtesy of Wolfgang Stoeggl 
+- es, courtesy of Jorge González
+- fr, courtesy of Claude Paroz 
+- gl, courtesy of Fran Diéguez 
+- it, courtesy of Nico Zanferrari 
+- pl, courtesy of Tomasz Dominikowski 
+- sl, courtesy of Andrej Žnidaršič
+
 Version 2.29.3
 ==============
 
