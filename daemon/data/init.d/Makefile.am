@@ -1,1 +1,1 @@
-SUBDIRS=debian suse redhat
+SUBDIRS=debian suse redhat mandriva
