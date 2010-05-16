@@ -5,4 +5,6 @@ policydir = $(POLKIT_POLICY_DIR)
 policy_DATA = $(policy_in_files:.policy.in=.policy)
 @INTLTOOL_POLICY_RULE@
 
+CLEANFILES = org.gnome.nanny.policy
+
 EXTRA_DIST= org.gnome.nanny.policy.in
