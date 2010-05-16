@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nanny master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-15 01:20+0100\n"
-"PO-Revision-Date: 2010-03-15 00:14+0100\n"
+"POT-Creation-Date: 2010-05-17 00:26+0200\n"
+"PO-Revision-Date: 2010-05-13 06:00+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -740,6 +740,7 @@ msgid "Nanny parental control blacklists manager"
 msgstr "Správa černých listin pro rodičovskou kontrolu Nanny"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
+#: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
 msgid ""
 "<b>You don't have admin privileges</b>\n"
 "Click this button if you want to make changes."
@@ -834,43 +835,59 @@ msgstr ""
 "Zde můžete pro vybraného uživatele použít dostupné černé listiny. Pokud "
 "chcete přidat nové černé listiny, jděte do Systém > Správa > Černé listiny."
 
-#: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
-msgid ""
-"<b>You have not admin privileges</b>\n"
-"Click this button if you want to make changes."
-msgstr ""
-"<b>Nemáte oprávnění správce</b>\n"
-"Pokud chcete provádět změny, klikněte na toto tlačítko."
-
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
 msgstr "Import…"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:1
+msgid "5 minutes, please"
+msgstr "5 minut, prosím"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
+msgid ""
+"<span foreground=\"white\"><big>You've time available if you need to close "
+"documents or aplications.</big></span>"
+msgstr ""
+"<span foreground=\"white\"><big>Máte čas akorát tak na to, zavřít dokumenty "
+"nebo aplikace.</big></span>"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
+msgid ""
+"<span size=\"25000\" foreground=\"white\"><b>You've used your computer use "
+"time</b></span>"
+msgstr ""
+"<span size=\"25000\" foreground=\"white\"><b>Používali jste počítač po čas, "
+"který máte k dispozici</b></span>"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
+msgid "close session"
+msgstr "zavřít sezení"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:295
 msgid "Monday"
 msgstr "Pondělí"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+#: ../client/gnome/admin/src/ScheduleCalendar.py:295
 msgid "Tuesday"
 msgstr "Úterý"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+#: ../client/gnome/admin/src/ScheduleCalendar.py:295
 msgid "Wednesday"
 msgstr "Středa"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+#: ../client/gnome/admin/src/ScheduleCalendar.py:295
 msgid "Thursday"
 msgstr "Čtvrtek"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+#: ../client/gnome/admin/src/ScheduleCalendar.py:295
 msgid "Friday"
 msgstr "Pátek"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+#: ../client/gnome/admin/src/ScheduleCalendar.py:295
 msgid "Saturday"
 msgstr "Sobota"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+#: ../client/gnome/admin/src/ScheduleCalendar.py:295
 msgid "Sunday"
 msgstr "Neděle"
 
@@ -934,19 +951,19 @@ msgid "To use the parental control, please start up the daemon."
 msgstr "Pokud chcete použít rodičovskou kontrolu, spusťte prosím démona."
 
 #. FACE
-#: ../client/gnome/admin/src/AdminConsole.py:143
+#: ../client/gnome/admin/src/AdminConsole.py:159
 msgid "Users"
 msgstr "Uživatelé"
 
-#: ../client/gnome/admin/src/AdminConsole.py:298
+#: ../client/gnome/admin/src/AdminConsole.py:314
 msgid "Your configuration has been saved"
 msgstr "Vaše nastavení bylo uloženo"
 
-#: ../client/gnome/admin/src/AdminConsole.py:310
+#: ../client/gnome/admin/src/AdminConsole.py:326
 msgid "You have made changes"
 msgstr "Máte provedené změny"
 
-#: ../client/gnome/admin/src/AdminConsole.py:311
+#: ../client/gnome/admin/src/AdminConsole.py:327
 msgid ""
 "If you don't press the 'Apply' button, your changes will be lost.\n"
 "Are you sure?"
@@ -954,12 +971,12 @@ msgstr ""
 "Když nezmáčknete tlačítko „Použít“, budou vaše změny ztraceny.\n"
 "Jste si jistí?"
 
-#: ../client/gnome/admin/src/AdminConsole.py:340
+#: ../client/gnome/admin/src/AdminConsole.py:356
 #, python-format
 msgid "Nanny Admin Console - %s"
 msgstr "Ovládací panel Nanny - %s"
 
-#: ../client/gnome/admin/src/AdminConsole.py:343
+#: ../client/gnome/admin/src/AdminConsole.py:359
 msgid "Nanny Admin Console"
 msgstr "Ovládací panel Nanny"
 
@@ -1083,6 +1100,13 @@ msgstr "Importují se domény [kategorie: %s] (%s%%)"
 #, python-format
 msgid "Importing urls [category: %s] (%s%%)"
 msgstr "Importují se URL [kategorie: %s] (%s%%)"
+
+#~ msgid ""
+#~ "<b>You have not admin privileges</b>\n"
+#~ "Click this button if you want to make changes."
+#~ msgstr ""
+#~ "<b>Nemáte oprávnění správce</b>\n"
+#~ "Pokud chcete provádět změny, klikněte na toto tlačítko."
 
 #~ msgid "1 day"
 #~ msgstr "1 den"
