@@ -9,9 +9,9 @@ msgstr ""
 "Project-Id-Version: nanny master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nanny&component=general\n"
-"POT-Creation-Date: 2010-03-16 17:23+0000\n"
-"PO-Revision-Date: 2010-03-17 21:44+0100\n"
-"Last-Translator: Wolfgang Stoeggl <c72578@yahoo.de>\n"
+"POT-Creation-Date: 2010-05-11 17:44+0000\n"
+"PO-Revision-Date: 2010-05-25 17:40+0100\n"
+"Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -573,8 +573,8 @@ msgstr "Sexualität"
 #: ../client/common/src/Categories.py:150
 msgid "Sites dedicated to sexuality, possibly including adult material"
 msgstr ""
-"Seiten, die sich der Sexualität widmen und möglicherweise Material "
-"enthalten, das nur für Erwachsende bestimmt ist"
+"Seiten, die sich der Sexualität widmen und möglicherweise Material enthalten, "
+"das nur für Erwachsende bestimmt ist"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:152
@@ -793,8 +793,8 @@ msgid ""
 "<span color=\"red\">All the fields are mandatory. Please fill all of them.</"
 "span>"
 msgstr ""
-"<span color=\"red\">Alle Felder sind verpflichtend. Bitte füllen Sie alle "
-"aus.</span>"
+"<span color=\"red\">Alle Felder sind verpflichtend. Bitte füllen Sie alle aus."
+"</span>"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:2
 #: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:1
@@ -834,6 +834,31 @@ msgstr ""
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
 msgstr "Importieren …"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:1
+msgid "5 minutes, please"
+msgstr "5 Minuten bitte"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
+msgid ""
+"<span foreground=\"white\"><big>You've time available if you need to close "
+"documents or aplications.</big></span>"
+msgstr ""
+"<span foreground=\"white\"><big>Es steht Ihnen nun Zeit zum Schließen von "
+"Dokumenten oder Anwendungen zur Verfügung.</big></span>"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
+msgid ""
+"<span size=\"25000\" foreground=\"white\"><b>You've used your computer use "
+"time</b></span>"
+msgstr ""
+"<span size=\"25000\" foreground=\"white\"><b>Sie haben die mögliche "
+"Nutzungsdauer des Rechners erreicht.</b></span>"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
+#| msgid "Session"
+msgid "close session"
+msgstr "Sitzung schließen"
 
 #: ../client/gnome/admin/src/ScheduleCalendar.py:295
 msgid "Monday"
@@ -889,8 +914,7 @@ msgstr "Sind Sie sicher, dass Sie diesen Filter löschen wollen?"
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:346
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:367
 msgid "You will not be able to undo this action."
-msgstr ""
-"Sie werden nicht in der Lage sein, diesen Vorgang rückgängig zu machen."
+msgstr "Sie werden nicht in der Lage sein, diesen Vorgang rückgängig zu machen."
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:353
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:374
@@ -922,8 +946,7 @@ msgstr "Der Nanny-Dienst ist nicht gestartet"
 #: ../client/gnome/admin/src/AdminConsole.py:47
 msgid "To use the parental control, please start up the daemon."
 msgstr ""
-"Um die Elternkontrolle wirksam werden zu lassen, starten Sie bitte den "
-"Dienst."
+"Um die Elternkontrolle wirksam werden zu lassen, starten Sie bitte den Dienst."
 
 #. FACE
 #: ../client/gnome/admin/src/AdminConsole.py:143
