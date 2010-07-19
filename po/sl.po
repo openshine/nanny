@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: nanny master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nanny&component=general\n"
 "POT-Creation-Date: 2010-05-11 18:18+0000\n"
-"PO-Revision-Date: 2010-05-14 19:40+0100\n"
+"PO-Revision-Date: 2010-07-17 19:13+0100\n"
 "Last-Translator: Andrej Žnidaršič <andrej.znidarsic@gmail.com>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -72,7 +72,7 @@ msgstr "golota v umetnosti"
 
 #: ../client/common/src/Categories.py:42
 msgid "Art sites containing artistic nudity"
-msgstr "Strani z umetniško obravnavo golote"
+msgstr "Strani z umetniško obravnavano goloto"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:44
@@ -90,7 +90,7 @@ msgstr "zvok-slika"
 
 #: ../client/common/src/Categories.py:46
 msgid "Sites with audio or video downloads"
-msgstr "Strani z zvočnimi ali video datotekami"
+msgstr "Strani z zvočnimi ali video prejemi"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:48
@@ -135,7 +135,7 @@ msgstr "prenosni telefoni"
 
 #: ../client/common/src/Categories.py:56
 msgid "stuff for mobile/cell phones"
-msgstr "različne podrobnosti za prenosne telefone"
+msgstr "različne stvari za prenosne telefone"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:58
@@ -216,7 +216,7 @@ msgstr "klicalniki"
 
 #: ../client/common/src/Categories.py:74
 msgid "Sites with dialers such as those for pornography or trojans"
-msgstr "Strani s klicalniki, kot so na primer programi za pornografsko vsebino ali z virusi okuženimi datotekami"
+msgstr "Strani s klicalniki, kot so na primer programi za pornografsko vsebino ali trojanci"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:76
@@ -297,7 +297,7 @@ msgstr "vlada"
 
 #: ../client/common/src/Categories.py:92
 msgid "Military and schools etc"
-msgstr "Strani vlade različnih ministrstev"
+msgstr "Vojska in šole ter podobno"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:94
@@ -324,7 +324,7 @@ msgstr "popravi sam"
 
 #: ../client/common/src/Categories.py:98
 msgid "Sites about home repair"
-msgstr "Strani o domačih hobby popravilih"
+msgstr "Strani o domačih popravilih"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:100
@@ -369,7 +369,7 @@ msgstr "otroško zapravljanje časa"
 
 #: ../client/common/src/Categories.py:108
 msgid "Sites kids often waste time on"
-msgstr "Strani na katerih lahko otroci varno zapravljajo čas"
+msgstr "Strani na katerih otroci pogosto zapravljajo čas"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:110
@@ -455,7 +455,7 @@ msgstr "Strani za spletno igranje"
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:128
 msgid "onlinepayment"
-msgstr "spletno plačilo"
+msgstr "spletno plačevanje"
 
 #: ../client/common/src/Categories.py:128
 msgid "Online payment sites"
@@ -477,12 +477,12 @@ msgstr "ljubljenčki"
 
 #: ../client/common/src/Categories.py:132
 msgid "Pet sites"
-msgstr "Strani o hišnih ljubljencih"
+msgstr "Strani o hišnih ljubljenčkih"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:134
 msgid "phishing"
-msgstr "phishing"
+msgstr "ribarjenje"
 
 #: ../client/common/src/Categories.py:134
 msgid "Sites attempting to trick people into giving out private information."
@@ -500,7 +500,7 @@ msgstr "Strani s pornografskimi vsebinami"
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:138
 msgid "proxy"
-msgstr "posredovalni strežnik"
+msgstr "posredniški strežnik"
 
 #: ../client/common/src/Categories.py:138
 msgid "Sites with proxies to bypass filters"
@@ -558,7 +558,7 @@ msgstr "spolnost"
 
 #: ../client/common/src/Categories.py:150
 msgid "Sites dedicated to sexuality, possibly including adult material"
-msgstr "Strani z spolnimi vsebinami za odrasle"
+msgstr "Strani s spolnimi vsebinami za odrasle"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:152
@@ -621,7 +621,7 @@ msgstr "počitnice"
 
 #: ../client/common/src/Categories.py:164
 msgid "Sites about going on holiday"
-msgstr "Strani o podrobnostih o počitnicah"
+msgstr "Strani o počitnicah"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:166
@@ -639,7 +639,7 @@ msgstr "okuženo z virusi"
 
 #: ../client/common/src/Categories.py:168
 msgid "Sites who host virus infected files"
-msgstr "Strani na katerih gostujejo z virusi okužene datoteke"
+msgstr "Strani, ki gostujejo z virusi okužene datoteke"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:170
@@ -666,7 +666,7 @@ msgstr "orožja"
 
 #: ../client/common/src/Categories.py:174
 msgid "Sites detailing or selling weapons"
-msgstr "Strani s podrobnostmi o delovanju ali prodajanjem orožja"
+msgstr "Strani s podrobnostmi o delovanju ali prodajo orožja"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:176
@@ -746,7 +746,7 @@ msgstr "Uporaba računalnika"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
 msgid "Use the instant messaging"
-msgstr "Uporabi hipno sporočanje"
+msgstr "Uporaba hipnega sporočanja"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
 msgid "Use the mail client"
@@ -801,7 +801,7 @@ msgstr "Prepovedane strani"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
 msgid "Here you can apply the available blacklists for the selected user. If you want to add new blacklists please go to System > Administration > Blacklists."
-msgstr "Tukaj je mogoče uporabiti črne sezname za izbranega uporabnika. Za dodajanje novih črnih seznamov pojdite na Sistem > Skrbništvo > Črni seznami."
+msgstr "Tukaj je mogoče uveljaviti črne sezname za izbranega uporabnika. Za dodajanje novih črnih seznamov pojdite na Sistem > Skrbništvo > Črni seznami."
 
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
@@ -809,7 +809,7 @@ msgstr "Uvoz ..."
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:1
 msgid "5 minutes, please"
-msgstr "5 minut, prosim"
+msgstr "Preostalo je še 5 minut"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
 msgid "<span foreground=\"white\"><big>You've time available if you need to close documents or aplications.</big></span>"
@@ -817,7 +817,7 @@ msgstr "<span foreground=\"white\"><big>Na voljo imate čas za zaprtje dokumento
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
 msgid "<span size=\"25000\" foreground=\"white\"><b>You've used your computer use time</b></span>"
-msgstr "<span size=\"25000\" foreground=\"white\"><b>Porabili ste čas za uporabo vašega računalnika</b></span>"
+msgstr "<span size=\"25000\" foreground=\"white\"><b>Porabili ste čas za uporabo svojega računalnika</b></span>"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
 msgid "close session"
@@ -858,7 +858,7 @@ msgstr "Nastavitev filtra spletne vsebine"
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:242
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:253
 msgid "Error while importing list from the Internet"
-msgstr "Napaka med uvažanjem seznama s spleta"
+msgstr "Napaka med uvažanjem seznama z medmrežja"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:243
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:254
@@ -887,7 +887,7 @@ msgstr "Odstranjevanje filtra. Počakajte ..."
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:393
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:404
 msgid "Error while deleting filters"
-msgstr "Napaka med izbrisom filtrov"
+msgstr "Napaka med brisanjem filtrov"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:394
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:405
@@ -928,13 +928,13 @@ msgid ""
 "If you don't press the 'Apply' button, your changes will be lost.\n"
 "Are you sure?"
 msgstr ""
-"V primeru, da gumba 'Uporabi' ne pritisnete, bodo vaše spremembe izgubljene.\n"
+"V primeru, da gumba 'Uveljavi' ne pritisnete, bodo vaše spremembe izgubljene.\n"
 "Ali ste prepričani, da želite nadaljevati?"
 
 #: ../client/gnome/admin/src/AdminConsole.py:356
 #, python-format
 msgid "Nanny Admin Console - %s"
-msgstr "Konzola skrbnika Nanny - %s"
+msgstr "Skrbniška konzola Nanny - %s"
 
 #: ../client/gnome/admin/src/AdminConsole.py:359
 msgid "Nanny Admin Console"
@@ -972,7 +972,7 @@ msgstr "<b>Ali ste prepričani, da želite izbrisati ta črni seznam?</b>"
 
 #: ../client/gnome/admin/src/BlacklistManager.py:177
 msgid "This action will remove all the user configuration linked to the blacklist."
-msgstr "Z dejanjem bodo odstranjene vse uporabniške nastavitve povezane s črnim seznamom."
+msgstr "To dejanje bo odstranilo vse uporabniške nastavitve povezane s črnim seznamom."
 
 #: ../client/gnome/systray/src/SystrayNanny.py:45
 msgid "Session"
@@ -1032,7 +1032,7 @@ msgstr ","
 
 #: ../daemon/data/org.gnome.nanny.policy.in.h:1
 msgid "Manage your parental control settings"
-msgstr "Upravljanje in spreminjanje starševskih nastavitev"
+msgstr "Upravljanje in spreminjanje nastavitev starševskega nadzora"
 
 #: ../daemon/data/org.gnome.nanny.policy.in.h:2
 msgid "You need to authenticate to modify the parental control configuration"
