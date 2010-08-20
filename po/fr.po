@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: nanny master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nanny&component=general\n"
-"POT-Creation-Date: 2010-03-16 17:23+0000\n"
+"POT-Creation-Date: 2010-05-11 17:44+0000\n"
 "PO-Revision-Date: 2010-04-26 09:49+0200\n"
 "Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -432,7 +432,8 @@ msgstr "Naturisme"
 #: ../client/common/src/Categories.py:120
 msgid "Sites that contain nude pictures and/or promote a nude lifestyle"
 msgstr ""
-"Sites promouvant le mode de vie naturiste ou contenant des photographies de nus"
+"Sites promouvant le mode de vie naturiste ou contenant des photographies de "
+"nus"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:122
@@ -569,7 +570,8 @@ msgstr "Sexe"
 #: ../client/common/src/Categories.py:150
 msgid "Sites dedicated to sexuality, possibly including adult material"
 msgstr ""
-"Sites dédiés à la sexualité, incluant potentiellement des contenus pour adultes"
+"Sites dédiés à la sexualité, incluant potentiellement des contenus pour "
+"adultes"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:152
@@ -827,6 +829,30 @@ msgstr ""
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
 msgstr "Importer..."
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:1
+msgid "5 minutes, please"
+msgstr "5 minutes, s'il vous plaît"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
+msgid ""
+"<span foreground=\"white\"><big>You've time available if you need to close "
+"documents or aplications.</big></span>"
+msgstr ""
+"<span foreground=\"white\"><big>Il vous reste du temps si vous "
+"devez fermer des documents ou des applications.</big></span>"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
+msgid ""
+"<span size=\"25000\" foreground=\"white\"><b>You've used your computer use "
+"time</b></span>"
+msgstr ""
+"<span size=\"25000\" foreground=\"white\"><b>Votre durée d'utilisation de l'ordinateur "
+"est écoulée</b></span>"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
+msgid "close session"
+msgstr "fermer la session"
 
 #: ../client/gnome/admin/src/ScheduleCalendar.py:295
 msgid "Monday"
