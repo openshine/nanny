@@ -6,9 +6,13 @@ Gnome-Nanny is a parental control system designed for the Gnome Desktop
 Compile in developer mode 
 -------------------------
 
+
 ./autogen.sh --prefix=/usr --sysconfdir=/etc --with-init-scripts=debian
+ ->  [If there isn't autogen.sh try ./configure instead]
+
 make
 make install or sudo make install
+
 
 You can change debian,redhat, suse, mandriva or another one distro supported.
 If you don't use the init-scripts flag, the init scripts will not be installed.
