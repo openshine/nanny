@@ -19,13 +19,3 @@ dgimporterdir = $(pythondir)/nanny/daemon
 dgimporter_PYTHON = DansGuardianImporter.py
 endif
 
-
-INCLUDES =      -I$(top_srcdir)                 \
-                $(PYTHON_CFLAGS) $(GLIB_CFLAGS)
-
-pkgpyexec_LTLIBRARIES = gregex.la
-
-gregex_la_SOURCES = gregexmodule.c
-gregex_la_LDFLAGS =  -module -avoid-version -export-symbols-regex initgregex
-gregex_la_LIBADD = $(PYTHON_LIBS) $(GLIB_LIBS)
-

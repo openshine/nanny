@@ -35,11 +35,20 @@ from glob import glob
 from twisted.internet import reactor, threads, defer
 from twisted.enterprise import adbapi
 
-import nanny.gregex
 from BlockingDeferred import BlockingDeferred
 
+from ctypes import *
+g = cdll.LoadLibrary("libglib-2.0.so")
+g.g_regex_match_simple.restype=c_int
+g.g_regex_match_simple.argtypes=[c_wchar_p, c_wchar_p, c_int, c_int]
+
+
 def regexp(expr, item):
-    return bool(nanny.gregex.regexp(expr, item))
+    try:
+        return bool(g.g_regex_match_simple(expr, item, 0, 0))
+    except:
+        print "Regex failure"
+        return False
 
 def on_db_connect(conn):
     conn.create_function("gregexp", 2, regexp)
