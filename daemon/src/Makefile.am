@@ -15,7 +15,8 @@ corelib_PYTHON =	 __init__.py 			\
 			LinuxSessionCKFiltering.py	\
 			Win32Filtering			\
 			Win32WebContentFiltering.py	\
-			Win32UsersManager.py		
+			Win32UsersManager.py		\
+			Win32SessionFiltering.py		
 
 if HAS_HACHOIR_REGEX
 dgimporterdir = $(pythondir)/nanny/daemon
