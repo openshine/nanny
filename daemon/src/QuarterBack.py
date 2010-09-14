@@ -30,11 +30,14 @@ import pickle
 import time
 from datetime import datetime, timedelta
 
-from LinuxFiltering import LinuxFiltering as FirewallFilter
-from LinuxWebContentFiltering import LinuxWebContentFiltering as WebContentFilter
-from LinuxUsersManager import LinuxUsersManager as UsersManager
-from LinuxSessionCKFiltering import LinuxSessionCKFiltering as SessionFilter
-from FilterManager import FilterManager as FilterManager
+if os.name == "posix" :
+    from LinuxFiltering import LinuxFiltering as FirewallFilter
+    from LinuxWebContentFiltering import LinuxWebContentFiltering as WebContentFilter
+    from LinuxUsersManager import LinuxUsersManager as UsersManager
+    from LinuxSessionCKFiltering import LinuxSessionCKFiltering as SessionFilter
+    from FilterManager import FilterManager as FilterManager
+elif os.name == "nt" :
+    from Win32UsersManager import Win32UsersManager as UsersManager
 
 from Chrono import Chrono
 
