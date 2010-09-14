@@ -1,4 +1,4 @@
-dbusdir = /etc/nanny/applists/
+dbusdir = $(sysconfdir)/nanny/applists/
 dbus_DATA = browsers email im
 
 EXTRA_DIST=$(dbus_DATA)
