@@ -14,6 +14,7 @@ corelib_PYTHON =	 __init__.py 			\
 			LinuxSessionFiltering.py	\
 			LinuxSessionCKFiltering.py	\
 			Win32Filtering			\
+			Win32WebContentFiltering.py	\
 			Win32UsersManager.py		
 
 if HAS_HACHOIR_REGEX
