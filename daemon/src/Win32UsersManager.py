@@ -23,17 +23,35 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 # USA
 
-import 
-if os.name == "posix" :
-    from LinuxUsersManager import LinuxUsersManager as UsersManager
-elif os.name == "nt" :
-    from Win32UsersManager import Win32UsersManager as UsersManager
+import os
+import time
+import win32com.client
 
-from QuarterBack import QuarterBack
-from Daemon import Daemon
+class Win32UsersManager:
+    def __init__(self):
+        self.last_time = None
+        self.users = None
+        
+    def get_users (self):
+        if self.last_time != None and time.time() - self.last_time <= 60 :
+            return users
 
-(
-SESSION_APPID,
-WEB_APPID,
-MAIL_APPID,
-IM_APPID) = range(4)
+        users=[]
+        oWMI = win32com.client.GetObject(r"winmgmts:\\.\root\cimv2")
+        qry = "Select * from Win32_UserAccount Where LocalAccount = True and Disabled = False"
+        qry = oWMI.ExecQuery(qry)
+        if qry.count > 0:
+            for result in qry:
+                uid = str(result.SID).split("-")[-1]
+                users.append(uid, unicode(result.Name), unicode(result.FullName))
+        self.last_time = time.time()
+        return users
+
+    def has_changes (self):
+        if self.last_time == None :
+            return True
+        
+        if time.time() - self.last_time > 60 :
+            return True
+
+        return False
