@@ -22,6 +22,11 @@ AC_ARG_WITH(init-scripts,
   [  --with-init-scripts=[redhat/debian/suse/mandriva/None]  Install init.d scripts [default=None]],,
   with_init_scripts=None)
 
+AC_ARG_ENABLE([win32],
+  AS_HELP_STRING([--enable-win32],[Enable support for win32 (default: disabled)]),
+  [enable_win32=$enableval],
+  [enable_win32=no])
+
 GNOME_DOC_INIT
 
 dnl check for python
@@ -159,6 +164,20 @@ else
   AC_MSG_RESULT(not found)
   AC_MSG_ERROR([You need to have python-gtop installed])
 fi
+
+dnl OS support
+dnl --------------------------------------------
+
+AC_MSG_CHECKING(Win32 support)
+if test x$enable_win32 = xyes ; then
+   AC_MSG_RESULT(enabled)
+else
+   AC_MSG_RESULT(disabled)
+fi
+
+AM_CONDITIONAL(NANNY_WIN32_SUPPORT, test x$enable_win32 = xyes)
+AM_CONDITIONAL(NANNY_POSIX_SUPPORT, test x$enable_win32 = xno)
+
 
 dnl checking operative system
 dnl --------------------------------------------
