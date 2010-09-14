@@ -37,6 +37,7 @@ if os.name == "posix" :
     from LinuxSessionCKFiltering import LinuxSessionCKFiltering as SessionFilter
     from FilterManager import FilterManager as FilterManager
 elif os.name == "nt" :
+    from Win32Filtering import Win32Filtering as FirewallFilter
     from Win32UsersManager import Win32UsersManager as UsersManager
 
 from Chrono import Chrono
