@@ -35,6 +35,7 @@ import os
 class Daemon :
     def __init__(self, app):
         self.quarterback = QuarterBack(app)
-        self.bus = NannyDBus(self.quarterback)
+        if os.name == "posix" :
+            self.bus = NannyDBus(self.quarterback)
         
 
