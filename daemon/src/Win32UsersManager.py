@@ -43,7 +43,7 @@ class Win32UsersManager:
         if qry.count > 0:
             for result in qry:
                 uid = str(result.SID).split("-")[-1]
-                users.append(uid, unicode(result.Name), unicode(result.FullName))
+                users.append((uid, unicode(result.Name), unicode(result.FullName)))
         self.last_time = time.time()
         return users
 

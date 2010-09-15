@@ -46,12 +46,13 @@ class Win32SessionFiltering(gobject.GObject) :
 #             os.system("mkdir -p /var/lib/nanny/desktop_blocks_pids")
         
 #         self.__update_blocks_cb(self.quarterback, self.quarterback.blocks)
-        print "Start Linux Session ConsoleKit Filtering"
+        print "Start Win32 Session Filtering"
 
     def stop(self):
-        print "Stop Linux Session ConsoleKit Filtering"
+        print "Stop Win32 Session Filtering"
 
     def __update_blocks_cb(self, quarterback, blocks):
+        pass
 #         for user_id in blocks.keys() :
 #             if not blocks[user_id].has_key(0) :
 #                 continue
@@ -78,6 +79,7 @@ class Win32SessionFiltering(gobject.GObject) :
 
 
     def __update_cb(self, quarterback, block_status, user_id, app_id, next_change, available_time):
+        pass
 #         if app_id != 0 :
 #             return
 

@@ -23,7 +23,8 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 # USA
 
-import 
+import os
+ 
 if os.name == "posix" :
     from LinuxUsersManager import LinuxUsersManager as UsersManager
 elif os.name == "nt" :
