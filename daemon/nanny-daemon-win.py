@@ -20,10 +20,29 @@
 import os
 import sys
 
+# Reactor stuff
+from twisted.application import app, service
+import twisted.internet.gtk2reactor
+twisted.internet.gtk2reactor.install()
+from twisted.internet import reactor
+reactor.suggestThreadPoolSize(30)
+
 #Add nanny module to python paths
 root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 nanny_lib_path = os.path.join(root_path, "lib", "python2.6", "site-packages")
 sys.path.append(nanny_lib_path)
 
-print sys.path
-import nanny
+
+#Start UP application
+import nanny.daemon
+application = service.Application('nanny')
+daemon = nanny.daemon.Daemon(application)
+
+app_service = service.IService(application)
+app_service.privilegedStartService()
+app_service.startService()
+reactor.addSystemEventTrigger('before', 'shutdown',
+                              app_service.stopService)
+
+#Reactor Run
+reactor.run()

@@ -26,11 +26,8 @@
 import gobject
 import os
 
-import gtop
 import pickle
 import datetime
-
-import dbus
 
 (
 SESSION_APPID,

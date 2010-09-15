@@ -75,6 +75,7 @@ class Win32WebContentFiltering(gobject.GObject) :
             self.__stop_proxy(self.quarterback, uid)
 
     def __start_proxy(self, quarterback, uid):
+        pass
 #         if not self.services.has_key(uid) :
 #             root = ProxyService(uid, quarterback.filter_manager)
 #             sc = service.IServiceCollection(self.app)
@@ -92,6 +93,7 @@ class Win32WebContentFiltering(gobject.GObject) :
 #                 return
         
     def __stop_proxy(self, quarterback, uid):
+        pass
 #         if not self.services.has_key(uid) :
 #             return True
 #         else:

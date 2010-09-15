@@ -23,8 +23,11 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 # USA
 
+import os
 from QuarterBack import QuarterBack
-from NannyDBus import NannyDBus
+
+if os.name == "posix":
+    from NannyDBus import NannyDBus
 
 import nanny.daemon.proxy
 

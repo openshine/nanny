@@ -65,7 +65,7 @@ elif os.name == "nt" :
 
 def mkdir_path(path):
     try:
-        os.mkdirs(path)
+        os.makedirs(path)
     except os.error, e:
         if e.errno != errno.EEXIST:
             raise
