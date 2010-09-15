@@ -26,6 +26,8 @@
 import gobject
 import gio
 import os
+import errno
+
 import shutil
 import pickle
 import tempfile
@@ -38,10 +40,13 @@ from twisted.enterprise import adbapi
 from BlockingDeferred import BlockingDeferred
 
 from ctypes import *
-g = cdll.LoadLibrary("libglib-2.0.so")
+if os.name == "posix" :
+    g = cdll.LoadLibrary("libglib-2.0.so")
+elif os.name == "nt":
+    g = cdll.LoadLibrary("libglib-2.0-0.dll")
+
 g.g_regex_match_simple.restype=c_int
 g.g_regex_match_simple.argtypes=[c_wchar_p, c_wchar_p, c_int, c_int]
-
 
 def regexp(expr, item):
     try:
@@ -52,6 +57,18 @@ def regexp(expr, item):
 
 def on_db_connect(conn):
     conn.create_function("gregexp", 2, regexp)
+
+if os.name == "posix" :
+    NANNY_DAEMON_DATA = "/var/lib/nanny/"
+elif os.name == "nt" :
+    NANNY_DAEMON_DATA = "C:\\WINDOWS\\nanny_data"
+
+def mkdir_path(path):
+    try:
+        os.mkdirs(path)
+    except os.error, e:
+        if e.errno != errno.EEXIST:
+            raise
 
 class FilterManager (gobject.GObject) :
     def __init__(self, quarterback):
@@ -66,7 +83,7 @@ class FilterManager (gobject.GObject) :
 
     def start(self):
         print "Start Filter Manager"
-        os.system("mkdir -p /var/lib/nanny/pkg_filters")
+        mkdir_path(os.path.join(NANNY_DAEMON_DATA, "pkg_filters"))
         self.custom_filters_db = self.__get_custom_filters_db()
         self.__start_packaged_filters()
 
@@ -78,7 +95,7 @@ class FilterManager (gobject.GObject) :
     #------------------------------------
 
     def __get_custom_filters_db(self):
-        path = "/var/lib/nanny/customfilters.db"
+        path = os.path.join(NANNY_DAEMON_DATA, "customfilters.db")
         if os.path.exists(path) :
             return adbapi.ConnectionPool('sqlite3', path,
                                          check_same_thread=False,
@@ -155,19 +172,22 @@ class FilterManager (gobject.GObject) :
     #-----------------------------------
 
     def __start_packaged_filters(self):
-        ddbb = glob('/var/lib/nanny/pkg_filters/*/filters.db') + glob('/usr/share/nanny/pkg_filters/*/filters.db')
+        ddbb = glob(os.path.join(NANNY_DAEMON_DATA, "pkg_filters","*","filters.db"))
+        if os.name == "posix" :
+            ddbb = ddbb + glob('/usr/share/nanny/pkg_filters/*/filters.db')
+
         for db in ddbb :
             self.db_pools[db] = adbapi.ConnectionPool('sqlite3', db,
                                                       check_same_thread=False,
                                                       cp_openfun=on_db_connect)
 
-        if not os.path.exists("/var/lib/nanny/pkg_filters/conf") :
+        if not os.path.exists(os.path.join(NANNY_DAEMON_DATA, "pkg_filters","conf")) :
             for db in ddbb :
                 self.pkg_filters_conf[db] = {"categories" : [],
                                              "users_info" : {}
                                              }
         else:
-            db = open("/var/lib/nanny/pkg_filters/conf", 'rb')
+            db = open(os.path.join(NANNY_DAEMON_DATA, "pkg_filters","conf"), 'rb')
             self.pkg_filters_conf = pickle.load(db)
             db.close()
             for rdb in list(set(self.pkg_filters_conf.keys()) - set(ddbb)) :
@@ -184,6 +204,9 @@ class FilterManager (gobject.GObject) :
         gobject.timeout_add(5000, self.__check_external_dbs)
 
     def __check_external_dbs(self):
+        if os.name != "posix" :
+            return True
+
         ddbb = glob('/usr/share/nanny/pkg_filters/*/filters.db')
         if len(ddbb) == 0 :
             for db in self.pkg_filters_conf.keys() :
@@ -224,7 +247,7 @@ class FilterManager (gobject.GObject) :
         return True
 
     def __save_pkg_filters_conf(self):
-        output = open("/var/lib/nanny/pkg_filters/conf", 'wb')
+        output = open(os.path.join(NANNY_DAEMON_DATA, "pkg_filters","conf"), 'wb')
         pickle.dump(self.pkg_filters_conf, output)
         output.close()
     
@@ -252,7 +275,7 @@ class FilterManager (gobject.GObject) :
             return []
         
     def add_pkg_filter(self, path):
-        temp_dir = tempfile.mkdtemp(prefix="filter_", dir="/var/lib/nanny/pkg_filters/")
+        temp_dir = tempfile.mkdtemp(prefix="filter_", dir=os.path.join(NANNY_DAEMON_DATA, "pkg_filters"))
         try:
             if not tarfile.is_tarfile (path): 
                 print "The file has not in the correct format"
