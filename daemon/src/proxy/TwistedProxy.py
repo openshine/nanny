@@ -61,12 +61,19 @@ BAD_WEB_TEMPLATE='''
 </body>
 '''
 
-BAD_CONTENT_TMP_DIR="/var/tmp/nanny"
+
+if os.name == "posix" :
+    BAD_CONTENT_TMP_DIR = "/var/tmp/nanny/"
+elif os.name == "nt" :
+    BAD_CONTENT_TMP_DIR = "C:\\WINDOWS\\nanny_data\\tmp"
 
 class BadBoyResponseFilter:
     def __init__(self, client):
         if not os.path.exists(BAD_CONTENT_TMP_DIR) :
-            os.system("mkdir -p %s" % BAD_CONTENT_TMP_DIR)
+            try:
+                os.makedirs(BAD_CONTENT_TMP_DIR)
+            except:
+                pass
         
         self.fd_orig = TemporaryFile(mode='rw+b', dir=BAD_CONTENT_TMP_DIR)
         self.fd_filtered = TemporaryFile(mode='rw+b', dir=BAD_CONTENT_TMP_DIR)
