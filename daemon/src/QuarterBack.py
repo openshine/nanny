@@ -41,6 +41,7 @@ elif os.name == "nt" :
     from Win32WebContentFiltering import Win32WebContentFiltering as WebContentFilter
     from Win32UsersManager import Win32UsersManager as UsersManager
     from Win32SessionFiltering import Win32SessionFiltering as SessionFilter
+    from FilterManager import FilterManager as FilterManager
 
 from Chrono import Chrono
 
