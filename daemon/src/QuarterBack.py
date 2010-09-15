@@ -53,7 +53,11 @@ def GetInHM(m):
     minutes = seconds / 60
     return "%02d:%02d" % (hours, minutes)
 
-BLOCK_DB="/var/lib/nanny/nanny-block.db"
+
+if os.name == "posix" :
+    BLOCK_DB = "/var/lib/nanny/nanny-block.db"
+elif os.name == "nt" :
+    BLOCK_DB = "C:\\WINDOWS\\nanny_data\\nanny-block.db"
 
 WEEKDAYS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
 
