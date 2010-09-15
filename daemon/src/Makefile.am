@@ -13,7 +13,7 @@ corelib_PYTHON =	 __init__.py 			\
 			LinuxUsersManager.py		\
 			LinuxSessionFiltering.py	\
 			LinuxSessionCKFiltering.py	\
-			Win32Filtering			\
+			Win32Filtering.py		\
 			Win32WebContentFiltering.py	\
 			Win32UsersManager.py		\
 			Win32SessionFiltering.py	\
