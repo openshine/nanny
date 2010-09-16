@@ -34,7 +34,7 @@ class Win32UsersManager:
         
     def get_users (self):
         if self.last_time != None and time.time() - self.last_time <= 60 :
-            return users
+            return self.users
 
         users=[]
         oWMI = win32com.client.GetObject(r"winmgmts:\\.\root\cimv2")
@@ -45,6 +45,7 @@ class Win32UsersManager:
                 uid = str(result.SID).split("-")[-1]
                 users.append((uid, unicode(result.Name), unicode(result.FullName)))
         self.last_time = time.time()
+        self.users = users
         return users
 
     def has_changes (self):
@@ -53,5 +54,5 @@ class Win32UsersManager:
         
         if time.time() - self.last_time > 60 :
             return True
-
+        
         return False
