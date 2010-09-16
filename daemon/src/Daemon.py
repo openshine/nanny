@@ -28,7 +28,8 @@ from QuarterBack import QuarterBack
 
 if os.name == "posix":
     from NannyDBus import NannyDBus
-
+elif os.name == "nt":
+    from NannyPyroBus import start_pyro_bus
 import nanny.daemon.proxy
 
 import signal
@@ -38,7 +39,11 @@ import os
 class Daemon :
     def __init__(self, app):
         self.quarterback = QuarterBack(app)
+
         if os.name == "posix" :
             self.bus = NannyDBus(self.quarterback)
+	elif os.name == "nt" :
+            from twisted.internet import reactor
+            start_pyro_bus(self.quarterback)
         
 
