@@ -174,6 +174,7 @@ class OrgGnomeNannyWebDatabase(Pyro.core.ObjBase):
 def inThread(quarterback):
     Pyro.core.initServer()
     daemon=Pyro.core.Daemon()
+    daemon.host = "localhost"
 
     uries = []
     uries.append(daemon.connect(OrgGnomeNanny(quarterback),"org.gnome.Nanny"))
