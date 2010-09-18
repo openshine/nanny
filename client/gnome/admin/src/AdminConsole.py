@@ -24,7 +24,8 @@
 # USA
 
 import os
-import dbus
+if os.name == "posix":
+    import dbus
 
 import gtk
 import pango
@@ -180,13 +181,34 @@ class AdminConsole:
         model = self.users_treeview.get_model ()
         treeselection = self.users_treeview.get_selection()
         for uid, name, user_name in self.dbus_client.list_users ():
-            face_file = '/home/%s/.face' % name
+            print "uid: %s, name: %s, user_name: %s" % (uid, name, user_name)
+            if os.name == "posix" :
+                face_file = '/home/%s/.face' % name
+            elif os.name == "nt" :
+                import glob
+                all_users_path = os.environ["ALLUSERSPROFILE"]
+                face_file = None
+                for p in glob.glob(os.path.join(all_users_path, "*", "Microsoft", "User Account Pictures", "%s.bmp" % name)):
+                    face_file = p
+                    print face_file
+                    break          
+                
+                if face_file == None:
+                    face_file = "/fake/path"
+
             if os.path.exists (face_file):
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(face_file, 50, 50)
             else:
-                icon_theme = gtk.IconTheme ()
-                pixbuf = icon_theme.load_icon ('nobody', 50, gtk.ICON_LOOKUP_USE_BUILTIN)
-            model.append ([uid, pixbuf, user_name])
+                if os.name == "posix" :
+                    icon_theme = gtk.IconTheme ()
+                    pixbuf = icon_theme.load_icon ('nobody', 50, gtk.ICON_LOOKUP_USE_BUILTIN)
+                elif os.name == "nt" :
+                    pixbuf = None
+
+            if len(user_name) > 0 :
+                model.append ([uid, pixbuf, user_name])
+            else:
+                model.append ([uid, pixbuf, name])
         treeselection.set_mode (gtk.SELECTION_SINGLE)
         self.users_selection_change_cb_id = treeselection.connect ("changed", self.__on_users_treeview_selection_changed)
 
