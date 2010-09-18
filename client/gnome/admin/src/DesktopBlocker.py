@@ -22,7 +22,8 @@
 
 import os
 import sys
-import dbus
+if os.name == "posix":
+    import dbus
 
 import gtk
 import gtk.gdk
