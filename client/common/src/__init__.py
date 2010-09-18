@@ -23,7 +23,12 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 # USA
 
-from DBusClient import DBusClient
+import os
+if os.name == "posix" :
+    from DBusClient import DBusClient
+elif os.name == "nt" :
+    from PyroClient import PyroClient as DBusClient
+
 from Singleton import Singleton
 from Utils import *
 from Categories import *
