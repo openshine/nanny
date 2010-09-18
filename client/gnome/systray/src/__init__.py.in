@@ -23,14 +23,24 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 # USA
 
-import os.path
+import os
 import gettext
 
 from SystrayNanny import SystrayNanny
 
-icons_files_dir= os.path.join("@prefix@","share/icons/hicolor")
+if os.name == "posix":
+    icons_files_dir= os.path.join("@prefix@","share/icons/hicolor")
+    locale_dir = os.path.join("@prefix@", "share/" ,"locale/")
+elif os.name == "nt":
+    file_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    for x in range(8):
+        file_dir = os.path.dirname(file_dir)
+    
+    root_path = file_dir
+    icons_files_dir = os.path.join(root_path, "share" , "icons", "hicolor" )
+    locale_dir = os.path.join(root_path, "share" ,"locale")
 
 GETTEXT_DOMAIN = 'nanny'
-locale_dir = os.path.join("@prefix@", "share/" ,"locale/")
+
 gettext.bindtextdomain(GETTEXT_DOMAIN, locale_dir)
 gettext.textdomain(GETTEXT_DOMAIN)
