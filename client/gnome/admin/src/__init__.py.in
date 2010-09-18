@@ -27,9 +27,18 @@
 import os
 import gtk
 
-share_files_dir= os.path.join("@prefix@","share/","nanny/client/gnome/admin/")
-ui_files_dir= os.path.join(share_files_dir,"ui/")
-icons_files_dir= os.path.join(share_files_dir,"icons/")
+if os.name == "posix" :
+    share_files_dir= os.path.join("@prefix@","share/","nanny/client/gnome/admin/")
+elif os.name == "nt":
+    file_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    for x in range(8):
+        file_dir = os.path.dirname(file_dir)
+    
+    root_path = file_dir
+    share_files_dir = os.path.join(root_path, "share" , "nanny", "client", "gnome", "admin")
+
+ui_files_dir= os.path.join(share_files_dir,"ui")
+icons_files_dir= os.path.join(share_files_dir,"icons")
 
 from AdminConsole import AdminConsole
 from ConfigureProxyDialog import ConfigureProxyDialog
