@@ -24,8 +24,11 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 # USA
 
+import os
 import gtk
-import gconf
+if os.name == "posix" :
+    import gconf
+
 import cairo
 
 import math
@@ -37,8 +40,9 @@ class ScheduleCalendar (gtk.EventBox):
 
     def __init__ (self):
         gtk.EventBox.__init__(self)
-
-        self.gconf_client = gconf.client_get_default()
+        
+        if os.name == "posix":
+            self.gconf_client = gconf.client_get_default()
 
         self.WEEKDAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
 
@@ -219,9 +223,13 @@ class ScheduleCalendar (gtk.EventBox):
         DAYS = 7
 
         if fill:
-            font = self.gconf_client.get_string ('/desktop/gnome/interface/font_name')
-            self.font_size = int (font.split(' ')[-1])
-            self.font_name = ' '.join (font.split(' ')[:-1])
+            if os.name == "posix" :
+                font = self.gconf_client.get_string ('/desktop/gnome/interface/font_name')
+                self.font_size = int (font.split(' ')[-1])
+                self.font_name = ' '.join (font.split(' ')[:-1])
+            else:
+                self.font_size = 10
+                self.font_name = "Sans"
 
             self.TOP_MARGIN = self.font_size + 10 
             self.LEFT_MARGIN = 80
