@@ -30,7 +30,16 @@ import __builtin__
 __builtin__._ = gettext.gettext
 
 GETTEXT_DOMAIN = 'nanny'
-locale_dir = os.path.join("@prefix@", "share/" ,"locale/")
+if os.name == "posix":
+    locale_dir = os.path.join("@prefix@", "share/" ,"locale/")
+elif os.name == "nt":
+    file_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    for x in range(7):
+        file_dir = os.path.dirname(file_dir)
+    
+    root_path = file_dir
+    locale_dir = os.path.join(root_path, "share" ,"locale")
+    print "LOCALE PATH = %s" % locale_dir
 
 gettext.bindtextdomain(GETTEXT_DOMAIN, locale_dir)
 gettext.textdomain(GETTEXT_DOMAIN)
