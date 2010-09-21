@@ -1,6 +1,12 @@
 if NANNY_POSIX_SUPPORT
-dbusdir = $(sysconfdir)/nanny/applists/
-dbus_DATA = browsers email im
+appsinfodir = $(sysconfdir)/nanny/applists/
+appsinfo_DATA = browsers email im
 endif
 
-EXTRA_DIST = browsers email im
+if NANNY_WIN32_SUPPORT
+appsinfodir = $(sysconfdir)/nanny/applists/
+appsinfo_DATA = browsers.w32 email.w32 im.w32
+endif
+
+
+EXTRA_DIST = browsers email im browsers.w32 email.w32 im.w32
