@@ -18,6 +18,7 @@ corelib_PYTHON =	 __init__.py 			\
 			Win32UsersManager.py		\
 			Win32SessionFiltering.py	\
 			Win32Chrono.py			\
+			Win32Top.py			\
 			NannyPyroBus.py
 
 if HAS_HACHOIR_REGEX
