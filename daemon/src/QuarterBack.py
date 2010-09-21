@@ -44,6 +44,7 @@ elif os.name == "nt" :
     from Win32SessionFiltering import Win32SessionFiltering as SessionFilter
     from FilterManager import FilterManager as FilterManager
     from Win32Chrono import Win32Chrono as Chrono
+    from Win32Top import Win32Top
 
 
 def GetInHM(m):
@@ -103,6 +104,8 @@ class QuarterBack(gobject.GObject) :
 
         self.__next_update_info = None
         self.usersmanager = UsersManager()
+        if os.name == "nt" :
+             self.win32top = Win32Top(self)
         self.chrono = Chrono(self)
         
         self.firewall_filter = FirewallFilter(self)
