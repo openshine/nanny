@@ -54,52 +54,46 @@ class Win32Chrono(gobject.GObject) :
         gobject.GObject.__init__(self)
         self.quarterback = quarterback
 
+        file_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        for x in range(6):
+            file_dir = os.path.dirname(file_dir)
+        root_path = file_dir
+        self.apps_list_path = os.path.join(root_path, "etc", "nanny", "applists")
+
         self.day = datetime.date.today().day
         self.categories = ['session', 'browser', 'email', 'im']
 
         self.quarterback.connect('block-status', self.__update_cb)
 
     def __update_cb(self, quarterback, block_status, user_id, app_id, next_change, available_time):
-        return 
-
         '''Callback that updates the used times of the categories.'''
         if block_status == False:
             app_list = self.__get_application_list(self.categories)
-            proclist = gtop.proclist(gtop.PROCLIST_KERN_PROC_UID, int(user_id))
+            proclist = self.quarterback.win32top.proclist(int(user_id))
             
             if app_id == SESSION_APPID :
                 try:
-                    d = dbus.SystemBus()
-                    manager = dbus.Interface(d.get_object("org.freedesktop.ConsoleKit", "/org/freedesktop/ConsoleKit/Manager"), 
-                                             "org.freedesktop.ConsoleKit.Manager")
-                    sessions = manager.GetSessionsForUnixUser(int(user_id))
-                    for session_name in sessions :
-                        session = dbus.Interface(d.get_object("org.freedesktop.ConsoleKit", session_name),
-                                                 "org.freedesktop.ConsoleKit.Session")
-                        x11_display = session.GetX11Display()
-                        if x11_display == "":
-                            continue
+                    if self.quarterback.win32top.get_current_user_session() == int(user_id) :
                         self.quarterback.subtract_time(user_id, app_id)
-                        break
+                        return
                 except:
                     print "Crash Chrono __update_cb"
             else:
                 category = self.categories[app_id]
                 found = False
                 for proc in proclist:
-                    if len(gtop.proc_args(proc)) > 0:
-                        process = gtop.proc_args(proc)[0]
+                    if len(self.quarterback.win32top.proc_args(proc)) > 0:
+                        process = self.quarterback.win32top.proc_args(proc)
                         if self.is_a_controlled_app(process, category, app_list):
                             self.quarterback.subtract_time(user_id, app_id)
-                            break
+                            return
 
     def is_a_controlled_app(self, process, category, app_list):
-        return False
         found = False
 
         for app in app_list:
             if app[0] == category:
-                if os.path.basename(process) == app[1]:
+                if process == app[1]:
                     found = True
                     break
 
@@ -113,9 +107,9 @@ class Win32Chrono(gobject.GObject) :
                         ['email', 'thunderbird']]
         '''
 
-        app_list = [['session', 'gnome-session']]
+        app_list = []
         for category in categories:
-            file_path = '/etc/nanny/applists/' + category
+            file_path = os.path.join(self.apps_list_path, category + ".w32")
             if os.path.exists(file_path):
                 file = open(file_path, 'rb')
                 for line in file:

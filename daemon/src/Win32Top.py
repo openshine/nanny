@@ -33,7 +33,9 @@ class Win32Top(gobject.GObject) :
         gobject.GObject.__init__(self)
         self.quarterback = quarterback
         self.process_list = {}
+        self.session_user = 0
         self.first_time = True
+        self.oWMI = win32com.client.GetObject(r"winmgmts:\\.\root\cimv2")
         
         reactor.addSystemEventTrigger("before", "startup", self.start)
         reactor.addSystemEventTrigger("before", "shutdown", self.stop)
@@ -41,17 +43,56 @@ class Win32Top(gobject.GObject) :
     def start(self):
         print "Start Win32 Top"
         gobject.timeout_add(1000, self.__update_info)
+        gobject.timeout_add(3000, self.__update_session_info)
 
     def stop(self):
         print "Stop Win32 Top"
+
+    def get_current_user_session(self):
+        return self.session_user
+
+    def proclist(self, uid):
+        proclist = []
+        for pid in self.process_list :
+            if self.process_list[pid][0] == uid :
+                proclist.append(pid)
+
+        return proclist
+
+    def proc_args(self, pid):
+        try:
+            return self.process_list(pid)[1]
+        except:
+            return ''
+            
+    def __update_session_info(self):
+        qry = "Select * from Win32_ComputerSystem"
+        qry = self.oWMI.ExecQuery(qry)
+        if qry.count > 0:
+            for result in qry:
+                try:
+                    username = str(result.UserName).split("\\")[-1]
+                    users_list = self.quarterback.usersmanager.get_users()
+                    for uid, uname, ufname in users_list:
+                        if uname == username :
+                            #print "[W32TOP] Session User : %s" % uid
+                            self.session_user = uid
+                            return True
+                    self.session_user = 0
+                    return True
+                except:
+                    self.session_user = 0
+                    return True
+        
+        self.session_user = 0
+        return True
 
     def __update_info(self):
         if self.first_time == True:
             print "[W32TOP] Initial process check start"
 
-        oWMI = win32com.client.GetObject(r"winmgmts:\\.\root\cimv2")
         qry = "SELECT * FROM Win32_Process"
-        qry = oWMI.ExecQuery(qry)
+        qry = self.oWMI.ExecQuery(qry)
         users_list = self.quarterback.usersmanager.get_users()
 
         if qry.count > 0:
