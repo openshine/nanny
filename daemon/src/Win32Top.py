@@ -23,7 +23,6 @@
 import os
 import time
 import win32com.client
-import wmi
 import gobject
 from twisted.internet import reactor
 import copy
@@ -105,9 +104,7 @@ class Win32Top(gobject.GObject) :
                 
                 if pid not in self.process_list :
                     try:               
-                        w = wmi.WMI()
-                        p = w.Win32_Process(ProcessID=pid)
-                        uid_name = p[0].GetOwner()[2]
+                        uid_name = result.execMethod_('GetOwner').User
                         uid_number = None
                         for uid, uname, ufname in users_list:
                             if uname == uid_name :
@@ -125,7 +122,7 @@ class Win32Top(gobject.GObject) :
                     u, n, c = self.process_list[pid]
                     if c != cdate:
                         try:
-                            uid_name = wmi.WMI().Win32_Process(ProcessID=pid).GetOwner()[0]
+                            uid_name = result.execMethod_('GetOwner').User
                             uid_number = None
                             for uid, uname, ufname in users_list:
                                 if uname == uid_name :
