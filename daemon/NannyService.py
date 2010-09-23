@@ -34,6 +34,7 @@ import win32service
 import win32event
 import servicemanager
 
+
 #Add nanny module to python paths
 if not hasattr(sys, "frozen") :
     root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -73,6 +74,7 @@ class NannyService (win32serviceutil.ServiceFramework):
                               servicemanager.PYS_SERVICE_STARTED,
                               (self._svc_name_,''))
         self.CheckForQuit()
+        pythoncom.CoInitialize()
         self.main()
 
     def CheckForQuit(self):
@@ -80,6 +82,7 @@ class NannyService (win32serviceutil.ServiceFramework):
             if not retval == win32event.WAIT_TIMEOUT:
                 # Received Quit from Win32
                 reactor.stop()
+                pythoncom.CoUninitialize()
                 
             reactor.callLater(1.0, self.CheckForQuit)
 

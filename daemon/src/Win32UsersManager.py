@@ -37,7 +37,8 @@ class Win32UsersManager:
             return self.users
 
         users=[]
-        oWMI = win32com.client.GetObject(r"winmgmts:\\.\root\cimv2")
+        #oWMI = win32com.client.GetObject(r"winmgmts:\\.\root\cimv2")
+        oWMI = win32com.client.GetObject(r"winmgmts:")
         qry = "Select * from Win32_UserAccount Where LocalAccount = True and Disabled = False"
         qry = oWMI.ExecQuery(qry)
         if qry.count > 0:
