@@ -22,6 +22,7 @@
 
 import os
 import time
+import win32api
 import win32com.client
 import gobject
 from twisted.internet import reactor
@@ -34,7 +35,9 @@ class Win32Top(gobject.GObject) :
         self.process_list = {}
         self.session_user = 0
         self.first_time = True
-        self.oWMI = win32com.client.GetObject(r"winmgmts:\\.\root\cimv2")
+	computer_name = win32api.GetComputerName()
+        #self.oWMI = win32com.client.GetObject(r"winmgmts:\\%s\root\cimv2" % computer_name)
+        self.oWMI = win32com.client.GetObject(r"winmgmts:")
         
         reactor.addSystemEventTrigger("before", "startup", self.start)
         reactor.addSystemEventTrigger("before", "shutdown", self.stop)
