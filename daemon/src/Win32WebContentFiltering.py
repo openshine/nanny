@@ -35,7 +35,7 @@ from nanny.daemon.proxy.TwistedProxy import ReverseProxyResource as ProxyService
 from nanny.daemon.proxy.Controllers import WebDatabase
 
 PORT_START_NUMBER=53000
-WEBDATABASE='webs.db'
+WEBDATABASE='C:\\WINDOWS\\nanny_data\\webs.db'
 
 def ipt(cmd) :
     return os.system("/sbin/iptables %s > /dev/null 2>&1" % cmd)
