@@ -63,9 +63,9 @@ dist_files
 
 #Setup of py2exe
 
-daemon_console = dict(
+daemon_service_dbg = dict(
     script = os.path.join(nanny_top_dir, "sbin", "NannyService.py"),
-    dest_base = os.path.join("NannyW32", "bin", "nanny-daemon-console"),
+    dest_base = os.path.join("NannyW32", "bin", "nanny-daemon-dbg"),
 )
 
 daemon_service = dict(
@@ -75,11 +75,45 @@ daemon_service = dict(
     cmdline_style='pywin32',
 )
 
+admin_console_dbg = dict(
+    script = os.path.join(nanny_top_dir, "sbin", "nanny-admin-console"),
+    dest_base = os.path.join("NannyW32", "bin", "nanny-admin-console-dbg"),
+)
+
+admin_console = dict(
+    script = os.path.join(nanny_top_dir, "sbin", "nanny-admin-console"),
+    dest_base = os.path.join("NannyW32", "bin", "nanny-admin-console"),
+)
+
+dblocker_dbg = dict(
+    script = os.path.join(nanny_top_dir, "sbin", "nanny-desktop-blocker"),
+    dest_base = os.path.join("NannyW32", "bin", "nanny-desktop-blocker-dbg"),
+)
+
+dblocker = dict(
+    script = os.path.join(nanny_top_dir, "sbin", "nanny-desktop-blocker"),
+    dest_base = os.path.join("NannyW32", "bin", "nanny-desktop-blocker"),
+)
+
+blacklistmgr_dbg = dict(
+    script = os.path.join(nanny_top_dir, "sbin", "nanny-blacklist-manager"),
+    dest_base = os.path.join("NannyW32", "bin", "nanny-blacklist-manager-dbg"),
+)
+
+blacklistmgr = dict(
+    script = os.path.join(nanny_top_dir, "sbin", "nanny-blacklist-manager"),
+    dest_base = os.path.join("NannyW32", "bin", "nanny-blacklist-manager"),
+)
+
+
+
+
 setup(name="Nanny",
       version=ver,
       description="Nanny parental control",
       #com_server=[outlook_addin],
-      console=[daemon_console],
+      console=[daemon_service_dbg, admin_console_dbg, dblocker_dbg, blacklistmgr_dbg],
+      windows=[admin_console, dblocker, blacklistmgr],
       service=[daemon_service],
       data_files = dist_files,
       options = {"py2exe" : py2exe_options},
