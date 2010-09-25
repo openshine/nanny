@@ -25,6 +25,7 @@
 
 import gobject
 import os
+import sys
 
 import pickle
 import datetime
@@ -53,12 +54,15 @@ class Win32Chrono(gobject.GObject) :
         '''Init function for NannyChrono class.'''
         gobject.GObject.__init__(self)
         self.quarterback = quarterback
-
-        file_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        for x in range(6):
-            file_dir = os.path.dirname(file_dir)
-        root_path = file_dir
-        self.apps_list_path = os.path.join(root_path, "etc", "nanny", "applists")
+        if not hasattr(sys, "frozen") :
+            file_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            for x in range(6):
+                file_dir = os.path.dirname(file_dir)
+            root_path = file_dir
+            self.apps_list_path = os.path.join(root_path, "etc", "nanny", "applists")
+        else:
+            root_path = os.path.dirname(os.path.dirname(unicode(sys.executable, sys.getfilesystemencoding( ))))
+            self.apps_list_path = os.path.join(root_path, "etc", "nanny", "applists")
 
         self.day = datetime.date.today().day
         self.categories = ['session', 'browser', 'email', 'im']
