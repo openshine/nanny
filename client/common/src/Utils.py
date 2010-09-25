@@ -24,6 +24,7 @@
 # USA
 
 import os
+import sys
 import gtk
 
 def ui_magic(object, ui_file, prefix):
@@ -58,3 +59,20 @@ def ui_magic(object, ui_file, prefix):
                     exec ('object.%s = widget' % widget_name)
           except:
                print "Something fails at ui_magic"
+
+def check_win32_admin():
+    import win32security
+    import ntsecuritycon
+    subAuths = ntsecuritycon.SECURITY_BUILTIN_DOMAIN_RID, \
+               ntsecuritycon.DOMAIN_ALIAS_RID_ADMINS
+    sidAdmins = win32security.SID(ntsecuritycon.SECURITY_NT_AUTHORITY, subAuths)
+    if win32security.CheckTokenMembership(None, sidAdmins) == False:
+         msg = gtk.MessageDialog(parent=None, flags=0,
+                                 type=gtk.MESSAGE_INFO,
+                                 buttons=gtk.BUTTONS_CLOSE, message_format=None)
+         msg.set_markup(u"<b>%s</b>" % _(u"Nanny Admin Tools requires Admin user"))
+         msg.format_secondary_markup(_(u"To run any Nanny Admin Tool you must to be admin of the system."))
+         ret = msg.run()
+         msg.destroy()
+         
+         sys.exit(0)
