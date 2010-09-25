@@ -24,6 +24,7 @@
 # USA
 
 import os
+import sys
 import gettext
 
 from SystrayNanny import SystrayNanny
@@ -32,13 +33,18 @@ if os.name == "posix":
     icons_files_dir= os.path.join("@prefix@","share/icons/hicolor")
     locale_dir = os.path.join("@prefix@", "share/" ,"locale/")
 elif os.name == "nt":
-    file_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    for x in range(8):
-        file_dir = os.path.dirname(file_dir)
-    
-    root_path = file_dir
-    icons_files_dir = os.path.join(root_path, "share" , "icons", "hicolor" )
-    locale_dir = os.path.join(root_path, "share" ,"locale")
+    if not hasattr(sys, "frozen") :
+        file_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        for x in range(8):
+            file_dir = os.path.dirname(file_dir)
+
+        root_path = file_dir
+        icons_files_dir = os.path.join(root_path, "share" , "icons", "hicolor" )
+        locale_dir = os.path.join(root_path, "share" ,"locale")
+    else:
+        root_path = os.path.dirname(os.path.dirname(unicode(sys.executable, sys.getfilesystemencoding( ))))
+        icons_files_dir = os.path.join(root_path, "share" , "icons", "hicolor" )
+        locale_dir = os.path.join(root_path, "share" ,"locale")
 
 GETTEXT_DOMAIN = 'nanny'
 

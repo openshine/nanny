@@ -24,6 +24,7 @@
 # USA
 
 import os
+import sys
 import gettext
 import __builtin__
 
@@ -33,13 +34,18 @@ GETTEXT_DOMAIN = 'nanny'
 if os.name == "posix":
     locale_dir = os.path.join("@prefix@", "share/" ,"locale/")
 elif os.name == "nt":
-    file_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    for x in range(7):
-        file_dir = os.path.dirname(file_dir)
-    
-    root_path = file_dir
-    locale_dir = os.path.join(root_path, "share" ,"locale")
-    print "LOCALE PATH = %s" % locale_dir
+    if not hasattr(sys, "frozen") :
+        file_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        for x in range(7):
+            file_dir = os.path.dirname(file_dir)
+
+        root_path = file_dir
+        locale_dir = os.path.join(root_path, "share" ,"locale")
+        print "LOCALE PATH = %s" % locale_dir
+    else:
+        root_path = os.path.dirname(os.path.dirname(unicode(sys.executable, sys.getfilesystemencoding( ))))
+        locale_dir = os.path.join(root_path, "share" ,"locale")
+        print "LOCALE PATH = %s" % locale_dir
 
 gettext.bindtextdomain(GETTEXT_DOMAIN, locale_dir)
 gettext.textdomain(GETTEXT_DOMAIN)
