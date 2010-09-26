@@ -37,9 +37,6 @@ from nanny.daemon.proxy.Controllers import WebDatabase
 PORT_START_NUMBER=53000
 WEBDATABASE='C:\\WINDOWS\\nanny_data\\webs.db'
 
-def ipt(cmd) :
-    return os.system("/sbin/iptables %s > /dev/null 2>&1" % cmd)
-
 class Win32WebContentFiltering(gobject.GObject) :
     def __init__(self, quarterback, app) :
         gobject.GObject.__init__(self)
@@ -75,43 +72,32 @@ class Win32WebContentFiltering(gobject.GObject) :
             self.__stop_proxy(self.quarterback, uid)
 
     def __start_proxy(self, quarterback, uid):
-        pass
-#         if not self.services.has_key(uid) :
-#             root = ProxyService(uid, quarterback.filter_manager)
-#             sc = service.IServiceCollection(self.app)
-#             site = server.Site(root)
+        if not self.services.has_key(uid) :
+            root = ProxyService(uid, quarterback.filter_manager)
+            sc = service.IServiceCollection(self.app)
+            site = server.Site(root)
             
-#             for port in range(PORT_START_NUMBER, PORT_START_NUMBER+5000) :
-#                 try:
-#                     i = internet.TCPServer(port, site)
-#                     i.setServiceParent(sc)
-#                 except:
-#                     continue
+            for port in range(PORT_START_NUMBER, PORT_START_NUMBER+5000) :
+                try:
+                    i = internet.TCPServer(port, site)
+                    i.setServiceParent(sc)
+                    print "[Win32WebContentFiltering] Starting proxy (uid: %s, port: %s)" % (uid, port)
+                except:
+                    continue
                 
-#                 self.services[uid]=(i, port)
-#                 self.__add_rule(uid, port)
-#                 return
+                self.services[uid]=(i, port)
+                #self.__add_rule(uid, port)
+                return
         
     def __stop_proxy(self, quarterback, uid):
-        pass
-#         if not self.services.has_key(uid) :
-#             return True
-#         else:
-#             i,port = self.services.pop(uid)
-#             i.stopService()
-#             self.__remove_rule(uid, port)
+        if not self.services.has_key(uid) :
+            return True
+        else:
+            i,port = self.services.pop(uid)
+            i.stopService()
+            print "[Win32WebContentFiltering] Stoping proxy (uid: %s, port: %s)" % (uid, port)
+            #self.__remove_rule(uid, port)
 
-    def __add_rule(self, uid, port):
-        ret = ipt("-t nat -A OUTPUT -p tcp -m owner --uid-owner %s -m tcp --dport 80 --syn -j REDIRECT --to-ports %s" % (uid, port))
-        if ret == 0:
-            print "Redirecting of user (%s) from 80 to %s" % (uid, port)
-
-    def __remove_rule(self, uid, port):
-        ret = ipt("-t nat -D OUTPUT -p tcp -m owner --uid-owner %s -m tcp --dport 80 --syn -j REDIRECT --to-ports %s" % (uid, port))
-        if ret == 0:
-            print "Remove Redirecting of user (%s) from 80 to %s" % (uid, port)
-
-    
 
 
     
