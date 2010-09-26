@@ -22,192 +22,153 @@
 
 import gobject
 import os
+import sys
 
 from twisted.internet import reactor, threads
 from time import localtime, strftime
 
+(
+SESSION_APPID,
+WEB_APPID,
+MAIL_APPID,
+IM_APPID) = range(4)
+
+class Win32SessionBlocker(gobject.GObject) :
+    def __init__(self, quarterback):
+        gobject.GObject.__init__(self)
+        self.quarterback = quarterback
+        self.sb = None
+        self.block_status = []
+
+        if not hasattr(sys, "frozen") :
+            file_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            for x in range(6):
+                file_dir = os.path.dirname(file_dir)
+            root_path = file_dir
+            sbin_dir = os.path.join(root_path, "sbin")
+            if os.path.exists(os.path.join(sbin_dir, "nanny-desktop-blocker")) :
+                self.sb = "python %s" % os.path.join(sbin_dir, "nanny-desktop-blocker")
+        else:
+            sbin_dir = os.path.dirname(unicode(sys.executable, sys.getfilesystemencoding( )))
+            if os.path.exists(os.path.join(sbin_dir, "nanny-desktop-blocker.exe")):
+                self.sb = os.path.join(sbin_dir, "nanny-desktop-blocker.exe")
+
+        if self.sb != None :
+            print "[W32SessionFiltering] desktop blocker : '%s'" % self.sb
+
+    def is_user_blocked(self, user_id):
+        if user_id in self.block_status:
+            return True
+        else:
+            return False
+
+    def blocker_terminate_from_thread(self, user_id, ret):
+        print "[W32SessionFiltering] self.blocker_terminate_from_thread %s %s" % (user_id, ret)
+        if ret == 0:
+            self.block_status.pop(self.block_status.index(user_id))
+            print "[W32SessionFiltering] unblocking user %s" % user_id
+            try:
+                from ctypes import *
+                session_uid = self.quarterback.win32top.get_current_user_session()
+                print "s: %s == u: %s ->> %s" % (session_uid, user_id, int(session_uid) == int(user_id))
+                if int(session_uid) == int(user_id) :
+                    print "[W32SessionFiltering] Quiting session"
+                    windll.user32.ExitWindowsEx(0)
+            except:
+                print "[W32SessionFiltering] Something wrong quiting from session"
+        else:
+            print "[W32SessionFiltering] User or other try to kill blocker :)"
+            gobject.timeout_add(5000, self.__launch_blocker_to_badboy, user_id)
+            
+
+    def set_block(self, user_id, block_status):
+        if block_status == True:
+            if user_id not in self.block_status :
+                self.__launch_blocker(user_id)
+        else:
+            try:
+                self.block_status.pop(self.block_status.index(user_id))
+            except:
+                pass
+
+    def __launch_blocker_to_badboy(self, user_id):
+        session_uid = self.quarterback.win32top.get_current_user_session()
+        if int(session_uid) == int(user_id) :
+            reactor.callInThread(self.__launch_blocker_thread, user_id, self)
+        else:
+            self.block_status.pop(self.block_status.index(user_id))
+        return False
+
+    def __launch_blocker(self, user_id):
+        self.block_status.append(user_id)
+        print "[W32SessionFiltering] blocking user %s" % user_id
+        reactor.callInThread(self.__launch_blocker_thread, user_id, self)
+        
+    def __launch_blocker_thread(self, user_id, win32sb):
+        import subprocess
+        import time
+
+        p = subprocess.Popen(win32sb.sb, shell=False)
+        print "[W32SessionFiltering] launching blocker (pid : %s)" % p.pid
+        while p.poll() == None :
+            time.sleep(1)
+            b = threads.blockingCallFromThread(reactor, win32sb.is_user_blocked, user_id)
+            if b == False:
+                p.kill()
+                print "[W32SessionFiltering] Unblocking session %s" % user_id
+                while p.poll() == None :
+                    print "[W32SessionFiltering] killing %s" % p.pid
+                return
+
+        print "[W32SessionFiltering] blocker terminated by user interaction"
+        threads.blockingCallFromThread(reactor, win32sb.blocker_terminate_from_thread, user_id, p.poll())
+        
 
 class Win32SessionFiltering(gobject.GObject) :
     def __init__(self, quarterback) :
         gobject.GObject.__init__(self)
         self.quarterback = quarterback
-
-        self.uids_blocked = []
-        self.desktop_blocked = []
         
         reactor.addSystemEventTrigger("before", "startup", self.start)
         reactor.addSystemEventTrigger("before", "shutdown", self.stop)
-        
-        self.quarterback.connect('block-status', self.__update_cb)
-        self.quarterback.connect("update-blocks", self.__update_blocks_cb)
 
     def start(self):
-#         if not os.path.exists("/var/lib/nanny/desktop_blocks_pids") :
-#             os.system("mkdir -p /var/lib/nanny/desktop_blocks_pids")
-        
-#         self.__update_blocks_cb(self.quarterback, self.quarterback.blocks)
         print "Start Win32 Session Filtering"
+        self.win32sb = Win32SessionBlocker(self.quarterback)
+        if self.win32sb.sb != None :
+            print "[W32SessionFiltering] start watcher :)"
+            gobject.timeout_add(1000, self.__update_session_blocker_status)
 
     def stop(self):
+        self.win32sb.block_status = []
         print "Stop Win32 Session Filtering"
 
-    def __update_blocks_cb(self, quarterback, blocks):
-        pass
-#         for user_id in blocks.keys() :
-#             if not blocks[user_id].has_key(0) :
-#                 continue
 
-#             block_status, next_change = quarterback.is_blocked(user_id, 0)
-#             if quarterback.get_available_time(user_id, 0) == 0 or block_status == True:
-#                 if user_id in self.uids_blocked :
-#                     return
+    def __update_session_blocker_status(self):
+        session_uid = str(self.quarterback.win32top.get_current_user_session())
+        blocks = self.quarterback.blocks
 
-#                 users = quarterback.usersmanager.get_users()
-#                 for uid, uname, ufname in users :
-#                     if str(uid) == user_id :
-#                         self.uids_blocked.append(user_id)
-#                         print "blocked session to user '%s'" % uname
-#                         return
-#             else:
-#                 if user_id in self.uids_blocked:
-#                     users = quarterback.usersmanager.get_users()
-#                     for uid, uname, ufname in users :
-#                         if str(uid) == user_id :
-#                             self.uids_blocked.pop(self.uids_blocked.index(user_id))
-#                             self.__kill_desktop_blockers(user_id)
-#                             print "Unblocked session to user '%s'" % uname
+        for user_id in blocks.keys() :
+            if int(user_id) == int(session_uid):
+                for app_id in blocks[user_id].keys() :
+                    if app_id != SESSION_APPID :
+                        continue
+                    
+                    if self.quarterback.get_available_time(user_id, app_id) == 0 :
+                        self.win32sb.set_block(int(user_id), True)
+                        continue
 
+                    try:
+                        block_status, next_block = self.quarterback.is_blocked(user_id, app_id)
+                    except:
+                        print "[W32SessionFiltering] Fail getting self.quarterback.is_blocked"
+                        block_status = False
 
-    def __update_cb(self, quarterback, block_status, user_id, app_id, next_change, available_time):
-        pass
-#         if app_id != 0 :
-#             return
+                    if block_status == True :
+                        self.win32sb.set_block(int(user_id), True)
+                    else:
+                        self.win32sb.set_block(int(user_id), False)
 
-#         if block_status == True or available_time == 0 :
-#             if user_id in self.uids_blocked :
-#                 self.__logout_session_if_is_running(user_id)
-        
-#         if available_time == 0 :
-#             if user_id in self.uids_blocked :
-#                 return
+        return True
 
-#             users = quarterback.usersmanager.get_users()
-#             for uid, uname, ufname in users :
-#                 if str(uid) == user_id :
-#                     self.uids_blocked.append(user_id)
-#                     self.__logout_session_if_is_running(user_id)
-#                     print "blocked session to user '%s'" % uname
-#                     return
-        
-#         if block_status == False:
-#             if user_id in self.uids_blocked:
-#                 users = quarterback.usersmanager.get_users()
-#                 for uid, uname, ufname in users :
-#                     if str(uid) == user_id :
-#                         self.uids_blocked.pop(self.uids_blocked.index(user_id))
-#                         self.__kill_desktop_blockers(user_id)
-#                         print "Unblocked session to user '%s'" % uname
-#             return
-#         else:
-#             if user_id in self.uids_blocked :
-#                 return
-            
-#             users = quarterback.usersmanager.get_users()
-#             for uid, uname, ufname in users :
-#                 if str(uid) == user_id :
-#                     self.uids_blocked.append(user_id)
-#                     self.__logout_session_if_is_running(user_id)
-#                     print "blocked session to user '%s'" % uname
-
-#             return
-
-    def __kill_desktop_blockers(self, user_id):
-        import glob
-        
-        for pid_file in glob.glob("/var/lib/nanny/desktop_blocks_pids/%s.*" % user_id):
-            try:
-                p = open(pid_file, "r")
-                pid = p.read()
-                os.kill(int(pid), 15)
-                print "Send SIGTERM to nanny-desktop-blocker (%s, %s)" % (pid, user_id)
-            except:
-                print "Something wrong killing desktop blocker (%s, %s)" % (pid, user_id)
-            
-        
-    def __logout_session_if_is_running(self, user_id):
-        try:
-            d = dbus.SystemBus()
-            manager = dbus.Interface(d.get_object("org.freedesktop.ConsoleKit", "/org/freedesktop/ConsoleKit/Manager"), 
-                                     "org.freedesktop.ConsoleKit.Manager")
-            sessions = manager.GetSessionsForUnixUser(int(user_id))
-            for session_name in sessions :
-                session = dbus.Interface(d.get_object("org.freedesktop.ConsoleKit", session_name),
-                                         "org.freedesktop.ConsoleKit.Session")
-                x11_display = session.GetX11Display()
-                if x11_display == "":
-                    continue
-
-                if session_name not in self.desktop_blocked :
-                    self.desktop_blocked.append(session_name)
-                    t = threads.deferToThread(self.__launch_desktop_blocker, session_name, user_id, x11_display)
-                    t.addCallback(self.__result_of_desktop_blocker)
-        except:
-            print "Crash __logout_session_if_is_running()"
-            
-    def __launch_desktop_blocker(self, session_name, user_id, x11_display):
-        print "Launch desktop-blocker to '%s'" % session_name
-        from os import environ 
-        env = environ.copy()
-        env["DISPLAY"] = x11_display
-
-        proclist = gtop.proclist(gtop.PROCLIST_KERN_PROC_UID, int(user_id))
-
-        if len(proclist) > 0 :
-            from subprocess import Popen, PIPE
-            lang_var = Popen('cat /proc/%s/environ | tr "\\000" "\\n" | grep ^LANG= ' % proclist[0] , shell=True, stdout=PIPE).stdout.readline().strip("\n")
-            if len(lang_var) > 0 :
-                env["LANG"] = lang_var.replace("LANG=","")
-
-            pid = Popen('nanny-desktop-blocker', env=env).pid
-        else:
-            pid = Popen('nanny-desktop-blocker', env=env).pid
-        
-        pid_file = "/var/lib/nanny/desktop_blocks_pids/%s.%s" % (user_id, os.path.basename(session_name))
-        fd = open(pid_file, "w")
-        fd.write(str(pid))
-        fd.close()
-
-        pid, ret = os.waitpid(pid, 0)
-        
-        if os.path.exists(pid_file) :
-            os.unlink(pid_file)
-
-        return session_name, user_id, ret
-
-    def __result_of_desktop_blocker(self, result):
-        session_name = result[0]
-        user_id = result[1]
-        ret_code = result[2]
-        print "Results desktop-blocker to '%s' (%s)" % (session_name, ret_code)
-        if ret_code == 0:
-            self.__remote_close_session(user_id)
-
-        if session_name in self.desktop_blocked :
-            self.desktop_blocked.pop(self.desktop_blocked.index(session_name))
-    
-    def __remote_close_session(self, user_id):
-        proclist = gtop.proclist(gtop.PROCLIST_KERN_PROC_UID, int(user_id))
-        for proc in proclist:
-            if gtop.proc_args(proc)[0] == "x-session-manager" or gtop.proc_args(proc)[0] == "gnome-session":
-                users = self.quarterback.usersmanager.get_users()
-                for uid, uname, ufname in users :
-                    if str(uid) == user_id :
-                        print "Sending Force logout petition to '%s'" % uname
-                        cmd='su %s -c "`grep -z DBUS_SESSION_BUS_ADDRESS /proc/%s/environ | sed -e "s:\\r::g"` dbus-send --dest=\'org.gnome.SessionManager\' /org/gnome/SessionManager org.gnome.SessionManager.Logout uint32:1"' % (uname, proc)
-                        os.system(cmd)
-                        return
-        
-            
-    
-        
-
+                    
