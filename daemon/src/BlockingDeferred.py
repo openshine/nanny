@@ -28,6 +28,8 @@ from twisted.internet.defer import AlreadyCalledError
 from twisted.python import failure
 from twisted.web import client
 
+import os
+import gtk
 
 TIMEOUT = 0.05                  # Set the timeout for poll/select
 
@@ -48,7 +50,7 @@ class BlockingDeferred(object):
         On failure, it will raise an exception.
         """
         
-        self.d.addBoth(self.gotResult)
+        self.d.addCallback(self.gotResult)
         self.d.addErrback(self.gotFailure)
         
         while not self.finished:
