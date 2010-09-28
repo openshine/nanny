@@ -190,7 +190,10 @@ class ProxyClient(proxy.ProxyClient) :
         proxy.ProxyClient.handleResponsePart(self, data)
 
     def handleResponseEnd(self):
-        proxy.ProxyClient.handleResponseEnd(self)
+        try:
+            proxy.ProxyClient.handleResponseEnd(self)
+        except:
+            print "Twisted E> handleResponseEnd"
 
 
 class ProxyClientFactory(proxy.ProxyClientFactory):
