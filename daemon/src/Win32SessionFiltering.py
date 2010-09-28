@@ -27,6 +27,8 @@ import sys
 from twisted.internet import reactor, threads
 from time import localtime, strftime
 
+from ctypes import *
+
 (
 SESSION_APPID,
 WEB_APPID,
@@ -68,7 +70,6 @@ class Win32SessionBlocker(gobject.GObject) :
             self.block_status.pop(self.block_status.index(user_id))
             print "[W32SessionFiltering] unblocking user %s" % user_id
             try:
-                from ctypes import *
                 session_uid = self.quarterback.win32top.get_current_user_session()
                 print "s: %s == u: %s ->> %s" % (session_uid, user_id, int(session_uid) == int(user_id))
                 if int(session_uid) == int(user_id) :
