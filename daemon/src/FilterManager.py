@@ -55,7 +55,7 @@ def regexp(expr, item):
         #ret = g.g_regex_match_simple(expr, item, 0, 0)
         p = re.compile(expr)
         ret = bool(p.match(item))
-	print "GREGEXP>> expr: '%s' item: '%s' ----> %s" % (expr, item, ret) 
+	#print "GREGEXP>> expr: '%s' item: '%s' ----> %s" % (expr, item, ret) 
 	return ret
     except:
         print "Regex failure"
