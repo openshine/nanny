@@ -102,7 +102,12 @@ class PyroClient(gobject.GObject):
         return self.nanny_wcf.UpdateCustomFilter (filter_id, name, description, url)
 
     def remove_custom_filter (self, filter_id, reply_handler, error_handler):
-        return self.nanny_wcf.RemoveCustomFilter (filter_id, reply_handler=reply_handler, error_handler=error_handler, timeout=2000000)
+	try:
+            ret = self.nanny_wcf.RemoveCustomFilter (filter_id)
+	    reply_handler(True)
+            return ret
+        except:
+	    error_handler(None)
 
     def add_pkg_filter (self, name):
         return self.nanny_wcf.AddPkgFilter(name)
