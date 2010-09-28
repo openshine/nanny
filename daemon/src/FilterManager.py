@@ -48,9 +48,15 @@ elif os.name == "nt":
 g.g_regex_match_simple.restype=c_int
 g.g_regex_match_simple.argtypes=[c_wchar_p, c_wchar_p, c_int, c_int]
 
+import re
+
 def regexp(expr, item):
     try:
-        return bool(g.g_regex_match_simple(expr, item, 0, 0))
+        #ret = g.g_regex_match_simple(expr, item, 0, 0)
+        p = re.compile(expr)
+        ret = bool(p.match(item))
+	print "GREGEXP>> expr: '%s' item: '%s' ----> %s" % (expr, item, ret) 
+	return ret
     except:
         print "Regex failure"
         return False
