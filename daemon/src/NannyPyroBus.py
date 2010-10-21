@@ -38,12 +38,15 @@ def PyroBlockingCallFromThread(reactor, f, *a, **kw):
         if se._Semaphore__value == 1 :
             se.acquire()
         else:
-            return 
-        result = f(*a, **kw)
-        queue.put(result)
+            return
+        
+        result = defer.maybeDeferred(f, *a, **kw)
+        result.addBoth(queue.put)
 
     reactor.callFromThread(_callFromThread)
     result = queue.get()
+    if isinstance(result, failure.Failure):
+        result.raiseException()
     return result
 
 class OrgGnomeNanny(Pyro.core.ObjBase):
