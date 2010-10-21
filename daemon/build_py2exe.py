@@ -2,7 +2,7 @@
 import sys, os, glob, stat
 
 nanny_top_dir = os.path.dirname(os.path.dirname(__file__))
-nanny_win32_dist_dir = os.path.join(nanny_top_dir, "NannyW32")
+nanny_win32_dist_dir = os.path.join(nanny_top_dir, "Nanny")
 nanny_python_dir = os.path.join(nanny_top_dir, "lib", "python2.6", "site-packages")
 
 sys.path.append(nanny_python_dir)
@@ -50,7 +50,7 @@ for (basepath, children) in walktree(os.path.join(nanny_top_dir, "etc"),False):
 
 data_files = {}
 for file in share_files + etc_files:
-    path_dir = os.path.dirname(file).replace(nanny_top_dir, os.path.join("NannyW32\\"))
+    path_dir = os.path.dirname(file).replace(nanny_top_dir, os.path.join("Nanny\\"))
     if path_dir not in data_files.keys():
         data_files[path_dir] = []
     data_files[path_dir].append(file)
@@ -65,44 +65,46 @@ dist_files
 
 daemon_service_dbg = dict(
     script = os.path.join(nanny_top_dir, "sbin", "NannyService.py"),
-    dest_base = os.path.join("NannyW32", "bin", "nanny-daemon-dbg"),
+    dest_base = os.path.join("Nanny", "bin", "nanny-daemon-dbg"),
 )
 
 daemon_service = dict(
     script = os.path.join(nanny_top_dir, "sbin", "NannyService.py"),
-    dest_base = os.path.join("NannyW32", "bin", "NannyService"),
+    dest_base = os.path.join("Nanny", "bin", "NannyService"),
     modules=["NannyService"],
     cmdline_style='pywin32',
 )
 
 admin_console_dbg = dict(
     script = os.path.join(nanny_top_dir, "sbin", "nanny-admin-console"),
-    dest_base = os.path.join("NannyW32", "bin", "nanny-admin-console-dbg"),
+    dest_base = os.path.join("Nanny", "bin", "nanny-admin-console-dbg"),
 )
 
 admin_console = dict(
     script = os.path.join(nanny_top_dir, "sbin", "nanny-admin-console"),
-    dest_base = os.path.join("NannyW32", "bin", "nanny-admin-console"),
+    dest_base = os.path.join("Nanny", "bin", "nanny-admin-console"),
+    icon_resources = [(1, "nanny-32x32.ico")],
 )
 
 dblocker_dbg = dict(
     script = os.path.join(nanny_top_dir, "sbin", "nanny-desktop-blocker"),
-    dest_base = os.path.join("NannyW32", "bin", "nanny-desktop-blocker-dbg"),
+    dest_base = os.path.join("Nanny", "bin", "nanny-desktop-blocker-dbg"),
 )
 
 dblocker = dict(
     script = os.path.join(nanny_top_dir, "sbin", "nanny-desktop-blocker"),
-    dest_base = os.path.join("NannyW32", "bin", "nanny-desktop-blocker"),
+    dest_base = os.path.join("Nanny", "bin", "nanny-desktop-blocker"),
 )
 
 blacklistmgr_dbg = dict(
     script = os.path.join(nanny_top_dir, "sbin", "nanny-blacklist-manager"),
-    dest_base = os.path.join("NannyW32", "bin", "nanny-blacklist-manager-dbg"),
+    dest_base = os.path.join("Nanny", "bin", "nanny-blacklist-manager-dbg"),
 )
 
 blacklistmgr = dict(
     script = os.path.join(nanny_top_dir, "sbin", "nanny-blacklist-manager"),
-    dest_base = os.path.join("NannyW32", "bin", "nanny-blacklist-manager"),
+    dest_base = os.path.join("Nanny", "bin", "nanny-blacklist-manager"),
+    icon_resources = [(1, "nanny-32x32.ico")],
 )
 
 
@@ -117,5 +119,5 @@ setup(name="Nanny",
       service=[daemon_service],
       data_files = dist_files,
       options = {"py2exe" : py2exe_options},
-      zipfile = os.path.join("NannyW32", "lib", "nannylib.zip"),
+      zipfile = os.path.join("Nanny", "lib", "nannylib.zip"),
 )
