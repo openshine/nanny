@@ -25,6 +25,7 @@
 
 import gobject
 import os
+import sys
 
 from twisted.internet import reactor
 from twisted.application import internet, service
@@ -37,7 +38,17 @@ from nanny.daemon.proxy.Controllers import WebDatabase
 import _winreg
 
 PORT_START_NUMBER=53000
-WEBDATABASE='C:\\WINDOWS\\nanny_data\\webs.db'
+
+if not hasattr(sys, "frozen") :
+    file_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    for x in range(6):
+        file_dir = os.path.dirname(file_dir)
+    root_path = file_dir
+    
+    WEBDATABASE = os.path.join(root_path, "var", "lib", "nanny", "webs.db")
+else:
+    WEBDATABASE = os.path.join(os.environ["ALLUSERSPROFILE"], "Gnome", "nanny", "webs.db")
+
 
 class Win32WebContentFiltering(gobject.GObject) :
     def __init__(self, quarterback, app) :

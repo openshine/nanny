@@ -26,6 +26,8 @@
 import gobject
 import gio
 import os
+import sys
+
 import errno
 
 import shutil
@@ -67,7 +69,15 @@ def on_db_connect(conn):
 if os.name == "posix" :
     NANNY_DAEMON_DATA = "/var/lib/nanny/"
 elif os.name == "nt" :
-    NANNY_DAEMON_DATA = "C:\\WINDOWS\\nanny_data"
+    if not hasattr(sys, "frozen") :
+        file_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        for x in range(6):
+            file_dir = os.path.dirname(file_dir)
+        root_path = file_dir
+        
+        NANNY_DAEMON_DATA = os.path.join(root_path, "var", "lib", "nanny")
+    else:        
+        NANNY_DAEMON_DATA = os.path.join(os.environ["ALLUSERSPROFILE"], "Gnome", "nanny")
 
 def mkdir_path(path):
     try:
