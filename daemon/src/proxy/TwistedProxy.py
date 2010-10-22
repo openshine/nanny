@@ -31,6 +31,7 @@ import urlparse
 from urllib import quote as urlquote
 
 import os
+import sys
 from tempfile import TemporaryFile, gettempdir
 import time
 
@@ -65,7 +66,15 @@ BAD_WEB_TEMPLATE='''
 if os.name == "posix" :
     BAD_CONTENT_TMP_DIR = "/var/tmp/nanny/"
 elif os.name == "nt" :
-    BAD_CONTENT_TMP_DIR = "C:\\WINDOWS\\nanny_data\\tmp"
+    if not hasattr(sys, "frozen") :
+        file_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        for x in range(7):
+            file_dir = os.path.dirname(file_dir)
+        root_path = file_dir
+        
+        BAD_CONTENT_TMP_DIR = os.path.join(root_path, "var", "lib", "nanny", "tmp")
+    else:        
+        BAD_CONTENT_TMP_DIR = os.path.join(os.environ["ALLUSERSPROFILE"], "Gnome", "nanny", "tmp")
 
 class BadBoyResponseFilter:
     def __init__(self, client):

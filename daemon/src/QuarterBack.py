@@ -25,6 +25,8 @@
 
 import gobject
 import os
+import sys
+
 import copy
 import pickle
 import time
@@ -58,7 +60,16 @@ def GetInHM(m):
 if os.name == "posix" :
     BLOCK_DB = "/var/lib/nanny/nanny-block.db"
 elif os.name == "nt" :
-    BLOCK_DB = "C:\\WINDOWS\\nanny_data\\nanny-block.db"
+    if not hasattr(sys, "frozen") :
+        file_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        for x in range(6):
+            file_dir = os.path.dirname(file_dir)
+        root_path = file_dir
+        
+        BLOCK_DB = os.path.join(root_path, "var", "lib", "nanny", "nanny-block.db")
+    else:
+        BLOCK_DB = os.path.join(os.environ["ALLUSERSPROFILE"], "Gnome", "nanny", "nanny-block.db")
+
 
 WEEKDAYS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
 
