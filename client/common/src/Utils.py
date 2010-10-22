@@ -60,13 +60,33 @@ def ui_magic(object, ui_file, prefix):
           except:
                print "Something fails at ui_magic"
 
+def is_win32user_an_admin():
+     WHO_AM_I = "C:\\WINDOWS\\System32\\whoami.exe"
+     if not os.path.exists(WHO_AM_I) :
+          import win32security
+          import ntsecuritycon
+          subAuths = ntsecuritycon.SECURITY_BUILTIN_DOMAIN_RID, \
+              ntsecuritycon.DOMAIN_ALIAS_RID_ADMINS
+          sidAdmins = win32security.SID(ntsecuritycon.SECURITY_NT_AUTHORITY, subAuths)
+          return win32security.CheckTokenMembership(None, sidAdmins)
+     else:
+          import subprocess
+
+          p = subprocess.Popen([WHO_AM_I, "/GROUPS", "/SID"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+          if p.wait () != 0 :
+               p = subprocess.Popen([WHO_AM_I, "/GROUPS"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+               if p.wait () != 0 :
+                    return False
+
+          for line in p.stdout.readlines() :
+               if "S-1-5-32-544 " in line or "S-1-5-32-544\r\n" in line :
+                    return True
+
+          return False
+
+
 def check_win32_admin():
-    import win32security
-    import ntsecuritycon
-    subAuths = ntsecuritycon.SECURITY_BUILTIN_DOMAIN_RID, \
-               ntsecuritycon.DOMAIN_ALIAS_RID_ADMINS
-    sidAdmins = win32security.SID(ntsecuritycon.SECURITY_NT_AUTHORITY, subAuths)
-    if win32security.CheckTokenMembership(None, sidAdmins) == False:
+    if is_win32user_an_admin() == False:
          msg = gtk.MessageDialog(parent=None, flags=0,
                                  type=gtk.MESSAGE_INFO,
                                  buttons=gtk.BUTTONS_CLOSE, message_format=None)
