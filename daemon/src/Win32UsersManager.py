@@ -44,7 +44,7 @@ class Win32UsersManager:
         if qry.count > 0:
             for result in qry:
                 uid = str(result.SID).split("-")[-1]
-                if int(uid) >= 1000 :
+                if int(uid) >= 1000 and result.Name != "HomeGroupUser$" :
                     users.append((uid, unicode(result.Name), unicode(result.FullName)))
         self.last_time = time.time()
         self.users = users
