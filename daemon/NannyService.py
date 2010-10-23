@@ -94,4 +94,6 @@ if __name__ == '__main__':
     if len(sys.argv) == 1 :
         main()
     else:
+        sys.stdout = open(os.devnull, 'w')
+        sys.stderr = open(os.devnull, 'w')
         win32serviceutil.HandleCommandLine(NannyService)
