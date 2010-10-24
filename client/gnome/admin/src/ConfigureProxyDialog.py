@@ -173,6 +173,7 @@ class ConfigureProxyDialog (gtk.Dialog):
     def __on_custom_blacklist_add_button_clicked (self, widget, data=None):
         xml = self.__load_dialog ()
         self.proxy_rule_dialog = xml.get_object ('wcfed_dialog')
+        self.proxy_rule_dialog.set_transient_for(self)
         warning_label = xml.get_object ("wcfed_warning_label")
         warning_label.hide ()
         while True:
@@ -201,6 +202,7 @@ class ConfigureProxyDialog (gtk.Dialog):
     def __on_custom_whitelist_add_button_clicked (self, widget, data=None):
         xml = self.__load_dialog ()
         dialog = xml.get_object ('wcfed_dialog')
+        dialog.set_transient_for(self)
         warning_label = xml.get_object ("wcfed_warning_label")
         warning_label.hide ()
 
@@ -258,6 +260,7 @@ class ConfigureProxyDialog (gtk.Dialog):
     def __on_custom_blacklist_edit_button_clicked (self, widget, data=None):
         xml = self.__load_dialog ()
         self.proxy_rule_dialog = xml.get_object ('wcfed_dialog')
+        self.proxy_rule_dialog.set_transient_for(self)
         warning_label = xml.get_object ("wcfed_warning_label")
         warning_label.hide ()
 
@@ -300,6 +303,7 @@ class ConfigureProxyDialog (gtk.Dialog):
     def __on_custom_whitelist_edit_button_clicked (self, widget, data=None):
         xml = self.__load_dialog ()
         self.proxy_rule_dialog = xml.get_object ('wcfed_dialog')
+        self.proxy_rule_dialog.set_transient_for(self)
         warning_label = xml.get_object ("wcfed_warning_label")
         warning_label.hide ()
 
@@ -341,6 +345,7 @@ class ConfigureProxyDialog (gtk.Dialog):
 
     def __on_custom_blacklist_remove_button_clicked (self, widget, data=None):
         dlg = gtk.MessageDialog(type=gtk.MESSAGE_WARNING, buttons=gtk.BUTTONS_OK_CANCEL)
+        dlg.set_transient_for(self)
         dlg.set_property("icon-name", "nanny")
         dlg.set_markup("<b>%s</b>" % _("Are you sure you want to delete this filter?"))
         dlg.format_secondary_markup(_("You will not be able to undo this action."))
@@ -362,6 +367,7 @@ class ConfigureProxyDialog (gtk.Dialog):
 
     def __on_custom_whitelist_remove_button_clicked (self, widget, data=None):
         dlg = gtk.MessageDialog(type=gtk.MESSAGE_WARNING, buttons=gtk.BUTTONS_OK_CANCEL)
+        dlg.set_transient_for(self)
         dlg.set_property("icon-name", "nanny")
         dlg.set_markup("<b>%s</b>" % _("Are you sure you want to delete this filter?"))
         dlg.format_secondary_markup(_("You will not be able to undo this action."))

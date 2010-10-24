@@ -335,6 +335,7 @@ class AdminConsole:
         dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_INFO, gtk.BUTTONS_CLOSE,
                                    _("Your configuration has been saved") )
         dialog.set_property("icon-name", "nanny")
+        dialog.set_transient_for(self.window)
         dialog.set_default_response(gtk.RESPONSE_CLOSE)
         dialog.run()
         dialog.destroy()
