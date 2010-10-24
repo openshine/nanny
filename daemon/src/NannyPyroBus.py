@@ -22,6 +22,20 @@
 
 from twisted.internet import threads, reactor, defer
 from twisted.python import failure
+
+import os
+import sys
+
+if os.name == "nt" :
+    if hasattr(sys, "frozen") :
+        NANNY_DATA = os.path.join(os.environ["ALLUSERSPROFILE"], "Gnome", "nanny")
+        if not os.path.exists(NANNY_DATA) :
+            try:
+                os.makedirs(NANNY_DATA)
+            except:
+                pass
+        os.environ["PYRO_STORAGE"] = NANNY_DATA 
+
 import Pyro.core
 import threading
 import time
