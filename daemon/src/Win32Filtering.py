@@ -25,6 +25,7 @@
 
 import gobject
 import os
+import subprocess
 
 from twisted.internet import reactor
 from time import localtime, strftime
@@ -60,7 +61,12 @@ class Win32Firewall(gobject.GObject) :
             self.platform = "2000"
             self.fw = "ipsecpol.exe"
         else:
-            pass
+            p = subprocess.Popen(["netsh", "ipsec"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            if p.wait () != 0 :
+                pass
+            else:
+                self.platform = "7"
+                self.fw = "netsh ipsec static"
 
     def get_platform(self):
         return self.platform
@@ -83,6 +89,19 @@ class Win32Firewall(gobject.GObject) :
                 appid_name = { 1: "WEB", 2: "MAIL", 3: "IM"}
                 print "[W32Filtering] %s ports block == %s" % (appid_name[appid], block)
                 self.fw_status[appid] = block
+        elif self.platform == '7' :
+            block_param = "nanny_block"
+            if block == False:
+                block_param = "nanny_permit"
+            appid_name = { 1: "WEB", 2: "MAIL", 3: "IM"}
+            appid_netsh_id = { 1: "nanny_web", 2: "nanny_mail", 3: "nanny_im"}
+
+            os.system("%s set rule name=%s_r policy=nanny_policy filterlist=%s_fl filteraction=%s > NUL" % (self.fw, 
+                                                                                                            appid_netsh_id[appid],
+                                                                                                            appid_netsh_id[appid],
+                                                                                                            block_param))
+            print "[W32Filtering] %s ports block == %s" % (appid_name[appid], block)
+            self.fw_status[appid] = block
 
     def start(self):
         if self.platform == "xp" or self.platform == "2000":
@@ -91,6 +110,28 @@ class Win32Firewall(gobject.GObject) :
             self.set_appid_fwstatus(WEB_APPID, False)
             self.set_appid_fwstatus(MAIL_APPID, False)
             self.set_appid_fwstatus(IM_APPID, False)
+        elif self.platform == "7" :
+            os.system("%s add filterlist name=nanny_web_fl > NUL" % self.fw)
+            os.system("%s add filterlist name=nanny_mail_fl > NUL" % self.fw)
+            os.system("%s add filterlist name=nanny_im_fl > NUL" % self.fw)
+            
+            os.system("%s add filteraction name=nanny_block action=block > NUL" % self.fw)
+            os.system("%s add filteraction name=nanny_permit action=permit > NUL" % self.fw)
+
+            for port in services_ports[WEB_APPID].replace(" ","").split(",") :
+                os.system("%s add filter filterlist=nanny_web_fl srcaddr=me dstaddr=any protocol=TCP srcport=0 dstport=%s > NUL" % (self.fw,  port) )
+            
+            for port in services_ports[MAIL_APPID].replace(" ","").split(",") :
+                os.system("%s add filter filterlist=nanny_mail_fl srcaddr=me dstaddr=any protocol=TCP srcport=0 dstport=%s > NUL" % (self.fw,  port) )
+                
+            for port in services_ports[IM_APPID].replace(" ","").split(",") :
+                os.system("%s add filter filterlist=nanny_im_fl srcaddr=me dstaddr=any protocol=TCP srcport=0 dstport=%s > NUL" % (self.fw,  port) )
+
+            os.system("%s add policy name=nanny_policy assign=yes > NUL" % self.fw)
+            
+            os.system("%s add rule name=nanny_web_r policy=nanny_policy filterlist=nanny_web_fl filteraction=nanny_permit > NUL" % self.fw)
+            os.system("%s add rule name=nanny_mail_r policy=nanny_policy filterlist=nanny_mail_fl filteraction=nanny_permit > NUL" % self.fw)
+            os.system("%s add rule name=nanny_im_r policy=nanny_policy filterlist=nanny_im_fl filteraction=nanny_permit > NUL" % self.fw)
         else:
             pass
 
@@ -98,6 +139,28 @@ class Win32Firewall(gobject.GObject) :
         if self.platform == "xp" or self.platform == "2000":
             os.system('%s -w reg -p "nanny_firewall" -y > NUL' % self.fw)
             os.system('%s -w reg -p "nanny_firewall" -o > NUL' % self.fw)
+        elif self.platform == "7" :
+            os.system("%s del rule name=nanny_web_r > NUL" % self.fw)
+            os.system("%s del rule name=nanny_mail_r > NUL" % self.fw)
+            os.system("%s del rule name=nanny_im_r > NUL" % self.fw)
+            
+            os.system("%s del policy name=nanny_policy  > NUL" % self.fw)
+            
+            for port in services_ports[WEB_APPID].replace(" ","").split(",") :
+                os.system("%s del filter filterlist=nanny_web_fl srcaddr=me dstaddr=any protocol=TCP srcport=0 dstport=%s > NUL" % (self.fw,  port) )
+            
+            for port in services_ports[MAIL_APPID].replace(" ","").split(",") :
+                os.system("%s del filter filterlist=nanny_mail_fl srcaddr=me dstaddr=any protocol=TCP srcport=0 dstport=%s > NUL" % (self.fw,  port) )
+                
+            for port in services_ports[IM_APPID].replace(" ","").split(",") :
+                os.system("%s del filter filterlist=nanny_im_fl srcaddr=me dstaddr=any protocol=TCP srcport=0 dstport=%s > NUL" % (self.fw,  port) )
+
+            os.system("%s del filteraction name=nanny_block  > NUL" % self.fw)
+            os.system("%s del filteraction name=nanny_permit > NUL" % self.fw)
+
+            os.system("%s del filterlist name=nanny_web_fl > NUL" % self.fw)
+            os.system("%s del filterlist name=nanny_mail_fl > NUL" % self.fw)
+            os.system("%s del filterlist name=nanny_im_fl > NUL" % self.fw)
         else:
             pass
 
