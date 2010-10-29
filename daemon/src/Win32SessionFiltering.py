@@ -75,16 +75,7 @@ class Win32SessionBlocker(gobject.GObject) :
     def blocker_terminate_from_thread(self, user_id, ret):
         print "[W32SessionFiltering] self.blocker_terminate_from_thread %s %s" % (user_id, ret)
         if ret == 0:
-            self.block_status.pop(self.block_status.index(user_id))
-            print "[W32SessionFiltering] unblocking user %s" % user_id
-            try:
-                session_uid = self.quarterback.win32top.get_current_user_session()
-                print "s: %s == u: %s ->> %s" % (session_uid, user_id, int(session_uid) == int(user_id))
-                if int(session_uid) == int(user_id) :
-                    print "[W32SessionFiltering] Quiting session"
-                    windll.user32.ExitWindowsEx(0)
-            except:
-                print "[W32SessionFiltering] Something wrong quiting from session"
+            gobject.timeout_add(5000, self.__remove_block_status, user_id)
         else:
             print "[W32SessionFiltering] User or other try to kill blocker :)"
             gobject.timeout_add(5000, self.__launch_blocker_to_badboy, user_id)
@@ -99,6 +90,11 @@ class Win32SessionBlocker(gobject.GObject) :
                 self.block_status.pop(self.block_status.index(user_id))
             except:
                 pass
+
+    def __remove_block_status(self, user_id):
+        print "[W32SessionFiltering] Remove block status to user_id :  %s" % (user_id)
+        self.block_status.pop(self.block_status.index(user_id))
+        return False
 
     def __launch_blocker_to_badboy(self, user_id):
         session_uid = self.quarterback.win32top.get_current_user_session()
