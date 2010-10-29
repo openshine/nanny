@@ -24,6 +24,9 @@ import os
 import sys
 if os.name == "posix":
     import dbus
+elif os.name == "nt" :
+    from ctypes import *
+
 
 import gtk
 import gtk.gdk
@@ -97,6 +100,8 @@ class DesktopBlocker(gtk.Window):
         return False
         
     def __close_button_clicked_cb(self, widget, data):
+        if os.name == "nt" :
+            windll.user32.ExitWindowsEx(0)
         sys.exit(0)
         
     def __time_button_clicked_cb(self, widget, data):
