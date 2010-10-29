@@ -64,6 +64,8 @@ class NannyService (win32serviceutil.ServiceFramework):
     def __init__(self,args):
         win32serviceutil.ServiceFramework.__init__(self,args)
         self.hWaitStop = win32event.CreateEvent(None,0,0,None)
+        self.log = open(os.path.join(os.environ["ALLUSERSPROFILE"], "Gnome", "nanny", "nanny.log"), "w")
+
 
     def SvcStop(self):
         self.ReportServiceStatus(win32service.SERVICE_STOP_PENDING)
@@ -75,6 +77,8 @@ class NannyService (win32serviceutil.ServiceFramework):
                               (self._svc_name_,''))
         self.CheckForQuit()
         pythoncom.CoInitialize()
+        sys.stdout = self.log
+        sys.stderr = self.log
         self.main()
 
     def CheckForQuit(self):
@@ -82,6 +86,7 @@ class NannyService (win32serviceutil.ServiceFramework):
             if not retval == win32event.WAIT_TIMEOUT:
                 # Received Quit from Win32
                 reactor.stop()
+                self.log.close()
                 pythoncom.CoUninitialize()
                 
             reactor.callLater(1.0, self.CheckForQuit)
