@@ -29,6 +29,14 @@ from time import localtime, strftime
 
 from ctypes import *
 
+import ctypes
+import win32api
+import win32event
+import win32process
+import win32security
+import win32ts
+import win32con
+
 (
 SESSION_APPID,
 WEB_APPID,
@@ -109,7 +117,7 @@ class Win32SessionBlocker(gobject.GObject) :
         import subprocess
         import time
 
-        p = subprocess.Popen(win32sb.sb, shell=False)
+        p = WinPopenAsUser(win32sb.sb)
         print "[W32SessionFiltering] launching blocker (pid : %s)" % p.pid
         while p.poll() == None :
             time.sleep(1)
@@ -117,13 +125,59 @@ class Win32SessionBlocker(gobject.GObject) :
             if b == False:
                 p.kill()
                 print "[W32SessionFiltering] Unblocking session %s" % user_id
-                while p.poll() == None :
-                    print "[W32SessionFiltering] killing %s" % p.pid
                 return
 
         print "[W32SessionFiltering] blocker terminated by user interaction"
         threads.blockingCallFromThread(reactor, win32sb.blocker_terminate_from_thread, user_id, p.poll())
+
+class WinPopenAsUser :
+    def __init__ (self, cmd):
+        self.cmd = cmd
+        self.handle = None
+        self.thread_id = None
+        self.pid = None
+        self.tid = None
+        self.returncode = None
+
+        process = win32api.GetCurrentProcess()
+        token = win32security.OpenProcessToken(process,
+                                               win32security.TOKEN_ALL_ACCESS)
+
+
+        tcb_privilege_flag = win32security.\
+            LookupPrivilegeValue(None,
+                                 win32security.SE_TCB_NAME)
         
+        se_enable = win32security.SE_PRIVILEGE_ENABLED
+        old_privilege_data = win32security.\
+            AdjustTokenPrivileges(token, 0,
+                                  [(tcb_privilege_flag,
+                                    se_enable)])
+        
+        console_session_id = ctypes.windll.kernel32.WTSGetActiveConsoleSessionId()
+        console_user_token = win32ts.WTSQueryUserToken(console_session_id)
+        startupinfo = win32process.STARTUPINFO()
+        startupinfo.dwFlags = win32process.STARTF_USESHOWWINDOW
+        startupinfo.wShowWindow = win32con.SW_SHOW
+        startupinfo.lpDesktop = 'winsta0\default'
+        
+        process_arguments = (console_user_token, None,
+                             self.cmd,
+                             None, None, 0, 0,None, None,
+                             startupinfo)
+        
+        self.handle, self.thread_id , self.pid, self.tid = win32process.\
+            CreateProcessAsUser(*process_arguments)
+
+    def poll(self) :
+        if self.returncode is None:
+            if win32event.WaitForSingleObject(self.handle, 0) == win32event.WAIT_OBJECT_0:
+                self.returncode = win32process.GetExitCodeProcess(self.handle)
+        return self.returncode
+
+    def kill(self):
+        win32process.TerminateProcess(self.handle, 1)
+
 
 class Win32SessionFiltering(gobject.GObject) :
     def __init__(self, quarterback) :
