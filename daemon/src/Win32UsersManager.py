@@ -31,6 +31,9 @@ class Win32UsersManager:
     def __init__(self):
         self.last_time = None
         self.users = None
+        self.uid_sid = {}
+        
+        self.get_users()
         
     def get_users (self):
         if self.last_time != None and time.time() - self.last_time <= 60 :
@@ -45,6 +48,7 @@ class Win32UsersManager:
             for result in qry:
                 uid = str(result.SID).split("-")[-1]
                 if int(uid) >= 1000 and result.Name != "HomeGroupUser$" :
+                    self.uid_sid[int(uid)] = str(result.SID)
                     users.append((uid, unicode(result.Name), unicode(result.FullName)))
         self.last_time = time.time()
         self.users = users
@@ -58,3 +62,9 @@ class Win32UsersManager:
             return True
         
         return False
+    
+    def get_sid_from_uid (self, uid):
+        if int(uid) in self.uid_sid.keys() :
+            return self.uid_sid[int(uid)]
+        else:
+            return None
