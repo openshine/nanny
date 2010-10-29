@@ -154,8 +154,17 @@ class Win32WebContentFiltering(gobject.GObject) :
         return True
 
     def __set_proxy_settings(self, enable, http_proxy_server='') :
-        root = _winreg.HKEY_CURRENT_USER
-        proxy_path = r"Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+        root = _winreg.HKEY_USERS
+        session_uid = int(self.quarterback.win32top.get_current_user_session())
+        if session_uid == 0 :
+            print "[W32WebContentFiltering] session 0 (__set_proxy_settings)"
+            return
+        user_sid = self.quarterback.usersmanager.get_sid_from_uid(session_uid)
+        if user_sid == None :
+            print "[W32WebContentFiltering] USER SID = None (__set_proxy_settings)"
+            return
+
+        proxy_path = r"%s\Software\Microsoft\Windows\CurrentVersion\Internet Settings" % user_sid
 
         hKey = _winreg.CreateKey (root, proxy_path)
 
@@ -196,8 +205,17 @@ class Win32WebContentFiltering(gobject.GObject) :
         _winreg.CloseKey(hKey)
 
     def __get_proxy_info(self):
-        root = _winreg.HKEY_CURRENT_USER
-        proxy_path = r"Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+        root = _winreg.HKEY_USERS
+        session_uid = int(self.quarterback.win32top.get_current_user_session())
+        if session_uid == 0 :
+            print "[W32WebContentFiltering] session 0 (__get_proxy_info)"
+            return
+        user_sid = self.quarterback.usersmanager.get_sid_from_uid(session_uid)
+        if user_sid == None :
+            print "[W32WebContentFiltering] USER SID = None (__get_proxy_info)"
+            return
+
+        proxy_path = r"%s\Software\Microsoft\Windows\CurrentVersion\Internet Settings" % user_sid
         hKey = _winreg.OpenKey (root, proxy_path)
         
         is_enabled = 0
@@ -222,8 +240,17 @@ class Win32WebContentFiltering(gobject.GObject) :
         return is_enabled, http_server
         
     def __show_proxy_settings(self):
-        root = _winreg.HKEY_CURRENT_USER
-        proxy_path = r"Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+        root = _winreg.HKEY_USERS
+        session_uid = int(self.quarterback.win32top.get_current_user_session())
+        if session_uid == 0 :
+            print "[W32WebContentFiltering] session 0 (__show_proxy_settings)"
+            return
+        user_sid = self.quarterback.usersmanager.get_sid_from_uid(session_uid)
+        if user_sid == None :
+            print "[W32WebContentFiltering] USER SID = None (__show_proxy_settings)"
+            return
+
+        proxy_path = r"%s\Software\Microsoft\Windows\CurrentVersion\Internet Settings" % user_sid
         hKey = _winreg.OpenKey (root, proxy_path)
 
         def get_reg_info(name):
