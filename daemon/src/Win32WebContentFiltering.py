@@ -75,22 +75,22 @@ class Win32WebContentFiltering(gobject.GObject) :
         self.quarterback.connect("remove-wcf-to-uid", self.__stop_proxy)
 
         self.update_proxy_settings_hd = None
+
+        self.proxy_helper = Win32ProxyHelper(self.quarterback.usersmanager)
         
     def start(self):
         print "Start Win32 Web Content Filtering"
         for uid in self.quarterback.wcf_uid_list :
             self.__start_proxy(self.quarterback, uid)
-        
+
         gobject.timeout_add(5000, self.__launch_proxy_updater)
 
     def stop(self):
         print "Stop Win32 Web Content Filtering"
         for uid in self.services.keys() :
             self.__stop_proxy(self.quarterback, uid)
+
         gobject.source_remove(self.update_proxy_settings_hd)
-        print "Disabling proxy winreg"
-        self.__set_proxy_settings(False)
-        self.__show_proxy_settings()
 
     def __start_proxy(self, quarterback, uid):
         if not self.services.has_key(uid) :
@@ -102,12 +102,10 @@ class Win32WebContentFiltering(gobject.GObject) :
                 try:
                     i = internet.TCPServer(port, site)
                     i.setServiceParent(sc)
-                    print "[Win32WebContentFiltering] Starting proxy (uid: %s, port: %s)" % (uid, port)
                 except:
                     continue
                 
                 self.services[uid]=(i, port)
-                #self.__add_rule(uid, port)
                 return
         
     def __stop_proxy(self, quarterback, uid):
@@ -116,153 +114,185 @@ class Win32WebContentFiltering(gobject.GObject) :
         else:
             i,port = self.services.pop(uid)
             i.stopService()
-            print "[Win32WebContentFiltering] Stoped proxy (uid: %s, port: %s)" % (uid, port)
-            session_uid = int(self.quarterback.win32top.get_current_user_session())
-            if str(session_uid) == str(uid):
-                print "[Win32WebContentFiltering] Disabling proxy winreg cfg"
-                self.__set_proxy_settings(False)
-                self.__show_proxy_settings()
-            #self.__remove_rule(uid, port)
 
     def __launch_proxy_updater(self):
         self.update_proxy_settings_hd = gobject.timeout_add(1000, self.__update_proxy_settings)
-
+    
     def __update_proxy_settings(self):
         session_uid = int(self.quarterback.win32top.get_current_user_session())
-        if session_uid == 0:
-            is_enabled, http_server = self.__get_proxy_info()
-            if is_enabled == 1:
-                self.__set_proxy_settings(False)
-                self.__show_proxy_settings()
-        else:
-            if self.services.has_key(str(session_uid)) :
-                is_enabled, http_server = self.__get_proxy_info()
-
-                changed = False
-                if is_enabled == 0 :
-                    self.__set_proxy_settings(True, "localhost:%s" % self.services[str(session_uid)][1])
-                    changed = True
-
-                if http_server != "localhost:%s" % self.services[str(session_uid)][1] :
-                    self.__set_proxy_settings(True, "localhost:%s" % self.services[str(session_uid)][1])
-                    changed = True
+        if session_uid != 0 :
+            host = None
+            port = None
+            proxy_info = None
             
-                if changed == True:
-                    print "SomeOne tryed to change the proxy settings, revert to nanny proxy"
-                    self.__show_proxy_settings()
+            is_enabled = self.proxy_helper.get_proxy_enable(session_uid)
+            proxy_info = self.proxy_helper.get_proxy_http(session_uid)
+            if proxy_info != None :
+                host = proxy_info[0]
+                port = proxy_info[1]
 
+            if self.services.has_key(str(session_uid)) :
+                if is_enabled == False:
+                    print "[W32WebContentFiltering] Enable proxy (uid = %s, port = %s)" % (session_uid, self.services[str(session_uid)][1])
+                    self.proxy_helper.set_proxy_enable(session_uid, True)
+                    self.proxy_helper.set_proxy_http(session_uid, "localhost", self.services[str(session_uid)][1])
+                    return True
+                else:
+                    if not ( host == "localhost" and port != None and port == str(self.services[str(session_uid)][1]) ) :
+                        print "[W32WebContentFiltering] (BBP) Enable proxy (uid = %s, port = %s)" % (session_uid, self.services[str(session_uid)][1])
+                        self.proxy_helper.set_proxy_http(session_uid, "localhost", self.services[str(session_uid)][1])
+                        return True
+            else:
+                if is_enabled == True :
+                    if host == "localhost" and port != None :
+                        if  PORT_START_NUMBER <=  int(port) < PORT_START_NUMBER + 5000 :
+                            print "[W32WebContentFiltering] Disable proxy (uid = %s)" % (session_uid)
+                            self.proxy_helper.del_proxy_http(session_uid)
+                            return True
+        
+        #print "[W32WebContentFiltering] Update proxy not necessary : (s:%s, st:%s, h:%s, p:%s)" % (session_uid, is_enabled, host, port)
         return True
 
-    def __set_proxy_settings(self, enable, http_proxy_server='') :
-        root = _winreg.HKEY_USERS
-        session_uid = int(self.quarterback.win32top.get_current_user_session())
-        if session_uid == 0 :
-            print "[W32WebContentFiltering] session 0 (__set_proxy_settings)"
-            return
-        user_sid = self.quarterback.usersmanager.get_sid_from_uid(session_uid)
-        if user_sid == None :
-            print "[W32WebContentFiltering] USER SID = None (__set_proxy_settings)"
-            return
+class Win32ProxyHelper : 
+    def __init__(self, users_manager):
+        self.users_manager = users_manager
 
-        proxy_path = r"%s\Software\Microsoft\Windows\CurrentVersion\Internet Settings" % user_sid
+    def get_proxy_enable(self, uid):
+        hkey = self.__get_user_internet_settings_hkey(uid)
+        try:
+            (val, vtype) = _winreg.QueryValueEx(hkey, "ProxyEnable")
+            _winreg.CloseKey(hkey)
+            return bool(int(val))
+        except:
+            print "[W32ProxyHelper] Exception get_proxy_enabled"
+            return False
 
-        hKey = _winreg.CreateKey (root, proxy_path)
-
-        if enable == True:
-            _winreg.SetValueEx (hKey, "ProxyEnable", 0, _winreg.REG_DWORD, 1)
+    def set_proxy_enable(self, uid, value):
+        hkey = self.__get_user_internet_settings_hkey(uid)
+        if value == True : 
+            #_winreg.SetValueEx (hkey, "ProxyEnable", 0, _winreg.REG_DWORD, 1)
+            self.__set_proxy_enable_winreg(uid, 1)
         else:
-            _winreg.SetValueEx (hKey, "ProxyEnable", 0, _winreg.REG_DWORD, 0)
+            #_winreg.SetValueEx (hkey, "ProxyEnable", 0, _winreg.REG_DWORD, 0)
+            self.__set_proxy_enable_winreg(uid, 0)
+            
+        _winreg.CloseKey(hkey)
+        print "[W32ProxyHelper] set proxy enable status (uid:%s) -> %s" % (uid, value)
 
-        if http_proxy_server != '' :
-            proxy_cfg = ''
-            try:
-                (val, vtype) = _winreg.QueryValueEx(hKey, "ProxyServer")
-                proxy_cfg = str(val)
-            except:
-                pass
 
-            if proxy_cfg == '':
-                _winreg.SetValueEx (hKey, "ProxyServer", 0, _winreg.REG_SZ, "http=%s" % http_proxy_server)
-            else:
-                proxy_list = proxy_cfg.split(";")
-                proxy_list_new = []
-                for proxy_t in proxy_list :
-                    if proxy_t.startswith("http="):
-                        proxy_list_new.append("http=%s" % http_proxy_server)
-                    else:
-                        proxy_list_new.append(proxy_t)
-
-                proxy_new_string = ''
-                if len(proxy_list_new) == 1 :
-                    proxy_new_string = proxy_list_new[0]
-                else:
-                    for proxy_t in proxy_list_new :
-                        proxy_new_string = proxy_new_string + proxy_t + ";"
-                    proxy_new_string = proxy_new_string[:-1]
-
-                _winreg.SetValueEx (hKey, "ProxyServer", 0, _winreg.REG_SZ, proxy_new_string)
-
-        _winreg.CloseKey(hKey)
-
-    def __get_proxy_info(self):
-        root = _winreg.HKEY_USERS
-        session_uid = int(self.quarterback.win32top.get_current_user_session())
-        if session_uid == 0 :
-            print "[W32WebContentFiltering] session 0 (__get_proxy_info)"
-            return
-        user_sid = self.quarterback.usersmanager.get_sid_from_uid(session_uid)
-        if user_sid == None :
-            print "[W32WebContentFiltering] USER SID = None (__get_proxy_info)"
-            return
-
-        proxy_path = r"%s\Software\Microsoft\Windows\CurrentVersion\Internet Settings" % user_sid
-        hKey = _winreg.OpenKey (root, proxy_path)
-        
-        is_enabled = 0
+    def get_proxy_http(self, uid):
+        hkey = self.__get_user_internet_settings_hkey(uid)
         try:
-            (val, vtype) = _winreg.QueryValueEx(hKey, "ProxyEnable")
-            is_enabled = int(val)
-        except:
-            pass
-
-        http_server = ''
-        try:
-            (val, vtype) = _winreg.QueryValueEx(hKey, "ProxyServer")
+            (val, vtype) = _winreg.QueryValueEx(hkey, "ProxyServer")
             proxy_servers = str(val)
-            for proxy_t in proxy_servers.split(";"):
-                if proxy_t.startswith("http=") :
-                    http_server = proxy_t[5:]
-                    break
+
+            if proxy_servers == '' :
+                return None
+            else:
+                for proxy_t in proxy_servers.split(";"):
+                    if proxy_t.startswith("http=") :
+                        return proxy_t[5:].split(":")
+            return None
         except:
-            pass
+            print "[W32ProxyHelper] Exception get_proxy_http"
+            return None
+
+    def set_proxy_http(self, uid, host, port):
+        hkey = self.__get_user_internet_settings_hkey(uid)
+        try:
+            (val, vtype) = _winreg.QueryValueEx(hkey, "ProxyServer")
+            proxy_servers = str(val)
+            new_proxy_list = ''
+
+            previous_http_proxy = False
+
+            for proxy_t in proxy_servers.split(";"):
+                p_tmp = ''
+                if len(proxy_t) < 3 :
+                    continue
+
+                if proxy_t.startswith("http=") :
+                    previous_http_proxy = True
+                    p_tmp = "http=%s:%s" % (host, port)
+                else:
+                    p_tmp = proxy_t
+                new_proxy_list = new_proxy_list + p_tmp + ";"
+
+            if new_proxy_list == '' :
+                new_proxy_list = "http=%s:%s" % (host, port)
+            else:
+                if previous_http_proxy == False:
+                    http_proxy = "http=%s:%s;" % (host, port)
+                    new_proxy_list = http_proxy + new_proxy_list[:-1]
+                else:
+                    new_proxy_list = new_proxy_list[:-1]
+
+            print "[W32ProxyHelper] set proxy info (uid:%s) -> '%s'" % (uid, new_proxy_list)
+            #_winreg.SetValueEx (hkey, "ProxyServer", 0, _winreg.REG_SZ, new_proxy_list)
+            self.__set_proxy_conf_winreg(uid, new_proxy_list)
+            _winreg.CloseKey(hkey)
+        except:
+            print "[W32ProxyHelper] Exception set_proxy_http"
+
+    def del_proxy_http(self, uid):
+        hkey = self.__get_user_internet_settings_hkey(uid)
+        try:
+            (val, vtype) = _winreg.QueryValueEx(hkey, "ProxyServer")
+            proxy_servers = str(val)
+
+            new_proxy_list = ''
+            for proxy_t in proxy_servers.split(";"):
+                p_tmp = ''
+                if len(proxy_t) < 3 :
+                    continue
+
+                if proxy_t.startswith("http=") :
+                    continue
+                else:
+                    p_tmp = proxy_t
+                new_proxy_list = new_proxy_list + p_tmp + ";"
+
+            if new_proxy_list != '' :
+                new_proxy_list = new_proxy_list[:-1]
+            else:
+                self.set_proxy_enable(uid, False)
+
+            print "[W32ProxyHelper] del http proxy (uid:%s) -> '%s'" % (uid, new_proxy_list)
+            #_winreg.SetValueEx (hkey, "ProxyServer", 0, _winreg.REG_SZ, new_proxy_list)
+            self.__set_proxy_conf_winreg(uid, new_proxy_list)
+            _winreg.CloseKey(hkey)
+        except:
+            print "[W32ProxyHelper] Exception set_proxy_http"
         
-        _winreg.CloseKey(hKey)
-        return is_enabled, http_server
-        
-    def __show_proxy_settings(self):
+    def __get_user_internet_settings_hkey(self, uid):
         root = _winreg.HKEY_USERS
-        session_uid = int(self.quarterback.win32top.get_current_user_session())
-        if session_uid == 0 :
-            print "[W32WebContentFiltering] session 0 (__show_proxy_settings)"
-            return
-        user_sid = self.quarterback.usersmanager.get_sid_from_uid(session_uid)
+        user_sid = self.users_manager.get_sid_from_uid(uid)
         if user_sid == None :
-            print "[W32WebContentFiltering] USER SID = None (__show_proxy_settings)"
+            print "[W32ProxyHelper] USER SID = None"
             return
-
+        
         proxy_path = r"%s\Software\Microsoft\Windows\CurrentVersion\Internet Settings" % user_sid
-        hKey = _winreg.OpenKey (root, proxy_path)
+        hkey = _winreg.OpenKey (root, proxy_path)
+        return hkey
 
-        def get_reg_info(name):
-            try:
-                (val, vtype) = _winreg.QueryValueEx(hKey, name)
-                print " >> %s : '%s' (vtype : %s)" % (name, str(val), vtype)
-            except:
-                print " >> %s : ''" % name
+    def __set_proxy_enable_winreg(self, uid, value):
+        user_sid = self.users_manager.get_sid_from_uid(uid)
+        if user_sid == None :
+            print "[W32ProxyHelper] USER SID = None"
+            return
+        
+        proxy_path = r"%s\Software\Microsoft\Windows\CurrentVersion\Internet Settings" % user_sid
+        ret = os.system('reg add "HKU\\%s" /v ProxyEnable /t REG_DWORD /d %s /f > NUL' % (proxy_path, int(value)))
+        if ret != 0 :
+            print "[W32ProxyHelper] __set_proxy_enable_winreg"
 
-        settings = ["ProxyEnable", "ProxyServer"]
-        print "[W32WebContentFiltering] New registry info"
-        for s in settings :
-            get_reg_info(s)
-        print "------------------------------------------"
-        _winreg.CloseKey(hKey)
+    def __set_proxy_conf_winreg(self, uid, value):
+        user_sid = self.users_manager.get_sid_from_uid(uid)
+        if user_sid == None :
+            print "[W32ProxyHelper] USER SID = None"
+            return
+        
+        proxy_path = r"%s\Software\Microsoft\Windows\CurrentVersion\Internet Settings" % user_sid
+        ret = os.system('reg add "HKU\\%s" /v ProxyServer /t REG_SZ /d "%s" /f > NUL' % (proxy_path, value))
+        if ret != 0 :
+            print "[W32ProxyHelper] __set_proxy_conf_winreg"
