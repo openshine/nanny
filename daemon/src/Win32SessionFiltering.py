@@ -112,19 +112,22 @@ class Win32SessionBlocker(gobject.GObject) :
     def __launch_blocker_thread(self, user_id, win32sb):
         import subprocess
         import time
+        try:
+            p = WinPopenAsUser(win32sb.sb)
+            print "[W32SessionFiltering] launching blocker (pid : %s)" % p.pid
+            while p.poll() == None :
+                time.sleep(1)
+                b = threads.blockingCallFromThread(reactor, win32sb.is_user_blocked, user_id)
+                if b == False:
+                    p.kill()
+                    print "[W32SessionFiltering] Unblocking session %s" % user_id
+                    return
 
-        p = WinPopenAsUser(win32sb.sb)
-        print "[W32SessionFiltering] launching blocker (pid : %s)" % p.pid
-        while p.poll() == None :
-            time.sleep(1)
-            b = threads.blockingCallFromThread(reactor, win32sb.is_user_blocked, user_id)
-            if b == False:
-                p.kill()
-                print "[W32SessionFiltering] Unblocking session %s" % user_id
-                return
-
-        print "[W32SessionFiltering] blocker terminated by user interaction"
-        threads.blockingCallFromThread(reactor, win32sb.blocker_terminate_from_thread, user_id, p.poll())
+            print "[W32SessionFiltering] blocker terminated by user interaction"
+            threads.blockingCallFromThread(reactor, win32sb.blocker_terminate_from_thread, user_id, p.poll())
+        except:
+            print "[W32SessionFiltering] blocker terminated by exception"
+            threads.blockingCallFromThread(reactor, win32sb.blocker_terminate_from_thread, user_id, 1)
 
 class WinPopenAsUser :
     def __init__ (self, cmd):
