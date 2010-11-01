@@ -46,4 +46,10 @@ class Daemon :
             from twisted.internet import reactor
             start_pyro_bus(self.quarterback)
         
-
+    def win32_service_stop(self):
+        self.quarterback.win32top.stop()
+        self.quarterback.firewall_filter.stop()
+        self.quarterback.filter_manager.stop()
+        self.quarterback.webcontent_filter.stop()
+        self.quarterback.session_filter.stop()
+    

@@ -55,7 +55,10 @@ def main():
                                   app_service.stopService)
 
     #Reactor Run
-    reactor.run()
+    if not hasattr(sys, "frozen") :
+        reactor.run()
+    else:
+        reactor.run(installSignalHandlers=0)
 
 class NannyService (win32serviceutil.ServiceFramework):
     _svc_name_ = "NannyService"
@@ -78,20 +81,38 @@ class NannyService (win32serviceutil.ServiceFramework):
         win32event.SetEvent(self.hWaitStop)
 
     def SvcDoRun(self):
-        servicemanager.LogMsg(servicemanager.EVENTLOG_INFORMATION_TYPE,
-                              servicemanager.PYS_SERVICE_STARTED,
-                              (self._svc_name_,''))
+        import servicemanager
+
         self.CheckForQuit()
         pythoncom.CoInitialize()
+
         sys.stdout = self.log
         sys.stderr = self.log
-        self.main()
+        
+        #Start UP application
+        import nanny.daemon
+        application = service.Application('nanny')
+        self.daemon = nanny.daemon.Daemon(application)
+        
+        app_service = service.IService(application)
+        app_service.privilegedStartService()
+        app_service.startService()
+        reactor.addSystemEventTrigger('before', 'shutdown',
+                                      app_service.stopService)
+        
+        #Reactor Run
+        if not hasattr(sys, "frozen") :
+            reactor.run()
+        else:
+            reactor.run(installSignalHandlers=0)
 
     def CheckForQuit(self):
             retval = win32event.WaitForSingleObject(self.hWaitStop, 10)
             if not retval == win32event.WAIT_TIMEOUT:
-                # Received Quit from Win32
+                print " Received Quit from Win32"
+                self.daemon.win32_service_stop()
                 reactor.stop()
+                print "STOP"
                 self.log.close()
                 pythoncom.CoUninitialize()
                 
