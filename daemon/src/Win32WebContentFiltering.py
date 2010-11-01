@@ -89,8 +89,9 @@ class Win32WebContentFiltering(gobject.GObject) :
         print "Stop Win32 Web Content Filtering"
         for uid in self.services.keys() :
             self.__stop_proxy(self.quarterback, uid)
-
-        gobject.source_remove(self.update_proxy_settings_hd)
+        
+        if self.update_proxy_settings_hd != None :
+            gobject.source_remove(self.update_proxy_settings_hd)
         self.proxy_helper.clean_all_proxy_conf()
 
     def __start_proxy(self, quarterback, uid):
