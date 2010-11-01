@@ -64,6 +64,12 @@ class NannyService (win32serviceutil.ServiceFramework):
     def __init__(self,args):
         win32serviceutil.ServiceFramework.__init__(self,args)
         self.hWaitStop = win32event.CreateEvent(None,0,0,None)
+        if not os.path.exists(os.path.join(os.environ["ALLUSERSPROFILE"], "Gnome", "nanny", "nanny.log")):
+            try:
+                os.makedirs(os.path.dirname(os.path.join(os.environ["ALLUSERSPROFILE"], "Gnome", "nanny", "nanny.log")))
+            except:
+                pass
+
         self.log = open(os.path.join(os.environ["ALLUSERSPROFILE"], "Gnome", "nanny", "nanny.log"), "w")
 
 
