@@ -196,7 +196,6 @@ class Win32ProxyHelper :
                         return proxy_t[5:].split(":")
             return None
         except:
-            print "[W32ProxyHelper] Exception get_proxy_http"
             return None
 
     def set_proxy_http(self, uid, host, port):
