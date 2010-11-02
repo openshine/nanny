@@ -201,8 +201,13 @@ class Win32ProxyHelper :
     def set_proxy_http(self, uid, host, port):
         hkey = self.__get_user_internet_settings_hkey(uid)
         try:
-            (val, vtype) = _winreg.QueryValueEx(hkey, "ProxyServer")
-            proxy_servers = str(val)
+            proxy_servers = ''
+            try:
+                (val, vtype) = _winreg.QueryValueEx(hkey, "ProxyServer")
+                proxy_servers = str(val)
+            except:
+                pass
+
             new_proxy_list = ''
 
             previous_http_proxy = False
@@ -238,8 +243,12 @@ class Win32ProxyHelper :
     def del_proxy_http(self, uid):
         hkey = self.__get_user_internet_settings_hkey(uid)
         try:
-            (val, vtype) = _winreg.QueryValueEx(hkey, "ProxyServer")
-            proxy_servers = str(val)
+            proxy_servers = ''
+            try:
+                (val, vtype) = _winreg.QueryValueEx(hkey, "ProxyServer")
+                proxy_servers = str(val)
+            except:
+                pass
 
             new_proxy_list = ''
             for proxy_t in proxy_servers.split(";"):
