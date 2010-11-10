@@ -65,7 +65,7 @@ class Win32Chrono(gobject.GObject) :
             self.apps_list_path = os.path.join(root_path, "etc", "nanny", "applists")
 
         self.day = datetime.date.today().day
-        self.categories = ['session', 'browser', 'email', 'im']
+        self.categories = ['session', 'browsers', 'email', 'im']
 
         self.quarterback.connect('block-status', self.__update_cb)
 
@@ -77,7 +77,7 @@ class Win32Chrono(gobject.GObject) :
             
             if app_id == SESSION_APPID :
                 try:
-                    if self.quarterback.win32top.get_current_user_session() == int(user_id) :
+                    if str(self.quarterback.win32top.get_current_user_session()) == str(user_id) :
                         self.quarterback.subtract_time(user_id, app_id)
                         return
                 except:

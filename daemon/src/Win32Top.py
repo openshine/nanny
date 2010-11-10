@@ -56,14 +56,14 @@ class Win32Top(gobject.GObject) :
     def proclist(self, uid):
         proclist = []
         for pid in self.process_list :
-            if self.process_list[pid][0] == uid :
+            if self.process_list[pid][0] == str(uid) :
                 proclist.append(pid)
 
         return proclist
 
     def proc_args(self, pid):
         try:
-            return self.process_list(pid)[1]
+            return self.process_list[pid][1]
         except:
             return ''
             
