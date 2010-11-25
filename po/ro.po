@@ -2,22 +2,23 @@
 # Copyright (C) 2010 nanny's COPYRIGHT HOLDER
 # This file is distributed under the same license as the nanny package.
 # Nichita Utiu <nikita.utiu@gmail.com>, 2010.
+# Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: nanny master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=nanny&component=general\n"
+"Report-Msgid-Bugs-To: "
+"http://bugzilla.gnome.org/enter_bug.cgi?product=nanny&component=general\n"
 "POT-Creation-Date: 2010-11-19 11:21+0000\n"
-"PO-Revision-Date: 2010-11-25 15:10+0300\n"
-"Last-Translator: Nichita Utiu <nikita.utiu@gmail.com>\n"
-"Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
+"PO-Revision-Date: 2010-11-26 01:17+0300\n"
+"Last-Translator: Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
+"Language-Team: Romanian Gnome Team <gnomero-list@lists.sourceforge.net>\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);;\n"
-"X-Generator: Virtaal 0.5.2\n"
+"X-Generator: Virtaal 0.6.1\n"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:32
@@ -145,7 +146,7 @@ msgstr "chat"
 
 #: ../client/common/src/Categories.py:58
 msgid "Sites with chat rooms etc"
-msgstr "Site-uri cu camare de chat etc"
+msgstr "Site-uri cu camere de chat, etc."
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:60
@@ -211,18 +212,20 @@ msgid ""
 "Sites containing screen savers, backgrounds, cursers, pointers. desktop "
 "themes and similar timewasting and potentially dangerous content"
 msgstr ""
-"Site-uri care conțin screen saver-uri, fundaluri, corsoare, indicatoare. "
-"teme pentru desktop și alt conținut asemănător de pierdut timpul sau "
-"potențial periculos"
+"Site-uri care conțin screensaver-e, imagini pentru fundalul desktopului, "
+"cursoare, indicatoare, teme pentru desktop și alt conținut asemănător de "
+"pierdut timpul sau potențial periculos"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:74
 msgid "dialers"
-msgstr "dial-uri"
+msgstr "dial-eri"
 
 #: ../client/common/src/Categories.py:74
 msgid "Sites with dialers such as those for pornography or trojans"
-msgstr "Site-uri cu dial-uri precum cele pentru pornografie sau troieni"
+msgstr ""
+"Site-uri cu dial-eri (viruși care fac apeluri telefonice către numere cu "
+"suprataxă) precum cele pentru pornografie sau troieni"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:76
@@ -240,7 +243,7 @@ msgstr "comerț online"
 
 #: ../client/common/src/Categories.py:78
 msgid "Sites that provide online shopping"
-msgstr "Site-uri care furnizează cumpărături online"
+msgstr "Site-uri de cumpărături online"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:80
@@ -303,7 +306,7 @@ msgstr "guvern"
 
 #: ../client/common/src/Categories.py:92
 msgid "Military and schools etc"
-msgstr "Armată și școli etc"
+msgstr "Armată și școli etc."
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:94
@@ -326,11 +329,11 @@ msgstr "Informații despre hacking/cracking"
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:98
 msgid "homerepair"
-msgstr "reparații casă"
+msgstr "reparații casnice"
 
 #: ../client/common/src/Categories.py:98
 msgid "Sites about home repair"
-msgstr "Site-uri despre reparații în casă"
+msgstr "Site-uri despre reparații casnice"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:100
@@ -344,14 +347,14 @@ msgstr "Site-uri despre igienă și alte lucruri legate de îngrijirea personal�
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:102
 msgid "instantmessaging"
-msgstr "mesagerie instantă"
+msgstr "mesagerie instant"
 
 #: ../client/common/src/Categories.py:102
 msgid ""
 "Sites that contain messenger client download and web-based messaging sites"
 msgstr ""
-"Site-uri care conțin descărcare de clienți de mesagerie și site-uri cu "
-"mesagerie web"
+"Site-uri care conțin clienți de mesagerie ce pot fi descărcați și site-uri "
+"cu mesagerie web"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:104
@@ -410,7 +413,7 @@ msgstr "Site-uri medicale"
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:116
 msgid "mixed_adult"
-msgstr "adult_mix"
+msgstr "adult mix"
 
 #: ../client/common/src/Categories.py:116
 msgid "Mixed adult content sites"
@@ -699,11 +702,11 @@ msgstr "lista albă"
 #: ../client/common/src/Categories.py:180
 #, no-python-format
 msgid "Contains site specifically 100% suitable for kids"
-msgstr "Conține site-uri specific 100% potrivite pentru copii"
+msgstr "Conține site-uri potrivite 100% pentru copii"
 
 #: ../client/common/src/DBusClient.py:80
 msgid "NannyDaemon unavailable"
-msgstr "NannyDaemon indisponibil"
+msgstr "NannyDaemon nedisponibil"
 
 #: ../client/common/src/DBusClient.py:81
 msgid ""
@@ -744,11 +747,11 @@ msgstr "Configurează"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
 msgid "Instant messaging"
-msgstr "Mesagerie instantă"
+msgstr "Mesagerie instant"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
 msgid "Mail client"
-msgstr "Client de mail"
+msgstr "Client de email"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
 msgid "PC use time"
@@ -760,11 +763,11 @@ msgstr "Utilizează calculatorul"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
 msgid "Use the instant messaging"
-msgstr "Utilizează mesageria instantă"
+msgstr "Utilizează mesagerie instant"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
 msgid "Use the mail client"
-msgstr "Utilizează clientul de mail"
+msgstr "Utilizează clientul de email"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
 msgid "Use the web browser"
@@ -772,7 +775,7 @@ msgstr "Utilizează navigatorul web"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
 msgid "Use web content filtering"
-msgstr "Folosește filtrarea conținutului web"
+msgstr "Filtrează conținutul web"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
 #: ../client/gnome/systray/src/SystrayNanny.py:46
@@ -788,8 +791,8 @@ msgid ""
 "<span color=\"red\">All the fields are mandatory. Please fill all of them.</"
 "span>"
 msgstr ""
-"<span color=\"red\">Toate câmpurile sunt obligatorii. Completați-le pe toate."
-"</span>"
+"<span color=\"red\">Toate câmpurile sunt obligatorii. Completați-le pe "
+"toate.</span>"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:2
 #: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:1
@@ -822,9 +825,9 @@ msgid ""
 "Here you can apply the available blacklists for the selected user. If you "
 "want to add new blacklists please go to System > Administration > Blacklists."
 msgstr ""
-"Aici puteți aplica listele negre valabile pentru utilizatorul selectat. Dacă "
-"doriți să adăugați liste negre noi navigați la Sistem > Administrare > Liste "
-"negre."
+"Aici puteți aplica listele negre disponibile pentru utilizatorul selectat. "
+"Dacă doriți să adăugați liste negre noi navigați la Sistem > Administrare > "
+"Liste negre."
 
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
@@ -839,15 +842,15 @@ msgid ""
 "<span foreground=\"white\"><big>You've time available if you need to close "
 "documents or aplications.</big></span>"
 msgstr ""
-"<span foreground=\"white\"><big>Aveți timp la dispoziție dacă trebuie să "
-"închideți documente sau aplicații.</big></span>"
+"<span foreground=\"white\"><big>Timpul disponibil dacă trebuie să închideți "
+"documente sau aplicații.</big></span>"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
 msgid ""
 "<span size=\"25000\" foreground=\"white\"><b>You've used your computer use "
 "time</b></span>"
 msgstr ""
-"<span size=\"25000\" foreground=\"white\"><b> V-ați folosit timpul de "
+"<span size=\"25000\" foreground=\"white\"><b>Ați epuizat timpul alocat de "
 "utilizare al calculatorului</b></span>"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
@@ -884,7 +887,7 @@ msgstr "Duminică"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:37
 msgid "Web Content Filter Configuration"
-msgstr "Cofigurarea filtrului de conținut web"
+msgstr "Configurarea filtrului de conținut web"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:242
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:253
@@ -898,7 +901,7 @@ msgid ""
 "Please verify the URL and try again."
 msgstr ""
 "A apărut o eroare la descărcarea listei.\n"
-"Verificați URL-ul și încercți din nou. "
+"Verificați URL-ul și încercați din nou."
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:345
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:366
@@ -960,7 +963,7 @@ msgid ""
 "Are you sure?"
 msgstr ""
 "Dacă nu apăsați butonul „Aplică”, modificările vor fi pierdute.\n"
-"Sigur doriți?"
+"Sunteți sigur?"
 
 #: ../client/gnome/admin/src/AdminConsole.py:356
 #, python-format
@@ -987,7 +990,7 @@ msgstr ""
 
 #: ../client/gnome/admin/src/BlacklistManager.py:117
 msgid "Select file to import"
-msgstr "Selectează fișerele de importat"
+msgstr "Selectare fișiere de importat"
 
 #: ../client/gnome/admin/src/BlacklistManager.py:137
 msgid "<b>Error importing blacklist file</b>"
@@ -1018,7 +1021,7 @@ msgstr "email"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:48
 msgid "Instant messanger"
-msgstr "Mesagerie instantă"
+msgstr "Mesagerie instant"
 
 #. To translators: In x-minutes the access to <app> will be granted
 #: ../client/gnome/systray/src/SystrayNanny.py:95
@@ -1036,7 +1039,7 @@ msgstr "În %(time)s accesul la %(app)s va fi interzis."
 #, python-format
 msgid "%d day"
 msgid_plural "%d days"
-msgstr[0] "o zi"
+msgstr[0] "%d zi"
 msgstr[1] "%d zile"
 msgstr[2] "%d de zile"
 
@@ -1044,7 +1047,7 @@ msgstr[2] "%d de zile"
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
-msgstr[0] "o oră"
+msgstr[0] "%d oră"
 msgstr[1] "%d ore"
 msgstr[2] "%d de ore"
 
@@ -1052,7 +1055,7 @@ msgstr[2] "%d de ore"
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
-msgstr[0] "un minut"
+msgstr[0] "%d minut"
 msgstr[1] "%d minute"
 msgstr[2] "%d de minute"
 
@@ -1063,12 +1066,13 @@ msgstr ", "
 
 #: ../daemon/data/org.gnome.nanny.policy.in.h:1
 msgid "Manage your parental control settings"
-msgstr "Gestionați setările pentru controlul parental"
+msgstr "Gestionați configurațiile pentru controlul parental"
 
 #: ../daemon/data/org.gnome.nanny.policy.in.h:2
 msgid "You need to authenticate to modify the parental control configuration"
 msgstr ""
-"Trebuie să vă autentificați ca să modificați configurația de control parental"
+"Trebuie să vă autentificați pentru a putea modifica configurația de control "
+"parental"
 
 #: ../daemon/src/DansGuardianImporter.py:63
 msgid "Blacklist imported"
