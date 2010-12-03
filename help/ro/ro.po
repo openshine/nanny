@@ -1,0 +1,475 @@
+# Romanian translation for nanny.
+# Copyright (C) 2010 nanny's COPYRIGHT HOLDER
+# This file is distributed under the same license as the nanny package.
+# Nichita Uțiu <nikita.utiu@gmail.com>, 2010.
+# Nichita Utiu <nikita.utiu@gmail.com>, 2010.
+# Daniel Șerbănescu <cyber19rider@gmail.com>, 2010.
+# Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: nanny master\n"
+"POT-Creation-Date: 2010-11-25 23:18+0000\n"
+"PO-Revision-Date: 2010-12-03 03:35+0300\n"
+"Last-Translator: Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
+"Language-Team: Romanian Gnome Team <gnomero-list@lists.sourceforge.net>\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2);;\n"
+"X-Generator: Virtaal 0.6.1\n"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/nanny.xml:180(None)
+msgid ""
+"@@image: 'figures/nanny-session.png'; md5=6af68f555e214ab5b56e0aa1ec8c043d"
+msgstr ""
+"@@image: 'figures/nanny-session.png'; md5=6af68f555e214ab5b56e0aa1ec8c043d"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/nanny.xml:210(None)
+msgid ""
+"@@image: 'figures/nanny-add-forbidden-site.png'; "
+"md5=a505de424850262bf01218efa1594120"
+msgstr ""
+"@@image: 'figures/nanny-add-forbidden-site.png'; "
+"md5=a505de424850262bf01218efa1594120"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/nanny.xml:224(None)
+msgid ""
+"@@image: 'figures/nanny-web-content-filter-blacklists.png'; "
+"md5=07ddbc0ad4a3c0d4f109dd4841238e72"
+msgstr ""
+"@@image: 'figures/nanny-web-content-filter-blacklists.png'; "
+"md5=07ddbc0ad4a3c0d4f109dd4841238e72"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/nanny.xml:243(None)
+msgid ""
+"@@image: 'figures/nanny-select-file-to-import.png'; "
+"md5=a01c0376799f435288fb245fde76040d"
+msgstr ""
+"@@image: 'figures/nanny-select-file-to-import.png'; "
+"md5=a01c0376799f435288fb245fde76040d"
+
+#: C/nanny.xml:19(title)
+msgid "Nanny Manual v0.1"
+msgstr "Nanny - Manualul utilizatorului v0.1"
+
+#: C/nanny.xml:22(year) C/nanny.xml:28(year)
+msgid "2009"
+msgstr "2009"
+
+#: C/nanny.xml:23(holder)
+msgid "Roberto Majadas"
+msgstr "Roberto Majadas"
+
+#: C/nanny.xml:24(holder)
+msgid "Luis de Bethencourt"
+msgstr "Luis de Bethencourt"
+
+#: C/nanny.xml:25(holder)
+msgid "Cesar Garcia"
+msgstr "Cesar Garcia"
+
+#: C/nanny.xml:29(holder) C/nanny.xml:43(publishername)
+msgid "openshine.com"
+msgstr "openshine.com"
+
+#: C/nanny.xml:32(para)
+msgid ""
+"<application>Nanny</application> enables you to control what system users do."
+msgstr ""
+"<application>Nanny</application> vă permite să controlați ce fac "
+"utilizatorii sistemului."
+
+#: C/nanny.xml:50(firstname)
+msgid "Luis"
+msgstr "Luis"
+
+#: C/nanny.xml:51(surname)
+msgid "de Bethencourt"
+msgstr "de Bethencourt"
+
+#: C/nanny.xml:53(orgname) C/nanny.xml:74(para)
+msgid "GNOME Documentation Project"
+msgstr "Proiectul de documentație GNOME"
+
+#: C/nanny.xml:57(firstname)
+msgid "Roberto"
+msgstr "Roberto"
+
+#: C/nanny.xml:58(surname)
+msgid "Majadas"
+msgstr "Majadas"
+
+#: C/nanny.xml:60(orgname)
+msgid "GNOME Documentation project"
+msgstr "Proiectul de documentație GNOME"
+
+#: C/nanny.xml:62(contrib)
+msgid "Update documentation"
+msgstr "Actualizați documentația"
+
+#: C/nanny.xml:68(revnumber)
+msgid "Nanny Manual V1.0"
+msgstr "Nanny - Manualul utilizatorului V1.0"
+
+#: C/nanny.xml:69(date)
+msgid "January 2010"
+msgstr "Ianuarie 2010"
+
+#: C/nanny.xml:71(para)
+msgid "Luis de Bethencourt <email>luisbg@openshine.com</email>"
+msgstr "Luis de Bethencourt <email>luisbg@openshine.com</email>"
+
+#: C/nanny.xml:79(releaseinfo)
+msgid "This manual describes version 2.29.2 of GNOME Nanny."
+msgstr "Acest manual descrie versiunea 2.29.2 a lui GNOME Nanny."
+
+#: C/nanny.xml:82(title)
+msgid "Feedback"
+msgstr "Sugestii"
+
+#: C/nanny.xml:83(para)
+msgid ""
+"To report a bug or make a suggestion regarding the Nanny application or this "
+"manual, follow the directions in the <ulink url=\"ghelp:gnome-feedback\" "
+"type=\"help\">GNOME Feedback Page</ulink>."
+msgstr ""
+"Pentru a raporta o eroare sau pentru a face o sugestie cu privire la "
+"aplicația Nanny sau la acest manual, urmați instrucțiunile de la <ulink "
+"url=\"ghelp:gnome-feedback\" type=\"help\">pagina de sugestii GNOME</ulink>."
+
+#: C/nanny.xml:91(primary) C/nanny.xml:94(primary)
+msgid "GNOME Nanny"
+msgstr "GNOME Nanny"
+
+#: C/nanny.xml:101(title)
+msgid "Introduction"
+msgstr "Introducere"
+
+#: C/nanny.xml:102(para)
+msgid ""
+"The Nanny application enables you to control what system users do. Nanny "
+"provides the following features:"
+msgstr ""
+"Aplicația Nanny vă permite să controlați activitățile utilizatorilor "
+"sistemului. Nanny furnizează următoarele funcționalități:"
+
+#: C/nanny.xml:106(para)
+msgid "Control which websites the user can and can't access."
+msgstr ""
+"Controlați care pagini de internet pot fi sau nu accesate de utilizator."
+
+#: C/nanny.xml:109(para)
+msgid "At what times of the week and for how long a user can:"
+msgstr "La ce momente din săptămână și pentru cât timp poate un utilizator să:"
+
+#: C/nanny.xml:112(para)
+msgid "Be using the computer"
+msgstr "Utilizeze calculatorul"
+
+#: C/nanny.xml:115(para)
+msgid "Browse the web"
+msgstr "Navigheze pe internet"
+
+#: C/nanny.xml:118(para)
+msgid "Email"
+msgstr "Trimită emailuri"
+
+#: C/nanny.xml:121(para)
+msgid "Instant Message"
+msgstr "Folosească mesageria instant"
+
+#: C/nanny.xml:130(title)
+msgid "Getting Started"
+msgstr "Primii pași"
+
+#: C/nanny.xml:133(title)
+msgid "Running Nanny"
+msgstr "Rularea lui Nanny"
+
+#: C/nanny.xml:134(para)
+msgid ""
+"Notice that after installation the GNOME Nanny daemon will be running in the "
+"background at all times. This is so to always control system users."
+msgstr ""
+"Rețineți că după instalare serviciul GNOME Nanny va rula în fundal "
+"întotdeauna pentru a controla utilizatorii sistemului în permanență."
+
+#: C/nanny.xml:136(para)
+msgid ""
+"To configure GNOME Nanny and decide which users to watch and what they can "
+"and can't do, you need to run the GNOME Nanny administration console."
+msgstr ""
+"Pentru a configura GNOME Nanny, pentru a decide care utilizatori să fie "
+"monitorizați și ce pot face și ce nu, trebuie să rulați consola de "
+"administrare GNOME Nanny."
+
+#: C/nanny.xml:141(title)
+msgid "To Start GNOME Nanny administration console"
+msgstr "Pornirea consolei de administrare GNOME Nanny"
+
+#: C/nanny.xml:142(para)
+msgid ""
+"You can start the <application>GNOME Nanny administration console</"
+"application> in the following ways:"
+msgstr ""
+"Puteți porni <application>consola de administrare GNOME Nanny</application> "
+"în următoarele moduri:"
+
+#: C/nanny.xml:146(term)
+msgid "<guimenu>System</guimenu> menu"
+msgstr "Meniul <guimenu>Sistem</guimenu>"
+
+#: C/nanny.xml:148(para)
+msgid ""
+"Choose <menuchoice><guisubmenu>System</"
+"guisubmenu><guisubmenu>Administration</guisubmenu><guimenuitem>Parental "
+"Control</guimenuitem></menuchoice>."
+msgstr ""
+"Alegeți <menuchoice><guisubmenu>Sistem</guisubmenu><guisubmenu>Administrare<"
+"/guisubmenu><guimenuitem>Control parental</guimenuitem></menuchoice>."
+
+#: C/nanny.xml:162(title)
+msgid "Usage"
+msgstr "Utilizare"
+
+#: C/nanny.xml:163(para)
+msgid ""
+"You can use the Nanny application to control the following per computer user:"
+msgstr ""
+"Puteți folosi aplicația Nanny pentru a controla următoarele pentru fiecare "
+"utilizator al calculatorului:"
+
+#: C/nanny.xml:169(title)
+msgid "Control time of computer usage"
+msgstr "Controlul timpului de utilizare al calculatorului"
+
+#: C/nanny.xml:170(para)
+msgid ""
+"This is is the GNOME Nanny Administration Console. The window is divided "
+"into two sections, users and actions. The users are listed in the column of "
+"the left, and the actions are divided in the tabs at the top of the window."
+msgstr ""
+"Aceasta este consola de administrare GNOME Nanny. Fereastra este împărțită "
+"în două secțiuni, utilizatori și acțiuni. Utilizatorii sunt afișați în "
+"coloana din stânga, și acțiunile sunt împărțite în taburile din partea de "
+"sus a ferestrei."
+
+#: C/nanny.xml:176(title)
+msgid "Administration Console"
+msgstr "Consola de administrare"
+
+#: C/nanny.xml:185(para)
+msgid ""
+"This tab controls the maximum number of hours a person can use the computer "
+"each day and at what times."
+msgstr ""
+"Acest tab controlează numărul maxim de ore care pot fi petrecute la "
+"calculator în fiecare zi de o persoană și în ce momente."
+
+#: C/nanny.xml:186(para)
+msgid ""
+"Change the number at the top to control for how long a person can use the "
+"computer. This is a total number, so the user can use this time in a non-"
+"stop session or break it in several."
+msgstr ""
+"Schimbați numărul din partea de sus pentru a controla pentru cât timp poate "
+"o persoană să utilizeze calculatorul. Acesta este un total, deci "
+"utilizatorul poate folosi acest timp într-o sesiune non-stop sau îl poate "
+"împărți în mai multe."
+
+#: C/nanny.xml:187(para)
+msgid ""
+"In the weekly time grid red means blocked time, and green means permitted "
+"time."
+msgstr ""
+"În grila de timp săptămânal roșu înseamnă timp blocat, și verde înseamnă "
+"timp permis."
+
+#: C/nanny.xml:188(para)
+msgid ""
+"The Apply button needs to be pressed for the changes to be made effective."
+msgstr "Butonul Aplică trebuie apăsat pentru ca schimbările să aibă efect."
+
+#: C/nanny.xml:194(title)
+msgid "Control what the person can do."
+msgstr "Cum se pot controla acțiunile unei persoane."
+
+#: C/nanny.xml:195(para)
+msgid ""
+"Application use can be controlled in the same way, as defined in <xref "
+"linkend=\"nanny-time-usage\"/>. Each tab controls a different application."
+msgstr ""
+"Utilizarea aplicațiilor poate fi controlată în același fel, după cum este "
+"definită în <xref linkend=\"nanny-time-usage\"/>. Fiecare tab controlează o "
+"aplicație diferită."
+
+#: C/nanny.xml:197(para)
+msgid ""
+"Notice, each tab has a different 'maximum hours a day' option and weekly "
+"time grid. Have in mind no applications will be used during the blocked "
+"times of PC usage."
+msgstr ""
+"Rețineți că fiecare tab are o opțiune „numărul maxim de ore pe zi” și o "
+"grilă de timp săptămânal diferită. Aveți în vedere că nicio aplicație nu va "
+"fi folosită în momentele în care nu este permisă utilizarea calculatorului."
+
+#: C/nanny.xml:198(para)
+msgid ""
+"In the Web Browser action tab there is a 'Use web content filtering' button, "
+"this will enable the control of web filtering, meaning which sites can and "
+"which can't be browed by the user. <xref linkend=\"nanny-web-access\"/> "
+"explains how to do this."
+msgstr ""
+"În tabul Navigator web există un buton „Filtrează conținutul web”, acesta va "
+"activa controlul filtrării web. Acesta controlează care pagini de internet "
+"pot și care nu pot fi accesate de utilizator. <xref linkend=\"nanny-web-"
+"access\"/> explică cum se face aceasta."
+
+#: C/nanny.xml:204(title)
+msgid "Control web access."
+msgstr "Controlul accesului la internet."
+
+#: C/nanny.xml:206(title)
+msgid "Web filtering, Forbidden sites"
+msgstr "Filtrarea web, pagini interzise"
+
+#: C/nanny.xml:215(para)
+msgid ""
+"In the Web Content Filter Configuration you can handle which websites are "
+"allowed to be browsed by the user and which websites aren't. To do this you "
+"have three lists divided in tabs: the lists of forbidden sites, allowed "
+"sites, and the blacklists."
+msgstr ""
+"În Configurarea filtrului de conținut web puteți gestiona care pagini de "
+"internet pot fi accesate de utilizator și care nu. Pentru a face aceasta "
+"trebuie să aveți trei liste împărțite în taburi: lista paginilor interzise, "
+"paginilor permise și listele negre."
+
+#: C/nanny.xml:216(para)
+msgid ""
+"Inside the Forbidden sites and Allowed sites tabs you can add elements to "
+"the list, edit them or remove them."
+msgstr ""
+"Înăuntrul taburilor paginilor interzise și paginilor permise puteți adăuga "
+"elemente la listă, să le editați sau să le eliminați."
+
+#: C/nanny.xml:217(para)
+msgid ""
+"When adding or edditing a website, it is normally best to write the domain "
+"in the URL field. For example: http://www.badweb.com, because then all the "
+"subpages will be blocked (like http://www.badweb.com/asdas/page01/something."
+"hmtl)."
+msgstr ""
+"La adăugare sau editarea unei pagini de internet, este în mod normal cel mai "
+"bine să scrieți domeniul în câmpul pentru URL, De exemplu: "
+"http://www.paginărea.com, pentru că atunci toate subpaginile vor fi blocate "
+"(precum http://www.paginărea.com/asdas/pagina01/ceva.hmtl)."
+
+#: C/nanny.xml:220(title)
+msgid "Blacklists configuration"
+msgstr "Configurarea listelor negre"
+
+#: C/nanny.xml:229(para)
+msgid ""
+"In the Blacklists tab you can apply the available blacklists and the groups "
+"contained in these blacklists."
+msgstr ""
+"În tabul Liste negre puteți aplica listele negre disponibile și grupurile "
+"conținute în aceste liste negre."
+
+#: C/nanny.xml:230(para)
+msgid ""
+"Importing of the blacklists is explained in <xref linkend=\"nanny-blacklist-"
+"importing\"/>"
+msgstr ""
+"Importarea de liste negre este explicată în <xref linkend=\"nanny-blacklist-"
+"importing\"/>"
+
+#: C/nanny.xml:235(title)
+msgid "Blacklist Configuration."
+msgstr "Configurarea listelor negre."
+
+#: C/nanny.xml:236(para)
+msgid ""
+"The Blacklist Configuration window is accesible from System &gt; "
+"Administration &gt; Blacklists. This is where you can import, edit and "
+"remove blacklists."
+msgstr ""
+"Fereastra de configurare a listelor negre poate fi accesată din Sistem &gt; "
+"Administrare &gt; Liste negre. Aici este locul unde puteți importa, edita și "
+"elimina liste negre."
+
+#: C/nanny.xml:239(title)
+msgid "Blacklist importing"
+msgstr "Importarea listelor negre"
+
+#: C/nanny.xml:249(para)
+msgid ""
+"Blacklists are imported from files. In this example a blacklist file has "
+"been downloaded from dansguardian and is being imported into GNOME Nanny. It "
+"is recommended to keep the blacklists as up to date as possible."
+msgstr ""
+"Listele negre sunt importate din fișiere. În acest exemplu un fișier de "
+"listă neagră a fost descărcat de pe dansguardian și este importat în GNOME "
+"Nanny. Este recomandat să păstrați listele negre pe cât de actualizate "
+"posibil."
+
+#: C/nanny.xml:255(title)
+msgid "About Nanny"
+msgstr "Despre Nanny"
+
+#: C/nanny.xml:256(para)
+msgid ""
+"Nanny was written by Roberto Majadas <email>roberto.majadas@openshine.com</"
+"email>, Luis de Bethencourt <email>luisbg@openshine.com</email> and Cesar "
+"Garcia <email>cesar.garcia.tapia@openshine.com</email>. To find more "
+"information about Nanny, please visit the <ulink url=\"http://projects.gnome."
+"org/nanny\" type=\"http\">GNOME Nanny Web page</ulink>."
+msgstr ""
+"Nanny a fost scris de Roberto Majadas "
+"<email>roberto.majadas@openshine.com</email>, Luis de Bethencourt "
+"<email>luisbg@openshine.com</email> și Cesar Garcia "
+"<email>cesar.garcia.tapia@openshine.com</email>. Pentru a afla mai multe "
+"informații despre Nanny, vizitați <ulink "
+"url=\"http://projects.gnome.org/nanny\" type=\"http\">pagina web GNOME "
+"Nanny</ulink>."
+
+#: C/nanny.xml:261(para)
+msgid ""
+"To report a bug or make a suggestion regarding this application or this "
+"manual, follow the directions in this <ulink url=\"ghelp:gnome-feedback\" "
+"type=\"help\">document</ulink>."
+msgstr ""
+"Pentru a raporta o eroare sau pentru a face o sugestie cu privire la această "
+"aplicație sau la acest manual, urmați instrucțiunile din acest <ulink "
+"url=\"ghelp:gnome-feedback\" type=\"help\">document</ulink>."
+
+#: C/nanny.xml:267(para)
+msgid ""
+"This program is distributed under the terms of the GNU General Public "
+"license as published by the Free Software Foundation; either version 2 of "
+"the License, or (at your option) any later version. A copy of this license "
+"can be found at this <ulink url=\"ghelp:gpl\" type=\"help\">link</ulink>, or "
+"in the file COPYING included with the source code of this program."
+msgstr ""
+"Acest program este distribuit sub termenii GNU General Public License "
+"publicată de Free Software Foundation; fie versiunea 2 a Licenței, sau (la "
+"opțiunea dumneavoastră) orice versiune ulterioară. O copie a acestei licențe "
+"poate fi găsită la această <ulink url=\"ghelp:gpl\" "
+"type=\"help\">legătură</ulink>, sau în fișier, copierea fiind inclus cu codul "
+"sursă al acestui program."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: C/nanny.xml:0(None)
+msgid "translator-credits"
+msgstr "Nichita Uțiu <nikita.utiu@gmail.com>, 2010"
