@@ -447,23 +447,6 @@ class FilterManager (gobject.GObject) :
             return [[False, False], []]
         
 
-        #Search in whitelists
-        for db in self.pkg_filters_conf.keys():
-            if self.pkg_filters_conf[db]["users_info"].has_key(uid) :
-                if len(self.pkg_filters_conf[db]["users_info"][uid]) > 0 :
-                    sql_query = 'select distinct category from white_domains where gregexp(regexp || "(|\..+)" , "%s")' % idomain
-                    query = self.db_pools[db].runQuery(sql_query)
-                    block_d = BlockingDeferred(query)
-                    
-                    try:
-                        qr = block_d.blockOn()
-                        if len(qr) > 0:
-                            return [[False, False], []]
-                        
-                    except:
-                        print "Something goes wrong checking domains"
-                        return [[False, False], []]
-
         if custom_black == True :
             print "Custom BlackListed"
             return [[True, False], []]
