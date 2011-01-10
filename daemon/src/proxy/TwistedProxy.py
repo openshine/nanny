@@ -120,23 +120,26 @@ class BadBoyResponseFilterImage(BadBoyResponseFilter) :
         BadBoyResponseFilter.__init__(self, client)
 
     def filter(self):
-        im = Image.open(self.fd_orig)
-        im_format = im.format
-
-        draw = ImageDraw.Draw(im)
         try:
-            draw.rectangle((0, 0) + im.size, fill="#FFFFFF")
-        except:
-            try:
-                draw.rectangle((0, 0) + im.size, fill="255")
-            except:
-                pass
-            
-        draw.line((0, 0) + im.size, fill=128, width=10)
-        draw.line((0, im.size[1], im.size[0], 0), fill=128, width=10)
-        del draw 
+            im = Image.open(self.fd_orig)
+            im_format = im.format
 
-        im.save(self.fd_filtered, im_format)
+            draw = ImageDraw.Draw(im)
+            try:
+                draw.rectangle((0, 0) + im.size, fill="#FFFFFF")
+            except:
+                try:
+                    draw.rectangle((0, 0) + im.size, fill="255")
+                except:
+                    pass
+
+            draw.line((0, 0) + im.size, fill=128, width=10)
+            draw.line((0, im.size[1], im.size[0], 0), fill=128, width=10)
+            del draw 
+
+            im.save(self.fd_filtered, im_format)
+        except:
+            pass
 
 class BadBoyProxyClient(proxy.ProxyClient) :
     def connectionMade(self):
@@ -169,7 +172,10 @@ class BadBoyProxyClient(proxy.ProxyClient) :
         if self.bb_response == None:
             self.father.setResponseCode(404)
             self.father.write(BAD_WEB_TEMPLATE)
-            proxy.ProxyClient.handleResponseEnd(self)
+            try:
+                proxy.ProxyClient.handleResponseEnd(self)
+            except:
+                pass
 
     def handleResponsePart(self, data):
         if self.bb_response != None:
@@ -287,16 +293,19 @@ class ReverseProxyResource(resource.Resource) :
         host = data[3]
         port = data[4]
 
-        if is_ok :
-            clientFactory = self.proxyClientFactoryClass(
-                self.request.method, rest, request.clientproto,
-                request.getAllHeaders(), request.content.read(), request)
-            self.reactor.connectTCP(host, port, clientFactory)
-        else:
-            clientFactory = BadBoyProxyClientFactory(
-                self.request.method, rest, request.clientproto,
-                request.getAllHeaders(), request.content.read(), request)
-            self.reactor.connectTCP(host, port, clientFactory)
+        try:
+            if is_ok :
+                clientFactory = self.proxyClientFactoryClass(
+                    self.request.method, rest, request.clientproto,
+                    request.getAllHeaders(), request.content.read(), request)
+                self.reactor.connectTCP(host, port, clientFactory)
+            else:
+                clientFactory = BadBoyProxyClientFactory(
+                    self.request.method, rest, request.clientproto,
+                    request.getAllHeaders(), request.content.read(), request)
+                self.reactor.connectTCP(host, port, clientFactory)
+        except:
+            print "Validate_cb except "
 
     def __get_host_info(self, request):
         host = None
