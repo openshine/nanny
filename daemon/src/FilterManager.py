@@ -29,6 +29,8 @@ import os
 import hashlib
 import sys
 import json
+
+from urlparse import urlparse
 import etld
 
 import errno
@@ -44,23 +46,12 @@ from twisted.enterprise import adbapi
 
 from BlockingDeferred import BlockingDeferred
 
-from ctypes import *
-if os.name == "posix" :
-    g = cdll.LoadLibrary("libglib-2.0.so")
-elif os.name == "nt":
-    g = cdll.LoadLibrary("libglib-2.0-0.dll")
-
-g.g_regex_match_simple.restype=c_int
-g.g_regex_match_simple.argtypes=[c_wchar_p, c_wchar_p, c_int, c_int]
-
 import re
 
 def regexp(expr, item):
     try:
-        #ret = g.g_regex_match_simple(expr, item, 0, 0)
         p = re.compile(expr)
         ret = bool(p.match(item))
-	#print "GREGEXP>> expr: '%s' item: '%s' ----> %s" % (expr, item, ret) 
 	return ret
     except:
         print "Regex failure"
@@ -109,6 +100,7 @@ class FilterManager (gobject.GObject) :
         self.quarterback = quarterback
         self.custom_filters_db = None
         self.db_pools = {}
+        self.db_cat_cache = {}
         self.pkg_filters_conf = {}
         
         reactor.addSystemEventTrigger("before", "startup", self.start)
@@ -217,9 +209,11 @@ class FilterManager (gobject.GObject) :
             or self.pkg_filters_conf[pkg_id]["status"] == PKG_STATUS_READY_UPDATE_AVAILABLE:
                 db = os.path.join(NANNY_DAEMON_BLACKLISTS_DIR,
                                   "%s.db" % (pkg_id))
+                print db
                 self.db_pools[pkg_id] = adbapi.ConnectionPool('sqlite3', db,
                                                               check_same_thread=False,
                                                               cp_openfun=on_db_connect)
+                gobject.timeout_add(1, self._refresh_db_categories_cache, pkg_id)
                 print "Added to db pool -> %s" % pkg_id
 
     def _save_pkg_filters_conf(self):
@@ -232,6 +226,19 @@ class FilterManager (gobject.GObject) :
             return self.pkg_filters_conf[pkg_id]["pkg_info"]["categories"]
         except:
             return []
+
+    def _refresh_db_categories_cache(self, pkg_id):
+        if self.db_pools.has_key(pkg_id) :
+            sql = "SELECT id,name FROM category"
+            query = self.db_pools[pkg_id].runQuery(sql)
+            block_d = BlockingDeferred(query)
+            qr = block_d.blockOn()
+            
+            self.db_cat_cache[pkg_id] = {}
+            for id, name in qr:
+                self.db_cat_cache[pkg_id][int(id)] = name
+            
+            print "Categories cache from %s refresh" % pkg_id
   
     def add_pkg_filter(self, url):
         pkg_id = hashlib.md5().hexdigest()
@@ -302,6 +309,8 @@ class FilterManager (gobject.GObject) :
             print "Added to db pool -> %s" % pkg_id  
             threads.blockingCallFromThread(reactor, 
                                            fm._save_pkg_filters_conf)
+            threads.blockingCallFromThread(reactor, 
+                                           fm._refresh_db_categories_cache, pkg_id)
         except:
             if os.path.exists(dest_file):
                 os.unlink(dest_file)
@@ -452,41 +461,84 @@ class FilterManager (gobject.GObject) :
             return [[True, False], []]
 
         #Search in blacklists
-        for db in self.pkg_filters_conf.keys():
-            if self.pkg_filters_conf[db]["users_info"].has_key(uid) :
-                if len(self.pkg_filters_conf[db]["users_info"][uid]) > 0 :
-                    
-                    category_c = ''
-                    for cat in self.pkg_filters_conf[db]["users_info"][uid] :
-                        if category_c != '' :
-                            category_c = category_c + " OR " + "category='%s' " % cat
-                        else:
-                            category_c = "category='%s' " % cat
-                    category_c = category_c + "OR category='may_url_blocked'"
-                            
-                    regexp_c = 'gregexp(regexp || "(|\..+)" , "%s")' % idomain
-                    sql_query = 'select distinct category from black_domains where (%s) AND (%s)' % (category_c, regexp_c)
-                    query = self.db_pools[db].runQuery(sql_query)
-                    block_d = BlockingDeferred(query)
-                    
-                    try:
-                        qr = block_d.blockOn()
-                        print qr
-                        for cat in qr :
-                            blacklisted_categories.append(cat[0])
-                    except:
-                        print "Something goes wrong checking domains"
-                        return [[False, False], []]
+        x = self.__split_url(domain)
+        if x != (None, None, None, None, None):
+            b_domain = x[1].split(".")[0]
+            b_etld = x[1][len(b_domain) + 1:]
+            b_subdomain = x[2]
+            if b_subdomain == None:
+                b_subdomain = ''
+            b_path = ''
 
-        if len (blacklisted_categories) > 0 :
-            if "may_url_blocked" in blacklisted_categories :
-                blacklisted_categories.pop(blacklisted_categories.index("may_url_blocked"))
-                if len (blacklisted_categories) > 0 :
-                    return [[True, True], blacklisted_categories]
+            for db in self.pkg_filters_conf.keys():
+                if self.pkg_filters_conf[db]["users_info"].has_key(uid) :
+                    if len(self.pkg_filters_conf[db]["users_info"][uid]) > 0 :
+                        
+                        sql = 'SELECT id FROM domain WHERE name="%s"' % b_domain
+
+                        query = self.db_pools[db].runQuery(sql)
+                        block_d = BlockingDeferred(query)
+                        qr = block_d.blockOn()
+
+                        if len(qr) == 0 :
+                            continue
+                        
+                        sql = ''
+                        sql += 'SELECT categories_list FROM blacklist WHERE '
+                        sql += 'etld_id = (SELECT id FROM etld WHERE name ="%s") AND ' % b_etld
+                        sql += 'domain_id = (SELECT id FROM domain WHERE name ="%s") AND '% b_domain
+                        if b_subdomain == '' or b_subdomain == 'www' :
+                            sql += '( '
+                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="") OR '
+                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="www") '
+                            sql += ') AND '
+                        else:
+                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="%s") AND ' % b_subdomain
+                        sql += 'path_id = (SELECT id FROM path WHERE name = "" ) '
+
+                        query = self.db_pools[db].runQuery(sql)
+                        block_d = BlockingDeferred(query)
+                        qr = block_d.blockOn()
+
+                        if len(qr) != 0:
+                            for cats in qr :
+                                exec ("cats_list = [%s]" % cats)
+                                for c in cats_list :
+                                    if self.db_cat_cache[db][c] in self.pkg_filters_conf[db]["users_info"][uid] :
+                                        if self.db_cat_cache[db][c] not in blacklisted_categories :
+                                            blacklisted_categories.append(self.db_cat_cache[db][c])
+
+                        if "may_url_blocked" in  blacklisted_categories:
+                            continue
+
+                        sql = ''
+                        sql += 'SELECT COUNT(id) FROM blacklist WHERE '
+                        sql += 'etld_id = (SELECT id FROM etld WHERE name ="%s") AND ' % b_etld
+                        sql += 'domain_id = (SELECT id FROM domain WHERE name ="%s") AND '% b_domain
+                        if b_subdomain == '' :
+                            sql += '( '
+                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="") OR '
+                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="www") '
+                            sql += ')'
+                        else:
+                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="%s")' % b_subdomain
+                            
+                        query = self.db_pools[db].runQuery(sql)
+                        block_d = BlockingDeferred(query)
+                        qr = block_d.blockOn()
+
+                        if int(qr[0][0]) > 2 :
+                            blacklisted_categories.append("may_url_blocked")
+
+            if len (blacklisted_categories) > 0 :
+                if "may_url_blocked" in blacklisted_categories :
+                    blacklisted_categories.pop(blacklisted_categories.index("may_url_blocked"))
+                    if len (blacklisted_categories) > 0 :
+                        return [[True, True], blacklisted_categories]
+                    else:
+                        return [[False, True], blacklisted_categories]
                 else:
-                    return [[False, True], blacklisted_categories]
-            else:
-                return [[True, False], blacklisted_categories]
+                    return [[True, False], blacklisted_categories]
 
         return [[False, False], []]
                 
@@ -504,44 +556,64 @@ class FilterManager (gobject.GObject) :
         is_ok = True
         blacklisted_categories = []
 
-        #Search in whitelists
-        for db in self.pkg_filters_conf.keys():
-            if self.pkg_filters_conf[db]["users_info"].has_key(uid) :
-                if len(self.pkg_filters_conf[db]["users_info"][uid]) > 0 :
-                    sql_query = 'select distinct category from white_urls where gregexp(regexp || ".*" , "%s")' % uri
-                    query = self.db_pools[db].runQuery(sql_query)
-                    block_d = BlockingDeferred(query)
-                    
-                    try:
-                        qr = block_d.blockOn()
-                        if len(qr) > 0:
-                            print 'Uri validation verified whitelisted %s' % (host + request.uri)
-                            return True, request, rest, host, port
+        x = self.__split_url(domain)
+        if x != (None, None, None, None, None):
+            b_domain = x[1].split(".")[0]
+            b_etld = x[1][len(b_domain) + 1:]
+            b_subdomain = x[2]
+            if b_subdomain == None:
+                b_subdomain = ''
+            b_path = ''
+
+            if x[3] != None:
+                b_path = b_path + x[3]
+            if x[4] != None:
+                b_path = b_path + x[4]
+
+            for db in self.pkg_filters_conf.keys():
+                if self.pkg_filters_conf[db]["users_info"].has_key(uid) :
+                    if len(self.pkg_filters_conf[db]["users_info"][uid]) > 0 :
                         
-                    except:
-                        print "Something goes wrong checking whitelisted urls"
-                        return True, request, rest, host, port
-        
-        #Search in blacklists
-        for db in self.pkg_filters_conf.keys():
-            if self.pkg_filters_conf[db]["users_info"].has_key(uid) :
-                if len(self.pkg_filters_conf[db]["users_info"][uid]) > 0 :
-                    sql_query = 'select distinct category from black_urls where gregexp(regexp || ".*" , "%s")' % uri
-                    query = self.db_pools[db].runQuery(sql_query)
-                    block_d = BlockingDeferred(query)
-                    
-                    try:
+                        sql = 'SELECT id FROM domain WHERE name="%s"' % b_domain
+
+                        query = self.db_pools[db].runQuery(sql)
+                        block_d = BlockingDeferred(query)
                         qr = block_d.blockOn()
-                        if len(qr) > 0:
-                            for cat in qr :
-                                blacklisted_categories.append(cat[0])
-                    except:
-                        print "Something goes wrong checking blacklisted urls"
-                        return True, request, rest, host, port
+
+                        if len(qr) == 0 :
+                            continue
+                        
+                        sql = ''
+                        sql += 'SELECT categories_list FROM blacklist WHERE '
+                        sql += 'etld_id = (SELECT id FROM etld WHERE name ="%s") AND ' % b_etld
+                        sql += 'domain_id = (SELECT id FROM domain WHERE name ="%s") AND '% b_domain
+                        if b_subdomain == '' or b_subdomain == 'www' :
+                            sql += '( '
+                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="") OR '
+                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="www") '
+                            sql += ') AND '
+                        else:
+                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="%s") AND ' % b_subdomain
+                        sql += '('
+                        sql += 'path_id = (SELECT id FROM path WHERE name = "%s" ) OR ' % b_path
+                        sql += 'path_id = (SELECT id FROM path WHERE name = "%s") ' % b_path
+                        sql += ')'
+
+                        query = self.db_pools[db].runQuery(sql)
+                        block_d = BlockingDeferred(query)
+                        qr = block_d.blockOn()
+
+                        if len(qr) != 0:
+                            for cats in qr :
+                                exec ("cats_list = [%s]" % cats)
+                                for c in cats_list :
+                                    if self.db_cat_cache[db][c] in self.pkg_filters_conf[db]["users_info"][uid] :
+                                        if self.db_cat_cache[db][c] not in blacklisted_categories :
+                                            blacklisted_categories.append(self.db_cat_cache[db][c])
 
         if len (blacklisted_categories) > 0 :
             print 'Uri validation stopped because is blacklisted %s [%s]' % (host + request.uri, blacklisted_categories)
-            return False, request, rest, host, port
+            return False, request, rest, host, port                
         
         print 'Uri validation passed by default  %s' % (host + request.uri)
         return True, request, rest, host, port
