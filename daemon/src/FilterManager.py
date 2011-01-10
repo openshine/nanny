@@ -26,7 +26,9 @@
 import gobject
 import gio
 import os
+import hashlib
 import sys
+import json
 
 import errno
 
@@ -79,6 +81,20 @@ elif os.name == "nt" :
     else:        
         NANNY_DAEMON_DATA = os.path.join(os.environ["ALLUSERSPROFILE"], "Gnome", "nanny")
 
+#Nanny daemon blacklists dir is to storage the admin blacklists and sys blacklists if for
+#read-only blacklists, for example blacklists provided by packages
+NANNY_DAEMON_BLACKLISTS_DIR = os.path.join(NANNY_DAEMON_DATA, "blacklists")
+NANNY_DAEMON_BLACKLISTS_SYS_DIR = os.path.join(NANNY_DAEMON_DATA, "sysblacklists") 
+NANNY_DAEMON_BLACKLISTS_CONF_FILE = os.path.join(NANNY_DAEMON_DATA, "bl_conf.db")
+
+PKG_STATUS_ERROR_NOT_EXISTS = -2
+PKG_STATUS_ERROR_INSTALLING_NEW_BL = -1
+PKG_STATUS_ERROR = 0
+PKG_STATUS_INSTALLING = 1
+PKG_STATUS_UPDATING = 2
+PKG_STATUS_READY = 3
+PKG_STATUS_READY_UPDATE_AVAILABLE = 4
+
 def mkdir_path(path):
     try:
         os.makedirs(path)
@@ -93,13 +109,15 @@ class FilterManager (gobject.GObject) :
         self.custom_filters_db = None
         self.db_pools = {}
         self.pkg_filters_conf = {}
-
+        
         reactor.addSystemEventTrigger("before", "startup", self.start)
         reactor.addSystemEventTrigger("before", "shutdown", self.stop)
 
     def start(self):
         print "Start Filter Manager"
         mkdir_path(os.path.join(NANNY_DAEMON_DATA, "pkg_filters"))
+        mkdir_path(NANNY_DAEMON_BLACKLISTS_DIR)
+        
         self.custom_filters_db = self.__get_custom_filters_db()
         self.__start_packaged_filters()
 
@@ -186,247 +204,157 @@ class FilterManager (gobject.GObject) :
 
     #Packaged filters
     #-----------------------------------
-
+  
     def __start_packaged_filters(self):
-        ddbb = glob(os.path.join(NANNY_DAEMON_DATA, "pkg_filters","*","filters.db"))
-        if os.name == "posix" :
-            ddbb = ddbb + glob('/usr/share/nanny/pkg_filters/*/filters.db')
-
-        for db in ddbb :
-            self.db_pools[db] = adbapi.ConnectionPool('sqlite3', db,
-                                                      check_same_thread=False,
-                                                      cp_openfun=on_db_connect)
-
-        if not os.path.exists(os.path.join(NANNY_DAEMON_DATA, "pkg_filters","conf")) :
-            for db in ddbb :
-                self.pkg_filters_conf[db] = {"categories" : [],
-                                             "users_info" : {}
-                                             }
-        else:
-            db = open(os.path.join(NANNY_DAEMON_DATA, "pkg_filters","conf"), 'rb')
-            self.pkg_filters_conf = pickle.load(db)
-            db.close()
-            for rdb in list(set(self.pkg_filters_conf.keys()) - set(ddbb)) :
-                print "Remove conf of pkg_list (%s)" % rdb
-                self.pkg_filters_conf.pop(rdb)
-            for db in ddbb :
-                if not self.pkg_filters_conf.has_key(db) :
-                    print "Add missing conf of pkg_list (%s)" % db
-                    self.pkg_filters_conf[db] = {"categories" : [],
-                                                 "users_info" : {}
-                                                 }
-            self.__save_pkg_filters_conf()
-
-        gobject.timeout_add(5000, self.__check_external_dbs)
-
-    def __check_external_dbs(self):
-        if os.name != "posix" :
-            return True
-
-        ddbb = glob('/usr/share/nanny/pkg_filters/*/filters.db')
-        if len(ddbb) == 0 :
-            for db in self.pkg_filters_conf.keys() :
-                if db.startswith("/usr/share/nanny/pkg_filters/") :
-                    print "Remove conf of pkg_list (%s)" % db
-                    self.pkg_filters_conf.pop(db)
-                    self.__save_pkg_filters_conf()
-
-            for db in self.db_pools.keys() :
-                if db.startswith("/usr/share/nanny/pkg_filters/"):
-                    print "Closing database of pkg_list (%s)" % db
-                    self.db_pools.pop(db).close()
-        else:
-            for db in self.pkg_filters_conf.keys() :
-                if db.startswith("/usr/share/nanny/pkg_filters/") and db not in ddbb :
-                    print "Remove conf of pkg_list (%s)" % db
-                    self.pkg_filters_conf.pop(db)
-                    self.__save_pkg_filters_conf()
-
-            for db in self.db_pools.keys() :
-                if db.startswith("/usr/share/nanny/pkg_filters/") and db not in ddbb:
-                    print "Closing database of pkg_list (%s)" % db
-                    self.db_pools.pop(db).close()
-
-            for db in ddbb :
-                if db not in self.pkg_filters_conf.keys() :
-                    print "Add missing conf of pkg_list (%s)" % db
-                    self.pkg_filters_conf[db] = {"categories" : [],
-                                                 "users_info" : {}
-                                                 }
-                    self.__save_pkg_filters_conf()
-                
-                if db not in self.db_pools.keys():
-                    print "Opening database of pkg_list (%s)" % db
-                    self.db_pools[db] = adbapi.ConnectionPool('sqlite3', db,
+        if os.path.exists(NANNY_DAEMON_BLACKLISTS_CONF_FILE):
+            with open(NANNY_DAEMON_BLACKLISTS_CONF_FILE, 'rb') as f:
+                self.pkg_filters_conf = pickle.load(f)
+        
+        for pkg_id in self.pkg_filters_conf.keys():
+            self._save_pkg_filters_conf()
+            if self.pkg_filters_conf[pkg_id]["status"] == PKG_STATUS_READY \
+            or self.pkg_filters_conf[pkg_id]["status"] == PKG_STATUS_READY_UPDATE_AVAILABLE:
+                db = os.path.join(NANNY_DAEMON_BLACKLISTS_DIR,
+                                  "%s.db" % (pkg_id))
+                self.db_pools[pkg_id] = adbapi.ConnectionPool('sqlite3', db,
                                                               check_same_thread=False,
                                                               cp_openfun=on_db_connect)
-        return True
+                print "Added to db pool -> %s" % pkg_id
 
-    def __save_pkg_filters_conf(self):
-        output = open(os.path.join(NANNY_DAEMON_DATA, "pkg_filters","conf"), 'wb')
+    def _save_pkg_filters_conf(self):
+        output = open(NANNY_DAEMON_BLACKLISTS_CONF_FILE, 'wb')
         pickle.dump(self.pkg_filters_conf, output)
         output.close()
-    
-    def __get_categories_from_db(self, db):
-        if len(self.pkg_filters_conf[db]["categories"]) == 2 :
-            if os.path.getmtime(db) == self.pkg_filters_conf[db]["categories"][0] :
-                return self.pkg_filters_conf[db]["categories"][1]
-            
-        sql_query = 'SELECT category FROM black_domains UNION SELECT category FROM black_urls UNION SELECT category FROM white_domains UNION SELECT category FROM white_urls'
-        query = self.db_pools[db].runQuery(sql_query)
-        block_d = BlockingDeferred(query)
+        
+    def __get_categories_from_db(self, pkg_id):
         try:
-            qr = block_d.blockOn()
-            cats = []
-            for c in qr :
-                if c[0] != "may_url_blocked" :
-                    cats.append(c[0])
-                
-            tmp_cat = [os.path.getmtime(db), cats]
-            self.pkg_filters_conf[db]["categories"] = tmp_cat
-            self.__save_pkg_filters_conf()
-            return self.pkg_filters_conf[db]["categories"][1]
+            return self.pkg_filters_conf[pkg_id]["pkg_info"]["categories"]
         except:
-            print "Something goes wrong getting categories from %s" % db
             return []
-        
-    def add_pkg_filter(self, path):
-        temp_dir = tempfile.mkdtemp(prefix="filter_", dir=os.path.join(NANNY_DAEMON_DATA, "pkg_filters"))
-        try:
-            if not tarfile.is_tarfile (path): 
-                print "The file has not in the correct format"
-                shutil.rmtree(temp_dir)
-                return False
-
-            d = threads.deferToThread(self.__copy_pkg_filter, path, os.path.join(temp_dir, "filters.tgz"))
-            block_d = BlockingDeferred(d)
-            qr = block_d.blockOn()
-            if qr != True :
-                shutil.rmtree(temp_dir)
-                return False
-                
-            self.db_pools[os.path.join(temp_dir, "filters.db")] = adbapi.ConnectionPool('sqlite3',
-                                                                                        os.path.join(temp_dir, "filters.db"),
-                                                                                        check_same_thread=False,
-                                                                                        cp_openfun=on_db_connect)
-            self.pkg_filters_conf[os.path.join(temp_dir, "filters.db")] = {"categories" : [],
-                                                                           "users_info" : {}
-                                                                           }
-            self.__save_pkg_filters_conf()
-            return True
-        except:
-            print "Something goes wrong Adding PKG Filter"
-            shutil.rmtree(temp_dir)
+  
+    def add_pkg_filter(self, url):
+        pkg_id = hashlib.md5().hexdigest()
+        if pkg_id in self.pkg_filters_conf.keys() :
             return False
         
-    def __copy_pkg_filter(self, orig, dest):
+        self.pkg_filters_conf[pkg_id] = {"users_info" : {},
+                                         "pkg_info": {},
+                                         "status" : PKG_STATUS_INSTALLING,
+                                         "update_url" : url
+                                         }
+        
+        reactor.callInThread(self.__download_new_pkg, pkg_id, url, self)
+        return True
+        
+    def __download_new_pkg(self, pkg_id, url, fm):
+        import sqlite3
+        import urllib2
+        import urlparse 
+        import bz2
+        
         try:
-            basedir = os.path.dirname (dest)
-            if os.path.exists(basedir) :
-                files = os.listdir (basedir)
-                for file in files:
-                    file_name = os.path.join (basedir, file)
-                    gio.File(file_name).move(gio.File(file_name + ".bak"))
-                
-            gio.File(orig).copy(gio.File(dest))
-            print "Copied %s in %s" % (orig, dest)
+            pkg_info = json.load(urllib2.urlopen(url))
+            fm.pkg_filters_conf[pkg_id]["pkg_info"] = pkg_info
 
-            tfile = tarfile.open (dest, 'r')
-            tfile.extractall (path=os.path.dirname(dest))
-            os.unlink(dest)
+            base_filename = pkg_info["base"]
+            base_url = urlparse.urljoin(url, base_filename)
+            dest_file = os.path.join(NANNY_DAEMON_BLACKLISTS_DIR,
+                                     "%s-%s" % (pkg_id, base_filename))
+            dest_db = os.path.join(NANNY_DAEMON_BLACKLISTS_DIR,
+                                   "%s.db" % (pkg_id))
+
+            if os.path.exists(dest_file):
+                os.unlink(dest_file)
             
-            print "Removing Backup files"
-            files = os.listdir (basedir)
-            for file in files:
-                if file.endswith ('.bak'):
-                    file_name = os.path.join (basedir, file)
-                    os.unlink(file_name)
+            if os.path.exists(dest_db):
+                os.unlink(dest_db)
 
-            return True
+            df = open(dest_file, "wb")
+            df.write(urllib2.urlopen(base_url).read())
+            df.close()
+
+            df_uc = bz2.BZ2File(dest_file, "r")
+            db_conn = sqlite3.connect(dest_db)
+
+            sql=''
+
+            for line in df_uc.readlines():
+                sql = sql + line
+                if sqlite3.complete_statement(sql) :    
+                    c = db_conn.cursor()
+                    try:
+                        c.execute(sql)
+                    except:
+                        pass
+                    sql = ''
+
+            db_conn.commit()
+            db_conn.close()
+            df_uc.close()
+
+            os.unlink(dest_file)
+
+            fm.pkg_filters_conf[pkg_id]["status"]=PKG_STATUS_READY
+            fm.db_pools[pkg_id] = adbapi.ConnectionPool('sqlite3', dest_db,
+                                                        check_same_thread=False,
+                                                        cp_openfun=on_db_connect)
+            print "Added to db pool -> %s" % pkg_id  
+            threads.blockingCallFromThread(reactor, 
+                                           fm._save_pkg_filters_conf)
         except:
-            print "Copy failed! (%s, %s)" % (orig, dest)
-            print "Revert to backup files"
-            files = os.listdir (basedir)
-            for file in files:
-                if file.endswith ('.bak'):
-                    gio.File(file).move(gio.File(file[:-4]))
-
-            return False
-
+            if os.path.exists(dest_file):
+                os.unlink(dest_file)
+            
+            if os.path.exists(dest_db):
+                os.unlink(dest_db)
+            
+            fm.pkg_filters_conf[pkg_id]["pkg_info"]={}
+            fm.pkg_filters_conf[pkg_id]["status"]=PKG_STATUS_ERROR_INSTALLING_NEW_BL
+            threads.blockingCallFromThread(reactor, 
+                                           fm._save_pkg_filters_conf)
+    
     def remove_pkg_filter(self, pkg_id):
-        for id, ro in self.list_pkg_filter() :
-             if id == pkg_id and ro == False:
-                 if self.db_pools.has_key(pkg_id) :
-                     db = self.db_pools.pop(pkg_id)
-                     db.close()
-                     self.pkg_filters_conf.pop(pkg_id)
-                     self.__save_pkg_filters_conf()
-                     db_dir = os.path.dirname(pkg_id)
-                     print "Removing dir %s" % db_dir
-                     shutil.rmtree(db_dir)
-                     return True
+        dest_db = os.path.join(NANNY_DAEMON_BLACKLISTS_DIR,
+                               "%s.db" % (pkg_id))
+        if os.path.exists(dest_db):
+            if pkg_id in self.db_pools.keys():
+                db = self.db_pools.pop(pkg_id)
+                db.close()
+            os.unlink(dest_db)
+        try:
+            self.pkg_filters_conf.pop(pkg_id)
+            self._save_pkg_filters_conf()
+            print "Removed from db pool -> %s" % pkg_id
+        except:
+            pass
         
-
+        return True
+                
     def update_pkg_filter(self, pkg_id, new_db):
-        for id, ro in self.list_pkg_filter() :
-            if id == pkg_id and ro == False:
-                basedir = os.path.dirname (pkg_id)
-                d = threads.deferToThread(self.__copy_pkg_filter, new_db, os.path.join(basedir, "filters.tgz"))
-                block_d = BlockingDeferred(d)
-                qr = block_d.blockOn()
-                if qr == True :
-                    return True
-                else:
-                    return False
-        return False
+        pass
 
     def list_pkg_filter(self):
         ret = []
         for x in self.pkg_filters_conf.keys():
-            if x.startswith("/usr") :
-                ro = True
-            else:
-                ro = False
-            
-            ret.append([unicode(x), ro])
+            ret.append([x, False])
                 
         return ret
-
+    
     def get_pkg_filter_metadata(self, pkg_id):
-        path = os.path.dirname(pkg_id)
-        if not os.path.exists(path) :
-            return ['', '']
-        
-        name = ""
-        description = ""
-        
-        if os.path.exists(os.path.join(path, "filters.metadata")) :
-            fd = open(os.path.join(path, "filters.metadata"), "r")
-            for line in fd.readlines():
-                l = line.strip("\n")
-                if l.startswith("Name=") :
-                    name = l.replace("Name=", "")
-                elif l.startswith("Comment=") :
-                    description = l.replace("Comment=", "")
-                else:
-                    continue
-            fd.close()
+        try:
+            if self.pkg_filters_conf[pkg_id]["pkg_info"].has_key("metadata"):
+                ret = [self.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"]["name"],
+                       self.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"]["provider"]]
+                return ret
+        except:
+            pass
 
-        return [name, description]
-
+        return [pkg_id, 'Unknown information']
+    
     def set_pkg_filter_metadata(self, pkg_id, name, description):
-        for id, ro in self.list_pkg_filter() :
-            if id == pkg_id and ro == False:
-                path = os.path.dirname(pkg_id)
-                if os.path.exists(path) :
-                    fd = open(os.path.join(path, "filters.metadata"), "w")
-                    fd.write("Name=%s\n" % name)
-                    fd.write("Comment=%s\n" % description)
-                    fd.close()
-                    return True
-        
-        return False
-            
+        #Deprecated !!
+        return True
+    
     def get_pkg_filter_user_categories(self, pkg_id, uid):
         try:
             return_categories = []
@@ -444,7 +372,7 @@ class FilterManager (gobject.GObject) :
                         tmp_user_categories.append(ucat)
                 user_categories = tmp_user_categories
                 self.pkg_filters_conf[pkg_id]["users_info"][uid] = user_categories
-                self.__save_pkg_filters_conf()
+                self._save_pkg_filters_conf()
 
             for category in categories:
                 if category in user_categories:
@@ -468,7 +396,7 @@ class FilterManager (gobject.GObject) :
             user_categories = tmp_user_categories
         
         self.pkg_filters_conf[pkg_id]["users_info"][uid] = user_categories
-        self.__save_pkg_filters_conf()
+        self._save_pkg_filters_conf()
         return True
 
     #Check methods
