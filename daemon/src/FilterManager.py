@@ -29,6 +29,7 @@ import os
 import hashlib
 import sys
 import json
+import etld
 
 import errno
 
@@ -561,3 +562,61 @@ class FilterManager (gobject.GObject) :
         
         print 'Uri validation passed by default  %s' % (host + request.uri)
         return True, request, rest, host, port
+
+    def __split_url(self, url):
+        """Split a url in several pieces, returning a tuple with each of that pieces.
+        It will also remove the user (http://user:password@domain.com) and the port (http://domain.com:8080) 
+
+        Example: With the url "http://www.google.com/test/extra/index.html", the function will return this pieces:
+
+        protocol: The protocol used by the url (in the example, "http").
+        domain: The domain of the url (in the example, "google.com").
+        subdomain: The subdomain of the url (in the example, "www").
+        firstlevel: The first level of the path (in the example, "test").
+        extra: The part of the URL not contained in the previous pieces (in the example, "extra/index.html").   
+        """
+
+        url = url.lower ()
+
+        splitted_url = url.split ("://")
+        if len (splitted_url) > 1:
+            protocol = splitted_url[0]
+            url = splitted_url[1]
+        else:
+            protocol = 'http'
+
+        if protocol != "http" and protocol != "https":
+            return (None, None, None, None, None) 
+
+        parsed_url = urlparse ("%s://%s" % (protocol, url)) 
+
+        domain_string = parsed_url.netloc
+        path_string = parsed_url.path
+
+        if not domain_string:
+            return (None, None, None, None, None)
+        else:
+            if domain_string.find ("@") > -1:
+                domain_string = domain_string.split ("@")[1]
+            if domain_string.find (":") > -1:
+                domain_string = domain_string.split (":")[0]
+
+        etld_object = etld.etld()
+        try:
+            subdomain, domain = etld_object.parse ("%s://%s" % (protocol, domain_string))
+        except:
+            return (None, None, None, None, None)
+
+        if subdomain == "":
+            subdomain = None
+
+        if path_string:
+            path_pieces = path_string.split ("/")
+
+            firstlevel = path_pieces[1] if len (path_pieces) > 1 and path_pieces[1] else None
+            extra = "/".join (path_pieces [2:]) if len (path_pieces) > 2 and path_pieces[2] else None
+        else:
+            firstlevel = None
+            extra = None
+
+        return (protocol, domain, subdomain, firstlevel, extra)

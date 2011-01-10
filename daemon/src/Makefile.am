@@ -19,7 +19,15 @@ corelib_PYTHON =	 __init__.py 			\
 			Win32SessionFiltering.py	\
 			Win32Chrono.py			\
 			Win32Top.py			\
-			NannyPyroBus.py
+			NannyPyroBus.py			\
+			etld.py	
+
+
+
+effectivedir = $(pythondir)/nanny/daemon
+effective_DATA = effective_tld_names.dat
+
+EXTRA_DIST = effective_tld_names.dat 
 
 if HAS_HACHOIR_REGEX
 dgimporterdir = $(pythondir)/nanny/daemon
