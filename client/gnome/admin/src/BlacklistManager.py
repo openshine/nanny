@@ -47,7 +47,6 @@ class BlacklistManager:
         self.dialog.get_content_area().add (self.alignment)
 
         self.blacklist_import_button.connect ('clicked', self.__on_blacklist_import_button_clicked)
-        self.blacklist_edit_button.connect ('clicked', self.__on_blacklist_edit_button_clicked)
         self.blacklist_remove_button.connect ('clicked', self.__on_blacklist_remove_button_clicked)
         self.unlock_button.connect('clicked', self.__on_unlock_button_clicked)
 
@@ -96,7 +95,6 @@ class BlacklistManager:
             self.unlock_area.show()
 
         self.blacklist_import_button.set_sensitive(lock_status)
-        self.blacklist_edit_button.set_sensitive(lock_status)
         self.blacklist_remove_button.set_sensitive(lock_status)
         
 
@@ -141,32 +139,6 @@ class BlacklistManager:
 
         file_selection_dialog.destroy()
 
-    def __on_blacklist_edit_button_clicked (self, widget, data=None):
-        edit_dialog = gtk.Dialog (title=_("Blacklist Filter Configuration"),
-                buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT,
-                    gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
-
-        nanny.client.common.Utils.ui_magic (edit_dialog,
-                                  ui_file = os.path.join (nanny.client.gnome.admin.ui_files_dir, "nbm_pbl_edit_dialog.ui"),
-                                  prefix = "nbm")
-
-        edit_dialog.main_alignment.unparent()
-        edit_dialog.get_content_area().add (edit_dialog.main_alignment)
-
-        name, description = self.dbus_client.get_pkg_filter_metadata (self.__selected_blacklist)
-        edit_dialog.name_entry.set_text (name)
-        edit_dialog.description_entry.set_text (description)
-
-        response = edit_dialog.run()
-
-        if response == gtk.RESPONSE_ACCEPT:
-            name = edit_dialog.name_entry.get_text ()
-            description = edit_dialog.description_entry.get_text ()
-            self.dbus_client.set_pkg_filter_metadata (self.__selected_blacklist, name, description)
-            self.__fill_treeview ()
-
-        edit_dialog.destroy()
-
     def __on_blacklist_remove_button_clicked (self, widget, data=None):
         if self.__selected_blacklist == None:
             return
@@ -189,14 +161,11 @@ class BlacklistManager:
             read_only = model.get_value (itera, 0)
 
             if read_only:
-                self.blacklist_edit_button.set_sensitive (False)
                 self.blacklist_remove_button.set_sensitive (False)
             else:
-                self.blacklist_edit_button.set_sensitive (True)
                 self.blacklist_remove_button.set_sensitive (True)
 
         else:
-            self.blacklist_edit_button.set_sensitive (False)
             self.blacklist_remove_button.set_sensitive (False)
             self.__selected_blacklist = None
 

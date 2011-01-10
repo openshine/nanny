@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
@@ -17,7 +17,6 @@
             <child>
               <object class="GtkVBox" id="vbox1">
                 <property name="visible">True</property>
-                <property name="orientation">vertical</property>
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkScrolledWindow" id="scrolledwindow1">
@@ -86,7 +85,6 @@ Click this button if you want to make changes.</property>
             <child>
               <object class="GtkVButtonBox" id="vbuttonbox1">
                 <property name="visible">True</property>
-                <property name="orientation">vertical</property>
                 <property name="spacing">5</property>
                 <property name="layout_style">start</property>
                 <child>
@@ -104,8 +102,8 @@ Click this button if you want to make changes.</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="nbm_blacklist_edit_button">
-                    <property name="label">gtk-edit</property>
+                  <object class="GtkButton" id="nbm_blacklist_update_button">
+                    <property name="label">gtk-refresh</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
