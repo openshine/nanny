@@ -265,16 +265,16 @@ class NannyDBus(dbus.service.Object):
         return self.quarterback.filter_manager.list_pkg_filter()
 
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
-                         in_signature='s', out_signature='ss')
+                         in_signature='s', out_signature='a{sv}')
     def GetPkgFilterMetadata(self, pkg_id):
         return self.quarterback.filter_manager.get_pkg_filter_metadata(str(pkg_id))
 
-    @dbus.service.method("org.gnome.Nanny.WebDatabase",
-                         in_signature='sss', out_signature='b',
-                         sender_keyword='sender', connection_keyword='conn')
-    def SetPkgFilterMetadata(self, pkg_id, name, description, sender=None, conn=None):
-        self._check_polkit_privilege(sender, conn, 'org.gnome.nanny.admin')
-        return self.quarterback.filter_manager.set_pkg_filter_metadata(str(pkg_id), unicode(name), unicode(description))
+#     @dbus.service.method("org.gnome.Nanny.WebDatabase",
+#                          in_signature='sss', out_signature='b',
+#                          sender_keyword='sender', connection_keyword='conn')
+#     def SetPkgFilterMetadata(self, pkg_id, name, description, sender=None, conn=None):
+#         self._check_polkit_privilege(sender, conn, 'org.gnome.nanny.admin')
+#         return self.quarterback.filter_manager.set_pkg_filter_metadata(str(pkg_id), unicode(name), unicode(description))
 
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='ss', out_signature='a(sb)')

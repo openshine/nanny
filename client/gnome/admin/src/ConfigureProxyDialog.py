@@ -171,7 +171,10 @@ class ConfigureProxyDialog (gtk.Dialog):
         
         
         for filter_id in self.dbus_client.list_pkg_filters () :
-            filter_name, filter_description = self.dbus_client.get_pkg_filter_metadata(filter_id)
+            metadata = self.dbus_client.get_pkg_filter_metadata(filter_id)
+            filter_name = _("Unknown Blacklist Name") if not metadata.has_key("name") else metadata["name"]
+            filter_description = "" if not metadata.has_key("provider") else metadata["provider"]
+            
             packaged_blacklist_model.append ((filter_id, "<b>%s</b>\n   %s" % (filter_name, filter_description)))
 
         gobject.timeout_add(1, self.__update_packaged_blacklist_model)
@@ -187,7 +190,10 @@ class ConfigureProxyDialog (gtk.Dialog):
                 included = False
                 for row in list_store:
                     if row[0] == filter_id :
-                        filter_name, filter_description = self.dbus_client.get_pkg_filter_metadata(filter_id)
+                        metadata = self.dbus_client.get_pkg_filter_metadata(filter_id)
+                        filter_name = _("Unknown Blacklist Name") if not metadata.has_key("name") else metadata["name"]
+                        filter_description = "" if not metadata.has_key("provider") else metadata["provider"]
+                        
                         row[1] = "<b>%s</b>\n   %s" % (filter_name, filter_description)
                         included = True
                         break
@@ -195,7 +201,10 @@ class ConfigureProxyDialog (gtk.Dialog):
                 if included == True:
                     continue
 
-                filter_name, filter_description = self.dbus_client.get_pkg_filter_metadata(filter_id)
+                metadata = self.dbus_client.get_pkg_filter_metadata(filter_id)
+                filter_name = _("Unknown Blacklist Name") if not metadata.has_key("name") else metadata["name"]
+                filter_description = "" if not metadata.has_key("provider") else metadata["provider"]
+
                 list_store.append ((filter_id, "<b>%s</b>\n   %s" % (filter_name, filter_description)))
             
             iter = list_store.get_iter_first()

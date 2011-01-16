@@ -28,6 +28,7 @@ import gio
 import os
 import hashlib
 import sys
+import copy
 import json
 
 from urlparse import urlparse
@@ -349,21 +350,24 @@ class FilterManager (gobject.GObject) :
             ret.append(x)
                 
         return ret
-    
+
     def get_pkg_filter_metadata(self, pkg_id):
+        if pkg_id not in self.pkg_filters_conf.keys() :
+            return {}
+
         try:
             if self.pkg_filters_conf[pkg_id]["pkg_info"].has_key("metadata"):
-                if self.pkg_filters_conf[pkg_id]["status"] == PKG_STATUS_INSTALLING :
-                    ret = [self.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"]["name"],
-                           self.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"]["provider"] + " (Installing new blacklist)"]
-                else:
-                    ret = [self.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"]["name"],
-                           self.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"]["provider"]]
-                return ret
+                
+                metadata = copy.deepcopy(self.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"])
+                metadata["status"] = self.pkg_filters_conf[pkg_id]["status"]
+                
+                return metadata
         except:
             pass
 
-        return [pkg_id, 'Unknown information']
+        return {"name" : "Unknown", 
+                "provider" : "Unknown", 
+                "status" : self.pkg_filters_conf[pkg_id]["status"]}
     
     def set_pkg_filter_metadata(self, pkg_id, name, description):
         #Deprecated !!
