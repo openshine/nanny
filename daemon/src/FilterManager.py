@@ -81,7 +81,8 @@ NANNY_DAEMON_BLACKLISTS_DIR = os.path.join(NANNY_DAEMON_DATA, "blacklists")
 NANNY_DAEMON_BLACKLISTS_SYS_DIR = os.path.join(NANNY_DAEMON_DATA, "sysblacklists") 
 NANNY_DAEMON_BLACKLISTS_CONF_FILE = os.path.join(NANNY_DAEMON_DATA, "bl_conf.db")
 
-PKG_STATUS_ERROR_NOT_EXISTS = -3
+PKG_STATUS_ERROR_NOT_EXISTS = -4
+PKG_STATUS_ERROR_UPDATING_BL = -3
 PKG_STATUS_ERROR_INSTALLING_NEW_BL = -2
 PKG_STATUS_ERROR = -1
 PKG_STATUS_READY = 0
@@ -273,6 +274,10 @@ class FilterManager (gobject.GObject) :
         import bz2
         
         try:
+            if pkg_id in fm.db_pools.keys():
+                db = fm.db_pools.pop(pkg_id)
+                db.close()
+
             pkg_info = json.load(urllib2.urlopen(url))
             fm.pkg_filters_conf[pkg_id]["pkg_info"] = pkg_info
 
@@ -367,9 +372,144 @@ class FilterManager (gobject.GObject) :
         return True
                 
     def update_pkg_filter(self, pkg_id):
-        print "UPDATE -----> PKG_ID : %s" % pkg_id
-        pass
+        reactor.callInThread(self. __real_update_pkg_filter, pkg_id, self)
+        return True
 
+    def __real_update_pkg_filter(self, pkg_id, fm):
+        import sqlite3
+        import urllib2
+        import urlparse 
+        import bz2
+
+
+        if pkg_id not in fm.pkg_filters_conf.keys():
+            return
+
+        try:
+            fm.pkg_filters_conf[pkg_id]["status"] = PKG_STATUS_DOWNLOADING
+            url = fm.pkg_filters_conf[pkg_id]["update_url"]
+            pkg_info = json.load(urllib2.urlopen(url))
+
+            orig_t = fm.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"]["orig-timestamp"]
+            release_n = fm.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"]["release-number"]
+
+            on_server_orig_t = pkg_info["metadata"]["orig-timestamp"]
+            on_server_release_n = pkg_info["metadata"]["release-number"]
+
+            if orig_t != on_server_orig_t :
+                reactor.callInThread(self.__download_new_pkg, pkg_id, url, self)
+                return
+            else:
+                force_download = False
+
+                for x in range(int(release_n) + 1, int(on_server_release_n) + 1) :
+                    if "diff-%s-%s.bz2" % (orig_t, x) not in pkg_info["diffs"] :
+                        force_download = True
+                        break
+
+                if force_download == True:
+                    reactor.callInThread(self.__download_new_pkg, pkg_id, url, self)
+                    return
+                else:
+                    patches = []
+                    for x in range(int(release_n) + 1, int(on_server_release_n) + 1) :
+                        patches.append(["diff-%s-%s.bz2" % (orig_t, x),
+                                        urlparse.urljoin(url, "diff-%s-%s.bz2" % (orig_t, x))])
+
+                    dest_patch = os.path.join(NANNY_DAEMON_BLACKLISTS_DIR,
+                                              "%s.update-patch" % (pkg_id))
+
+                    if os.path.exists(dest_patch):
+                        os.unlink(dest_patch)
+
+                    dest_patch_fd = open(dest_patch, "w")
+                    lines_counted = 0
+
+                    for diff_filename, diff_url in patches :
+                        dest_file = os.path.join(NANNY_DAEMON_BLACKLISTS_DIR,
+                                                 "%s-%s" % (pkg_id, diff_filename))
+
+                        if os.path.exists(dest_file):
+                            os.unlink(dest_file)
+
+                        df = open(dest_file, "wb")
+                        df.write(urllib2.urlopen(diff_url).read())
+                        df.close()
+
+                        df_uc = bz2.BZ2File(dest_file, "r")
+                        for line in df_uc.readlines():
+                            if not line.startswith("#") :
+                                dest_patch_fd.write(line)
+                                lines_counted += 1
+
+                        df_uc.close()
+                        os.unlink(dest_file)
+
+                    dest_patch_fd.close()
+
+                    dest_patch_fd = open(dest_patch, "r")
+
+                    if pkg_id in fm.db_pools.keys():
+                        db = fm.db_pools.pop(pkg_id)
+                        db.close()
+
+                    dest_db = os.path.join(NANNY_DAEMON_BLACKLISTS_DIR,
+                                           "%s.db" % (pkg_id))
+                    db_conn = sqlite3.connect(dest_db)
+
+                    fm.pkg_filters_conf[pkg_id]["status"]=PKG_STATUS_UPDATING
+                    fm.pkg_filters_conf[pkg_id]["progress"] = 0
+
+                    lines_inserted = 0
+
+                    sql = ''
+                    update_ok = True
+                    for line in dest_patch_fd.readlines():
+                        lines_inserted += 1
+                        sql = sql + line
+                        if sqlite3.complete_statement(sql) :
+                            c = db_conn.cursor()
+                            try:
+                                c.execute(sql)
+                            except:
+                                db_conn.rollback()
+                                update_ok = False
+                                break
+
+                            sql = ''
+                        fm.pkg_filters_conf[pkg_id]["progress"] = (lines_inserted * 100) / lines_counted
+
+                    if update_ok == True:
+                        c = db_conn.cursor()
+                        c.execute ("UPDATE metadata SET value='%s' WHERE key='release-number'" % on_server_release_n)
+                        db_conn.commit()
+                        print "UPDATED pkg:%s to version:%s" % (pkg_id, on_server_release_n)
+
+                    db_conn.close()
+                    dest_patch_fd.close()
+                    os.unlink(dest_patch)
+
+                    if update_ok == True :
+                        fm.pkg_filters_conf[pkg_id]["status"]=PKG_STATUS_READY
+                        fm.pkg_filters_conf[pkg_id]["pkg_info"] = pkg_info
+                        fm.pkg_filters_conf[pkg_id]["progress"] = 0
+                    else:
+                        fm.pkg_filters_conf[pkg_id]["status"]=PKG_STATUS_READY_UPDATE_AVAILABLE
+                        fm.pkg_filters_conf[pkg_id]["progress"] = 0
+
+                    fm.db_pools[pkg_id] = adbapi.ConnectionPool('sqlite3', dest_db,
+                                                                check_same_thread=False,
+                                                                cp_openfun=on_db_connect)
+                    print "Added to db pool -> %s" % pkg_id  
+                    threads.blockingCallFromThread(reactor, 
+                                                   fm._save_pkg_filters_conf)
+        except:
+            print "Something wrong updating pkg : %s" % pkg_id
+            fm.pkg_filters_conf[pkg_id]["status"]=PKG_STATUS_READY_UPDATE_AVAILABLE
+            fm.pkg_filters_conf[pkg_id]["progress"] = 0
+            threads.blockingCallFromThread(reactor, 
+                                           fm._save_pkg_filters_conf)          
+    
     def __update_pkg_checker_timeout(self):
         reactor.callInThread(self.__update_pkg_checker, self)
         gobject.timeout_add(5*60*1000, self.__update_pkg_checker_timeout)
