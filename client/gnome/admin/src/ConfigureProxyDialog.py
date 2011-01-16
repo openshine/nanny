@@ -485,6 +485,8 @@ class ConfigureProxyDialog (gtk.Dialog):
         packaged_blacklist_categories_model.clear()
 
         if selection.count_selected_rows () > 0:
+            self.del_bl_button.set_sensitive(True)
+
             model, iter = selection.get_selected()
             if iter:
                 self.selected_packaged_filter_id = model.get_value (iter, 0)
@@ -502,6 +504,7 @@ class ConfigureProxyDialog (gtk.Dialog):
             else:
                 self.selected_packaged_filter_id = None
         else:
+            self.del_bl_button.set_sensitive(False)
             self.selected_packaged_filter_id = None
     
     def __on_packaged_blacklist_categories_toggled (self, cell, path, data=None):
