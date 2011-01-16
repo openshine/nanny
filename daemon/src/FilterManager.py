@@ -26,6 +26,7 @@
 import gobject
 import gio
 import os
+import time
 import hashlib
 import sys
 import copy
@@ -116,6 +117,7 @@ class FilterManager (gobject.GObject) :
         
         self.custom_filters_db = self.__get_custom_filters_db()
         self.__start_packaged_filters()
+        gobject.timeout_add(5000, self.__update_pkg_checker_timeout)
 
     def stop(self):
         print "Stop Filter Manager"
@@ -367,6 +369,36 @@ class FilterManager (gobject.GObject) :
     def update_pkg_filter(self, pkg_id, new_db):
         pass
 
+    def __update_pkg_checker_timeout(self):
+        reactor.callInThread(self.__update_pkg_checker, self)
+        gobject.timeout_add(5*60*1000, self.__update_pkg_checker_timeout)
+        return False
+
+    def __update_pkg_checker(self, fm):
+        import urllib2
+        
+        for pkg_id in fm.pkg_filters_conf.keys() :
+            try:
+                if fm.pkg_filters_conf[pkg_id]["status"] == PKG_STATUS_READY :
+                    url = fm.pkg_filters_conf[pkg_id]["update_url"]
+                    pkg_info = json.load(urllib2.urlopen(url))
+
+                    orig_t = fm.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"]["orig-timestamp"]
+                    release_n = fm.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"]["release-number"]
+
+                    on_server_orig_t = pkg_info["metadata"]["orig-timestamp"]
+                    on_server_release_n = pkg_info["metadata"]["release-number"]
+
+                    if orig_t == on_server_orig_t and release_n == on_server_release_n :
+                        print "Nothing to update (pkg : %s)!" % pkg_id
+                    else:
+                        print "Seems there is and update (pkg: %s)" % pkg_id
+                        fm.pkg_filters_conf[pkg_id]["status"] = PKG_STATUS_READY_UPDATE_AVAILABLE
+                        threads.blockingCallFromThread(reactor, 
+                                                       fm._save_pkg_filters_conf)
+            except:
+                print "I can't update pkgs info (no network conn??? )"
+        
     def list_pkg_filter(self):
         ret = []
         for x in self.pkg_filters_conf.keys():

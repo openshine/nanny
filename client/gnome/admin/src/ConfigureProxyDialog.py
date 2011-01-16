@@ -182,18 +182,19 @@ class ConfigureProxyDialog (gtk.Dialog):
     def __update_packaged_blacklist_model(self):
         try:
             list_store =  self.packaged_blacklist_treeview.get_model()
-
             server_list =  self.dbus_client.list_pkg_filters () 
-
-                
+            
             for filter_id in server_list:
                 included = False
                 for row in list_store:
                     if row[0] == filter_id :
                         metadata = self.dbus_client.get_pkg_filter_metadata(filter_id)
                         filter_name = _("Unknown Blacklist Name") if not metadata.has_key("name") else metadata["name"]
-                        filter_description = "" if not metadata.has_key("provider") else metadata["provider"]                            
+                        filter_description = "" if not metadata.has_key("provider") else metadata["provider"]
+                        filter_description = filter_description + " " + _("(version : %s)" % metadata["release-number"])
                         if metadata.has_key("status") and  metadata.has_key("progress") :
+                            if metadata["status"] == 1:
+                                filter_description = "<b>" + _("There is an update available") + "</b>"
                             if metadata["status"] == 2:
                                 filter_description = _("Downloading information, please wait")
                             elif metadata["status"] == 3:
@@ -201,7 +202,7 @@ class ConfigureProxyDialog (gtk.Dialog):
                             elif metadata["status"] == 4:
                                 filter_description = _("Updating blacklist (%s%%)" % metadata["progress"])
 
-                        row[1] = "<b>%s</b>\n   %s" % (filter_name, filter_description)
+                        row[1] = "<b>%s</b>\n   <small>%s</small>" % (filter_name, filter_description)
                         included = True
                         break
                 
@@ -231,6 +232,20 @@ class ConfigureProxyDialog (gtk.Dialog):
                     continue
 
                 iter = list_store.iter_next(iter)
+
+            selection = self.packaged_blacklist_treeview.get_selection()
+            if selection.count_selected_rows () > 0:
+                self.del_bl_button.set_sensitive(True)
+                model, iter = selection.get_selected()
+                pkg_id = model.get_value (iter, 0)
+                metadata = self.dbus_client.get_pkg_filter_metadata(pkg_id)
+                if metadata.has_key("status") and metadata["status"] == 1 :
+                    self.update_bl_button.set_sensitive(True)
+                else:
+                    self.update_bl_button.set_sensitive(False)
+            else:
+                self.del_bl_button.set_sensitive(False)
+                self.update_bl_button.set_sensitive(False)   
 
             gobject.timeout_add(2000, self.__update_packaged_blacklist_model)
             return False
@@ -505,7 +520,13 @@ class ConfigureProxyDialog (gtk.Dialog):
 
             model, iter = selection.get_selected()
             if iter:
-                self.selected_packaged_filter_id = model.get_value (iter, 0)
+                pkg_id = model.get_value (iter, 0)
+                self.selected_packaged_filter_id = pkg_id
+                metadata = self.dbus_client.get_pkg_filter_metadata(pkg_id)
+                if metadata.has_key("status") and metadata["status"] == 1 :
+                    self.update_bl_button.set_sensitive(True)
+                else:
+                    self.update_bl_button.set_sensitive(False)
 
                 categories = self.dbus_client.get_pkg_filter_user_categories (self.selected_packaged_filter_id, self.__selected_user_id) 
                 if len (categories) > 0:
@@ -521,6 +542,7 @@ class ConfigureProxyDialog (gtk.Dialog):
                 self.selected_packaged_filter_id = None
         else:
             self.del_bl_button.set_sensitive(False)
+            self.update_bl_button.set_sensitive(False)
             self.selected_packaged_filter_id = None
     
     def __on_packaged_blacklist_categories_toggled (self, cell, path, data=None):
