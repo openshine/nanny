@@ -366,7 +366,8 @@ class FilterManager (gobject.GObject) :
         
         return True
                 
-    def update_pkg_filter(self, pkg_id, new_db):
+    def update_pkg_filter(self, pkg_id):
+        print "UPDATE -----> PKG_ID : %s" % pkg_id
         pass
 
     def __update_pkg_checker_timeout(self):

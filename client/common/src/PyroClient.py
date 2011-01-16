@@ -115,8 +115,8 @@ class PyroClient(gobject.GObject):
     def remove_pkg_filter (self, pkg_id):
         return self.nanny_wcf.RemovePkgFilter(pkg_id)
     
-    def update_pkg_filter (self, pkg_id, new_db_path):
-        return self.nanny_wcf.UpdatePkgFilter(pkg_id, new_db_path)
+    def update_pkg_filter (self, pkg_id):
+        return self.nanny_wcf.UpdatePkgFilter(pkg_id)
     
     def list_pkg_filters (self):
         return self.nanny_wcf.ListPkgFilters()

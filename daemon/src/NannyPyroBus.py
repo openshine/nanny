@@ -173,8 +173,8 @@ class OrgGnomeNannyWebDatabase(Pyro.core.ObjBase):
     def RemovePkgFilter(self, pkg_id):
         return PyroBlockingCallFromThread(reactor, self.quarterback.filter_manager.remove_pkg_filter, str(pkg_id))
 
-    def UpdatePkgFilter(self, pkg_id, new_db_path):
-        return PyroBlockingCallFromThread(reactor, self.quarterback.filter_manager.update_pkg_filter, str(pkg_id), str (new_db_path))
+    def UpdatePkgFilter(self, pkg_id):
+        return PyroBlockingCallFromThread(reactor, self.quarterback.filter_manager.update_pkg_filter, str(pkg_id))
 
     def ListPkgFilters(self):
         return PyroBlockingCallFromThread(reactor, self.quarterback.filter_manager.list_pkg_filter)

@@ -253,11 +253,11 @@ class NannyDBus(dbus.service.Object):
         return self.quarterback.filter_manager.remove_pkg_filter(str(pkg_id))
 
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
-                         in_signature='ss', out_signature='b',
+                         in_signature='s', out_signature='b',
                          sender_keyword='sender', connection_keyword='conn')
-    def UpdatePkgFilter(self, pkg_id, new_db_path, sender=None, conn=None):
+    def UpdatePkgFilter(self, pkg_id, sender=None, conn=None):
         self._check_polkit_privilege(sender, conn, 'org.gnome.nanny.admin')
-        return self.quarterback.filter_manager.update_pkg_filter(str(pkg_id), str (new_db_path))
+        return self.quarterback.filter_manager.update_pkg_filter(str(pkg_id))
     
     @dbus.service.method("org.gnome.Nanny.WebDatabase",
                          in_signature='', out_signature='as')

@@ -619,7 +619,15 @@ class ConfigureProxyDialog (gtk.Dialog):
         d.destroy()
     
     def __on_update_bl_button_cb(self, widget):
-        pass
+        try:
+            selection = self.packaged_blacklist_treeview.get_selection()
+            model, iter = selection.get_selected()
+            pkg_id = model.get_value(iter, 0)
+        except:
+            return
+
+        self.dbus_client.update_pkg_filter (pkg_id)
+        widget.set_sensitive(False)
 
     def __load_dialog (self):
         ui_file = os.path.join (nanny.client.gnome.admin.ui_files_dir, "nac_wcf_edit_dialog.ui")
