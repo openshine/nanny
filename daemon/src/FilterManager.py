@@ -326,6 +326,7 @@ class FilterManager (gobject.GObject) :
             os.unlink(dest_file)
 
             fm.pkg_filters_conf[pkg_id]["status"]=PKG_STATUS_READY
+            fm.pkg_filters_conf[pkg_id]["progress"] = 0
             fm.db_pools[pkg_id] = adbapi.ConnectionPool('sqlite3', dest_db,
                                                         check_same_thread=False,
                                                         cp_openfun=on_db_connect)
