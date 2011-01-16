@@ -192,8 +192,15 @@ class ConfigureProxyDialog (gtk.Dialog):
                     if row[0] == filter_id :
                         metadata = self.dbus_client.get_pkg_filter_metadata(filter_id)
                         filter_name = _("Unknown Blacklist Name") if not metadata.has_key("name") else metadata["name"]
-                        filter_description = "" if not metadata.has_key("provider") else metadata["provider"]
-                        
+                        filter_description = "" if not metadata.has_key("provider") else metadata["provider"]                            
+                        if metadata.has_key("status") and  metadata.has_key("progress") :
+                            if metadata["status"] == 2:
+                                filter_description = _("Downloading information, please wait")
+                            elif metadata["status"] == 3:
+                                filter_description = _("Installing blacklist (%s%%)" % metadata["progress"])
+                            elif metadata["status"] == 4:
+                                filter_description = _("Updating blacklist (%s%%)" % metadata["progress"])
+
                         row[1] = "<b>%s</b>\n   %s" % (filter_name, filter_description)
                         included = True
                         break

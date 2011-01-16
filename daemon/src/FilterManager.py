@@ -80,13 +80,15 @@ NANNY_DAEMON_BLACKLISTS_DIR = os.path.join(NANNY_DAEMON_DATA, "blacklists")
 NANNY_DAEMON_BLACKLISTS_SYS_DIR = os.path.join(NANNY_DAEMON_DATA, "sysblacklists") 
 NANNY_DAEMON_BLACKLISTS_CONF_FILE = os.path.join(NANNY_DAEMON_DATA, "bl_conf.db")
 
-PKG_STATUS_ERROR_NOT_EXISTS = -2
-PKG_STATUS_ERROR_INSTALLING_NEW_BL = -1
-PKG_STATUS_ERROR = 0
-PKG_STATUS_INSTALLING = 1
-PKG_STATUS_UPDATING = 2
-PKG_STATUS_READY = 3
-PKG_STATUS_READY_UPDATE_AVAILABLE = 4
+PKG_STATUS_ERROR_NOT_EXISTS = -3
+PKG_STATUS_ERROR_INSTALLING_NEW_BL = -2
+PKG_STATUS_ERROR = -1
+PKG_STATUS_READY = 0
+PKG_STATUS_READY_UPDATE_AVAILABLE = 1
+PKG_STATUS_DOWNLOADING = 2
+PKG_STATUS_INSTALLING = 3
+PKG_STATUS_UPDATING = 4
+
 
 def mkdir_path(path):
     try:
@@ -214,7 +216,6 @@ class FilterManager (gobject.GObject) :
                 self.db_pools[pkg_id] = adbapi.ConnectionPool('sqlite3', db,
                                                               check_same_thread=False,
                                                               cp_openfun=on_db_connect)
-                gobject.timeout_add(1, self._refresh_db_categories_cache, pkg_id)
                 print "Added to db pool -> %s" % pkg_id
 
     def _save_pkg_filters_conf(self):
@@ -229,17 +230,24 @@ class FilterManager (gobject.GObject) :
             return []
 
     def _refresh_db_categories_cache(self, pkg_id):
-        if self.db_pools.has_key(pkg_id) :
-            sql = "SELECT id,name FROM category"
-            query = self.db_pools[pkg_id].runQuery(sql)
-            block_d = BlockingDeferred(query)
-            qr = block_d.blockOn()
-            
-            self.db_cat_cache[pkg_id] = {}
-            for id, name in qr:
-                self.db_cat_cache[pkg_id][int(id)] = name
-            
-            print "Categories cache from %s refresh" % pkg_id
+        try:
+            if self.db_pools.has_key(pkg_id) and pkg_id not in self.db_cat_cache.keys() :
+                print "REFRESHING CATEGORIES (%s)" % pkg_id
+                sql = "SELECT id,name FROM category"
+                query = self.db_pools[pkg_id].runQuery(sql)
+                block_d = BlockingDeferred(query)
+                qr = block_d.blockOn()
+
+                self.db_cat_cache[pkg_id] = {}
+                for id, name in qr:
+                    self.db_cat_cache[pkg_id][int(id)] = name
+
+                print "REFRESHED CATEGORIES (%s)" % pkg_id
+        except:
+            print "Something goes wrong updating categories"
+            return False
+
+        return True
   
     def add_pkg_filter(self, url):
         pkg_id = hashlib.md5(url).hexdigest()
@@ -248,7 +256,8 @@ class FilterManager (gobject.GObject) :
         
         self.pkg_filters_conf[pkg_id] = {"users_info" : {},
                                          "pkg_info": {},
-                                         "status" : PKG_STATUS_INSTALLING,
+                                         "status" : PKG_STATUS_DOWNLOADING,
+                                         "progress" : 0,
                                          "update_url" : url
                                          }
         
@@ -281,21 +290,34 @@ class FilterManager (gobject.GObject) :
             df = open(dest_file, "wb")
             df.write(urllib2.urlopen(base_url).read())
             df.close()
+            
+            df_uc_c = bz2.BZ2File(dest_file, "r")
+            lines_counted = 0
+            for line in df_uc_c.readlines():
+                lines_counted += 1
+            df_uc_c.close()
 
             df_uc = bz2.BZ2File(dest_file, "r")
             db_conn = sqlite3.connect(dest_db)
 
             sql=''
+            
+            fm.pkg_filters_conf[pkg_id]["status"]=PKG_STATUS_INSTALLING
+            fm.pkg_filters_conf[pkg_id]["progress"] = 0
+
+            lines_inserted = 0
 
             for line in df_uc.readlines():
+                lines_inserted += 1
                 sql = sql + line
-                if sqlite3.complete_statement(sql) :    
+                if sqlite3.complete_statement(sql) :
                     c = db_conn.cursor()
                     try:
                         c.execute(sql)
                     except:
                         pass
                     sql = ''
+                fm.pkg_filters_conf[pkg_id]["progress"] = (lines_inserted * 100) / lines_counted
 
             db_conn.commit()
             db_conn.close()
@@ -310,8 +332,7 @@ class FilterManager (gobject.GObject) :
             print "Added to db pool -> %s" % pkg_id  
             threads.blockingCallFromThread(reactor, 
                                            fm._save_pkg_filters_conf)
-            threads.blockingCallFromThread(reactor, 
-                                           fm._refresh_db_categories_cache, pkg_id)
+            
         except:
             if os.path.exists(dest_file):
                 os.unlink(dest_file)
@@ -321,6 +342,7 @@ class FilterManager (gobject.GObject) :
             
             fm.pkg_filters_conf[pkg_id]["pkg_info"]={}
             fm.pkg_filters_conf[pkg_id]["status"]=PKG_STATUS_ERROR_INSTALLING_NEW_BL
+            fm.pkg_filters_conf[pkg_id]["progress"] = 0
             threads.blockingCallFromThread(reactor, 
                                            fm._save_pkg_filters_conf)
     
@@ -360,6 +382,7 @@ class FilterManager (gobject.GObject) :
                 
                 metadata = copy.deepcopy(self.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"])
                 metadata["status"] = self.pkg_filters_conf[pkg_id]["status"]
+                metadata["progress"] = self.pkg_filters_conf[pkg_id]["progress"]
                 
                 return metadata
         except:
@@ -367,7 +390,8 @@ class FilterManager (gobject.GObject) :
 
         return {"name" : "Unknown", 
                 "provider" : "Unknown", 
-                "status" : self.pkg_filters_conf[pkg_id]["status"]}
+                "status" : self.pkg_filters_conf[pkg_id]["status"],
+                "progress" : self.pkg_filters_conf[pkg_id]["progress"]}
     
     def set_pkg_filter_metadata(self, pkg_id, name, description):
         #Deprecated !!
@@ -479,6 +503,9 @@ class FilterManager (gobject.GObject) :
             b_path = ''
 
             for db in self.pkg_filters_conf.keys():
+                self._refresh_db_categories_cache(db)
+
+            for db in self.pkg_filters_conf.keys():
                 if self.pkg_filters_conf[db]["users_info"].has_key(uid) :
                     if len(self.pkg_filters_conf[db]["users_info"][uid]) > 0 :
                         
@@ -577,6 +604,9 @@ class FilterManager (gobject.GObject) :
                 b_path = b_path + x[3]
             if x[4] != None:
                 b_path = b_path + x[4]
+
+            for db in self.pkg_filters_conf.keys():
+                self._refresh_db_categories_cache(db)
 
             for db in self.pkg_filters_conf.keys():
                 if self.pkg_filters_conf[db]["users_info"].has_key(uid) :
