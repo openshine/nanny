@@ -241,7 +241,7 @@ class FilterManager (gobject.GObject) :
             print "Categories cache from %s refresh" % pkg_id
   
     def add_pkg_filter(self, url):
-        pkg_id = hashlib.md5().hexdigest()
+        pkg_id = hashlib.md5(url).hexdigest()
         if pkg_id in self.pkg_filters_conf.keys() :
             return False
         
@@ -353,8 +353,12 @@ class FilterManager (gobject.GObject) :
     def get_pkg_filter_metadata(self, pkg_id):
         try:
             if self.pkg_filters_conf[pkg_id]["pkg_info"].has_key("metadata"):
-                ret = [self.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"]["name"],
-                       self.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"]["provider"]]
+                if self.pkg_filters_conf[pkg_id]["status"] == PKG_STATUS_INSTALLING :
+                    ret = [self.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"]["name"],
+                           self.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"]["provider"] + " (Installing new blacklist)"]
+                else:
+                    ret = [self.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"]["name"],
+                           self.pkg_filters_conf[pkg_id]["pkg_info"]["metadata"]["provider"]]
                 return ret
         except:
             pass
