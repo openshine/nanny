@@ -47,6 +47,7 @@ class BlacklistManager:
         self.dialog.get_content_area().add (self.alignment)
 
         self.blacklist_import_button.connect ('clicked', self.__on_blacklist_import_button_clicked)
+        self.blacklist_update_button.connect ('clicked', self.__on_blacklist_update_button_clicked)
         self.blacklist_remove_button.connect ('clicked', self.__on_blacklist_remove_button_clicked)
         self.unlock_button.connect('clicked', self.__on_unlock_button_clicked)
 
@@ -95,6 +96,7 @@ class BlacklistManager:
             self.unlock_area.show()
 
         self.blacklist_import_button.set_sensitive(lock_status)
+        self.blacklist_update_button.set_sensitive(lock_status)
         self.blacklist_remove_button.set_sensitive(lock_status)
         
 
@@ -112,32 +114,36 @@ class BlacklistManager:
                 model.append ((read_only, filter_id, "<b>%s</b>\n   %s" % (filter_name, filter_description)))
 
     def __on_blacklist_import_button_clicked (self, widget, data=None):
-        file_selection_dialog = gtk.FileChooserDialog (_("Select file to import"), self.dialog,
-                buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT,
-                    gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
-        file_selection_dialog.set_select_multiple (False)
+	dialog = gtk.MessageDialog(
+		None,
+		gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
+		gtk.MESSAGE_QUESTION,
+		gtk.BUTTONS_OK,
+		None)
 
-        file_filter = gtk.FileFilter ()
-        file_filter.add_pattern ("*.nbl")
+        def responseToDialog(entry, dialog, response):
+            dialog.response(response)
 
-        file_selection_dialog.set_filter (file_filter)
-        response = file_selection_dialog.run()
+	dialog.set_markup('Introduce the nannycentral repository url')
+	entry = gtk.Entry()
+	entry.connect("activate", responseToDialog, dialog, gtk.RESPONSE_OK)
+	hbox = gtk.HBox()
+	hbox.pack_start(gtk.Label("Url:"), False, 5, 5)
+	hbox.pack_end(entry)
+	dialog.format_secondary_markup("It's something like http://www.nannycentral.info/blacklist/blacklist.json ...")
+	dialog.vbox.pack_end(hbox, True, True, 0)
+	dialog.show_all()
+	dialog.run()
+	text = entry.get_text()
+	dialog.destroy()
+        
+        if not text.startswith("http:/") :
+            text = "http://" + text
 
-        if response == gtk.RESPONSE_ACCEPT:
-            filename = file_selection_dialog.get_filename()
-            result = self.dbus_client.add_pkg_filter (filename)
-            
-            if result:
-                self.__fill_treeview ()
-            else:
-                d = gtk.MessageDialog(None, gtk.DIALOG_MODAL, type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
-                d.set_property("icon-name", "nanny")
-                d.set_markup(_("<b>Error importing blacklist file</b>"))
-                d.format_secondary_markup(_("Some error has occured importing the blacklist file."))
-                d.run()
-                d.destroy()
+        result = self.dbus_client.add_pkg_filter (text)
 
-        file_selection_dialog.destroy()
+    def __on_blacklist_update_button_clicked (self, widget, data=None):
+        pass
 
     def __on_blacklist_remove_button_clicked (self, widget, data=None):
         if self.__selected_blacklist == None:

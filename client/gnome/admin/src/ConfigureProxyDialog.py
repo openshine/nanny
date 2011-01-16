@@ -54,6 +54,10 @@ class ConfigureProxyDialog (gtk.Dialog):
         self.custom_whitelist_edit_button.connect ('clicked', self.__on_custom_whitelist_edit_button_clicked)
         self.custom_whitelist_remove_button.connect ('clicked', self.__on_custom_whitelist_remove_button_clicked)
 
+        self.add_bl_button.connect("clicked", self.__on_add_bl_button_cb)
+        self.del_bl_button.connect("clicked", self.__on_del_bl_button_cb)
+        self.update_bl_button.connect("clicked", self.__on_update_bl_button_cb)
+
         self.__init_custom_treeview (self.custom_blacklist_treeview)
         self.__init_custom_treeview (self.custom_whitelist_treeview)
         self.__init_pkg_treeview (self.packaged_blacklist_treeview)
@@ -169,6 +173,54 @@ class ConfigureProxyDialog (gtk.Dialog):
         for filter_id, readonly in pkg_filters:
             filter_name, filter_description = self.dbus_client.get_pkg_filter_metadata(filter_id)
             packaged_blacklist_model.append ((filter_id, "<b>%s</b>\n   %s" % (filter_name, filter_description)))
+
+        gobject.timeout_add(1, self.__update_packaged_blacklist_model)
+
+    def __update_packaged_blacklist_model(self):
+        try:
+            list_store =  self.packaged_blacklist_treeview.get_model()
+
+            server_list =  self.dbus_client.list_pkg_filters () 
+
+                
+            for filter_id, ro in server_list:
+                included = False
+                for row in list_store:
+                    if row[0] == filter_id :
+                        filter_name, filter_description = self.dbus_client.get_pkg_filter_metadata(filter_id)
+                        row[1] = "<b>%s</b>\n   %s" % (filter_name, filter_description)
+                        included = True
+                        break
+                
+                if included == True:
+                    continue
+
+                filter_name, filter_description = self.dbus_client.get_pkg_filter_metadata(filter_id)
+                list_store.append ((filter_id, "<b>%s</b>\n   %s" % (filter_name, filter_description)))
+            
+            iter = list_store.get_iter_first()
+            while iter :
+                id = list_store.get_value(iter, 0)
+
+                to_remove = True
+                for filter_id, ro  in server_list:
+                    if filter_id == id :
+                        to_remove = False
+                        break
+                
+                if to_remove == True :
+                    tmp_iter = iter 
+                    iter = list_store.iter_next(tmp_iter)
+                    list_store.remove(tmp_iter)
+                    continue
+
+                iter = list_store.iter_next(iter)
+
+            gobject.timeout_add(2000, self.__update_packaged_blacklist_model)
+            return False
+        except:
+            return False
+
 
     def __on_custom_blacklist_add_button_clicked (self, widget, data=None):
         xml = self.__load_dialog ()
@@ -479,6 +531,54 @@ class ConfigureProxyDialog (gtk.Dialog):
 
         if category_active:
             active_categories.append (category_name)
+
+    def __on_add_bl_button_cb(self, widget):
+        dialog = gtk.MessageDialog(None,
+                                   gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
+                                   gtk.MESSAGE_QUESTION,
+                                   gtk.BUTTONS_OK,
+                                   None)
+        def responseToDialog(entry, dialog, response):
+            dialog.response(response)
+            
+        dialog.set_markup(_('Introduce the nannycentral repository url'))
+        entry = gtk.Entry()
+        entry.connect("activate", responseToDialog, dialog, gtk.RESPONSE_OK)
+        hbox = gtk.HBox()
+        hbox.pack_start(gtk.Label("Url:"), False, 5, 5)
+        hbox.pack_end(entry)
+        dialog.format_secondary_markup(_("It's something like http://www.nannycentral.info/blacklist/blacklist.json ..."))
+        dialog.vbox.pack_end(hbox, True, True, 0)
+        dialog.show_all()
+        dialog.run()
+        text = entry.get_text()
+        dialog.destroy()
+
+        if not text.startswith("http:/") :
+            text = "http://" + text
+
+        result = self.dbus_client.add_pkg_filter (text)
+
+    def __on_del_bl_button_cb(self, widget):
+        try:
+            selection = self.packaged_blacklist_treeview.get_selection()
+            model, iter = selection.get_selected()
+            pkg_id = model.get_value(iter, 0)
+        except:
+            return
+
+        d = gtk.MessageDialog(None, gtk.DIALOG_MODAL, type=gtk.MESSAGE_QUESTION, buttons=gtk.BUTTONS_OK_CANCEL)
+        d.set_property("icon-name", "nanny")
+        d.set_markup(_("<b>Are you sure you want to delete this blacklist?</b>"))
+        d.format_secondary_markup(_("This action will remove all the user configuration linked to the blacklist."))
+        response = d.run()
+        if response == gtk.RESPONSE_OK:
+            self.dbus_client.remove_pkg_filter (pkg_id)
+
+        d.destroy()
+    
+    def __on_update_bl_button_cb(self, widget):
+        pass
 
     def __load_dialog (self):
         ui_file = os.path.join (nanny.client.gnome.admin.ui_files_dir, "nac_wcf_edit_dialog.ui")
