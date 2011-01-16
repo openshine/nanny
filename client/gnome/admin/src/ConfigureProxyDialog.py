@@ -168,9 +168,9 @@ class ConfigureProxyDialog (gtk.Dialog):
                 custom_blacklist_model.append ((filter_id, "<b>%s</b>\n   %s" % (filter_name, filter_description), filter_name, filter_description, filter_regex))
             else:
                 custom_whitelist_model.append ((filter_id, "<b>%s</b>\n   %s" % (filter_name, filter_description), filter_name, filter_description, filter_regex))
-
-        pkg_filters = self.dbus_client.list_pkg_filters ()
-        for filter_id, readonly in pkg_filters:
+        
+        
+        for filter_id in self.dbus_client.list_pkg_filters () :
             filter_name, filter_description = self.dbus_client.get_pkg_filter_metadata(filter_id)
             packaged_blacklist_model.append ((filter_id, "<b>%s</b>\n   %s" % (filter_name, filter_description)))
 
@@ -183,7 +183,7 @@ class ConfigureProxyDialog (gtk.Dialog):
             server_list =  self.dbus_client.list_pkg_filters () 
 
                 
-            for filter_id, ro in server_list:
+            for filter_id in server_list:
                 included = False
                 for row in list_store:
                     if row[0] == filter_id :
@@ -203,7 +203,7 @@ class ConfigureProxyDialog (gtk.Dialog):
                 id = list_store.get_value(iter, 0)
 
                 to_remove = True
-                for filter_id, ro  in server_list:
+                for filter_id in server_list:
                     if filter_id == id :
                         to_remove = False
                         break

@@ -346,7 +346,7 @@ class FilterManager (gobject.GObject) :
     def list_pkg_filter(self):
         ret = []
         for x in self.pkg_filters_conf.keys():
-            ret.append([x, False])
+            ret.append(x)
                 
         return ret
     
