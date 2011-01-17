@@ -18,9 +18,19 @@
 # USA
 
 import os
+import sys
 import gtk
 import gettext
 import __builtin__
+
+if os.name == "nt" :
+    if not hasattr(sys, "frozen") :
+        root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        nanny_lib_path = os.path.join(root_path, "lib", "python2.6", "site-packages")
+        sys.path.append(nanny_lib_path)
+    else:
+        sys.stdout = open(os.devnull, 'w')
+        sys.stderr = open(os.devnull, 'w')
 
 import nanny.client.gnome.systray
 
