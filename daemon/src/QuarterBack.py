@@ -154,6 +154,18 @@ class QuarterBack(gobject.GObject) :
                 available_time = self.get_available_time(user_id, app_id)
                 self.emit("block-status", block_status, user_id, app_id, next_change, available_time)
 
+    def get_block_status_by_uid(self, user_id):
+        if user_id not in self.blocks.keys():
+            return {}
+        
+        ret = {}
+        for app_id in self.blocks[user_id] :
+            block_status, next_change = self.is_blocked(user_id, app_id)
+            available_time = self.get_available_time(user_id, app_id)
+            ret[app_id] = [block_status, next_change, available_time]
+        
+        return ret
+
     def __check_users_info(self):
         some_users_info_changed = False
         if not self.usersmanager.has_changes() :
