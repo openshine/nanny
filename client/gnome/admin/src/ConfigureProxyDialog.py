@@ -196,7 +196,7 @@ class ConfigureProxyDialog (gtk.Dialog):
                             if metadata["status"] == 1:
                                 filter_description = "<b>" + _("There is an update available") + "</b>"
                             if metadata["status"] == 2:
-                                filter_description = _("Downloading information, please wait")
+                                filter_description = _("Downloading information (%s%%)" % metadata["progress"])
                             elif metadata["status"] == 3:
                                 filter_description = _("Installing blacklist (%s%%)" % metadata["progress"])
                             elif metadata["status"] == 4:

@@ -277,8 +277,15 @@ class FilterManager (gobject.GObject) :
             if pkg_id in fm.db_pools.keys():
                 db = fm.db_pools.pop(pkg_id)
                 db.close()
+            
+            try:
+                pkg_info = json.load(urllib2.urlopen(url))
+            except:
+                fm.pkg_filters_conf.pop(pkg_id)
+                threads.blockingCallFromThread(reactor, 
+                                               fm._save_pkg_filters_conf)
+                return
 
-            pkg_info = json.load(urllib2.urlopen(url))
             fm.pkg_filters_conf[pkg_id]["pkg_info"] = pkg_info
 
             base_filename = pkg_info["base"]
@@ -290,14 +297,28 @@ class FilterManager (gobject.GObject) :
 
             if os.path.exists(dest_file):
                 os.unlink(dest_file)
-            
+
             if os.path.exists(dest_db):
                 os.unlink(dest_db)
 
             df = open(dest_file, "wb")
-            df.write(urllib2.urlopen(base_url).read())
+            url_x = urllib2.urlopen(base_url)
+            fm.pkg_filters_conf[pkg_id]["progress"] = 0
+
+            total_len = int(url_x.info().getheaders("Content-Length")[0])
+            downl_len = 0
+
+            while True:
+                x = url_x.read(1024)
+                if x != '' :
+                    df.write(x)
+                    downl_len += len(x)
+                    fm.pkg_filters_conf[pkg_id]["progress"] = (downl_len * 100) / total_len
+                else:
+                    break
+
             df.close()
-            
+
             df_uc_c = bz2.BZ2File(dest_file, "r")
             lines_counted = 0
             for line in df_uc_c.readlines():
@@ -308,7 +329,7 @@ class FilterManager (gobject.GObject) :
             db_conn = sqlite3.connect(dest_db)
 
             sql=''
-            
+
             fm.pkg_filters_conf[pkg_id]["status"]=PKG_STATUS_INSTALLING
             fm.pkg_filters_conf[pkg_id]["progress"] = 0
 
@@ -387,6 +408,7 @@ class FilterManager (gobject.GObject) :
 
         try:
             fm.pkg_filters_conf[pkg_id]["status"] = PKG_STATUS_DOWNLOADING
+            fm.pkg_filters_conf[pkg_id]["progress"] = 0
             url = fm.pkg_filters_conf[pkg_id]["update_url"]
             pkg_info = json.load(urllib2.urlopen(url))
 
@@ -425,6 +447,9 @@ class FilterManager (gobject.GObject) :
                     dest_patch_fd = open(dest_patch, "w")
                     lines_counted = 0
 
+                    total_diffs = len(patches)
+                    downl_diffs = 0
+
                     for diff_filename, diff_url in patches :
                         dest_file = os.path.join(NANNY_DAEMON_BLACKLISTS_DIR,
                                                  "%s-%s" % (pkg_id, diff_filename))
@@ -433,7 +458,15 @@ class FilterManager (gobject.GObject) :
                             os.unlink(dest_file)
 
                         df = open(dest_file, "wb")
-                        df.write(urllib2.urlopen(diff_url).read())
+                        url_x = urllib2.urlopen(diff_url)
+
+                        while True:
+                            x = url_x.read(1024)
+                            if x != '' :
+                                df.write(x)
+                            else:
+                                break
+
                         df.close()
 
                         df_uc = bz2.BZ2File(dest_file, "r")
@@ -444,6 +477,9 @@ class FilterManager (gobject.GObject) :
 
                         df_uc.close()
                         os.unlink(dest_file)
+                        
+                        downl_diffs += 1
+                        fm.pkg_filters_conf[pkg_id]["progress"] = (downl_diffs * 100) / total_diffs
 
                     dest_patch_fd.close()
 
