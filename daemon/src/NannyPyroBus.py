@@ -86,6 +86,9 @@ class OrgGnomeNanny(Pyro.core.ObjBase):
     def GetBlocks(self, user_id, app_id) :
         return PyroBlockingCallFromThread(reactor, self.quarterback.get_blocks, user_id, app_id)
 
+    def GetBlockStatusByUid (self, user_id):
+        return PyroBlockingCallFromThread(reactor, self.quarterback.get_block_status_by_uid, user_id)
+
     def SetActiveWCF(self, active, uid):
         PyroBlockingCallFromThread(reactor, self.quarterback.set_wcf, bool(active), str(uid))
 

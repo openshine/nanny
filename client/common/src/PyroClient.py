@@ -79,6 +79,9 @@ class PyroClient(gobject.GObject):
     def set_blocks (self, user_id, app_id, blocks):
         return self.nanny_admin.SetBlocks (user_id, app_id, blocks)
 
+    def get_block_status_by_uid(self, user_id):
+        return self.nanny_admin.GetBlockStatusByUid (user_id)
+
     def get_max_use_time (self, user_id, app_id):
         return self.nanny_admin.GetMaxUseTime (user_id, app_id)
 
