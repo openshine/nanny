@@ -27,7 +27,13 @@ import os
 import os.path
 
 import gtk
-import pynotify
+if os.name == "posix" :
+    import pynotify
+elif os.name == "nt":
+    import nanny.daemon.Win32UsersManager
+    import getpass
+    from gtkPopupNotify import NotificationStack
+
 import gobject
 from gettext import ngettext
 
@@ -36,6 +42,7 @@ import nanny.client.gnome.systray
 import gettext
 
 ngettext = gettext.ngettext
+
 
 class SystrayNanny(gtk.StatusIcon):
     def __init__(self):
@@ -55,18 +62,50 @@ class SystrayNanny(gtk.StatusIcon):
         self.set_from_file(icon_path)
         self.set_visible(False)
         self.set_tooltip("")
+        self.last_tooltip = ''
 
         #dbus
         self.dbus = nanny.client.common.DBusClient()
-        self.dbus.connect("user-notification", self.__handlerUserNotification)
         
+        if os.name == "nt":
+            users_manager = nanny.daemon.Win32UsersManager.Win32UsersManager()
+            self.uid = ''
+            for uid, username, desc in users_manager.get_users() :
+                if username == getpass.getuser() :
+                    self.uid = uid
+                    break
+            gobject.timeout_add(1000, self.__block_status_windows_polling)
+            self.win_notify = NotificationStack()
+
+        elif os.name == "posix":
+            self.dbus.connect("user-notification", self.__handlerUserNotification)
+
         #timer
         gobject.timeout_add(3000, self.__handlerTimer )
 
+    def __block_status_windows_polling(self):
+        ret = self.dbus.get_block_status_by_uid(self.uid)
+        for k in ret.keys():
+            block_status = ret[k][0]
+            user_id = self.uid
+            app_id = k
+            next_change = ret[k][1]
+            available_time = ret[k][2]
+            self.__handlerUserNotification(self.dbus,  block_status, 
+                                           user_id, app_id, 
+                                           next_change, available_time)
+        
+        return True
+
     def __handlerUserNotification(self, dbus, block_status, user_id, app_id, next_change, available_time):
-        uid= str(os.getuid())
+        if os.name == "posix" :
+            uid= str(os.getuid())
+        elif os.name == "nt":
+            uid = self.uid
+
         if uid==user_id:
             self.times_left[app_id] = [next_change, block_status]
+
 
     def __handlerTimer(self):
         mssg=""
@@ -99,8 +138,12 @@ class SystrayNanny(gtk.StatusIcon):
 
         if mssg_ready:
             self.__showNotification( mssg )
-
-        self.set_tooltip( mssg )
+        
+        if self.last_tooltip != mssg : 
+            self.set_tooltip( mssg )
+            self.last_tooltip = mssg
+            print mssg
+        
         if len(mssg) != 0 :
             self.set_visible(True)
         else:
@@ -127,6 +170,9 @@ class SystrayNanny(gtk.StatusIcon):
     def __showNotification (self, mssg):
         icon_path = os.path.join (nanny.client.gnome.systray.icons_files_dir, "48x48/apps", "nanny.png")
 
-        pynotify.init ("aa")
-        self.notificacion = pynotify.Notification ("Nanny", mssg, icon_path)
-        self.notificacion.show()
+        if os.name == "posix":
+            pynotify.init ("aa")
+            self.notificacion = pynotify.Notification ("Nanny", mssg, icon_path)
+            self.notificacion.show()
+        elif os.name == "nt":
+            self.win_notify.new_popup("Nanny", mssg, icon_path)
