@@ -274,7 +274,9 @@ daemon/data/init.d/debian/Makefile
 daemon/data/init.d/redhat/Makefile
 daemon/data/init.d/suse/Makefile
 daemon/data/init.d/mandriva/Makefile
+daemon/data/etld/Makefile
 daemon/src/Makefile
+daemon/src/etld.py
 daemon/src/proxy/Makefile
 help/Makefile
 man/Makefile

@@ -1,4 +1,4 @@
-SUBDIRS=applists dbus init.d
+SUBDIRS=applists dbus init.d etld
 
 if NANNY_POSIX_SUPPORT
 policy_in_files = org.gnome.nanny.policy.in

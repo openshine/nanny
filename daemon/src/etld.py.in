@@ -20,8 +20,22 @@ import sys
 import time
 from urlparse import urlparse
 
-with open (os.path.join (os.path.dirname(__file__), 'effective_tld_names.dat')) as tldFile:
-    TLDS = set([line.strip() for line in tldFile if line[0] not in "/\n"])
+if os.name == "posix":
+    with open (os.path.join ('@prefix@', 'share', 'nanny', 'etld', 'effective_tld_names.dat')) as tldFile:
+        TLDS = set([line.strip() for line in tldFile if line[0] not in "/\n"])
+elif os.name == "nt" :
+    if not hasattr(sys, "frozen") :
+        file_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        for x in range(6):
+            file_dir = os.path.dirname(file_dir)
+        root_path = file_dir
+        etld_dat = os.path.join(root_path, "share", "nanny", "etld", 'effective_tld_names.dat')
+    else:
+        root_path = os.path.dirname(os.path.dirname(unicode(sys.executable, sys.getfilesystemencoding( ))))
+        etld_dat = os.path.join(root_path, "share", "nanny", "etld", 'effective_tld_names.dat')
+        
+    with open (etld_dat) as tldFile:
+        TLDS = set([line.strip() for line in tldFile if line[0] not in "/\n"])
 
 class etld(object):
     """Helper to determine the effective TLD portion of a domain name."""
