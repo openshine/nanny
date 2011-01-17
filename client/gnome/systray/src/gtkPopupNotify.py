@@ -51,8 +51,8 @@ class NotificationStack():
             `show_timeout : if True, a countdown till destruction will be displayed.
             
         """
-        self.edge_offset_x = 0
-        self.edge_offset_y = 0
+        self.edge_offset_x = 5 
+        self.edge_offset_y = 30
         self.max_popups = 5
         self.fg_color = None
         self.bg_color = None
