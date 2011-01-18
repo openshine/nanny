@@ -1,0 +1,116 @@
+#!/usr/bin/env python
+#
+# Copyright (C) 2009,2010,2011 Junta de Andalucia
+# 
+# Authors:
+#   Roberto Majadas <roberto.majadas at openshine.com>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2, or (at your option)
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
+# USA
+
+import os
+import glob
+import sys
+import StringIO
+import win32com
+from win32com.shell import shell, shellcon
+import ctypes
+import win32ts
+
+if os.name == "nt" :
+    if not hasattr(sys, "frozen") :
+        root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        nanny_lib_path = os.path.join(root_path, "lib", "python2.6", "site-packages")
+        sys.path.append(nanny_lib_path)
+    else:
+        sys.stdout = open(os.devnull, 'w')
+        sys.stderr = open(os.devnull, 'w')
+
+if __name__ == '__main__':
+    if len(sys.argv) == 2:
+        print sys.argv[1]
+        if os.path.exists("C:\\Documents and Settings\\%s" % sys.argv[1]) :
+            data_dir = "C:\\Documents and Settings\\%s" % sys.argv[1]
+            user_prefs_list = glob.glob(os.path.join(data_dir, "*", "Mozilla", "Firefox", "Profiles", "*", "prefs.js"))        
+        elif os.path.exists("C:\\Users\\%s\\AppData\\Roaming" % sys.argv[1]) :
+            data_dir = "C:\\Users\\%s\\AppData\\Roaming" % sys.argv[1]
+            user_prefs_list = glob.glob(os.path.join(data_dir, "Mozilla", "Firefox", "Profiles", "*", "prefs.js"))
+        else:
+            sys.exit(0)
+    else:
+        user_prefs_list = glob.glob(os.path.join(os.environ["APPDATA"], "Mozilla", "Firefox", "Profiles", "*", "prefs.js"))
+    
+    proxy_conf_ok = True
+
+    for pref_file in user_prefs_list :
+        sio = StringIO.StringIO()
+        rewrite_it = False
+        
+        with open(pref_file, "r") as f :
+            for line in f.readlines():
+                if "network.proxy.type" in line :
+                    proxy_conf_ok = False
+                    rewrite_it = True
+                else:
+                    sio.write(line)
+        
+        if rewrite_it == True :
+            print "Rewritting %s" % pref_file
+            with open(pref_file, "w") as f :
+                f.write(sio.getvalue())
+        else:
+            print "Not needed rewritting %s" % pref_file
+        
+        sio.close()
+
+    if proxy_conf_ok == False :
+        if len(sys.argv) == 2:
+            ret = os.system("taskkill.exe /F /IM firefox.exe /T > NUL")
+        else:
+            ret = os.system("taskkill.exe /F /IM firefox.exe /T > NUL")
+
+        if ret != 0 :
+            sys.exit(0)
+        
+        import gobject
+        import gtk
+        import gettext
+        import __builtin__
+        
+        __builtin__._ = gettext.gettext
+        
+        def launch_dialog() :
+            dlg = gtk.MessageDialog(type=gtk.MESSAGE_WARNING, buttons=gtk.BUTTONS_OK)
+            dlg.set_property("icon-name", "nanny")
+            dlg.set_markup("<b>%s</b>" % _("You change firefox proxy settings"))
+            dlg.format_secondary_markup(_("You can't change the proxy settings "
+                                      "because you are under parental control."))
+            
+            dlg.run()
+            dlg.destroy()
+            sys.exit(0)
+        
+        gobject.timeout_add (1, launch_dialog)
+        gobject.timeout_add (10000, sys.exit, 0)
+        
+        gtk.main()
+        
+        
+
+        
+        
+
+        
+

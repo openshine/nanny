@@ -265,6 +265,7 @@ client/gnome/admin/data/ui/Makefile
 client/gnome/admin/data/icons/Makefile
 client/gnome/admin/src/Makefile
 client/gnome/admin/src/__init__.py
+client/gnome/nanny-firefox-win32/Makefile
 daemon/Makefile
 daemon/data/Makefile
 daemon/data/applists/Makefile

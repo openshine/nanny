@@ -34,6 +34,7 @@ from twisted.enterprise import adbapi
 
 from nanny.daemon.proxy.TwistedProxy import ReverseProxyResource as ProxyService
 from nanny.daemon.proxy.Controllers import WebDatabase
+from nanny.daemon.Win32SessionFiltering import WinPopenAsUser
 
 import _winreg
 
@@ -55,6 +56,23 @@ class Win32WebContentFiltering(gobject.GObject) :
         gobject.GObject.__init__(self)
         self.quarterback = quarterback
         self.app = app
+        self.ffb = None
+
+        if not hasattr(sys, "frozen") :
+            file_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            for x in range(6):
+                file_dir = os.path.dirname(file_dir)
+            root_path = file_dir
+            sbin_dir = os.path.join(root_path, "sbin")
+            if os.path.exists(os.path.join(sbin_dir, "nanny-firefox-blocker")) :
+                self.ffb = "python %s" % os.path.join(sbin_dir, "nanny-firefox-blocker")
+        else:
+            sbin_dir = os.path.dirname(unicode(sys.executable, sys.getfilesystemencoding( )))
+            if os.path.exists(os.path.join(sbin_dir, "nanny-firefox-blocker.exe")):
+                self.ffb = os.path.join(sbin_dir, "nanny-firefox-blocker.exe")
+
+        if self.ffb != None :
+            print "[Win32WebContentFiltering] firefox blocker blocker : '%s'" % self.ffb
 
         database_exists = False
         if os.path.exists(WEBDATABASE) :
@@ -75,6 +93,7 @@ class Win32WebContentFiltering(gobject.GObject) :
         self.quarterback.connect("remove-wcf-to-uid", self.__stop_proxy)
 
         self.update_proxy_settings_hd = None
+        self.update_proxy_settings_firefox_hd = None
 
         self.proxy_helper = Win32ProxyHelper(self.quarterback.usersmanager)
         
@@ -92,6 +111,9 @@ class Win32WebContentFiltering(gobject.GObject) :
         
         if self.update_proxy_settings_hd != None :
             gobject.source_remove(self.update_proxy_settings_hd)
+        if self.update_proxy_settings_firefox_hd != None :
+            gobject.source_remove(self.update_proxy_settings_firefox_hd)
+        
         self.proxy_helper.clean_all_proxy_conf()
 
     def __start_proxy(self, quarterback, uid):
@@ -119,7 +141,33 @@ class Win32WebContentFiltering(gobject.GObject) :
 
     def __launch_proxy_updater(self):
         self.update_proxy_settings_hd = gobject.timeout_add(1000, self.__update_proxy_settings)
+        self.update_proxy_settings_firefox_hd = gobject.timeout_add(5000, self.__update_proxy_settings_firefox)
 
+    def __update_proxy_settings_firefox(self):
+        session_uid = int(self.quarterback.win32top.get_current_user_session())
+        if session_uid != 0 :
+            if self.services.has_key(str(session_uid)) :
+                user_name = None
+                for uid, name, fullname in self.quarterback.usersmanager.get_users() :
+                    if uid == str(session_uid) :
+                        user_name = name
+                        break
+                
+                if user_name != None :
+                    reactor.callInThread(self.__launch_firefox_blocker, self, user_name)
+        
+        return True
+
+    def __launch_firefox_blocker(self, wcf, user_name):
+        import time
+        try:
+            p = WinPopenAsUser(wcf.ffb + " %s" % user_name)
+            while p.poll() == None:
+                time.sleep(1)
+        except:
+            print "[W32WebcontentFiltering] firefox blocker exception"
+        
+        
     def __update_proxy_settings(self):
         session_uid = int(self.quarterback.win32top.get_current_user_session())
         if session_uid != 0 :
