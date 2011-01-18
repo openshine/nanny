@@ -1,6 +1,31 @@
 
 import sys, os, glob, stat
 
+# ...
+# ModuleFinder can't handle runtime changes to __path__, but win32com uses them
+try:
+    # py2exe 0.6.4 introduced a replacement modulefinder.
+    # This means we have to add package paths there, not to the built-in
+    # one.  If this new modulefinder gets integrated into Python, then
+    # we might be able to revert this some day.
+    # if this doesn't work, try import modulefinder
+    try:
+        import py2exe.mf as modulefinder
+    except ImportError:
+        import modulefinder
+    import win32com
+    for p in win32com.__path__[1:]:
+        modulefinder.AddPackagePath("win32com", p)
+    for extra in ["win32com.shell"]: #,"win32com.mapi"
+        __import__(extra)
+        m = sys.modules[extra]
+        for p in m.__path__[1:]:
+            modulefinder.AddPackagePath(extra, p)
+except ImportError:
+    # no build path setup, no worries.
+    pass
+
+
 nanny_top_dir = os.path.dirname(os.path.dirname(__file__))
 nanny_win32_dist_dir = os.path.join(nanny_top_dir, "Nanny")
 nanny_python_dir = os.path.join(nanny_top_dir, "lib", "python2.6", "site-packages")
@@ -96,26 +121,33 @@ dblocker = dict(
     dest_base = os.path.join("Nanny", "bin", "nanny-desktop-blocker"),
 )
 
-blacklistmgr_dbg = dict(
-    script = os.path.join(nanny_top_dir, "sbin", "nanny-blacklist-manager"),
-    dest_base = os.path.join("Nanny", "bin", "nanny-blacklist-manager-dbg"),
+ffblocker_dbg = dict(
+    script = os.path.join(nanny_top_dir, "sbin", "nanny-firefox-blocker"),
+    dest_base = os.path.join("Nanny", "bin", "nanny-firefox-blocker-dbg"),
 )
 
-blacklistmgr = dict(
-    script = os.path.join(nanny_top_dir, "sbin", "nanny-blacklist-manager"),
-    dest_base = os.path.join("Nanny", "bin", "nanny-blacklist-manager"),
+ffblocker = dict(
+    script = os.path.join(nanny_top_dir, "sbin", "nanny-firefox-blocker"),
+    dest_base = os.path.join("Nanny", "bin", "nanny-firefox-blocker"),
     icon_resources = [(1, "nanny-32x32.ico")],
 )
 
+tray_dbg = dict(
+    script = os.path.join(nanny_top_dir, "bin", "nanny-systray"),
+    dest_base = os.path.join("Nanny", "bin", "nanny-systray-dbg"),
+)
 
-
+tray = dict(
+    script = os.path.join(nanny_top_dir, "bin", "nanny-systray"),
+    dest_base = os.path.join("Nanny", "bin", "nanny-systray"),
+)
 
 setup(name="Nanny",
       version=ver,
       description="Nanny parental control",
       #com_server=[outlook_addin],
-      console=[daemon_service_dbg, admin_console_dbg, dblocker_dbg, blacklistmgr_dbg],
-      windows=[admin_console, dblocker, blacklistmgr],
+      console=[daemon_service_dbg, admin_console_dbg, dblocker_dbg, ffblocker_dbg, tray_dbg],
+      windows=[admin_console, dblocker, ffblocker, tray],
       service=[daemon_service],
       data_files = dist_files,
       options = {"py2exe" : py2exe_options},
