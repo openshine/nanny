@@ -1,22 +1,23 @@
 # Czech translation for nanny.
 # Copyright (C) 2009, 2010 the author(s) of nanny,
 # This file is distributed under the same license as the nanny package.
-# Marek Černocký <marek@manet.cz>, 2009, 2010.
+#
+# Marek Černocký <marek@manet.cz>, 2009 – 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nanny master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-17 00:26+0200\n"
-"PO-Revision-Date: 2010-05-13 06:00+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=nanny&component=general\n"
+"POT-Creation-Date: 2011-01-23 18:00+0000\n"
+"PO-Revision-Date: 2011-01-24 00:21+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Poedit-Language: Czech\n"
-"X-Poedit-SourceCharset: utf-8\n"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:32
@@ -711,6 +712,17 @@ msgstr "bílý seznam"
 msgid "Contains site specifically 100% suitable for kids"
 msgstr "Obsahuje webové stránky konkrétně na 100% vhodné pro děti"
 
+#: ../client/common/src/Utils.py:93
+#| msgid "Nanny Admin Console - %s"
+msgid "Nanny Admin Tools requires Admin user"
+msgstr "Nástroj správy Nanny vyžaduje správce"
+
+#: ../client/common/src/Utils.py:94
+msgid "To run any Nanny Admin Tool you must to be admin of the system."
+msgstr ""
+"Abyste mohli spustit nástroj pro správu aplikace Nanny, musíte být správcem "
+"systému."
+
 #: ../client/common/src/DBusClient.py:80
 msgid "NannyDaemon unavailable"
 msgstr "Démon Nanny není dostupný"
@@ -785,7 +797,7 @@ msgid "Use web content filtering"
 msgstr "Použít filtrování webového obsahu"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
-#: ../client/gnome/systray/src/SystrayNanny.py:46
+#: ../client/gnome/systray/src/SystrayNanny.py:53
 msgid "Web browser"
 msgstr "Webový prohlížeč"
 
@@ -827,14 +839,6 @@ msgstr "Černé listiny"
 msgid "Forbidden sites"
 msgstr "Zakázané webové stránky"
 
-#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
-msgid ""
-"Here you can apply the available blacklists for the selected user. If you "
-"want to add new blacklists please go to System > Administration > Blacklists."
-msgstr ""
-"Zde můžete pro vybraného uživatele použít dostupné černé listiny. Pokud "
-"chcete přidat nové černé listiny, jděte do Systém > Správa > Černé listiny."
-
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
 msgstr "Import…"
@@ -863,31 +867,31 @@ msgstr ""
 msgid "close session"
 msgstr "zavřít sezení"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Monday"
 msgstr "Pondělí"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Tuesday"
 msgstr "Úterý"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Wednesday"
 msgstr "Středa"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Thursday"
 msgstr "Čtvrtek"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Friday"
 msgstr "Pátek"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Saturday"
 msgstr "Sobota"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Sunday"
 msgstr "Neděle"
 
@@ -895,13 +899,45 @@ msgstr "Neděle"
 msgid "Web Content Filter Configuration"
 msgstr "Nastavení filtrování obsahu webů"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:242
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:253
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:175
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:192
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:213
+#| msgid "Blacklist imported"
+msgid "Unknown Blacklist Name"
+msgstr "Neznámý název černé listiny"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:194
+#, python-format
+msgid "(version : %s)"
+msgstr "(verze: %s)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:197
+msgid "There is an update available"
+msgstr "Je dostupná aktualizace"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:199
+#, python-format
+#| msgid "Downloading file (%s%%)"
+msgid "Downloading information (%s%%)"
+msgstr "Stahují se informace (%s%%)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:201
+#, python-format
+msgid "Installing blacklist (%s%%)"
+msgstr "Instaluje se černá listina (%s%%)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:203
+#, python-format
+msgid "Updating blacklist (%s%%)"
+msgstr "Aktualizuje se černá listina (%s%%)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:327
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:338
 msgid "Error while importing list from the Internet"
 msgstr "Chyba během importu seznamu z Internetu"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:243
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:254
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:328
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:339
 msgid ""
 "Some error has occured while downloading the list.\n"
 "Please verify the URL and try again."
@@ -909,28 +945,28 @@ msgstr ""
 "Vyskytla se chyba během stahování seznamu.\n"
 "Zkontrolujte prosím URL a zkuste to znovu."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:345
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:366
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:433
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:455
 msgid "Are you sure you want to delete this filter?"
 msgstr "Opravdu chcete smazat tento filtr?"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:346
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:367
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:434
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:456
 msgid "You will not be able to undo this action."
 msgstr "Tuto akci nebudete moci vrátit zpět."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:353
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:374
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:441
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:463
 msgid "Removing filter. Please, wait..."
 msgstr "Odstraňuje se filtr. Čekejte prosím…"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:393
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:404
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:482
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:493
 msgid "Error while deleting filters"
 msgstr "Chyba během mazání filtrů"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:394
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:405
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:483
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:494
 msgid ""
 "Some error has occured while deleting filters.\n"
 "Please try again."
@@ -938,32 +974,54 @@ msgstr ""
 "Během mazání filtrů se vyskytla chyba.\n"
 "Zkuste to prosím znovu."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:436
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:533
 msgid "<b>Select all the categories</b>"
 msgstr "<b>Vybrat všechny kategorie</b>"
 
-#: ../client/gnome/admin/src/AdminConsole.py:46
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:585
+msgid "Introduce the nannycentral repository url"
+msgstr "Představení URL repozitáře nannycentral"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:591
+msgid ""
+"It's something like http://www.nannycentral.info/blacklist/blacklist.json ..."
+msgstr ""
+"Je to něco jako http://www.nannycentral.info/blacklist/blacklist.json …"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:613
+#: ../client/gnome/admin/src/BlacklistManager.py:154
+msgid "<b>Are you sure you want to delete this blacklist?</b>"
+msgstr "<b>Opravdu chcete smazat tuto černou listinu?</b>"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:614
+#: ../client/gnome/admin/src/BlacklistManager.py:155
+msgid ""
+"This action will remove all the user configuration linked to the blacklist."
+msgstr ""
+"Tímto se odstraní všechna uživatelská nastavení vázající se k černé listině."
+
+#: ../client/gnome/admin/src/AdminConsole.py:47
 msgid "Nanny daemon is not started"
 msgstr "Démon Nanny není spuštěný"
 
-#: ../client/gnome/admin/src/AdminConsole.py:47
+#: ../client/gnome/admin/src/AdminConsole.py:48
 msgid "To use the parental control, please start up the daemon."
 msgstr "Pokud chcete použít rodičovskou kontrolu, spusťte prosím démona."
 
 #. FACE
-#: ../client/gnome/admin/src/AdminConsole.py:159
+#: ../client/gnome/admin/src/AdminConsole.py:160
 msgid "Users"
 msgstr "Uživatelé"
 
-#: ../client/gnome/admin/src/AdminConsole.py:314
+#: ../client/gnome/admin/src/AdminConsole.py:336
 msgid "Your configuration has been saved"
 msgstr "Vaše nastavení bylo uloženo"
 
-#: ../client/gnome/admin/src/AdminConsole.py:326
+#: ../client/gnome/admin/src/AdminConsole.py:349
 msgid "You have made changes"
 msgstr "Máte provedené změny"
 
-#: ../client/gnome/admin/src/AdminConsole.py:327
+#: ../client/gnome/admin/src/AdminConsole.py:350
 msgid ""
 "If you don't press the 'Apply' button, your changes will be lost.\n"
 "Are you sure?"
@@ -971,17 +1029,16 @@ msgstr ""
 "Když nezmáčknete tlačítko „Použít“, budou vaše změny ztraceny.\n"
 "Jste si jistí?"
 
-#: ../client/gnome/admin/src/AdminConsole.py:356
+#: ../client/gnome/admin/src/AdminConsole.py:379
 #, python-format
 msgid "Nanny Admin Console - %s"
 msgstr "Ovládací panel Nanny - %s"
 
-#: ../client/gnome/admin/src/AdminConsole.py:359
+#: ../client/gnome/admin/src/AdminConsole.py:382
 msgid "Nanny Admin Console"
 msgstr "Ovládací panel Nanny"
 
 #: ../client/gnome/admin/src/BlacklistManager.py:37
-#: ../client/gnome/admin/src/BlacklistManager.py:145
 msgid "Blacklist Filter Configuration"
 msgstr "Nastavení filtrování podle černé listiny"
 
@@ -994,53 +1051,31 @@ msgstr ""
 "<b>%s (pouze ke čtení)</b>\n"
 "   %s"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:117
-msgid "Select file to import"
-msgstr "Výběr souboru pro import"
-
-#: ../client/gnome/admin/src/BlacklistManager.py:137
-msgid "<b>Error importing blacklist file</b>"
-msgstr "<b>Chyba během importu souboru s černou listinou</b>"
-
-#: ../client/gnome/admin/src/BlacklistManager.py:138
-msgid "Some error has occured importing the blacklist file."
-msgstr "Během importu souboru s černou listinou se vyskytla chyba."
-
-#: ../client/gnome/admin/src/BlacklistManager.py:176
-msgid "<b>Are you sure you want to delete this blacklist?</b>"
-msgstr "<b>Opravdu chcete smazat tuto černou listinu?</b>"
-
-#: ../client/gnome/admin/src/BlacklistManager.py:177
-msgid ""
-"This action will remove all the user configuration linked to the blacklist."
-msgstr ""
-"Tímto se odstraní všechna uživatelská nastavení vázající se k černé listině."
-
-#: ../client/gnome/systray/src/SystrayNanny.py:45
+#: ../client/gnome/systray/src/SystrayNanny.py:52
 msgid "Session"
 msgstr "Sezení"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:47
+#: ../client/gnome/systray/src/SystrayNanny.py:54
 msgid "e-Mail"
 msgstr "e-Mail"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:48
+#: ../client/gnome/systray/src/SystrayNanny.py:55
 msgid "Instant messanger"
 msgstr "Komunikátor"
 
 #. To translators: In x-minutes the access to <app> will be granted
-#: ../client/gnome/systray/src/SystrayNanny.py:95
+#: ../client/gnome/systray/src/SystrayNanny.py:134
 #, python-format
 msgid "In %(time)s the access to %(app)s will be granted."
 msgstr "V %(time)s bude přístup k %(app)s umožněn."
 
 #. To translators: In x-minutes the access to <app> will be denied
-#: ../client/gnome/systray/src/SystrayNanny.py:98
+#: ../client/gnome/systray/src/SystrayNanny.py:137
 #, python-format
 msgid "In %(time)s the access to %(app)s will be denied."
 msgstr "V %(time)s bude přístup k %(app)s zamezen."
 
-#: ../client/gnome/systray/src/SystrayNanny.py:117
+#: ../client/gnome/systray/src/SystrayNanny.py:160
 #, python-format
 msgid "%d day"
 msgid_plural "%d days"
@@ -1048,7 +1083,7 @@ msgstr[0] "%d den"
 msgstr[1] "%d dny"
 msgstr[2] "%d dní"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:119
+#: ../client/gnome/systray/src/SystrayNanny.py:162
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1056,7 +1091,7 @@ msgstr[0] "%d hodina"
 msgstr[1] "%d hodiny"
 msgstr[2] "%d hodin"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:121
+#: ../client/gnome/systray/src/SystrayNanny.py:164
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1065,7 +1100,7 @@ msgstr[1] "%d minuty"
 msgstr[2] "%d minut"
 
 #. Translators: This is the separator between time strings, like '1 day, 2 hours, 3 minutes'
-#: ../client/gnome/systray/src/SystrayNanny.py:123
+#: ../client/gnome/systray/src/SystrayNanny.py:166
 msgid ", "
 msgstr ", "
 
@@ -1100,6 +1135,24 @@ msgstr "Importují se domény [kategorie: %s] (%s%%)"
 #, python-format
 msgid "Importing urls [category: %s] (%s%%)"
 msgstr "Importují se URL [kategorie: %s] (%s%%)"
+
+#~ msgid ""
+#~ "Here you can apply the available blacklists for the selected user. If you "
+#~ "want to add new blacklists please go to System > Administration > "
+#~ "Blacklists."
+#~ msgstr ""
+#~ "Zde můžete pro vybraného uživatele použít dostupné černé listiny. Pokud "
+#~ "chcete přidat nové černé listiny, jděte do Systém > Správa > Černé "
+#~ "listiny."
+
+#~ msgid "Select file to import"
+#~ msgstr "Výběr souboru pro import"
+
+#~ msgid "<b>Error importing blacklist file</b>"
+#~ msgstr "<b>Chyba během importu souboru s černou listinou</b>"
+
+#~ msgid "Some error has occured importing the blacklist file."
+#~ msgstr "Během importu souboru s černou listinou se vyskytla chyba."
 
 #~ msgid ""
 #~ "<b>You have not admin privileges</b>\n"
