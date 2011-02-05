@@ -252,26 +252,7 @@ to which the user can connect or not and manage blacklists of web sites.
           </screenshot>
       </figure>
       <para>In the Blacklists tab you can apply the available blacklists and the groups contained in these blacklists.</para>
-      <para>Importing of the blacklists is explained in <xref linkend="nanny-blacklist-importing"/></para>
-    </sect2> 
-
-    <!-- ================ Usage Subsection ================================ -->
-    <sect2 id="nanny-blacklist-importing"> 
-      <title>Blacklist Configuration.</title> 
-      <para>The Blacklist Configuration window is accesible from System > Administration > Blacklists. This is where you can import, edit and remove blacklists.</para>
-
-      <figure id="nanny-blacklist-b">
-        <title>Blacklist importing</title>
-          <screenshot>
-            <mediaobject>
-              <imageobject>
-                <imagedata fileref="figures/nanny-select-file-to-import.png" format="PNG"/>
-              </imageobject>
-            </mediaobject>
-          </screenshot>
-      </figure>
-
-      <para>Blacklists are imported from files. In this example a blacklist file has been downloaded from dansguardian and is being imported into Nanny. It is recommended to keep the blacklists as up to date as possible.</para>
+      <para>If you want to add, delete or update a blacklist, use the buttons below the left column.</para>
     </sect2> 
   </sect1> 
 
