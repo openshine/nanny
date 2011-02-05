@@ -29,7 +29,8 @@
       <holder>openshine.com</holder> 
     </copyright>
     <abstract role="description">
-       <para><application>&app;</application> enables you to control what system users do.
+       <para><application>&app;</application> is a parental control capable of controlling the usage time applications, web pages 
+to which the user can connect or not and manage blacklists of web sites.
        </para>
     </abstract>
 
