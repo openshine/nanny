@@ -38,3 +38,16 @@ Gnome-Nanny currently requires:
 
 The official website is:
    http://projects.gnome.org/nanny
+
+Compile in developer mode for win32
+-----------------------------------
+
+./autogen.sh --prefix=/win32_shared_folder --sysconfdir=/win32_shared_folder/etc --enable-win32
+make 
+make install
+
+Where /win32_shared_folder is a folder shared with you win32 system.
+Then, you have to create a bundle with build_py2exe.py script.
+After that you can use NSIS to package all stuff
+
+
