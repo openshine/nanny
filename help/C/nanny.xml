@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY appversion "2.29.2">
-  <!ENTITY manrevision "0.1">
-  <!ENTITY date "December 2009">
+  <!ENTITY appversion "2.31.1">
+  <!ENTITY manrevision "1.0">
+  <!ENTITY date "December 2011">
   <!ENTITY app "Nanny">
 ]>
 <!-- 
@@ -16,16 +16,16 @@
 <!-- =============Document Header ============================= -->
 <article id="index" lang="en">
   <articleinfo> 
-    <title>&app; Manual v&manrevision;</title>       
+    <title>&app; Parental Control</title>       
 
     <copyright> 
-      <year>2009</year> 
+      <year>2009-2011</year> 
       <holder>Roberto Majadas</holder> 
       <holder>Luis de Bethencourt</holder> 
       <holder>Cesar Garcia</holder> 
     </copyright>
     <copyright> 
-      <year>2009</year> 
+      <year>2009-2011</year> 
       <holder>openshine.com</holder> 
     </copyright>
     <abstract role="description">
