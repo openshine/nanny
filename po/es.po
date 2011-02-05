@@ -8,12 +8,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nanny.HEAD\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=nanny&component=general\n"
-"POT-Creation-Date: 2011-01-23 18:00+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-02-05 17:43+0100\n"
 "PO-Revision-Date: 2011-01-26 15:06+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -703,7 +703,6 @@ msgid "Contains site specifically 100% suitable for kids"
 msgstr "Contiene sitios 100% apropiados para los niños"
 
 #: ../client/common/src/Utils.py:93
-#| msgid "Nanny Admin Console - %s"
 msgid "Nanny Admin Tools requires Admin user"
 msgstr ""
 "Las herramientas de administración de Nanny requieren usuario administrador"
@@ -830,6 +829,10 @@ msgstr "Listas negras"
 msgid "Forbidden sites"
 msgstr "Sitios prohibidos"
 
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
+msgid "_Update"
+msgstr "A_ctualizar"
+
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
 msgstr "Importar..."
@@ -893,7 +896,6 @@ msgstr "Configuración del filtro de contenidos web"
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:175
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:192
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:213
-#| msgid "Blacklist imported"
 msgid "Unknown Blacklist Name"
 msgstr "Nombre de lista negra desconocido"
 
@@ -908,7 +910,6 @@ msgstr "Hay una actualización disponible"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:199
 #, python-format
-#| msgid "Downloading file (%s%%)"
 msgid "Downloading information (%s%%)"
 msgstr "Descargando información (%s%%)"
 
@@ -992,28 +993,28 @@ msgstr ""
 "Esta acción borrará todas las configuraciones de usuario relacionadas con "
 "esta lista negra."
 
-#: ../client/gnome/admin/src/AdminConsole.py:47
+#: ../client/gnome/admin/src/AdminConsole.py:50
 msgid "Nanny daemon is not started"
 msgstr "No se ha iniciado el demonio Nanny"
 
-#: ../client/gnome/admin/src/AdminConsole.py:48
+#: ../client/gnome/admin/src/AdminConsole.py:51
 msgid "To use the parental control, please start up the daemon."
 msgstr "Para usar el control parental, inicie el demonio."
 
 #. FACE
-#: ../client/gnome/admin/src/AdminConsole.py:160
+#: ../client/gnome/admin/src/AdminConsole.py:163
 msgid "Users"
 msgstr "Usuarios"
 
-#: ../client/gnome/admin/src/AdminConsole.py:336
+#: ../client/gnome/admin/src/AdminConsole.py:339
 msgid "Your configuration has been saved"
 msgstr "Se guardó su configuración"
 
-#: ../client/gnome/admin/src/AdminConsole.py:349
+#: ../client/gnome/admin/src/AdminConsole.py:352
 msgid "You have made changes"
 msgstr "Ha realizado cambios"
 
-#: ../client/gnome/admin/src/AdminConsole.py:350
+#: ../client/gnome/admin/src/AdminConsole.py:353
 msgid ""
 "If you don't press the 'Apply' button, your changes will be lost.\n"
 "Are you sure?"
@@ -1021,12 +1022,12 @@ msgstr ""
 "Se perderán sus cambios si no pulsa el botón «Aplicar».\n"
 "¿Esta seguro?"
 
-#: ../client/gnome/admin/src/AdminConsole.py:379
+#: ../client/gnome/admin/src/AdminConsole.py:382
 #, python-format
 msgid "Nanny Admin Console - %s"
 msgstr "Consola de administración de Nanny: %s"
 
-#: ../client/gnome/admin/src/AdminConsole.py:382
+#: ../client/gnome/admin/src/AdminConsole.py:385
 msgid "Nanny Admin Console"
 msgstr "Consola de administración de Nanny"
 
