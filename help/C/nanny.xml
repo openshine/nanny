@@ -142,19 +142,43 @@ to which the user can connect or not and manage blacklists of web sites.
     <title>To Start Nanny administration console</title>
     <para>You can start the <application>Nanny administration console</application> in the following ways:
     </para> 
-    <variablelist>
-    	<varlistentry>
-    		<term><guimenu>System</guimenu> menu</term>
-    		<listitem>
-    		<para>Choose 
+
+      <important>
+	<para>If you are using Nanny over Gnome Desktop : </para>
+	<variablelist>
+	  <varlistentry>
+	    <term><guimenu>System</guimenu> menu</term>
+	    <listitem>
+	      <para>Choose 
     		<menuchoice>
-    		<guisubmenu>System</guisubmenu>
-    		<guisubmenu>Administration</guisubmenu>
-    		<guimenuitem>Parental Control</guimenuitem>
+		  <guisubmenu>System</guisubmenu>
+		  <guisubmenu>Administration</guisubmenu>
+		  <guimenuitem>Parental Control</guimenuitem>
     		</menuchoice>. </para>
-    		</listitem>
-    	</varlistentry>
-    </variablelist>
+	    </listitem>
+	  </varlistentry>
+	</variablelist>
+      </important>
+
+      <important>
+	<para>If you are using Nanny over Windows(tm) : </para>
+	<variablelist>
+	  <varlistentry>
+	    <term><guimenu>Start</guimenu> button</term>
+	    <listitem>
+	      <para>Choose 
+    		<menuchoice>
+		  <guisubmenu>All Programs</guisubmenu>
+		  <guisubmenu>Nanny</guisubmenu>
+		  <guimenuitem>Nanny</guimenuitem>
+    		</menuchoice>. </para>
+	    </listitem>
+	  </varlistentry>
+	</variablelist>
+      </important>
+      
+      
+
     </sect2>
   </sect1>
 
