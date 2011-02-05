@@ -77,7 +77,7 @@ to which the user can connect or not and manage blacklists of web sites.
       </revision>
    </revhistory>
 
-    <releaseinfo>This manual describes version &appversion; of GNOME Nanny.
+    <releaseinfo>This manual describes version &appversion; of Nanny.
     </releaseinfo> 
     <legalnotice> 
       <title>Feedback</title> 
@@ -89,10 +89,10 @@ to which the user can connect or not and manage blacklists of web sites.
   </articleinfo> 
 
   <indexterm zone="index"> 
-    <primary>GNOME Nanny</primary> 
+    <primary>Nanny</primary> 
   </indexterm> 
   <indexterm zone="index"> 
-    <primary>GNOME Nanny</primary> 
+    <primary>Nanny</primary> 
   </indexterm>
 
 <!-- ============= Document Body ============================= -->
@@ -132,15 +132,15 @@ to which the user can connect or not and manage blacklists of web sites.
 
     <sect2 id="myapp-when-start">
     <title>Running &app;</title>
-    <para>Notice that after installation the GNOME Nanny daemon will be running in the background at all times. This is so to always control system users.
+    <para>Notice that after installation the Nanny daemon will be running in the background at all times. This is so to always control system users.
     </para>
-    <para>To configure GNOME Nanny and decide which users to watch and what they can and can't do, you need to run the GNOME Nanny administration console.
+    <para>To configure Nanny and decide which users to watch and what they can and can't do, you need to run the Nanny administration console.
     </para>
     </sect2>
 
     <sect2 id="myapp-start">
-    <title>To Start GNOME Nanny administration console</title>
-    <para>You can start the <application>GNOME Nanny administration console</application> in the following ways:
+    <title>To Start Nanny administration console</title>
+    <para>You can start the <application>Nanny administration console</application> in the following ways:
     </para> 
     <variablelist>
     	<varlistentry>
@@ -168,7 +168,7 @@ to which the user can connect or not and manage blacklists of web sites.
     <!-- ================ Usage Subsection ================================ -->
     <sect2 id="nanny-time-usage"> 
       <title>Control time of computer usage</title> 
-      <para>This is is the GNOME Nanny Administration Console.
+      <para>This is is the Nanny Administration Console.
        The window is divided into two sections, users and actions. The users
       are listed in the column of the left, and the actions are divided in the
       tabs at the top of the window.
@@ -247,7 +247,7 @@ to which the user can connect or not and manage blacklists of web sites.
           </screenshot>
       </figure>
 
-      <para>Blacklists are imported from files. In this example a blacklist file has been downloaded from dansguardian and is being imported into GNOME Nanny. It is recommended to keep the blacklists as up to date as possible.</para>
+      <para>Blacklists are imported from files. In this example a blacklist file has been downloaded from dansguardian and is being imported into Nanny. It is recommended to keep the blacklists as up to date as possible.</para>
     </sect2> 
   </sect1> 
 
@@ -257,7 +257,7 @@ to which the user can connect or not and manage blacklists of web sites.
     <para> &app; was written by Roberto Majadas <email>roberto.majadas@openshine.com</email>, Luis de Bethencourt <email>luisbg@openshine.com</email> and Cesar Garcia <email>cesar.garcia.tapia@openshine.com</email>.
       To find more information about
       &app;, please visit the 
-      <ulink url="http://projects.gnome.org/nanny" type="http">GNOME Nanny Web
+      <ulink url="http://projects.gnome.org/nanny" type="http">Nanny Web
 	page</ulink>. </para>
     <para>
       To report a bug or make a suggestion regarding this application or
