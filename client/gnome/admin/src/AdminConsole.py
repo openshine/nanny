@@ -26,6 +26,9 @@
 import os
 if os.name == "posix":
     import dbus
+elif os.name == "nt":
+    import win32api
+    import win32con
 
 import gtk
 import pango
@@ -420,11 +423,15 @@ class AdminConsole:
             self.im_hoursday_spinbutton.set_sensitive (False)
 
     def __on_help_button_clicked (self, widget, data=None):
-        try:
-            gtk.show_uri(None , "ghelp:nanny", gtk.get_current_event_time())
-        except:
-            os.system("yelp ghelp:nanny")
-
+        if os.name == "posix":
+            try:
+                gtk.show_uri(None , "ghelp:nanny", gtk.get_current_event_time())
+            except:
+                os.system("yelp ghelp:nanny")
+        elif os.name == "nt":
+            win32api.ShellExecute(None, "open", 
+                                  "http://library.gnome.org/users/nanny/stable/",
+                                  None, None, win32con.SW_SHOWNORMAL)
 
     def __on_unlock_button_clicked (self, widget, data=None):
         self.dbus_client.unlock()
