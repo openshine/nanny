@@ -47,5 +47,20 @@ elif os.name == "nt":
         locale_dir = os.path.join(root_path, "share" ,"locale")
         print "LOCALE PATH = %s" % locale_dir
 
-gettext.bindtextdomain(GETTEXT_DOMAIN, locale_dir)
-gettext.textdomain(GETTEXT_DOMAIN)
+if os.name == "posix" :
+    gettext.bindtextdomain(GETTEXT_DOMAIN, locale_dir)
+    gettext.textdomain(GETTEXT_DOMAIN)
+else:
+    locale.setlocale(locale.LC_ALL, '')
+    if os.name == 'nt':
+        # windows hack for locale setting 
+        lang = os.getenv('LANG')
+        if lang is None:
+            defaultLang, defaultEnc = locale.getdefaultlocale()
+            if defaultLang:
+                lang = defaultLang
+        if lang:
+            os.environ['LANG'] = lang
+
+    gettext.bindtextdomain(GETTEXT_DOMAIN, locale_dir)
+    gettext.textdomain(GETTEXT_DOMAIN)
