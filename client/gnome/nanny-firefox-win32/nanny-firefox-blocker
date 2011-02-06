@@ -94,9 +94,9 @@ if __name__ == '__main__':
         def launch_dialog() :
             dlg = gtk.MessageDialog(type=gtk.MESSAGE_WARNING, buttons=gtk.BUTTONS_OK)
             dlg.set_property("icon-name", "nanny")
-            dlg.set_markup("<b>%s</b>" % _("You change firefox proxy settings"))
+            dlg.set_markup("<b>%s</b>" % _("Firefox proxy settings change detected"))
             dlg.format_secondary_markup(_("You can't change the proxy settings "
-                                      "because you are under parental control."))
+                                          "because you are under parental control."))
             
             dlg.run()
             dlg.destroy()
