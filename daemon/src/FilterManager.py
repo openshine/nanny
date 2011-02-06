@@ -732,15 +732,15 @@ class FilterManager (gobject.GObject) :
                         sql += 'SELECT categories_list FROM blacklist WHERE '
                         sql += 'etld_id = (SELECT id FROM etld WHERE name ="%s") AND ' % b_etld
                         sql += 'domain_id = (SELECT id FROM domain WHERE name ="%s") AND '% b_domain
-                        if b_subdomain == '' or b_subdomain == 'www' :
+                        if b_subdomain != ''  :
                             sql += '( '
                             sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="") OR '
-                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="www") '
+                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="%s") ' % b_subdomain
                             sql += ') AND '
                         else:
-                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="%s") AND ' % b_subdomain
+                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="") AND '
                         sql += 'path_id = (SELECT id FROM path WHERE name = "" ) '
-
+                        
                         query = self.db_pools[db].runQuery(sql)
                         block_d = BlockingDeferred(query)
                         qr = block_d.blockOn()
@@ -760,19 +760,19 @@ class FilterManager (gobject.GObject) :
                         sql += 'SELECT COUNT(id) FROM blacklist WHERE '
                         sql += 'etld_id = (SELECT id FROM etld WHERE name ="%s") AND ' % b_etld
                         sql += 'domain_id = (SELECT id FROM domain WHERE name ="%s") AND '% b_domain
-                        if b_subdomain == '' :
+                        if b_subdomain != '' :
                             sql += '( '
                             sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="") OR '
-                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="www") '
+                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="%s") ' % b_subdomain
                             sql += ')'
                         else:
-                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="%s")' % b_subdomain
+                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="")'
                             
                         query = self.db_pools[db].runQuery(sql)
                         block_d = BlockingDeferred(query)
                         qr = block_d.blockOn()
 
-                        if int(qr[0][0]) > 2 :
+                        if (b_subdomain == '' and int(qr[0][0]) > 1) or (b_subdomain != '' and int(qr[0][0]) > 2) :
                             blacklisted_categories.append("may_url_blocked")
 
             if len (blacklisted_categories) > 0 :
@@ -835,16 +835,16 @@ class FilterManager (gobject.GObject) :
                         sql += 'SELECT categories_list FROM blacklist WHERE '
                         sql += 'etld_id = (SELECT id FROM etld WHERE name ="%s") AND ' % b_etld
                         sql += 'domain_id = (SELECT id FROM domain WHERE name ="%s") AND '% b_domain
-                        if b_subdomain == '' or b_subdomain == 'www' :
+                        if b_subdomain != '' :
                             sql += '( '
                             sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="") OR '
-                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="www") '
+                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="%s") ' % b_subdomain
                             sql += ') AND '
                         else:
-                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="%s") AND ' % b_subdomain
+                            sql += 'subdomain_id = (SELECT id FROM subdomain WHERE name ="") AND ' 
                         sql += '('
                         sql += 'path_id = (SELECT id FROM path WHERE name = "%s" ) OR ' % b_path
-                        sql += 'path_id = (SELECT id FROM path WHERE name = "%s") ' % b_path
+                        sql += 'path_id = (SELECT id FROM path WHERE "%s" GLOB name || "/*") ' % b_path
                         sql += ')'
 
                         query = self.db_pools[db].runQuery(sql)
