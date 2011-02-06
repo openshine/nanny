@@ -2,15 +2,15 @@
 # Copyright (C) 2009, 2010 the author(s) of nanny,
 # This file is distributed under the same license as the nanny package.
 #
-# Marek Černocký <marek@manet.cz>, 2009 – 2011.
+# Marek Černocký <marek@manet.cz>, 2009, 2010, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nanny master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nanny&component=general\n"
-"POT-Creation-Date: 2011-01-23 18:00+0000\n"
-"PO-Revision-Date: 2011-01-24 00:21+0100\n"
+"POT-Creation-Date: 2011-02-05 16:45+0000\n"
+"PO-Revision-Date: 2011-02-06 10:56+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -713,7 +713,6 @@ msgid "Contains site specifically 100% suitable for kids"
 msgstr "Obsahuje webové stránky konkrétně na 100% vhodné pro děti"
 
 #: ../client/common/src/Utils.py:93
-#| msgid "Nanny Admin Console - %s"
 msgid "Nanny Admin Tools requires Admin user"
 msgstr "Nástroj správy Nanny vyžaduje správce"
 
@@ -839,6 +838,10 @@ msgstr "Černé listiny"
 msgid "Forbidden sites"
 msgstr "Zakázané webové stránky"
 
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
+msgid "_Update"
+msgstr "Akt_ualizovat"
+
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
 msgstr "Import…"
@@ -902,7 +905,6 @@ msgstr "Nastavení filtrování obsahu webů"
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:175
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:192
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:213
-#| msgid "Blacklist imported"
 msgid "Unknown Blacklist Name"
 msgstr "Neznámý název černé listiny"
 
@@ -917,7 +919,6 @@ msgstr "Je dostupná aktualizace"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:199
 #, python-format
-#| msgid "Downloading file (%s%%)"
 msgid "Downloading information (%s%%)"
 msgstr "Stahují se informace (%s%%)"
 
@@ -1000,28 +1001,28 @@ msgid ""
 msgstr ""
 "Tímto se odstraní všechna uživatelská nastavení vázající se k černé listině."
 
-#: ../client/gnome/admin/src/AdminConsole.py:47
+#: ../client/gnome/admin/src/AdminConsole.py:50
 msgid "Nanny daemon is not started"
 msgstr "Démon Nanny není spuštěný"
 
-#: ../client/gnome/admin/src/AdminConsole.py:48
+#: ../client/gnome/admin/src/AdminConsole.py:51
 msgid "To use the parental control, please start up the daemon."
 msgstr "Pokud chcete použít rodičovskou kontrolu, spusťte prosím démona."
 
 #. FACE
-#: ../client/gnome/admin/src/AdminConsole.py:160
+#: ../client/gnome/admin/src/AdminConsole.py:163
 msgid "Users"
 msgstr "Uživatelé"
 
-#: ../client/gnome/admin/src/AdminConsole.py:336
+#: ../client/gnome/admin/src/AdminConsole.py:339
 msgid "Your configuration has been saved"
 msgstr "Vaše nastavení bylo uloženo"
 
-#: ../client/gnome/admin/src/AdminConsole.py:349
+#: ../client/gnome/admin/src/AdminConsole.py:352
 msgid "You have made changes"
 msgstr "Máte provedené změny"
 
-#: ../client/gnome/admin/src/AdminConsole.py:350
+#: ../client/gnome/admin/src/AdminConsole.py:353
 msgid ""
 "If you don't press the 'Apply' button, your changes will be lost.\n"
 "Are you sure?"
@@ -1029,12 +1030,12 @@ msgstr ""
 "Když nezmáčknete tlačítko „Použít“, budou vaše změny ztraceny.\n"
 "Jste si jistí?"
 
-#: ../client/gnome/admin/src/AdminConsole.py:379
+#: ../client/gnome/admin/src/AdminConsole.py:382
 #, python-format
 msgid "Nanny Admin Console - %s"
 msgstr "Ovládací panel Nanny - %s"
 
-#: ../client/gnome/admin/src/AdminConsole.py:382
+#: ../client/gnome/admin/src/AdminConsole.py:385
 msgid "Nanny Admin Console"
 msgstr "Ovládací panel Nanny"
 
