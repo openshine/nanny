@@ -17,6 +17,7 @@ client/gnome/admin/src/ScheduleCalendar.py
 client/gnome/admin/src/ConfigureProxyDialog.py
 client/gnome/admin/src/AdminConsole.py
 client/gnome/admin/src/BlacklistManager.py
+client/gnome/nanny-firefox-win32/nanny-firefox-blocker
 client/gnome/systray/src/__init__.py.in
 client/gnome/systray/src/SystrayNanny.py
 client/gnome/__init__.py.in
