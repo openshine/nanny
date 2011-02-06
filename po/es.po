@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nanny.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-05 17:43+0100\n"
-"PO-Revision-Date: 2011-01-26 15:06+0100\n"
+"POT-Creation-Date: 2011-02-06 19:34+0100\n"
+"PO-Revision-Date: 2011-02-06 19:35+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -1043,6 +1043,15 @@ msgid ""
 msgstr ""
 "<b>%s (Sólo lectura)</b>\n"
 "   %s"
+
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:97
+msgid "Firefox proxy settings change detected"
+msgstr "Detectado cambio en la configuración del proxy de Firefox"
+
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:98
+msgid ""
+"You can't change the proxy settings because you are under parental control."
+msgstr "No puede cambiar la configuración del proxy porque esta bajo control parental."
 
 #: ../client/gnome/systray/src/SystrayNanny.py:52
 msgid "Session"
