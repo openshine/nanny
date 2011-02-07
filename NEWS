@@ -1,3 +1,32 @@
+Version 2.31.1
+==============
+
+Features
+-----------------------------------
+* Win32 support for nanny (windows xp and 7)
+* New blacklist system
+* Remove nanny blacklist manager
+* Integration of the blacklist manager in nanny admin console
+
+Translations
+------------
+- cs, courtesy of Marek Černocký 
+- de, courtesy of Mario Blättermann 
+- es, courtesy of Daniel Mustieles 
+- es, courtesy of Roberto Majadas 
+- fr, courtesy of Alain Lojewski 
+- fr, courtesy of Claude Paroz 
+- gl, courtesy of Fran Diéguez 
+- he, courtesy of Yaron Shahrabani 
+- hu, courtesy of Gabor Kelemen 
+- pl, courtesy of Piotr Drąg 
+- ro, courtesy of Lucian Adrian Grijincu 
+- sl, courtesy of Andrej Žnidaršič 
+- sl, courtesy of Matej Urbančič 
+- zh_CN, courtesy of Yinghua Wang 
+
+Thanks guys !! you are awesome !! :)
+
 Version 2.30.0
 ==============
 
