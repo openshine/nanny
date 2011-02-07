@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nanny master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nanny&component=general\n"
-"POT-Creation-Date: 2011-01-26 22:32+0000\n"
-"PO-Revision-Date: 2011-01-29 09:52+0100\n"
+"POT-Creation-Date: 2011-02-06 09:58+0000\n"
+"PO-Revision-Date: 2011-02-06 14:42+0100\n"
 "Last-Translator: Andrej Žnidaršič <andrej.znidarsic@gmail.com>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: \n"
@@ -808,6 +808,10 @@ msgstr "Črni seznami"
 msgid "Forbidden sites"
 msgstr "Prepovedane strani"
 
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
+msgid "_Update"
+msgstr "_Posodobi"
+
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
 msgstr "Uvoz ..."
@@ -955,28 +959,28 @@ msgstr "<b>Ali ste prepričani, da želite izbrisati ta črni seznam?</b>"
 msgid "This action will remove all the user configuration linked to the blacklist."
 msgstr "To dejanje bo odstranilo vse uporabniške nastavitve povezane s črnim seznamom."
 
-#: ../client/gnome/admin/src/AdminConsole.py:47
+#: ../client/gnome/admin/src/AdminConsole.py:50
 msgid "Nanny daemon is not started"
 msgstr "Ozadnji program Nanny ni zagnan"
 
-#: ../client/gnome/admin/src/AdminConsole.py:48
+#: ../client/gnome/admin/src/AdminConsole.py:51
 msgid "To use the parental control, please start up the daemon."
 msgstr "Za uporabo starševskega nadzora zaženite ozadnji program."
 
 #. FACE
-#: ../client/gnome/admin/src/AdminConsole.py:160
+#: ../client/gnome/admin/src/AdminConsole.py:163
 msgid "Users"
 msgstr "Uporabniki"
 
-#: ../client/gnome/admin/src/AdminConsole.py:336
+#: ../client/gnome/admin/src/AdminConsole.py:339
 msgid "Your configuration has been saved"
 msgstr "Nastavitve so bile shranjene"
 
-#: ../client/gnome/admin/src/AdminConsole.py:349
+#: ../client/gnome/admin/src/AdminConsole.py:352
 msgid "You have made changes"
 msgstr "Narejene so bile spremembe"
 
-#: ../client/gnome/admin/src/AdminConsole.py:350
+#: ../client/gnome/admin/src/AdminConsole.py:353
 msgid ""
 "If you don't press the 'Apply' button, your changes will be lost.\n"
 "Are you sure?"
@@ -984,12 +988,12 @@ msgstr ""
 "V primeru, da gumba 'Uveljavi' ne pritisnete, bodo vaše spremembe izgubljene.\n"
 "Ali ste prepričani, da želite nadaljevati?"
 
-#: ../client/gnome/admin/src/AdminConsole.py:379
+#: ../client/gnome/admin/src/AdminConsole.py:382
 #, python-format
 msgid "Nanny Admin Console - %s"
 msgstr "Skrbniška konzola Nanny - %s"
 
-#: ../client/gnome/admin/src/AdminConsole.py:382
+#: ../client/gnome/admin/src/AdminConsole.py:385
 msgid "Nanny Admin Console"
 msgstr "Skrbniška konzola Nanny"
 
