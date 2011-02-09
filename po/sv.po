@@ -1,16 +1,17 @@
 # Swedish translation for nanny.
-# Copyright (C) 2009, 2010 Free Software Foundation, Inc.
+# Copyright (C) 2009, 2010, 2011 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nanny package.
-# Daniel Nylander <po@danielnylander.se>, 2009, 2010.
+# Daniel Nylander <po@danielnylander.se>, 2009, 2010, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nanny\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-05 19:24+0100\n"
-"PO-Revision-Date: 2010-02-05 19:30+0100\n"
+"POT-Creation-Date: 2011-02-09 23:42+0100\n"
+"PO-Revision-Date: 2011-02-09 23:55+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -59,7 +60,7 @@ msgstr ""
 
 #: ../client/common/src/Categories.py:40
 msgid "Sites that remove spyware"
-msgstr ""
+msgstr "Webbplatser som tar bort spionprogram"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:42
@@ -76,9 +77,8 @@ msgid "astrology"
 msgstr "astrologi"
 
 #: ../client/common/src/Categories.py:44
-#, fuzzy
 msgid "Astrology websites"
-msgstr "Tillåtna webbplatser"
+msgstr "Webbplatser om astrologi"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:46
@@ -87,7 +87,7 @@ msgstr "ljud-video"
 
 #: ../client/common/src/Categories.py:46
 msgid "Sites with audio or video downloads"
-msgstr ""
+msgstr "Webbplatser för hämtning av ljud eller video"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:48
@@ -96,7 +96,7 @@ msgstr "bank och finans"
 
 #: ../client/common/src/Categories.py:48
 msgid "Banking websites"
-msgstr ""
+msgstr "Finansiella webbplatser"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:50
@@ -105,7 +105,7 @@ msgstr ""
 
 #: ../client/common/src/Categories.py:50
 msgid "Sites with information only on beer or liquors"
-msgstr ""
+msgstr "Webbplatser med information endast om öl eller alkohol"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:52
@@ -114,7 +114,7 @@ msgstr ""
 
 #: ../client/common/src/Categories.py:52
 msgid "Sites with beer or liquors for sale"
-msgstr ""
+msgstr "Webbplatser med försäljning av öl eller alkohol"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:54
@@ -132,7 +132,7 @@ msgstr "mobiltelefoner"
 
 #: ../client/common/src/Categories.py:56
 msgid "stuff for mobile/cell phones"
-msgstr ""
+msgstr "saker för mobiltelefoner"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:58
@@ -141,7 +141,7 @@ msgstr "chatt"
 
 #: ../client/common/src/Categories.py:58
 msgid "Sites with chat rooms etc"
-msgstr ""
+msgstr "Webbplatser med chattrum etc."
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:60
@@ -150,7 +150,7 @@ msgstr ""
 
 #: ../client/common/src/Categories.py:60
 msgid "Sites to do with childcare"
-msgstr ""
+msgstr "Webbplatser som har med barnomsorg att göra"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:62
@@ -159,7 +159,7 @@ msgstr ""
 
 #: ../client/common/src/Categories.py:62
 msgid "Sites to do with cleaning"
-msgstr ""
+msgstr "Webbplatser som att göra med städning"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:64
@@ -168,7 +168,7 @@ msgstr "kläder"
 
 #: ../client/common/src/Categories.py:64
 msgid "Sites about and selling clothing"
-msgstr ""
+msgstr "Webbplatser om och försäljning av kläder"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:66
@@ -177,7 +177,7 @@ msgstr ""
 
 #: ../client/common/src/Categories.py:66
 msgid "Information about contraception"
-msgstr ""
+msgstr "Information om preventivmedel"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:68
@@ -187,7 +187,7 @@ msgstr "Söndag"
 
 #: ../client/common/src/Categories.py:68
 msgid "Sites about cooking et al"
-msgstr ""
+msgstr "Webbplatser om matlagring och liknande"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:70
@@ -196,7 +196,7 @@ msgstr "dejter"
 
 #: ../client/common/src/Categories.py:70
 msgid "Sites about dating"
-msgstr ""
+msgstr "Webbplatser för dating"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:72
@@ -223,7 +223,7 @@ msgstr "droger"
 
 #: ../client/common/src/Categories.py:76
 msgid "Drug related sites"
-msgstr ""
+msgstr "Drogrelaterade webbplatser"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:78
@@ -259,7 +259,7 @@ msgstr ""
 
 #: ../client/common/src/Categories.py:84
 msgid "Sites to do with french education"
-msgstr ""
+msgstr "Webbplatser som har att göra med fransk utbildning"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:86
@@ -268,7 +268,7 @@ msgstr "spel och dobbel"
 
 #: ../client/common/src/Categories.py:86
 msgid "Gambling sites including stocks and shares"
-msgstr ""
+msgstr "Webbplatser för dobbel inklusive aktier"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:88
@@ -277,7 +277,7 @@ msgstr "spel"
 
 #: ../client/common/src/Categories.py:88
 msgid "Game related sites"
-msgstr ""
+msgstr "Spelrelaterade webbplatser"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:90
@@ -285,9 +285,8 @@ msgid "gardening"
 msgstr ""
 
 #: ../client/common/src/Categories.py:90
-#, fuzzy
 msgid "Gardening sites"
-msgstr "Förbjudna webbplatser"
+msgstr "Webbplatser om trädgårdar"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:92
@@ -296,7 +295,7 @@ msgstr ""
 
 #: ../client/common/src/Categories.py:92
 msgid "Military and schools etc"
-msgstr ""
+msgstr "Militär och skolor etc."
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:94
@@ -305,7 +304,7 @@ msgstr "vapen"
 
 #: ../client/common/src/Categories.py:94
 msgid "Sites with guns"
-msgstr ""
+msgstr "Webbplatser om vapen"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:96
@@ -314,7 +313,7 @@ msgstr "hacking"
 
 #: ../client/common/src/Categories.py:96
 msgid "Hacking/cracking information"
-msgstr ""
+msgstr "Information om hacking/cracking"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:98
@@ -350,7 +349,7 @@ msgstr ""
 
 #: ../client/common/src/Categories.py:104
 msgid "Sites about and selling jewelry"
-msgstr ""
+msgstr "Webbplatser om och försäljning av smycken och juveler"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:106
@@ -359,7 +358,7 @@ msgstr "jobbsökning"
 
 #: ../client/common/src/Categories.py:106
 msgid "Sites for finding jobs"
-msgstr ""
+msgstr "Webbplatser för jobbsökning"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:108
@@ -377,7 +376,7 @@ msgstr "e-post"
 
 #: ../client/common/src/Categories.py:110
 msgid "Webmail and email sites"
-msgstr ""
+msgstr "Webbaserad e-post och liknande webbplatser"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:112
@@ -386,7 +385,7 @@ msgstr ""
 
 #: ../client/common/src/Categories.py:112
 msgid "Sites about marketing products"
-msgstr ""
+msgstr "Webbplatser om marknadsföring av produkter"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:114
@@ -395,7 +394,7 @@ msgstr ""
 
 #: ../client/common/src/Categories.py:114
 msgid "Medical websites"
-msgstr ""
+msgstr "Medicinska webbplatser"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:116
@@ -413,7 +412,7 @@ msgstr "mobiltelefon"
 
 #: ../client/common/src/Categories.py:118
 msgid "Sites to do with mobile phones"
-msgstr ""
+msgstr "Webbplatser som har att göra med mobiltelefoner"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:120
@@ -440,7 +439,7 @@ msgstr ""
 
 #: ../client/common/src/Categories.py:124
 msgid "Online auctions"
-msgstr ""
+msgstr "Nätauktioner"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:126
@@ -475,9 +474,8 @@ msgid "pets"
 msgstr "husdjur"
 
 #: ../client/common/src/Categories.py:132
-#, fuzzy
 msgid "Pet sites"
-msgstr "Tillåtna webbplatser"
+msgstr "Webbplatser om husdjur"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:134
@@ -504,7 +502,7 @@ msgstr ""
 
 #: ../client/common/src/Categories.py:138
 msgid "Sites with proxies to bypass filters"
-msgstr ""
+msgstr "Webbplatser med proxyservrar för att kringgå filter"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:140
@@ -522,7 +520,7 @@ msgstr "religion"
 
 #: ../client/common/src/Categories.py:142
 msgid "Sites promoting religion"
-msgstr ""
+msgstr "Webbplatser som promoterar religion"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:144
@@ -540,7 +538,7 @@ msgstr "sökmotorer"
 
 #: ../client/common/src/Categories.py:146
 msgid "Search engines such as google"
-msgstr ""
+msgstr "Sökmotorer såsom Google"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:148
@@ -632,7 +630,7 @@ msgstr "våld"
 
 #: ../client/common/src/Categories.py:166
 msgid "Sites containing violence"
-msgstr ""
+msgstr "Webbplatser som innehåller våld"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:168
@@ -650,7 +648,7 @@ msgstr ""
 
 #: ../client/common/src/Categories.py:170
 msgid "Sites with illegal pirate software"
-msgstr ""
+msgstr "Webbplatser med olagliga piratprogram"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:172
@@ -684,17 +682,25 @@ msgstr ""
 msgid "whitelist"
 msgstr "vitlista"
 
-#: ../client/common/src/Categories.py:178
-#, python-format
+#: ../client/common/src/Categories.py:180
+#, no-python-format
 msgid "Contains site specifically 100% suitable for kids"
 msgstr ""
 
-#: ../client/common/src/DBusClient.py:78
+#: ../client/common/src/Utils.py:93
+msgid "Nanny Admin Tools requires Admin user"
+msgstr ""
+
+#: ../client/common/src/Utils.py:94
+msgid "To run any Nanny Admin Tool you must to be admin of the system."
+msgstr ""
+
+#: ../client/common/src/DBusClient.py:80
 #, fuzzy
 msgid "NannyDaemon unavailable"
 msgstr "<b>NannyDaemon är inte tillgänglig</b>"
 
-#: ../client/common/src/DBusClient.py:79
+#: ../client/common/src/DBusClient.py:81
 msgid ""
 "NannyDaemon is not activated or does not work properly.\n"
 "Please try to reactivate it."
@@ -702,110 +708,145 @@ msgstr ""
 "NannyDaemon är inte aktiverad eller fungerar inte korrekt.\n"
 "Försök att återaktivera den."
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:1
+#: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:1
+msgid "Nanny parental control admin console"
+msgstr ""
+
+#: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:2
+msgid "Parental Control"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
+#: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
+msgid ""
+"<b>You don't have admin privileges</b>\n"
+"Click this button if you want to make changes."
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:3
 msgid "Configure"
 msgstr "Konfigurera"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:2
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
 msgid "Instant messaging"
 msgstr "Snabbmeddelanden"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:3
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
 msgid "Mail client"
 msgstr "E-postklient"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:4
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
 msgid "PC use time"
 msgstr ""
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:5
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
 msgid "Use the computer"
 msgstr "Använd datorn"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:6
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
 msgid "Use the instant messaging"
 msgstr "Använd snabbmeddelanden"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:7
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
 msgid "Use the mail client"
 msgstr "Använd e-postklienten"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:8
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
 msgid "Use the web browser"
 msgstr "Använd webbläsaren"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:9
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
 msgid "Use web content filtering"
 msgstr "Använd innehållsfiltrering för webb"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:10
-#: ../client/gnome/systray/src/SystrayNanny.py:46
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
+#: ../client/gnome/systray/src/SystrayNanny.py:53
 msgid "Web browser"
 msgstr "Webbläsare"
 
-#: ../client/gnome/admin/data/glade/nanny_admin_console.glade.h:11
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:13
 msgid "hours a day"
 msgstr "timmar per dag"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:1
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:1
 msgid "<span color=\"red\">All the fields are mandatory. Please fill all of them.</span>"
 msgstr "<span color=\"red\">Alla fält är obligatoriska. Fyll i alla.</span>"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:2
-#: ../client/gnome/admin/data/glade/nbm_pbl_edit_dialog.glade.h:1
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:2
+#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:1
 msgid "Description:"
 msgstr "Beskrivning:"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:3
-#: ../client/gnome/admin/data/glade/nbm_pbl_edit_dialog.glade.h:2
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:3
+#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:2
 msgid "Name:"
 msgstr "Namn:"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_edit_dialog.glade.h:4
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:4
 msgid "URL:"
 msgstr "URL:"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_dialog.glade.h:1
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:1
 msgid "Allowed sites"
 msgstr "Tillåtna webbplatser"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_dialog.glade.h:2
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:2
 msgid "Blacklists"
 msgstr "Svartlistor"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_dialog.glade.h:3
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:3
 msgid "Forbidden sites"
 msgstr "Förbjudna webbplatser"
 
-#: ../client/gnome/admin/data/glade/nac_wcf_dialog.glade.h:4
-msgid "Here you can apply the available blacklists for the selected user. If you want to add new blacklists please go to System > Administration > Blacklists."
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
+msgid "_Update"
+msgstr "_Uppdatera"
+
+#: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
+msgid "Import..."
+msgstr "Importera..."
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:1
+msgid "5 minutes, please"
+msgstr "5 minuter, tack"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
+msgid "<span foreground=\"white\"><big>You've time available if you need to close documents or aplications.</big></span>"
 msgstr ""
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
+msgid "<span size=\"25000\" foreground=\"white\"><b>You've used your computer use time</b></span>"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
+msgid "close session"
+msgstr "stäng sessionen"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Monday"
 msgstr "Måndag"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Tuesday"
 msgstr "Tisdag"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Wednesday"
 msgstr "Onsdag"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Thursday"
 msgstr "Torsdag"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Friday"
 msgstr "Fredag"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Saturday"
 msgstr "Lördag"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:292
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Sunday"
 msgstr "Söndag"
 
@@ -813,14 +854,44 @@ msgstr "Söndag"
 msgid "Web Content Filter Configuration"
 msgstr "Konfiguration av innehållsfiltrering för webb"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:242
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:253
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:175
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:192
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:213
+msgid "Unknown Blacklist Name"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:194
+#, python-format
+msgid "(version : %s)"
+msgstr "(version : %s)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:197
+msgid "There is an update available"
+msgstr "Det finns en uppdatering tillgänglig"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:199
+#, python-format
+msgid "Downloading information (%s%%)"
+msgstr "Hämtar information (%s%%)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:201
+#, python-format
+msgid "Installing blacklist (%s%%)"
+msgstr "Installerar svartlista (%s%%)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:203
+#, python-format
+msgid "Updating blacklist (%s%%)"
+msgstr "Uppdaterar svartlista (%s%%)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:327
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:338
 #, fuzzy
 msgid "Error while importing list from the Internet"
 msgstr "<b>Fel vid importering av lista från Internet</b>"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:243
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:254
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:328
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:339
 msgid ""
 "Some error has occured while downloading the list.\n"
 "Please verify the URL and try again."
@@ -828,29 +899,29 @@ msgstr ""
 "Fel har inträffat vid hämtning av listan.\n"
 "Verifiera URL:en och försök igen."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:345
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:366
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:433
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:455
 msgid "Are you sure you want to delete this filter?"
 msgstr "Är du säker på att du vill ta bort detta filter?"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:346
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:367
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:434
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:456
 msgid "You will not be able to undo this action."
 msgstr "Du kommer inte kunna ångra denna åtgärd."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:353
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:374
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:441
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:463
 msgid "Removing filter. Please, wait..."
 msgstr "Tar bort filter. Vänta..."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:393
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:404
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:482
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:493
 #, fuzzy
 msgid "Error while deleting filters"
 msgstr "<b>Fel vid borttagning av filter</b>"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:394
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:405
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:483
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:494
 msgid ""
 "Some error has occured while deleting filters.\n"
 "Please try again."
@@ -858,54 +929,69 @@ msgstr ""
 "Fel har inträffat vid borttagning av filter.\n"
 "Försök igen."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:436
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:533
 msgid "<b>Select all the categories</b>"
 msgstr "<b>Markera alla kategorier</b>"
 
-#: ../client/gnome/admin/src/AdminConsole.py:45
-#, fuzzy
-msgid "Nanny daemon is not started"
-msgstr "<b>Nanny-demonen är inte startad</b>"
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:585
+msgid "Introduce the nannycentral repository url"
+msgstr ""
 
-#: ../client/gnome/admin/src/AdminConsole.py:46
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:591
+msgid "It's something like http://www.nannycentral.info/blacklist/blacklist.json ..."
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:613
+#: ../client/gnome/admin/src/BlacklistManager.py:154
+msgid "<b>Are you sure you want to delete this blacklist?</b>"
+msgstr "<b>Är du säker på att du vill ta bort denna svartlista?</b>"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:614
+#: ../client/gnome/admin/src/BlacklistManager.py:155
+msgid "This action will remove all the user configuration linked to the blacklist."
+msgstr ""
+
+#: ../client/gnome/admin/src/AdminConsole.py:50
+msgid "Nanny daemon is not started"
+msgstr "Nanny-demonen är inte startad"
+
+#: ../client/gnome/admin/src/AdminConsole.py:51
 msgid "To use the parental control, please start up the daemon."
 msgstr ""
 
 #. FACE
-#: ../client/gnome/admin/src/AdminConsole.py:112
+#: ../client/gnome/admin/src/AdminConsole.py:163
 msgid "Users"
 msgstr "Användare"
 
-#: ../client/gnome/admin/src/AdminConsole.py:267
+#: ../client/gnome/admin/src/AdminConsole.py:339
 msgid "Your configuration has been saved"
 msgstr "Din konfiguration har sparats"
 
-#: ../client/gnome/admin/src/AdminConsole.py:279
+#: ../client/gnome/admin/src/AdminConsole.py:352
 msgid "You have made changes"
 msgstr "Du har gjort ändringar"
 
-#: ../client/gnome/admin/src/AdminConsole.py:280
+#: ../client/gnome/admin/src/AdminConsole.py:353
 msgid ""
 "If you don't press the 'Apply' button, your changes will be lost.\n"
 "Are you sure?"
 msgstr ""
 
-#: ../client/gnome/admin/src/AdminConsole.py:309
+#: ../client/gnome/admin/src/AdminConsole.py:382
 #, python-format
 msgid "Nanny Admin Console - %s"
 msgstr ""
 
-#: ../client/gnome/admin/src/AdminConsole.py:312
+#: ../client/gnome/admin/src/AdminConsole.py:385
 msgid "Nanny Admin Console"
 msgstr ""
 
 #: ../client/gnome/admin/src/BlacklistManager.py:37
-#: ../client/gnome/admin/src/BlacklistManager.py:131
-#, fuzzy
 msgid "Blacklist Filter Configuration"
-msgstr "Konfiguration av innehållsfiltrering för webb"
+msgstr "Konfiguration av svartlistefilter"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:98
+#: ../client/gnome/admin/src/BlacklistManager.py:112
 #, python-format
 msgid ""
 "<b>%s (Read only)</b>\n"
@@ -914,72 +1000,53 @@ msgstr ""
 "<b>%s (skrivskyddad)</b>\n"
 "   %s"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:103
-msgid "Select file to import"
-msgstr "Välj fil att importera"
-
-#: ../client/gnome/admin/src/BlacklistManager.py:123
-#, fuzzy
-msgid "<b>Error importing blacklist file</b>"
-msgstr "<b>Fel vid importering av lista från Internet</b>"
-
-#: ../client/gnome/admin/src/BlacklistManager.py:124
-#, fuzzy
-msgid "Some error has occured importing the blacklist file."
-msgstr ""
-"Fel har inträffat vid borttagning av filter.\n"
-"Försök igen."
-
-#: ../client/gnome/admin/src/BlacklistManager.py:162
-msgid "<b>Are you sure you want to delete this blacklist?</b>"
-msgstr "<b>Är du säker på att du vill ta bort denna svartlista?</b>"
-
-#: ../client/gnome/admin/src/BlacklistManager.py:163
-msgid "This action will remove all the user configuration linked to the blacklist."
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:97
+msgid "Firefox proxy settings change detected"
 msgstr ""
 
-#. atributes
-#. cuanto falta
-#. cuanto quedaba cuando se mostro
-#: ../client/gnome/systray/src/SystrayNanny.py:45
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:98
+msgid "You can't change the proxy settings because you are under parental control."
+msgstr ""
+
+#: ../client/gnome/systray/src/SystrayNanny.py:52
 msgid "Session"
 msgstr "Session"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:47
+#: ../client/gnome/systray/src/SystrayNanny.py:54
 msgid "e-Mail"
 msgstr ""
 
-#: ../client/gnome/systray/src/SystrayNanny.py:48
+#: ../client/gnome/systray/src/SystrayNanny.py:55
 msgid "Instant messanger"
 msgstr "Snabbmeddelandeklient"
 
 #. To translators: In x-minutes the access to <app> will be granted
-#: ../client/gnome/systray/src/SystrayNanny.py:95
+#: ../client/gnome/systray/src/SystrayNanny.py:134
 #, python-format
 msgid "In %(time)s the access to %(app)s will be granted."
 msgstr ""
 
 #. To translators: In x-minutes the access to <app> will be denied
-#: ../client/gnome/systray/src/SystrayNanny.py:98
+#: ../client/gnome/systray/src/SystrayNanny.py:137
 #, python-format
 msgid "In %(time)s the access to %(app)s will be denied."
 msgstr ""
 
-#: ../client/gnome/systray/src/SystrayNanny.py:111
+#: ../client/gnome/systray/src/SystrayNanny.py:160
 #, python-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d dygn"
 msgstr[1] "%d dygn"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:113
+#: ../client/gnome/systray/src/SystrayNanny.py:162
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d timme"
 msgstr[1] "%d timmar"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:115
+#: ../client/gnome/systray/src/SystrayNanny.py:164
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -987,13 +1054,21 @@ msgstr[0] "%d minut"
 msgstr[1] "%d minuter"
 
 #. Translators: This is the separator between time strings, like '1 day, 2 hours, 3 minutes'
-#: ../client/gnome/systray/src/SystrayNanny.py:117
+#: ../client/gnome/systray/src/SystrayNanny.py:166
 msgid ", "
+msgstr ", "
+
+#: ../daemon/data/org.gnome.nanny.policy.in.h:1
+msgid "Manage your parental control settings"
+msgstr ""
+
+#: ../daemon/data/org.gnome.nanny.policy.in.h:2
+msgid "You need to authenticate to modify the parental control configuration"
 msgstr ""
 
 #: ../daemon/src/DansGuardianImporter.py:63
 msgid "Blacklist imported"
-msgstr ""
+msgstr "Svartlistan har importerats"
 
 #: ../daemon/src/DansGuardianImporter.py:76
 msgid "Nanny file created"
@@ -1014,6 +1089,21 @@ msgstr "Importerar domäner [kategori: %s] (%s%%)"
 msgid "Importing urls [category: %s] (%s%%)"
 msgstr "Importerar url:er [kategori: %s] (%s%%)"
 
+#, fuzzy
+#~ msgid "BlackLists"
+#~ msgstr "Svartlistor"
+#~ msgid "Select file to import"
+#~ msgstr "Välj fil att importera"
+
+#, fuzzy
+#~ msgid "<b>Error importing blacklist file</b>"
+#~ msgstr "<b>Fel vid importering av lista från Internet</b>"
+
+#, fuzzy
+#~ msgid "Some error has occured importing the blacklist file."
+#~ msgstr ""
+#~ "Fel har inträffat vid borttagning av filter.\n"
+#~ "Försök igen."
 #~ msgid "Type of filter:"
 #~ msgstr "Typ av filter:"
 #~ msgid "Downloading the list. Please, wait..."
