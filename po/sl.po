@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nanny master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nanny&component=general\n"
-"POT-Creation-Date: 2011-02-06 09:58+0000\n"
-"PO-Revision-Date: 2011-02-06 14:42+0100\n"
+"POT-Creation-Date: 2011-02-09 22:56+0000\n"
+"PO-Revision-Date: 2011-02-12 11:13+0100\n"
 "Last-Translator: Andrej Žnidaršič <andrej.znidarsic@gmail.com>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: \n"
@@ -716,14 +716,6 @@ msgstr "Skrbniška konzola starševskega nadzora Nanny"
 msgid "Parental Control"
 msgstr "Starševski nadzor"
 
-#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:1
-msgid "BlackLists"
-msgstr "Črni seznami"
-
-#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:2
-msgid "Nanny parental control blacklists manager"
-msgstr "Upravljalnik črnih seznamov starševskega nadzora Nanny"
-
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
 msgid ""
@@ -1010,6 +1002,14 @@ msgstr ""
 "<b>%s (le za branje)</b>\n"
 "   %s"
 
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:97
+msgid "Firefox proxy settings change detected"
+msgstr "Zaznana je bila sprememba posredniškega strežnika"
+
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:98
+msgid "You can't change the proxy settings because you are under parental control."
+msgstr "Nastavitev posredniškega strežnika ne morete spremeniti, ker ste pod starševskim nadzorom."
+
 #: ../client/gnome/systray/src/SystrayNanny.py:52
 msgid "Session"
 msgstr "Seja"
@@ -1097,6 +1097,10 @@ msgstr "Uvažanje domen [kategorija: %s] (%s%%)"
 msgid "Importing urls [category: %s] (%s%%)"
 msgstr "Uvažanje url-jev [kategorija: %s] (%s%%)"
 
+#~ msgid "BlackLists"
+#~ msgstr "Črni seznami"
+#~ msgid "Nanny parental control blacklists manager"
+#~ msgstr "Upravljalnik črnih seznamov starševskega nadzora Nanny"
 #~ msgid ""
 #~ "Here you can apply the available blacklists for the selected user. If you "
 #~ "want to add new blacklists please go to System > Administration > "
