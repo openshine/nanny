@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nanny\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-06 08:23+0200\n"
-"PO-Revision-Date: 2011-02-06 09:12+0200\n"
+"POT-Creation-Date: 2011-02-28 19:25+0200\n"
+"PO-Revision-Date: 2011-02-28 19:26+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <sh.yaron@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -719,14 +719,6 @@ msgstr "מסוף ניהול בקרת ההורים של Nanny"
 msgid "Parental Control"
 msgstr "בקרת הורים"
 
-#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:1
-msgid "BlackLists"
-msgstr "רשימות חסימה"
-
-#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:2
-msgid "Nanny parental control blacklists manager"
-msgstr "מנהל רשימות החסימה של תכנית בקרת ההורים Nanny"
-
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
 msgid ""
@@ -1026,6 +1018,15 @@ msgstr ""
 "<b>%s (קריאה בלבד)</b>\n"
 "   %s"
 
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:97
+msgid "Firefox proxy settings change detected"
+msgstr "התגלה שינוי בהגדרות המתווך של Firefox"
+
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:98
+msgid ""
+"You can't change the proxy settings because you are under parental control."
+msgstr "לא ניתן לשנות את הגדרות המתווך כיוון שהמצב שלך נתון לבקרת הורים."
+
 #: ../client/gnome/systray/src/SystrayNanny.py:52
 msgid "Session"
 msgstr "הפעלה"
@@ -1109,3 +1110,9 @@ msgstr "המתחמים מיובאים [קטגוריה: %s]‏ (%s%%)"
 #, python-format
 msgid "Importing urls [category: %s] (%s%%)"
 msgstr "הכתובות מיובאות [קטגוריה: %s]‏ (%s%%)"
+
+#~ msgid "BlackLists"
+#~ msgstr "רשימות חסימה"
+
+#~ msgid "Nanny parental control blacklists manager"
+#~ msgstr "מנהל רשימות החסימה של תכנית בקרת ההורים Nanny"
