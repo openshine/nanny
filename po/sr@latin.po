@@ -1,0 +1,1129 @@
+# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 15.02.2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: nanny\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=nanny&component=general\n"
+"POT-Creation-Date: 2011-02-12 18:29+0000\n"
+"PO-Revision-Date: 2011-02-15 14:49+0200\n"
+"Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
+"Language-Team: gnom@prevod.org\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: Serbian (sr)\n"
+"Plural-Forms: nplurals=4;    plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 :    n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\\n\n"
+"X-Generator: Virtaal 0.5.2\n"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:32
+msgid "abortion"
+msgstr "abortus"
+
+#: ../client/common/src/Categories.py:32
+msgid "Abortion information excluding when related to religion"
+msgstr "Informacije o abortusu isključujući one koje se odnose na religiju"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:34
+msgid "ads"
+msgstr "oglasi"
+
+#: ../client/common/src/Categories.py:34
+msgid "Advert servers and banned URLs"
+msgstr "Serveri reklama i zabranjenih URL adresa"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:36
+msgid "adult"
+msgstr "odrasli"
+
+#: ../client/common/src/Categories.py:36
+msgid "Sites containing adult material such as swearing but not porn"
+msgstr ""
+"Sajtovi koji sadrže materijal za odrasle kao što je psovanje ali ne i porno"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:38
+msgid "aggressive"
+msgstr "agresivnost"
+
+#: ../client/common/src/Categories.py:38
+msgid "Similar to violence but more promoting than depicting"
+msgstr "Slično nasilju ali više promoterski nego što prikazuje"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:40
+msgid "antispyware"
+msgstr "antišpijunski"
+
+#: ../client/common/src/Categories.py:40
+msgid "Sites that remove spyware"
+msgstr "Sajtovi koji uklanjaju špijunske softvere"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:42
+msgid "artnudes"
+msgstr "umetnička golotinja"
+
+#: ../client/common/src/Categories.py:42
+msgid "Art sites containing artistic nudity"
+msgstr "Sajtovi umetnosti sa umetničkom golotinjom"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:44
+msgid "astrology"
+msgstr "astrologija"
+
+#: ../client/common/src/Categories.py:44
+msgid "Astrology websites"
+msgstr "Veb sajtovi astrologije"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:46
+msgid "audio-video"
+msgstr "audio-video"
+
+#: ../client/common/src/Categories.py:46
+msgid "Sites with audio or video downloads"
+msgstr "Sajtovi sa audio ili video preuzimanjima"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:48
+msgid "banking"
+msgstr "bankarstvo"
+
+#: ../client/common/src/Categories.py:48
+msgid "Banking websites"
+msgstr "Veb sajtovi bankarstva"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:50
+msgid "beerliquorinfo"
+msgstr "info o pivu/likerima"
+
+#: ../client/common/src/Categories.py:50
+msgid "Sites with information only on beer or liquors"
+msgstr "Sajtovi sa informacijama o pivu ili likerima"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:52
+msgid "beerliquorsale"
+msgstr "prodaja piva/likera"
+
+#: ../client/common/src/Categories.py:52
+msgid "Sites with beer or liquors for sale"
+msgstr "Sajtovi sa pivom ili likerima na prodaju"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:54
+msgid "blog"
+msgstr "blog"
+
+#: ../client/common/src/Categories.py:54
+msgid "Journal/Diary websites"
+msgstr "Veb sajtovi novosti i dnevnika"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:56
+msgid "cellphones"
+msgstr "mobilini telefoni"
+
+#: ../client/common/src/Categories.py:56
+msgid "stuff for mobile/cell phones"
+msgstr "stvari za mobilne telefone"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:58
+msgid "chat"
+msgstr "ćaskanje"
+
+#: ../client/common/src/Categories.py:58
+msgid "Sites with chat rooms etc"
+msgstr "Sajtovi sa sobama za ćaskanje itd"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:60
+msgid "childcare"
+msgstr "briga o deci"
+
+#: ../client/common/src/Categories.py:60
+msgid "Sites to do with childcare"
+msgstr "Sajtovi u vezi brige o deci"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:62
+msgid "cleaning"
+msgstr "čišćenje"
+
+#: ../client/common/src/Categories.py:62
+msgid "Sites to do with cleaning"
+msgstr "Sajtovi u vezi sa čišćenjem"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:64
+msgid "clothing"
+msgstr "odeća"
+
+#: ../client/common/src/Categories.py:64
+msgid "Sites about and selling clothing"
+msgstr "Sajtovi o odeći i njihovoj prodaji"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:66
+msgid "contraception"
+msgstr "kontracepcija"
+
+#: ../client/common/src/Categories.py:66
+msgid "Information about contraception"
+msgstr "Informacije o kontracepciji"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:68
+msgid "culnary"
+msgstr "kulinarstvo"
+
+#: ../client/common/src/Categories.py:68
+msgid "Sites about cooking et al"
+msgstr "Sajtovi o kuvanju i dr."
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:70
+msgid "dating"
+msgstr "sastajanje"
+
+#: ../client/common/src/Categories.py:70
+msgid "Sites about dating"
+msgstr "Sajtovi o sastajanju"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:72
+msgid "desktopsillies"
+msgstr "ludorije radne površi"
+
+#: ../client/common/src/Categories.py:72
+msgid ""
+"Sites containing screen savers, backgrounds, cursers, pointers. desktop "
+"themes and similar timewasting and potentially dangerous content"
+msgstr ""
+"Sajtovi koji sadrže čuvare ekrana, pozadine, kursore, pokazivače, teme radne "
+"površi i slično gubljenje vremena i potencijalno opasan sadržaj"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:74
+msgid "dialers"
+msgstr "dileri"
+
+#: ../client/common/src/Categories.py:74
+msgid "Sites with dialers such as those for pornography or trojans"
+msgstr "Sajtovi sa dilerima kao što su oni za pornografiju ili trojance"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:76
+msgid "drugs"
+msgstr "droge"
+
+#: ../client/common/src/Categories.py:76
+msgid "Drug related sites"
+msgstr "Sajtovi u vezi droge"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:78
+msgid "ecommerce"
+msgstr "elektronska trgovina"
+
+#: ../client/common/src/Categories.py:78
+msgid "Sites that provide online shopping"
+msgstr "Sajtovi koji obezbeđuju kupovinu na mreži"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:80
+msgid "entertainment"
+msgstr "zabava"
+
+#: ../client/common/src/Categories.py:80
+msgid "Sites that promote movies, books, magazine, humor"
+msgstr "Sajtovi koji promovišu filmove, knjige, časopise, humor"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:82
+msgid "filehosting"
+msgstr "hosting datoteka"
+
+#: ../client/common/src/Categories.py:82
+msgid "Sites to do with filehosting"
+msgstr "Sajtovi u vezi sa udomljavanjem datoteka"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:84
+msgid "frencheducation"
+msgstr "francusko obrazovanje"
+
+#: ../client/common/src/Categories.py:84
+msgid "Sites to do with french education"
+msgstr "Sajtovi u vezi sa francuskim obrazovanjem"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:86
+msgid "gambling"
+msgstr "kockanje"
+
+#: ../client/common/src/Categories.py:86
+msgid "Gambling sites including stocks and shares"
+msgstr "Sajtovi za kockanje uključujući akcije i udele"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:88
+msgid "games"
+msgstr "igre"
+
+#: ../client/common/src/Categories.py:88
+msgid "Game related sites"
+msgstr "Sajtovi koji se odnose na igre"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:90
+msgid "gardening"
+msgstr "baštovanstvo"
+
+#: ../client/common/src/Categories.py:90
+msgid "Gardening sites"
+msgstr "Sajtovi za baštovanstvo"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:92
+msgid "government"
+msgstr "uprava"
+
+#: ../client/common/src/Categories.py:92
+msgid "Military and schools etc"
+msgstr "Vojna i školska itd."
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:94
+msgid "guns"
+msgstr "pištolji"
+
+#: ../client/common/src/Categories.py:94
+msgid "Sites with guns"
+msgstr "Sajtovi sa pištoljima"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:96
+msgid "hacking"
+msgstr "hakerisanje"
+
+#: ../client/common/src/Categories.py:96
+msgid "Hacking/cracking information"
+msgstr "Informacije o hakerisanju/krakerisanju"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:98
+msgid "homerepair"
+msgstr "popravljanje kuće"
+
+#: ../client/common/src/Categories.py:98
+msgid "Sites about home repair"
+msgstr "Sajtovi o popravljanju kuće"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:100
+msgid "hygiene"
+msgstr "higijena"
+
+#: ../client/common/src/Categories.py:100
+msgid "Sites about hygiene and other personal grooming related stuff"
+msgstr "Sajtovi o higijeni i drugim stvarima za lično doterivanje"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:102
+msgid "instantmessaging"
+msgstr "trenutno dopisivanje"
+
+#: ../client/common/src/Categories.py:102
+msgid ""
+"Sites that contain messenger client download and web-based messaging sites"
+msgstr ""
+"Sajtovi koji sadrže preuzimanje klijenta za dopisivanje i sajtovi koji koriste "
+"veb za dopisivanje"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:104
+msgid "jewelry"
+msgstr "nakit"
+
+#: ../client/common/src/Categories.py:104
+msgid "Sites about and selling jewelry"
+msgstr "Sajtovi o nakitu i njihovoj prodaji"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:106
+msgid "jobsearch"
+msgstr "potražnja posla"
+
+#: ../client/common/src/Categories.py:106
+msgid "Sites for finding jobs"
+msgstr "Sajtovi za nalaženje poslova"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:108
+msgid "kidstimewasting"
+msgstr "dečije slobodno vreme"
+
+#: ../client/common/src/Categories.py:108
+msgid "Sites kids often waste time on"
+msgstr "Sajtovi na kojima deca često provode vreme"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:110
+msgid "mail"
+msgstr "pošta"
+
+#: ../client/common/src/Categories.py:110
+msgid "Webmail and email sites"
+msgstr "Sajtovi veb i e-pošte"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:112
+msgid "marketingware"
+msgstr "marketing oprema"
+
+#: ../client/common/src/Categories.py:112
+msgid "Sites about marketing products"
+msgstr "Sajtovi o marketinškim proizvodima"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:114
+msgid "medical"
+msgstr "medicinski"
+
+#: ../client/common/src/Categories.py:114
+msgid "Medical websites"
+msgstr "Medicinski veb sajtovi"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:116
+msgid "mixed_adult"
+msgstr "pomešano_odrasli"
+
+#: ../client/common/src/Categories.py:116
+msgid "Mixed adult content sites"
+msgstr "Sajtovi sa pomešanim sadržajem za odrasle"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:118
+msgid "mobile-phone"
+msgstr "mobilni telefoni"
+
+#: ../client/common/src/Categories.py:118
+msgid "Sites to do with mobile phones"
+msgstr "Sajtovi u vezi sa mobilnim telefonima"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:120
+msgid "naturism"
+msgstr "naturizam"
+
+#: ../client/common/src/Categories.py:120
+msgid "Sites that contain nude pictures and/or promote a nude lifestyle"
+msgstr ""
+"Sajtovi koji sadrže slike golih osoba i/ili promovišu golišav životni stil"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:122
+msgid "news"
+msgstr "vesti"
+
+#: ../client/common/src/Categories.py:122
+msgid "News sites"
+msgstr "Sajtovi vesti"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:124
+msgid "onlineauctions"
+msgstr "aukcije na mreži"
+
+#: ../client/common/src/Categories.py:124
+msgid "Online auctions"
+msgstr "Aukcije koje se obavljaju na mreži"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:126
+msgid "onlinegames"
+msgstr "igre na mreži"
+
+#: ../client/common/src/Categories.py:126
+msgid "Online gaming sites"
+msgstr "Sajtovi koji služe za igranje na mreži"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:128
+msgid "onlinepayment"
+msgstr "plaćanje na mreži"
+
+#: ../client/common/src/Categories.py:128
+msgid "Online payment sites"
+msgstr "Sajtovi preko kojih se vrši plaćanje na mreži"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:130
+msgid "personalfinance"
+msgstr "lične finansije"
+
+#: ../client/common/src/Categories.py:130
+msgid "Personal finance sites"
+msgstr "Sajtovi ličnih finansija"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:132
+msgid "pets"
+msgstr "kućni ljubimci"
+
+#: ../client/common/src/Categories.py:132
+msgid "Pet sites"
+msgstr "Sajtovi sa kućnim ljubimcima"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:134
+msgid "phishing"
+msgstr "upecavanje"
+
+#: ../client/common/src/Categories.py:134
+msgid "Sites attempting to trick people into giving out private information."
+msgstr ""
+"Sajtovi koji pokušavaju da prevare osobe tako što od njih traže dostavljanje "
+"ličnih informacija."
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:136
+msgid "porn"
+msgstr "porno"
+
+#: ../client/common/src/Categories.py:136
+msgid "Pornography"
+msgstr "Pornografija"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:138
+msgid "proxy"
+msgstr "posrednici"
+
+#: ../client/common/src/Categories.py:138
+msgid "Sites with proxies to bypass filters"
+msgstr "Sajtovi sa posrednicima za zaobilaženje filtera"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:140
+msgid "radio"
+msgstr "radio"
+
+#: ../client/common/src/Categories.py:140
+msgid "non-news related radio and television"
+msgstr "radio i televizija koji se ne odnose na vesti"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:142
+msgid "religion"
+msgstr "religija"
+
+#: ../client/common/src/Categories.py:142
+msgid "Sites promoting religion"
+msgstr "Sajtovi koji promovišu religiju"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:144
+msgid "ringtones"
+msgstr "melodije"
+
+#: ../client/common/src/Categories.py:144
+msgid "Sites containing ring tones, games, pictures and other"
+msgstr "Sajtovi koji sadrže melodije, igre, slike i ostalo"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:146
+msgid "searchengines"
+msgstr "motori za pretragu"
+
+#: ../client/common/src/Categories.py:146
+msgid "Search engines such as google"
+msgstr "Motori za pretragu kao što je gugl"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:148
+msgid "sect"
+msgstr "sekte"
+
+#: ../client/common/src/Categories.py:148
+msgid "Sites about eligious groups"
+msgstr "Sajtovi o religioznim grupama"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:150
+msgid "sexuality"
+msgstr "seksualnost"
+
+#: ../client/common/src/Categories.py:150
+msgid "Sites dedicated to sexuality, possibly including adult material"
+msgstr ""
+"Sajtovi posvećeni seksualnosti, sa mogućnošću uključivanja materijala za "
+"odrasle"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:152
+msgid "shopping"
+msgstr "kupovina"
+
+#: ../client/common/src/Categories.py:152
+msgid "Shopping sites"
+msgstr "Sajtovi za kupovinu"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:154
+msgid "socialnetworking"
+msgstr "društveno umrežavanje"
+
+#: ../client/common/src/Categories.py:154
+msgid "Social networking websites"
+msgstr "Veb sajtovi društvenog umrežavanja"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:156
+msgid "sportnews"
+msgstr "sportske vesti"
+
+#: ../client/common/src/Categories.py:156
+msgid "Sport news sites"
+msgstr "Sajtovi sportskih vesti"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:158
+msgid "sports"
+msgstr "sportovi"
+
+#: ../client/common/src/Categories.py:158
+msgid "All sport sites"
+msgstr "Sajtovi svih sportova"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:160
+msgid "spyware"
+msgstr "špijunski softver"
+
+#: ../client/common/src/Categories.py:160
+msgid "Sites who run or have spyware software to download"
+msgstr "Sajtovi koji pokreću ili sadrže špijunske softvere za preuzimanje"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:162
+msgid "updatesites"
+msgstr "sajtovi ažuriranja"
+
+#: ../client/common/src/Categories.py:162
+msgid "Sites where software updates are downloaded from including virus sigs"
+msgstr ""
+"Sajtovi sa kojih je moguće preuzeti ispravke i dopune softvera uključujući "
+"potpise virusa"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:164
+msgid "vacation"
+msgstr "raspust"
+
+#: ../client/common/src/Categories.py:164
+msgid "Sites about going on holiday"
+msgstr "Sajtovi o tome gde ići za praznike"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:166
+msgid "violence"
+msgstr "nasilje"
+
+#: ../client/common/src/Categories.py:166
+msgid "Sites containing violence"
+msgstr "Sajtovi koji sadrže nasilje"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:168
+msgid "virusinfected"
+msgstr "zaraženost virusima"
+
+#: ../client/common/src/Categories.py:168
+msgid "Sites who host virus infected files"
+msgstr "Sajtovi koji ugošćuju datoteke koje sadrže viruse"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:170
+msgid "warez"
+msgstr "varez"
+
+#: ../client/common/src/Categories.py:170
+msgid "Sites with illegal pirate software"
+msgstr "Sajtovi sa ilegalnim piratskim softverom"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:172
+msgid "weather"
+msgstr "vreme"
+
+#: ../client/common/src/Categories.py:172
+msgid "Weather news sites and weather related"
+msgstr "Sajtovi vremenske prognoze"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:174
+msgid "weapons"
+msgstr "oružja"
+
+#: ../client/common/src/Categories.py:174
+msgid "Sites detailing or selling weapons"
+msgstr "Sajtovi koji navode ili prodaju oružja"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:176
+msgid "webmail"
+msgstr "veb pošta"
+
+#: ../client/common/src/Categories.py:176
+msgid "Just webmail sites"
+msgstr "Sajtovi samo sa veb poštom"
+
+#. To translators : This string is a category name or a category description
+#: ../client/common/src/Categories.py:178
+msgid "whitelist"
+msgstr "spisak dozvoljenih"
+
+#: ../client/common/src/Categories.py:180
+#, no-python-format
+msgid "Contains site specifically 100% suitable for kids"
+msgstr "Sadrži sajt koji je 100% pogodan za decu"
+
+#: ../client/common/src/Utils.py:93
+msgid "Nanny Admin Tools requires Admin user"
+msgstr "Nani administratorski alati zahtevaju korisnika administratora"
+
+#: ../client/common/src/Utils.py:94
+msgid "To run any Nanny Admin Tool you must to be admin of the system."
+msgstr ""
+"Da pokrenete bilo koji Nani administratorski alat morate biti administrator "
+"sistema."
+
+#: ../client/common/src/DBusClient.py:80
+msgid "NannyDaemon unavailable"
+msgstr "Nani demon nije dostupan"
+
+#: ../client/common/src/DBusClient.py:81
+msgid ""
+"NannyDaemon is not activated or does not work properly.\n"
+"Please try to reactivate it."
+msgstr ""
+"Nani demon nije aktiviran ili ne radi ispravno.\n"
+"Molim pokušajte da ga ponovo aktivirate."
+
+#: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:1
+msgid "Nanny parental control admin console"
+msgstr "Administratorska konzola Nani roditeljske kontrole"
+
+#: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:2
+msgid "Parental Control"
+msgstr "Roditeljski nadzor"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
+#: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
+msgid ""
+"<b>You don't have admin privileges</b>\n"
+"Click this button if you want to make changes."
+msgstr ""
+"<b>Nemate privilegije administratora</b>\n"
+"Kliknite na ovo dugme ako želite da napravite izmene."
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:3
+msgid "Configure"
+msgstr "Podesi"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
+msgid "Instant messaging"
+msgstr "Trenutne poruke"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
+msgid "Mail client"
+msgstr "Program za poštu"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
+msgid "PC use time"
+msgstr "Računar"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
+msgid "Use the computer"
+msgstr "Može da koristi računar"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
+msgid "Use the instant messaging"
+msgstr "Može da koristi trenutne poruke"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
+msgid "Use the mail client"
+msgstr "Može da koristi program za poštu"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
+msgid "Use the web browser"
+msgstr "Može da koristi veb pretraživač"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
+msgid "Use web content filtering"
+msgstr "Koristi filtriranje veb sadržaja"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
+#: ../client/gnome/systray/src/SystrayNanny.py:53
+msgid "Web browser"
+msgstr "Veb pretraživač"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:13
+msgid "hours a day"
+msgstr "sat(a/i) na dan"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:1
+msgid ""
+"<span color=\"red\">All the fields are mandatory. Please fill all of them.</"
+"span>"
+msgstr "<span color=\"red\">Sva polja su obavezna. Molim popunite ih.</span>"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:2
+#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:1
+msgid "Description:"
+msgstr "Opis:"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:3
+#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:2
+msgid "Name:"
+msgstr "Ime"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:4
+msgid "URL:"
+msgstr "URL:"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:1
+msgid "Allowed sites"
+msgstr "Dozvoljeni sajtovi"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:2
+msgid "Blacklists"
+msgstr "Spisak zabrana"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:3
+msgid "Forbidden sites"
+msgstr "Zabranjeni sajtovi"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
+msgid "_Update"
+msgstr "_Ažuriraj"
+
+#: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
+msgid "Import..."
+msgstr "Uvezi..."
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:1
+msgid "5 minutes, please"
+msgstr "5 minuta, molim"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
+msgid ""
+"<span foreground=\"white\"><big>You've time available if you need to close "
+"documents or aplications.</big></span>"
+msgstr ""
+"<span foreground=\"white\"><big>Imate vremena na raspolaganju ako trebate da "
+"zatvorite dokumenta ili programe.</big></span>"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
+msgid ""
+"<span size=\"25000\" foreground=\"white\"><b>You've used your computer use "
+"time</b></span>"
+msgstr ""
+"<span size=\"25000\" foreground=\"white\"><b>Iskoristili ste vaše vreme "
+"korišćenja računara</b></span>"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
+msgid "close session"
+msgstr "zatvori sesiju"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
+msgid "Monday"
+msgstr "Ponedeljak"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
+msgid "Tuesday"
+msgstr "Utorak"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
+msgid "Wednesday"
+msgstr "Sreda"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
+msgid "Thursday"
+msgstr "Četvrtak"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
+msgid "Friday"
+msgstr "Petak"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
+msgid "Saturday"
+msgstr "Subota"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
+msgid "Sunday"
+msgstr "Nedelja"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:37
+msgid "Web Content Filter Configuration"
+msgstr "Podešavanje filtera veb sadržaja"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:175
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:192
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:213
+msgid "Unknown Blacklist Name"
+msgstr "Nepoznato ime spiska zabrana"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:194
+#, python-format
+msgid "(version : %s)"
+msgstr "(verzija : %s)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:197
+msgid "There is an update available"
+msgstr "Dostupno je jedno ažuriranje"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:199
+#, python-format
+msgid "Downloading information (%s%%)"
+msgstr "Preuzimam informacije (%s%%)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:201
+#, python-format
+msgid "Installing blacklist (%s%%)"
+msgstr "Instaliram spisak zabrana (%s%%)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:203
+#, python-format
+msgid "Updating blacklist (%s%%)"
+msgstr "Ažuriram spisak zabrana (%s%%)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:327
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:338
+msgid "Error while importing list from the Internet"
+msgstr "Došlo je do greške prilikom uvoženja spiska sa Interneta"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:328
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:339
+msgid ""
+"Some error has occured while downloading the list.\n"
+"Please verify the URL and try again."
+msgstr ""
+"Došlo je do greške prilikom preuzimanja spiska.\n"
+"Molim proverite adresu i pokušajte opet."
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:433
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:455
+msgid "Are you sure you want to delete this filter?"
+msgstr "Da li ste sigurni da želite da izbrišete ovaj spisak?"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:434
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:456
+msgid "You will not be able to undo this action."
+msgstr "Nećete biti u mogućnosti da poništite ovu radnju."
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:441
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:463
+msgid "Removing filter. Please, wait..."
+msgstr "Uklanjam filter. Molim sačekajte..."
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:482
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:493
+msgid "Error while deleting filters"
+msgstr "Greška prilikom brisanja filtera"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:483
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:494
+msgid ""
+"Some error has occured while deleting filters.\n"
+"Please try again."
+msgstr ""
+"Došlo je do greške prilikom brisanja filtera.\n"
+"Molim pokušajte opet."
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:533
+msgid "<b>Select all the categories</b>"
+msgstr "<b>Izaberite sve kategorije</b>"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:585
+msgid "Introduce the nannycentral repository url"
+msgstr "Uvodi adresu centralnog skladišta nanija"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:591
+msgid ""
+"It's something like http://www.nannycentral.info/blacklist/blacklist.json ..."
+msgstr ""
+"To je nešto kao: http://www.nannycentral.info/blacklist/blacklist.json ..."
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:613
+#: ../client/gnome/admin/src/BlacklistManager.py:154
+msgid "<b>Are you sure you want to delete this blacklist?</b>"
+msgstr "<b>Da li ste sigurni da želite da obrišete ovaj spisak zabrana?</b>"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:614
+#: ../client/gnome/admin/src/BlacklistManager.py:155
+msgid ""
+"This action will remove all the user configuration linked to the blacklist."
+msgstr ""
+"Ova radnja će ukloniti sva korisnička podešavanja povezana sa spiskom zabrana."
+
+#: ../client/gnome/admin/src/AdminConsole.py:50
+msgid "Nanny daemon is not started"
+msgstr "Nani demon nije pokrenut"
+
+#: ../client/gnome/admin/src/AdminConsole.py:51
+msgid "To use the parental control, please start up the daemon."
+msgstr "Da biste koristili roditeljsku kontrolu, molim pokrenite demona."
+
+#. FACE
+#: ../client/gnome/admin/src/AdminConsole.py:163
+msgid "Users"
+msgstr "Korisnici"
+
+#: ../client/gnome/admin/src/AdminConsole.py:339
+msgid "Your configuration has been saved"
+msgstr "Vaše podešavanje je sačuvano"
+
+#: ../client/gnome/admin/src/AdminConsole.py:352
+msgid "You have made changes"
+msgstr "Napravili ste izmene"
+
+#: ../client/gnome/admin/src/AdminConsole.py:353
+msgid ""
+"If you don't press the 'Apply' button, your changes will be lost.\n"
+"Are you sure?"
+msgstr ""
+"Ako ne kliknete na dugme „Primeni“, vaše će izmene biti izgubljene.\n"
+"Da li ste sigurni?"
+
+#: ../client/gnome/admin/src/AdminConsole.py:382
+#, python-format
+msgid "Nanny Admin Console - %s"
+msgstr "Nani, administratorska konzola — %s"
+
+#: ../client/gnome/admin/src/AdminConsole.py:385
+msgid "Nanny Admin Console"
+msgstr "Nani, administratorska konzola"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:37
+msgid "Blacklist Filter Configuration"
+msgstr "Podešavanje filtera spiska zabrana"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:112
+#, python-format
+msgid ""
+"<b>%s (Read only)</b>\n"
+"   %s"
+msgstr ""
+"<b>%s (Samo za )</b>\n"
+"   %s"
+
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:97
+msgid "Firefox proxy settings change detected"
+msgstr "Otkrivene su izmene u podešavanjima posrednika Fajerfoksa"
+
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:98
+msgid ""
+"You can't change the proxy settings because you are under parental control."
+msgstr ""
+"Ne možete da izmenite podešavanja posrednika zato što ste pod roditeljskim "
+"nadzorom."
+
+#: ../client/gnome/systray/src/SystrayNanny.py:52
+msgid "Session"
+msgstr "sesija"
+
+#: ../client/gnome/systray/src/SystrayNanny.py:54
+msgid "e-Mail"
+msgstr "e-pošta"
+
+#: ../client/gnome/systray/src/SystrayNanny.py:55
+msgid "Instant messanger"
+msgstr "Trenutne poruke"
+
+#. To translators: In x-minutes the access to <app> will be granted
+#: ../client/gnome/systray/src/SystrayNanny.py:134
+#, python-format
+msgid "In %(time)s the access to %(app)s will be granted."
+msgstr "Za %(time)s pristup na %(app)s biće garantovan."
+
+#. To translators: In x-minutes the access to <app> will be denied
+#: ../client/gnome/systray/src/SystrayNanny.py:137
+#, python-format
+msgid "In %(time)s the access to %(app)s will be denied."
+msgstr "Za %(time)s pristup na %(app)s biće zabranjen."
+
+#: ../client/gnome/systray/src/SystrayNanny.py:160
+#, python-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d dan"
+msgstr[1] "%d dana"
+msgstr[2] "%d dana"
+msgstr[3] "%d dan"
+
+#: ../client/gnome/systray/src/SystrayNanny.py:162
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d sat"
+msgstr[1] "%d sata"
+msgstr[2] "%d sati"
+msgstr[3] "%d sat"
+
+#: ../client/gnome/systray/src/SystrayNanny.py:164
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d minut"
+msgstr[1] "%d minuta"
+msgstr[2] "%d minuta"
+msgstr[3] "%d minut"
+
+#. Translators: This is the separator between time strings, like '1 day, 2 hours, 3 minutes'
+#: ../client/gnome/systray/src/SystrayNanny.py:166
+msgid ", "
+msgstr ", "
+
+#: ../daemon/data/org.gnome.nanny.policy.in.h:1
+msgid "Manage your parental control settings"
+msgstr "Upravljajte vašim podešavanjima roditeljske kontrole"
+
+#: ../daemon/data/org.gnome.nanny.policy.in.h:2
+msgid "You need to authenticate to modify the parental control configuration"
+msgstr ""
+"Morate da potvrdite identitet da biste izmenili podešavanje roditeljske "
+"kontrole"
+
+#: ../daemon/src/DansGuardianImporter.py:63
+msgid "Blacklist imported"
+msgstr "Spisak zabrana je uvežen"
+
+#: ../daemon/src/DansGuardianImporter.py:76
+msgid "Nanny file created"
+msgstr "Napravljena je Nani datoteka"
+
+#: ../daemon/src/DansGuardianImporter.py:79
+#, python-format
+msgid "Downloading file (%s%%)"
+msgstr "Preuzimam datoteku (%s%%)"
+
+#: ../daemon/src/DansGuardianImporter.py:271
+#, python-format
+msgid "Importing domains [category: %s] (%s%%)"
+msgstr "Uvozim domene [kategorija: %s] (%s%%)"
+
+#: ../daemon/src/DansGuardianImporter.py:287
+#, python-format
+msgid "Importing urls [category: %s] (%s%%)"
+msgstr "Uvozim adrese [kategorija: %s] (%s%%)"
