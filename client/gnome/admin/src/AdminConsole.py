@@ -284,6 +284,7 @@ class AdminConsole:
 
     def __on_browser_configure_proxy_button_clicked (self, widget, data=None):
         configure_proxy_dialog = nanny.client.gnome.admin.ConfigureProxyDialog(self.__selected_user_id)
+        configure_proxy_dialog.set_transient_for(self.window)
         configure_proxy_dialog.run()
         configure_proxy_dialog.destroy()
 
