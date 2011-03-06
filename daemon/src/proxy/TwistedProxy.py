@@ -39,29 +39,7 @@ import Image, ImageDraw, ImageFilter
 
 from Controllers import BlockingDeferred
 
-BAD_WEB_TEMPLATE='''
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-  <link href="http://www.gnome.org/css/layout.css" rel="stylesheet" type="text/css" media="screen">
-  <link href="http://www.gnome.org/css/style.css" rel="stylesheet" type="text/css" media="all">
-  <link rel="icon" type="image/png" href="http://www.gnome.org/img/logo/foot-16.png">
-  <link rel="SHORTCUT ICON" type="image/png" href="http://www.gnome.org/img/logo/foot-16.png">
-
-	<title>Nanny Parental Control</title>
-	<link rel="stylesheet" type="text/css" href="http://www.gnome.org/frontpage.css">
-
-</head>
-
-<body>
-<div id="page">
-    <div id="header">
-      <h1>Nanny Parental Control</h1>
-    </div> 
-</div>
-</body>
-'''
-
+from BadWebTemplate import BAD_WEB_TEMPLATE
 
 if os.name == "posix" :
     BAD_CONTENT_TMP_DIR = "/var/tmp/nanny/"
