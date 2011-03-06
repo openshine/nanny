@@ -680,7 +680,12 @@ class FilterManager (gobject.GObject) :
         custom_black=False
         
         #Search in customfilters
-        sql_query = 'select distinct is_black from customfilters where uid="%s" and gregexp( "(.+\.|)" || regexp || ".*" , "%s")' % (uid, domain)
+        sub_query = '('
+        sub_query += ' gregexp( "(.+\.|)" || regexp || ".*" , "%s") ' % (domain)
+        sub_query += ' or gregexp( "(.+\.|)" || regexp || ".*" , "%s") ' % ('http://' + domain)
+        sub_query += ')'
+        
+        sql_query = 'select distinct is_black from customfilters where uid="%s" and %s ' % (uid, sub_query)
         query = self.custom_filters_db.runQuery(sql_query)
         block_d = BlockingDeferred(query)
         try:
@@ -792,6 +797,30 @@ class FilterManager (gobject.GObject) :
         if pre_check[0] == True :
             print 'Uri Validation stopped because domain is blocked, %s' % (host + request.uri)
             return False, request, rest, host, port
+
+        #Search in customfilters
+        sub_query = '('
+        sub_query += ' gregexp( "(.+\.|)" || regexp || ".*" , "%s") ' % (host + request.uri)
+        sub_query += ' or gregexp( "(.+\.|)" || regexp || ".*" , "%s") ' % ('http://' + host + request.uri)
+        sub_query += ')'
+        
+        sql_query = 'select distinct is_black from customfilters where uid="%s" and %s ' % (uid, sub_query)
+        query = self.custom_filters_db.runQuery(sql_query)
+        block_d = BlockingDeferred(query)
+        try:
+            qr = block_d.blockOn()
+            if len(qr) > 0 :
+                for x in qr :
+                    if x[0] == 0:
+                        print 'Uri Custom filter Whitelist %s' % (host + request.uri)
+                        return True, request, rest, host, port
+                    if x[0] == 1:
+                        print 'Uri Custom filter Blacklist %s' % (host + request.uri)
+                        return False, request, rest, host, port
+                
+        except:
+            print "Something goes wrong checking Custom Filters (check_url)"
+            return True, request, rest, host, port
 
         if pre_check[1] == False :
             print 'Uri validation verified in pre-check %s' % (host + request.uri)
