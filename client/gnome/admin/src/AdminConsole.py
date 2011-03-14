@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # Copyright (C) 2009,2010 Junta de Andalucia
-# 
+#
 # Authors:
 #   Roberto Majadas <roberto.majadas at openshine.com>
 #   Cesar Garcia Tapia <cesar.garcia.tapia at openshine.com>
@@ -37,7 +37,7 @@ import gobject
 import nanny.client.common
 import nanny.client.gnome.admin
 
-class AdminConsole:
+class AdminConsole(gobject.Gobject):
 
     __metaclass__ = nanny.client.common.Singleton
 
@@ -74,7 +74,7 @@ class AdminConsole:
         self.im_hoursday_checkbutton.connect ('toggled', self.__on_im_hoursday_checkbutton_toggled)
         self.im_hoursday_spinbutton.connect ('value-changed', self.__on_im_hoursday_spinbutton_changed)
 
-        
+
 
         self.session_schedule_widget = nanny.client.gnome.admin.ScheduleCalendar()
         self.session_schedule_alignment.add (self.session_schedule_widget)
@@ -131,7 +131,7 @@ class AdminConsole:
             self.browser_hoursday_spinbutton.set_sensitive(self.browser_hoursday_checkbutton.get_active())
         else:
             self.browser_hoursday_spinbutton.set_sensitive(lock_status)
-        
+
         self.mail_hoursday_checkbutton.set_sensitive(lock_status)
         self.mail_hoursday_spinbutton.set_sensitive(lock_status)
         if lock_status == True:
@@ -170,7 +170,7 @@ class AdminConsole:
         cell.set_property("ellipsize", pango.ELLIPSIZE_END)
         col.pack_start (cell, True)
         col.add_attribute(cell, 'text', 2)
-        
+
         col.set_visible (True)
         self.users_treeview.append_column(col)
 
@@ -194,8 +194,8 @@ class AdminConsole:
                 for p in glob.glob(os.path.join(all_users_path, "*", "Microsoft", "User Account Pictures", "%s.bmp" % name)):
                     face_file = p
                     print face_file
-                    break          
-                
+                    break
+
                 if face_file == None:
                     face_file = "/fake/path"
 
@@ -252,7 +252,7 @@ class AdminConsole:
             self.browser_use_proxy_checkbutton.set_active (False)
             self.browser_configure_proxy_button.set_sensitive (False)
 
-        # MAIL 
+        # MAIL
         self.mail_schedule_widget.set_block_data (self.dbus_client.get_blocks (self.__selected_user_id, 2))
         value = self.dbus_client.get_max_use_time (self.__selected_user_id, 2)
         if value > 0:
@@ -266,7 +266,7 @@ class AdminConsole:
             self.mail_hoursday_spinbutton.set_sensitive (False)
             self.mail_hoursday_spinbutton.set_value (0)
 
-        # IM 
+        # IM
         self.im_schedule_widget.set_block_data (self.dbus_client.get_blocks (self.__selected_user_id, 3))
         value = self.dbus_client.get_max_use_time (self.__selected_user_id, 3)
         if value > 0:
@@ -280,7 +280,7 @@ class AdminConsole:
             self.im_hoursday_spinbutton.set_sensitive (False)
             self.im_hoursday_spinbutton.set_value (0)
 
-        self.__config_changed = False 
+        self.__config_changed = False
 
     def __on_browser_configure_proxy_button_clicked (self, widget, data=None):
         configure_proxy_dialog = nanny.client.gnome.admin.ConfigureProxyDialog(self.__selected_user_id)
@@ -318,7 +318,7 @@ class AdminConsole:
         else:
             self.dbus_client.set_max_use_time(self.__selected_user_id, 1, 0)
 
-        # MAIL 
+        # MAIL
         schedule_data = self.mail_schedule_widget.get_block_data()
         self.dbus_client.set_blocks (self.__selected_user_id, 2, schedule_data)
         if self.mail_hoursday_checkbutton.get_active ():
@@ -327,7 +327,7 @@ class AdminConsole:
         else:
             self.dbus_client.set_max_use_time(self.__selected_user_id, 2, 0)
 
-        # IM 
+        # IM
         schedule_data = self.im_schedule_widget.get_block_data()
         self.dbus_client.set_blocks (self.__selected_user_id, 3, schedule_data)
         if self.im_hoursday_checkbutton.get_active ():
@@ -430,7 +430,7 @@ class AdminConsole:
             except:
                 os.system("yelp ghelp:nanny")
         elif os.name == "nt":
-            win32api.ShellExecute(None, "open", 
+            win32api.ShellExecute(None, "open",
                                   "http://library.gnome.org/users/nanny/stable/",
                                   None, None, win32con.SW_SHOWNORMAL)
 
