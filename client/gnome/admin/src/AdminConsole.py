@@ -37,7 +37,7 @@ import gobject
 import nanny.client.common
 import nanny.client.gnome.admin
 
-class AdminConsole(gobject.Gobject):
+class AdminConsole(gobject.GObject):
 
     __metaclass__ = nanny.client.common.Singleton
 
