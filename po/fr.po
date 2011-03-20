@@ -1,19 +1,20 @@
 # French translation for nanny.
-# Copyright (C) 2010 Listed translators
+# Copyright (C) 2010-2011 Listed translators
 # This file is distributed under the same license as the nanny package.
 #
 # Laurent Coudeur <laurentc@iol.ie>, 2010.
 # Claude Paroz <claude@2xlibre.net>, 2010.
 # Olivier Banus <sunab@free.fr>, 2010.
+# Bruno Brouard <annoa.b@gmail.com>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nanny master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nanny&component=general\n"
-"POT-Creation-Date: 2011-01-23 18:00+0000\n"
-"PO-Revision-Date: 2010-04-26 09:49+0200\n"
-"Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
+"POT-Creation-Date: 2011-02-07 09:20+0000\n"
+"PO-Revision-Date: 2011-03-20 12:55+0100\n"
+"Last-Translator: Bruno Brouard <annoa.b@gmail.com>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -706,7 +707,9 @@ msgstr "Les outils d'administration Nanny nécessite d'être un administrateur"
 
 #: ../client/common/src/Utils.py:94
 msgid "To run any Nanny Admin Tool you must to be admin of the system."
-msgstr "Pour lancer un outil d'administration Nanny, vous devez être administrateur du système."
+msgstr ""
+"Pour lancer un outil d'administration Nanny, vous devez être administrateur "
+"du système."
 
 #: ../client/common/src/DBusClient.py:80
 msgid "NannyDaemon unavailable"
@@ -727,14 +730,6 @@ msgstr "Console d'administration de contrôle parental Nanny"
 #: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:2
 msgid "Parental Control"
 msgstr "Contrôle parental"
-
-#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:1
-msgid "BlackLists"
-msgstr "Listes noires"
-
-#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:2
-msgid "Nanny parental control blacklists manager"
-msgstr "Gestionnaire de listes noires de contrôle parental Nanny"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
@@ -824,6 +819,10 @@ msgstr "Listes noires"
 #: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:3
 msgid "Forbidden sites"
 msgstr "Sites interdits"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
+msgid "_Update"
+msgstr "_Mettre à jour"
 
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
@@ -970,7 +969,9 @@ msgstr "Saisissez l'URL du dépôt central de nanny"
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:591
 msgid ""
 "It's something like http://www.nannycentral.info/blacklist/blacklist.json ..."
-msgstr "Il s'agit de quelque chose comme http://www.nannycentral.info/blacklist/blacklist.json ..."
+msgstr ""
+"Il s'agit de quelque chose comme http://www.nannycentral.info/blacklist/"
+"blacklist.json ..."
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:613
 #: ../client/gnome/admin/src/BlacklistManager.py:154
@@ -985,28 +986,28 @@ msgstr ""
 "Cette action supprime toute la configuration de l'utilisateur liée à la "
 "liste noire."
 
-#: ../client/gnome/admin/src/AdminConsole.py:47
+#: ../client/gnome/admin/src/AdminConsole.py:50
 msgid "Nanny daemon is not started"
 msgstr "Le service Nanny n'est pas démarré"
 
-#: ../client/gnome/admin/src/AdminConsole.py:48
+#: ../client/gnome/admin/src/AdminConsole.py:51
 msgid "To use the parental control, please start up the daemon."
 msgstr "Pour utiliser le contrôle parental, démarrez le service."
 
 #. FACE
-#: ../client/gnome/admin/src/AdminConsole.py:160
+#: ../client/gnome/admin/src/AdminConsole.py:163
 msgid "Users"
 msgstr "Utilisateurs"
 
-#: ../client/gnome/admin/src/AdminConsole.py:336
+#: ../client/gnome/admin/src/AdminConsole.py:339
 msgid "Your configuration has been saved"
 msgstr "Votre configuration est enregistrée"
 
-#: ../client/gnome/admin/src/AdminConsole.py:349
+#: ../client/gnome/admin/src/AdminConsole.py:352
 msgid "You have made changes"
 msgstr "Vous avez effectué des modifications"
 
-#: ../client/gnome/admin/src/AdminConsole.py:350
+#: ../client/gnome/admin/src/AdminConsole.py:353
 msgid ""
 "If you don't press the 'Apply' button, your changes will be lost.\n"
 "Are you sure?"
@@ -1015,12 +1016,12 @@ msgstr ""
 "perdues.\n"
 "Êtes-vous sûr ?"
 
-#: ../client/gnome/admin/src/AdminConsole.py:379
+#: ../client/gnome/admin/src/AdminConsole.py:382
 #, python-format
 msgid "Nanny Admin Console - %s"
 msgstr "Console d'administration Nanny - %s"
 
-#: ../client/gnome/admin/src/AdminConsole.py:382
+#: ../client/gnome/admin/src/AdminConsole.py:385
 msgid "Nanny Admin Console"
 msgstr "Console d'administration Nanny"
 
@@ -1036,6 +1037,17 @@ msgid ""
 msgstr ""
 "<b>%s (lecture seule)</b>\n"
 "   %s"
+
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:97
+msgid "Firefox proxy settings change detected"
+msgstr "Des modifications du paramétrage du serveur mandataire de Firefox ont été détectés"
+
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:98
+msgid ""
+"You can't change the proxy settings because you are under parental control."
+msgstr ""
+"Vous ne pouvez pas modifier les réglages du serveur mandataire parce que vous "
+"êtes sous contrôle parental."
 
 #: ../client/gnome/systray/src/SystrayNanny.py:52
 msgid "Session"
@@ -1120,20 +1132,3 @@ msgstr "Importation de domaines [catégorie : %s] (%s %%)"
 msgid "Importing urls [category: %s] (%s%%)"
 msgstr "Importation d'URL [catégorie : %s] (%s %%)"
 
-#~ msgid ""
-#~ "Here you can apply the available blacklists for the selected user. If you "
-#~ "want to add new blacklists please go to System > Administration > "
-#~ "Blacklists."
-#~ msgstr ""
-#~ "Vous pouvez appliquer les listes noires disponibles à l'utilisateur "
-#~ "sélectionné. Si vous voulez ajouter de nouvelles listes noires, allez "
-#~ "dans Système > Administration > Listes noires."
-
-#~ msgid "Select file to import"
-#~ msgstr "Sélectionnez le fichier à importer"
-
-#~ msgid "<b>Error importing blacklist file</b>"
-#~ msgstr "<b>Échec de l'importation de la liste noire</b>"
-
-#~ msgid "Some error has occured importing the blacklist file."
-#~ msgstr "Une erreur est survenue pendant l'importation de la liste noire."
