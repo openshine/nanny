@@ -207,34 +207,20 @@ class ReverseProxyResource(resource.Resource) :
         self.filter_manager = filter_manager
         self.domain_level = domain_level
         self.pre_check = pre_check
-        self.domains_blocked_cache = {}
         
     def getChild(self, path, request):
         pre_check=[False, False]
         host, port = self.__get_host_info(request)
         if self.domain_level ==0 :
-            ts = reactor.seconds()
+            query = self.filter_manager.check_domain_defer(self.uid, host)
             
-            if self.domains_blocked_cache.has_key(host) and ( ts - self.domains_blocked_cache[host][0] ) <= 10  :
-                print self.domains_blocked_cache[host][1]
-                block_d = BlockingDeferred(self.domains_blocked_cache[host][1])
-                try:
-                    pre_check, categories = block_d.blockOn()
-                    print "Host %s , verified [cached] (pre_check=%s)" % (host, pre_check)
-                except:
-                    print "Something wrong validating domain %s" % host
-                    pre_check = [False, False]
-            else:
-                query = self.filter_manager.check_domain_defer(self.uid, host)
-                self.domains_blocked_cache[host]=[reactor.seconds(), query]
-                
-                block_d = BlockingDeferred(query)
-                try:
-                    pre_check, categories = block_d.blockOn()
-                    print "Host %s , verified (pre_check=%s)" % (host, pre_check)
-                except:
-                    print "Something wrong validating domain %s" % host
-                    pre_check = [False, False]
+            block_d = BlockingDeferred(query)
+            try:
+                pre_check, categories = block_d.blockOn()
+                print "Host %s , verified (pre_check=%s)" % (host, pre_check)
+            except:
+                print "Something wrong validating domain %s" % host
+                pre_check = [False, False]
                 
             return ReverseProxyResource(self.uid, self.filter_manager, reactor=reactor,
                                         domain_level=self.domain_level + 1,
