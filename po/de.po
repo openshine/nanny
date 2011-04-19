@@ -1,17 +1,18 @@
 # German translation for nanny.
 # Copyright (C) 2010 nanny's COPYRIGHT HOLDER
 # This file is distributed under the same license as the nanny package.
-# Mario Blättermann <mariobl@gnome.org>, 2010.
-# Wolfgang Stöggl <c72578@yahoo.de>, 2010.
+# Mario Blättermann <mariobl@gnome.org>, 2010-2011.
+# Wolfgang Stöggl <c72578@yahoo.de>, 2010-2011.
+# Markus Schley <marqus@gmx.net>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nanny master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=nanny&component=general\n"
-"POT-Creation-Date: 2010-05-11 17:44+0000\n"
-"PO-Revision-Date: 2010-05-25 17:40+0100\n"
-"Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
+"product=nanny&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-03-26 10:45+0000\n"
+"PO-Revision-Date: 2011-04-19 21:08+0100\n"
+"Last-Translator: Mario Blättermann <mariobl@freenet.de>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -705,6 +706,16 @@ msgstr "Positivliste (Whitelist)"
 msgid "Contains site specifically 100% suitable for kids"
 msgstr "Beinhaltet Seiten, die zu 100 % für Kinder geeignet sind"
 
+#: ../client/common/src/Utils.py:93
+msgid "Nanny Admin Tools requires Admin user"
+msgstr "Nanny-Verwaltungswerkzeuge erfordern Administratorrechte"
+
+#: ../client/common/src/Utils.py:94
+msgid "To run any Nanny Admin Tool you must to be admin of the system."
+msgstr ""
+"Um ein Nanny-Verwaltungswerkzeug zu starten, müssen Sie "
+"Systemadministratorrechte besitzen"
+
 #: ../client/common/src/DBusClient.py:80
 msgid "NannyDaemon unavailable"
 msgstr "Nanny-Dienst ist nicht verfügbar"
@@ -724,14 +735,6 @@ msgstr "Verwaltungskonsole der Nanny-Elternkontrolle"
 #: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:2
 msgid "Parental Control"
 msgstr "Elternkontrolle"
-
-#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:1
-msgid "BlackLists"
-msgstr "Negativlisten (Blacklists)"
-
-#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:2
-msgid "Nanny parental control blacklists manager"
-msgstr "Negativlistenverwaltung der Nanny-Elternkontrolle"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
@@ -780,7 +783,7 @@ msgid "Use web content filtering"
 msgstr "Filterung von Webinhalten benutzen"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
-#: ../client/gnome/systray/src/SystrayNanny.py:46
+#: ../client/gnome/systray/src/SystrayNanny.py:53
 msgid "Web browser"
 msgstr "Webbrowser"
 
@@ -823,13 +826,8 @@ msgid "Forbidden sites"
 msgstr "Verbotene Seiten"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
-msgid ""
-"Here you can apply the available blacklists for the selected user. If you "
-"want to add new blacklists please go to System > Administration > Blacklists."
-msgstr ""
-"Hier können Sie die verfügbaren Negativlisten auf den gewählten Benutzer "
-"anwenden. Wenn Sie eine neue Negativliste hinzufügen möchten, so suchen Sie "
-"bitte System > Systemverwaltung > Negativlisten (Blacklists) auf."
+msgid "_Update"
+msgstr "_Aktualisierung"
 
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
@@ -856,35 +854,34 @@ msgstr ""
 "Nutzungsdauer des Rechners erreicht.</b></span>"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
-#| msgid "Session"
 msgid "close session"
 msgstr "Sitzung schließen"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Monday"
 msgstr "Montag"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Tuesday"
 msgstr "Dienstag"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Wednesday"
 msgstr "Mittwoch"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Thursday"
 msgstr "Donnerstag"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Friday"
 msgstr "Freitag"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Saturday"
 msgstr "Samstag"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:303
 msgid "Sunday"
 msgstr "Sonntag"
 
@@ -892,13 +889,43 @@ msgstr "Sonntag"
 msgid "Web Content Filter Configuration"
 msgstr "Konfiguration der Filterung von Webinhalten"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:242
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:253
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:175
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:192
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:213
+msgid "Unknown Blacklist Name"
+msgstr "Unbekannter Negativlistenname"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:194
+#, python-format
+msgid "(version : %s)"
+msgstr "(Version : %s)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:197
+msgid "There is an update available"
+msgstr "Eine Aktualisierung ist verfügbar"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:199
+#, python-format
+msgid "Downloading information (%s%%)"
+msgstr "Informationen werden heruntergeladen (%s%%)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:201
+#, python-format
+msgid "Installing blacklist (%s%%)"
+msgstr "Negativliste wird installiert (%s%%)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:203
+#, python-format
+msgid "Updating blacklist (%s%%)"
+msgstr "Negativliste wird aktualisiert (%s%%)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:327
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:338
 msgid "Error while importing list from the Internet"
 msgstr "Fehler beim Importieren der Liste aus dem Internet"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:243
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:254
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:328
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:339
 msgid ""
 "Some error has occured while downloading the list.\n"
 "Please verify the URL and try again."
@@ -906,28 +933,28 @@ msgstr ""
 "Beim Herunterladen der Liste sind Fehler aufgetreten.\n"
 "Bitte überprüfen Sie die Adresse und versuchen Sie es erneut."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:345
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:366
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:433
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:455
 msgid "Are you sure you want to delete this filter?"
 msgstr "Sind Sie sicher, dass Sie diesen Filter löschen wollen?"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:346
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:367
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:434
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:456
 msgid "You will not be able to undo this action."
 msgstr "Sie werden nicht in der Lage sein, diesen Vorgang rückgängig zu machen."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:353
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:374
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:441
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:463
 msgid "Removing filter. Please, wait..."
 msgstr "Filter werden entfernt. Bitte warten …"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:393
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:404
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:482
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:493
 msgid "Error while deleting filters"
 msgstr "Fehler beim Löschen von Filtern"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:394
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:405
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:483
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:494
 msgid ""
 "Some error has occured while deleting filters.\n"
 "Please try again."
@@ -935,33 +962,55 @@ msgstr ""
 "Beim Löschen von Filtern sind Fehler aufgetreten.\n"
 "Bitte versuchen Sie es erneut."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:436
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:533
 msgid "<b>Select all the categories</b>"
 msgstr "<b>Alle Kategorien wählen</b>"
 
-#: ../client/gnome/admin/src/AdminConsole.py:46
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:585
+msgid "Introduce the nannycentral repository url"
+msgstr "Adresse für die Quelle der Nanny-Zentrale einbeziehen"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:591
+msgid ""
+"It's something like http://www.nannycentral.info/blacklist/blacklist.json ..."
+msgstr "Zum Beispiel: http://www.nannycentral.info/blacklist/blacklist.json …"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:613
+#: ../client/gnome/admin/src/BlacklistManager.py:154
+msgid "<b>Are you sure you want to delete this blacklist?</b>"
+msgstr "<b>Sind Sie sicher, dass Sie diese Negativliste löschen wollen?</b>"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:614
+#: ../client/gnome/admin/src/BlacklistManager.py:155
+msgid ""
+"This action will remove all the user configuration linked to the blacklist."
+msgstr ""
+"Diese Aktion wird alle Benutzerkonfigurationen entfernen, die zur "
+"Negativliste gehören"
+
+#: ../client/gnome/admin/src/AdminConsole.py:50
 msgid "Nanny daemon is not started"
 msgstr "Der Nanny-Dienst ist nicht gestartet"
 
-#: ../client/gnome/admin/src/AdminConsole.py:47
+#: ../client/gnome/admin/src/AdminConsole.py:51
 msgid "To use the parental control, please start up the daemon."
 msgstr ""
 "Um die Elternkontrolle wirksam werden zu lassen, starten Sie bitte den Dienst."
 
 #. FACE
-#: ../client/gnome/admin/src/AdminConsole.py:143
+#: ../client/gnome/admin/src/AdminConsole.py:163
 msgid "Users"
 msgstr "Benutzer"
 
-#: ../client/gnome/admin/src/AdminConsole.py:298
+#: ../client/gnome/admin/src/AdminConsole.py:340
 msgid "Your configuration has been saved"
 msgstr "Ihre Konfiguration wurde gespeichert"
 
-#: ../client/gnome/admin/src/AdminConsole.py:310
+#: ../client/gnome/admin/src/AdminConsole.py:353
 msgid "You have made changes"
 msgstr "Sie haben Änderungen gemacht"
 
-#: ../client/gnome/admin/src/AdminConsole.py:311
+#: ../client/gnome/admin/src/AdminConsole.py:354
 msgid ""
 "If you don't press the 'Apply' button, your changes will be lost.\n"
 "Are you sure?"
@@ -969,17 +1018,16 @@ msgstr ""
 "Falls Sie nicht auf den »Anwenden«-Knopf klicken, werden\n"
 "Ihre Änderungen verloren gehen. Sind Sie sicher?"
 
-#: ../client/gnome/admin/src/AdminConsole.py:340
+#: ../client/gnome/admin/src/AdminConsole.py:383
 #, python-format
 msgid "Nanny Admin Console - %s"
 msgstr "Nanny Verwaltungskonsole - %s"
 
-#: ../client/gnome/admin/src/AdminConsole.py:343
+#: ../client/gnome/admin/src/AdminConsole.py:386
 msgid "Nanny Admin Console"
 msgstr "Nanny Verwaltungskonsole"
 
 #: ../client/gnome/admin/src/BlacklistManager.py:37
-#: ../client/gnome/admin/src/BlacklistManager.py:145
 msgid "Blacklist Filter Configuration"
 msgstr "Negativlistenfilter-Konfiguration"
 
@@ -992,68 +1040,56 @@ msgstr ""
 "<b>%s (Nur lesen)</b>\n"
 "   %s"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:117
-msgid "Select file to import"
-msgstr "Zu importierende Datei auswählen"
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:97
+msgid "Firefox proxy settings change detected"
+msgstr "Änderung der Firefox-Proxy-Einstellungen festgestellt"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:137
-msgid "<b>Error importing blacklist file</b>"
-msgstr "<b>Fehler beim Importieren der Negativliste</b>"
-
-#: ../client/gnome/admin/src/BlacklistManager.py:138
-msgid "Some error has occured importing the blacklist file."
-msgstr "Beim Importieren der Negativliste ist ein Fehler aufgetreten."
-
-#: ../client/gnome/admin/src/BlacklistManager.py:176
-msgid "<b>Are you sure you want to delete this blacklist?</b>"
-msgstr "<b>Sind Sie sicher, dass Sie diese Negativliste löschen wollen?</b>"
-
-#: ../client/gnome/admin/src/BlacklistManager.py:177
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:98
 msgid ""
-"This action will remove all the user configuration linked to the blacklist."
+"You can't change the proxy settings because you are under parental control."
 msgstr ""
-"Diese Aktion wird alle Benutzerkonfigurationen entfernen, die zur "
-"Negativliste gehören"
+"Sie können die Proxy-Einstellungen nicht ändern, da die Elternkontrolle aktiv "
+"ist."
 
-#: ../client/gnome/systray/src/SystrayNanny.py:45
+#: ../client/gnome/systray/src/SystrayNanny.py:52
 msgid "Session"
 msgstr "Sitzung"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:47
+#: ../client/gnome/systray/src/SystrayNanny.py:54
 msgid "e-Mail"
 msgstr "E-Mail"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:48
+#: ../client/gnome/systray/src/SystrayNanny.py:55
 msgid "Instant messanger"
 msgstr "Sofortnachrichtenprogramm"
 
 #. To translators: In x-minutes the access to <app> will be granted
-#: ../client/gnome/systray/src/SystrayNanny.py:95
+#: ../client/gnome/systray/src/SystrayNanny.py:134
 #, python-format
 msgid "In %(time)s the access to %(app)s will be granted."
 msgstr "In %(time)s wird der Zugriff auf %(app)s gewährt."
 
 #. To translators: In x-minutes the access to <app> will be denied
-#: ../client/gnome/systray/src/SystrayNanny.py:98
+#: ../client/gnome/systray/src/SystrayNanny.py:137
 #, python-format
 msgid "In %(time)s the access to %(app)s will be denied."
 msgstr "In %(time)s wird der Zugriff auf %(app)s verweigert."
 
-#: ../client/gnome/systray/src/SystrayNanny.py:117
+#: ../client/gnome/systray/src/SystrayNanny.py:160
 #, python-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d Tag"
 msgstr[1] "%d Tage"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:119
+#: ../client/gnome/systray/src/SystrayNanny.py:162
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d Stunde"
 msgstr[1] "%d Stunden"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:121
+#: ../client/gnome/systray/src/SystrayNanny.py:164
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1061,7 +1097,7 @@ msgstr[0] "%d Minute"
 msgstr[1] "%d Minuten"
 
 #. Translators: This is the separator between time strings, like '1 day, 2 hours, 3 minutes'
-#: ../client/gnome/systray/src/SystrayNanny.py:123
+#: ../client/gnome/systray/src/SystrayNanny.py:166
 msgid ", "
 msgstr ", "
 
@@ -1097,6 +1133,30 @@ msgstr "Domänen werden importiert [Kategorie: %s] (%s%%)"
 #, python-format
 msgid "Importing urls [category: %s] (%s%%)"
 msgstr "Adressen werden importiert [Kategorie: %s] (%s%%)"
+
+#~ msgid "BlackLists"
+#~ msgstr "Negativlisten (Blacklists)"
+
+#~ msgid "Nanny parental control blacklists manager"
+#~ msgstr "Negativlistenverwaltung der Nanny-Elternkontrolle"
+
+#~ msgid ""
+#~ "Here you can apply the available blacklists for the selected user. If you "
+#~ "want to add new blacklists please go to System > Administration > "
+#~ "Blacklists."
+#~ msgstr ""
+#~ "Hier können Sie die verfügbaren Negativlisten auf den gewählten Benutzer "
+#~ "anwenden. Wenn Sie eine neue Negativliste hinzufügen möchten, so suchen "
+#~ "Sie bitte System > Systemverwaltung > Negativlisten (Blacklists) auf."
+
+#~ msgid "Select file to import"
+#~ msgstr "Zu importierende Datei auswählen"
+
+#~ msgid "<b>Error importing blacklist file</b>"
+#~ msgstr "<b>Fehler beim Importieren der Negativliste</b>"
+
+#~ msgid "Some error has occured importing the blacklist file."
+#~ msgstr "Beim Importieren der Negativliste ist ein Fehler aufgetreten."
 
 #~ msgid "Type of filter:"
 #~ msgstr "Filtertyp:"
