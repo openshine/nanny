@@ -30,6 +30,8 @@ if os.name == "posix" :
     import gconf
 
 import cairo
+import pango
+import pangocairo
 
 import math
 import copy
@@ -290,21 +292,27 @@ class ScheduleCalendar (gtk.EventBox):
 
     def __write_key (self, context):
         context.set_source_rgb(0.0, 0.0, 0.0)
-        context.set_font_size(12)
+        # According Cairo's FAQ: using pango instead of Cairo's toy font api
+        pango_cairo = pangocairo.CairoContext(context)
+        font_dsc = pango.FontDescription("sans %s" % self.font_size)
+        layout = pango_cairo.create_layout()
+        layout.set_font_description(font_dsc)
 
         for i in range (0, 25):
             text = "%02d" % (i%24)
             x_bearing, y_bearing, width, height = context.text_extents(text)[:4]
             x_pos = self.MARGIN + (self.ITEM_WIDTH - width) / 2
             context.move_to (self.LEFT_MARGIN + (self.ITEM_WIDTH + self.MARGIN) * i - x_pos, height+5)
-            context.show_text (text)
+            layout.set_text(text)
+            pango_cairo.show_layout_line(layout.get_line(0))
 
         i = 0
         for text in [_('Monday'), _('Tuesday'), _('Wednesday'), _('Thursday'), _('Friday'), _('Saturday'), _('Sunday')]:
             x_bearing, y_bearing, width, height = context.text_extents(text)[:4]
             y_pos = self.MARGIN + (self.ITEM_HEIGHT - height) / 2
             context.move_to (5, self.TOP_MARGIN + (self.ITEM_HEIGHT + self.MARGIN ) * i + height + y_pos)
-            context.show_text (text)
+            layout.set_text(text)
+            pango_cairo.show_layout_line(layout.get_line(0))
             i += 1
 
     def __roundedrec_left_half (self,context,x,y,w,h,r = 10):
