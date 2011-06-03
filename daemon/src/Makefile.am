@@ -11,7 +11,6 @@ corelib_PYTHON =	 __init__.py 			\
 			LinuxFiltering.py		\
 			LinuxWebContentFiltering.py 	\
 			LinuxUsersManager.py		\
-			LinuxSessionFiltering.py	\
 			LinuxSessionCKFiltering.py	\
 			Win32Filtering.py		\
 			Win32WebContentFiltering.py	\
