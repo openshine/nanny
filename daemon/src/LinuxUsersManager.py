@@ -47,6 +47,13 @@ class LinuxUsersManager:
         self.users = users
         return users
 
+    def get_username_by_uid(self, uid):
+        for id, name, name_ext in self.get_users():
+            if int(uid) == int(id):
+                return name
+        else:
+            return ''
+
     def has_changes (self):
         if self.last_mdate == None :
             return True
