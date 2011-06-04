@@ -45,4 +45,5 @@ if __name__ == '__main__':
     desktop_blocker.show()
     gtk.gdk.keyboard_grab(desktop_blocker.window)
     gtk.main()
+    sys.exit(0)
 
