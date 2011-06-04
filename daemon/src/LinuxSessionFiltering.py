@@ -1,12 +1,9 @@
 #!/usr/bin/env python
-
-# Copyright (C) 2009,2010 Junta de Andalucia
+#
+# Copyright (C) 2009,2010,2011 Junta de Andalucia
 # 
 # Authors:
 #   Roberto Majadas <roberto.majadas at openshine.com>
-#   Cesar Garcia Tapia <cesar.garcia.tapia at openshine.com>
-#   Luis de Bethencourt <luibg at openshine.com>
-#   Pablo Vieytes <pvieytes at openshine.com>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,136 +20,177 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 # USA
 
+
 import gobject
 import os
+import dbus
 
-from twisted.internet import reactor
-from time import localtime, strftime
+from twisted.internet import reactor, threads
+
+from subprocess import Popen, PIPE
+import time
 
 import gtop
+
+(
+SESSION_APPID,
+WEB_APPID,
+MAIL_APPID,
+IM_APPID) = range(4)
+
+class LinuxSessionBlocker(gobject.GObject) :
+    def __init__(self, quarterback, session_blocker="nanny-desktop-blocker"):
+        gobject.GObject.__init__(self)
+        self.quarterback = quarterback
+        self.sb = session_blocker
+        self.block_status = []
+
+    def is_user_blocked(self, user_id):
+        if user_id in self.block_status:
+            return True
+        else:
+            return False
+
+    def blocker_terminate_from_thread(self, user_id, ret):
+        print "[LinuxSessionFiltering] self.blocker_terminate_from_thread %s %s" % (user_id, ret)
+        if ret == 0:
+            gobject.timeout_add(5000, self.__remove_block_status, user_id)
+        else:
+            print "[LinuxSessionFiltering] User or other try to kill blocker :)"
+            gobject.timeout_add(5000, self.__launch_blocker_to_badboy, user_id)
+            
+
+    def set_block(self, user_id, block_status):
+        if block_status == True:
+            if user_id not in self.block_status :
+                self.__launch_blocker(user_id)
+        else:
+            try:
+                self.block_status.pop(self.block_status.index(user_id))
+            except:
+                pass
+
+    def __remove_block_status(self, user_id):
+        print "[LinuxSessionFiltering] Remove block status to user_id :  %s" % (user_id)
+        self.block_status.pop(self.block_status.index(user_id))
+        return False
+
+    def __launch_blocker_to_badboy(self, user_id):
+        x11_display = self.__get_user_session_display(user_id)
+        if x11_display != None :
+            user_name = self.quarterback.usersmanager.get_username_by_uid(user_id)
+            reactor.callInThread(self.__launch_blocker_thread, user_id, user_name, x11_display, self)
+        else:
+            self.block_status.pop(self.block_status.index(user_id))
+        return False
+
+    def __launch_blocker(self, user_id):
+        x11_display = self.__get_user_session_display(user_id)
+        
+        if x11_display != None :
+            self.block_status.append(user_id)
+            print "[LinuxSessionFiltering] blocking user %s" % user_id
+            user_name = self.quarterback.usersmanager.get_username_by_uid(user_id)
+            reactor.callInThread(self.__launch_blocker_thread, user_id, user_name, x11_display, self)
+        
+    def __launch_blocker_thread(self, user_id, user_name, x11_display, linuxsb):
+        try:
+            proclist = gtop.proclist(gtop.PROCLIST_KERN_PROC_UID, int(user_id))
+            env_lang_var = 'C'
+
+            if len(proclist) > 0 :
+                for proc in proclist :
+                    lang_var = Popen('cat /proc/%s/environ | tr "\\000" "\\n" | grep ^LANG= ' % proc , 
+                                     shell=True, stdout=PIPE).stdout.readline().strip("\n")
+                    if len(lang_var) > 0 :
+                        env_lang_var = lang_var.replace("LANG=","")
+                        break
+            
+            cmd = ['su', user_name, '-c', 
+                   'LANG=%s DISPLAY=%s nanny-desktop-blocker' % (env_lang_var, 
+                                                                 x11_display)]
+            print cmd
+            
+            p = Popen(cmd)
+            print "[LinuxSessionFiltering] launching blocker (pid : %s)" % p.pid
+
+            while p.poll() == None :
+                time.sleep(1)
+                b = threads.blockingCallFromThread(reactor, linuxsb.is_user_blocked, user_id)
+                if b == False:
+                    p.terminate()
+                    print "[LinuxSessionFiltering] Unblocking session %s" % user_id
+                    return
+
+            print "[LinuxSessionFiltering] blocker terminated by user interaction"
+            threads.blockingCallFromThread(reactor, linuxsb.blocker_terminate_from_thread, user_id, p.poll())
+        except:
+            print "[LinuxSessionFiltering] blocker terminated by exception"
+            threads.blockingCallFromThread(reactor, linuxsb.blocker_terminate_from_thread, user_id, 1)
+
+    def __get_user_session_display(self, user_id):
+        d = dbus.SystemBus()
+        manager = dbus.Interface(d.get_object("org.freedesktop.ConsoleKit", 
+                                              "/org/freedesktop/ConsoleKit/Manager"), 
+                                 "org.freedesktop.ConsoleKit.Manager")
+
+        sessions = manager.GetSessionsForUnixUser(int(user_id))
+        for session_name in sessions :
+            session = dbus.Interface(d.get_object("org.freedesktop.ConsoleKit", session_name),
+                                     "org.freedesktop.ConsoleKit.Session")
+            x11_display = session.GetX11Display()
+            if x11_display != "":
+                return x11_display
+        
+        return None
 
 class LinuxSessionFiltering(gobject.GObject) :
     def __init__(self, quarterback) :
         gobject.GObject.__init__(self)
         self.quarterback = quarterback
-        self.uids_blocked = []
-        self.logout_petitions = {}
         
         reactor.addSystemEventTrigger("before", "startup", self.start)
         reactor.addSystemEventTrigger("before", "shutdown", self.stop)
-        
-        self.quarterback.connect('block-status', self.__update_cb)
-        self.quarterback.connect("update-blocks", self.__update_blocks_cb)
+
+        self.updater_session_hd = None
 
     def start(self):
-        pam_deny="auth required pam_listfile.so onerr=succeed item=user sense=deny file=/var/lib/nanny/sessions_blocked"
-        os.system('touch /var/lib/nanny/sessions_blocked')
-        os.system('sed -i "/^.*nanny\/sessions_blocked.*$/d" /etc/pam.d/gdm')
-        os.system('echo %s >> /etc/pam.d/gdm' % pam_deny)
-        self.__update_blocks_cb(self.quarterback, self.quarterback.blocks)
         print "Start Linux Session Filtering"
-        
+        self.linuxsb = LinuxSessionBlocker(self.quarterback)
+        if self.linuxsb.sb != None :
+            print "[LinuxSessionFiltering] start watcher :)"
+            self.updater_session_hd = gobject.timeout_add(1000, self.__update_session_blocker_status)
+
     def stop(self):
-        os.system('sed -i "/^.*nanny\/sessions_blocked.*$/d" /etc/pam.d/gdm')
-        os.system('rm /var/lib/nanny/sessions_blocked')
-        os.system('touch /var/lib/nanny/sessions_blocked')
-        print "Stop Linux Filtering"
+        print "Stop Linux Session Filtering"
+        if self.updater_session_hd != None:
+            gobject.source_remove(self.updater_session_hd)
+        
+        self.linuxsb.block_status = []
+        reactor.iterate(delay=2)
+        print "Stopped Linux Session Filtering"
 
-    def __update_blocks_cb(self, quarterback, blocks):
+
+    def __update_session_blocker_status(self):
+        blocks = self.quarterback.blocks
         for user_id in blocks.keys() :
-            if not blocks[user_id].has_key(0) :
-                continue
+            for app_id in blocks[user_id].keys() :
+                if app_id != SESSION_APPID :
+                    continue
 
-            block_status, next_change = quarterback.is_blocked(user_id, 0)
-            if quarterback.get_available_time(user_id, 0) == 0 or block_status == True:
-                if user_id in self.uids_blocked :
-                    return
+                if self.quarterback.get_available_time(user_id, app_id) == 0 :
+                    self.linuxsb.set_block(int(user_id), True)
+                    continue
 
-                users = quarterback.usersmanager.get_users()
-                for uid, uname, ufname in users :
-                    if str(uid) == user_id :
-                        self.uids_blocked.append(user_id)
-                        os.system("echo '%s' >> /var/lib/nanny/sessions_blocked" % uname)
-                        #self.__logout_session_if_is_running(user_id)
-                        print "blocked session to user '%s'" % uname
-                        return
-            else:
-                if user_id in self.uids_blocked:
-                    users = quarterback.usersmanager.get_users()
-                    for uid, uname, ufname in users :
-                        if str(uid) == user_id :
-                            self.uids_blocked.pop(self.uids_blocked.index(user_id))
-                            os.system('sed -i "/%s/d" /var/lib/nanny/sessions_blocked' % uname)
-                            print "Unblocked session to user '%s'" % uname
-                
-    def __update_cb(self, quarterback, block_status, user_id, app_id, next_change, available_time):
-        if app_id != 0 :
-            return
+                try:
+                    block_status, next_block = self.quarterback.is_blocked(user_id, app_id)
+                except:
+                    print "[LinuxSessionFiltering] Fail getting self.quarterback.is_blocked"
+                    block_status = False
 
-        if block_status == True or available_time == 0 :
-            if user_id in self.uids_blocked :
-                self.__logout_session_if_is_running(user_id)
-        
-        if available_time == 0 :
-            if user_id in self.uids_blocked :
-                return
+                if block_status == True :
+                    self.linuxsb.set_block(int(user_id), True)
+                else:
+                    self.linuxsb.set_block(int(user_id), False)
 
-            users = quarterback.usersmanager.get_users()
-            for uid, uname, ufname in users :
-                if str(uid) == user_id :
-                    self.uids_blocked.append(user_id)
-                    os.system("echo '%s' >> /var/lib/nanny/sessions_blocked" % uname)
-                    self.__logout_session_if_is_running(user_id)
-                    print "blocked session to user '%s'" % uname
-                    return
-        
-        if block_status == False:
-            if user_id in self.uids_blocked:
-                users = quarterback.usersmanager.get_users()
-                for uid, uname, ufname in users :
-                    if str(uid) == user_id :
-                        self.uids_blocked.pop(self.uids_blocked.index(user_id))
-                        os.system('sed -i "/%s/d" /var/lib/nanny/sessions_blocked' % uname)
-                        print "Unblocked session to user '%s'" % uname
-            return
-        else:
-            if user_id in self.uids_blocked :
-                return
-            
-            users = quarterback.usersmanager.get_users()
-            for uid, uname, ufname in users :
-                if str(uid) == user_id :
-                    self.uids_blocked.append(user_id)
-                    os.system("echo '%s' >> /var/lib/nanny/sessions_blocked" % uname)
-                    self.__logout_session_if_is_running(user_id)
-                    print "blocked session to user '%s'" % uname
-
-            return
-        
-    def __logout_session_if_is_running(self, user_id):
-        proclist = gtop.proclist(gtop.PROCLIST_KERN_PROC_UID, int(user_id))
-        for proc in proclist:
-            if gtop.proc_args(proc)[0] == "x-session-manager" or gtop.proc_args(proc)[0] == "gnome-session":
-                users = self.quarterback.usersmanager.get_users()
-                for uid, uname, ufname in users :
-                    if str(uid) == user_id :
-                        if not self.logout_petitions.has_key(user_id):
-                            self.logout_petitions[user_id] = 3
-
-                        if self.logout_petitions[user_id] != 0 :
-                            print "Sending logout petition to '%s'" % uname
-                            cmd='su %s -c "`grep -z DBUS_SESSION_BUS_ADDRESS /proc/%s/environ | sed -e "s:\\r::g"` dbus-send --dest=\'org.gnome.SessionManager\' /org/gnome/SessionManager org.gnome.SessionManager.Logout uint32:0"' % (uname, proc)
-                            os.system(cmd)
-                            self.logout_petitions[user_id] = self.logout_petitions[user_id] - 1
-                            return 
-                        else:
-                            print "Sending Force logout petition to '%s'" % uname
-                            cmd='su %s -c "`grep -z DBUS_SESSION_BUS_ADDRESS /proc/%s/environ | sed -e "s:\\r::g"` dbus-send --dest=\'org.gnome.SessionManager\' /org/gnome/SessionManager org.gnome.SessionManager.Logout uint32:1"' % (uname, proc)
-                            os.system(cmd)
-                            self.logout_petitions.pop(user_id)
-                            return
-
-        if self.logout_petitions.has_key(user_id) :
-            self.logout_petitions.pop(user_id)
-    
-            
+        return True

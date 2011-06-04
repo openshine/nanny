@@ -102,6 +102,13 @@ class DesktopBlocker(gtk.Window):
     def __close_button_clicked_cb(self, widget, data):
         if os.name == "nt" :
             windll.user32.ExitWindowsEx(0)
+        elif os.name == "posix" :
+            d = dbus.SessionBus()
+            session_manager = dbus.Interface(d.get_object("org.gnome.SessionManager",
+                                                          "/org/gnome/SessionManager"),
+                                             "org.gnome.SessionManager")
+            session_manager.Logout(1)
+            
         sys.exit(0)
         
     def __time_button_clicked_cb(self, widget, data):
