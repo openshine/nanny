@@ -36,7 +36,7 @@ if os.name == "posix" :
     from LinuxFiltering import LinuxFiltering as FirewallFilter
     from LinuxWebContentFiltering import LinuxWebContentFiltering as WebContentFilter
     from LinuxUsersManager import LinuxUsersManager as UsersManager
-    from LinuxSessionCKFiltering import LinuxSessionCKFiltering as SessionFilter
+    from LinuxSessionFiltering import LinuxSessionFiltering as SessionFilter
     from FilterManager import FilterManager as FilterManager
     from Chrono import Chrono
 elif os.name == "nt" :
