@@ -583,8 +583,10 @@ class ConfigureProxyDialog (gtk.Dialog):
             dialog.response(response)
             
         dialog.set_markup(_('Introduce the nannycentral repository url'))
-        entry = gtk.Entry()
-        entry.connect("activate", responseToDialog, dialog, gtk.RESPONSE_OK)
+	options = gtk.ListStore (str)
+	options.append (['URL_DE_LA_LISTA'])
+        entry = gtk.ComboBoxEntry(options, column=0)
+        entry.child.connect("activate", responseToDialog, dialog, gtk.RESPONSE_OK)
         hbox = gtk.HBox()
         hbox.pack_start(gtk.Label("Url:"), False, 5, 5)
         hbox.pack_end(entry)
@@ -592,7 +594,7 @@ class ConfigureProxyDialog (gtk.Dialog):
         dialog.vbox.pack_end(hbox, True, True, 0)
         dialog.show_all()
         dialog.run()
-        text = entry.get_text()
+        text = entry.child.get_text()
         dialog.destroy()
 
         if not text.startswith("http:/") :
