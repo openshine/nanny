@@ -2,12 +2,14 @@
 # -*- coding: utf-8 -*-
 
 # Copyright (C) 2009 Junta de Andalucia
+# Copyright (C) 2012 Guido Tabbernuk
 # 
 # Authors:
 #   Roberto Majadas <roberto.majadas at openshine.com>
 #   Cesar Garcia Tapia <cesar.garcia.tapia at openshine.com>
 #   Luis de Bethencourt <luibg at openshine.com>
 #   Pablo Vieytes <pvieytes at openshine.com>
+#   Guido Tabbernuk <boamaod at gmail.com>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -124,13 +126,13 @@ class BlacklistManager:
         def responseToDialog(entry, dialog, response):
             dialog.response(response)
 
-	dialog.set_markup('Introduce the nannycentral repository url')
+	dialog.set_markup('Enter blacklist repository URL')
 	entry = gtk.Entry()
 	entry.connect("activate", responseToDialog, dialog, gtk.RESPONSE_OK)
 	hbox = gtk.HBox()
 	hbox.pack_start(gtk.Label("Url:"), False, 5, 5)
 	hbox.pack_end(entry)
-	dialog.format_secondary_markup("It's something like http://www.nannycentral.info/blacklist/blacklist.json ...")
+	dialog.format_secondary_markup("It's something like http://static.nannycentral.org/v/nannycentral/blacklists/blacklist.json")
 	dialog.vbox.pack_end(hbox, True, True, 0)
 	dialog.show_all()
 	dialog.run()

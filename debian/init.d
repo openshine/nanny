@@ -1,8 +1,16 @@
 #! /bin/sh
-#
-# skeleton	example file to build /etc/init.d/ scripts.
-#		This file should be used to construct scripts for /etc/init.d.
-#
+### BEGIN INIT INFO
+# Provides:          nanny
+# Required-Start:    $local_fs $remote_fs $syslog $time
+# Required-Stop:     $local_fs $remote_fs $syslog $time
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Nanny daemon
+# Description:       This is a daemon for maintaining information
+#                    about parental control.
+#                    See http://projects.gnome.org/nanny/
+### END INIT INFO
+
 #		Written by Miquel van Smoorenburg <miquels@cistron.nl>.
 #		Modified for Debian 
 #		by Ian Murdock <imurdock@gnu.ai.mit.edu>.
@@ -21,7 +29,7 @@ fi
 
 
 NAME="nanny"
-DESC="nanny (Parental Control Daemon)"
+DESC="parental control daemon"
 PID_FILE="/var/run/$NAME.pid"
 LOG_FILE="/var/log/nanny.log"
 

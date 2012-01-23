@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 
 # Copyright (C) 2009,2010 Junta de Andalucia
+# Copyright (C) 2012 Guido Tabbernuk
 #
 # Authors:
 #   Roberto Majadas <roberto.majadas at openshine.com>
 #   Cesar Garcia Tapia <cesar.garcia.tapia at openshine.com>
 #   Luis de Bethencourt <luibg at openshine.com>
 #   Pablo Vieytes <pvieytes at openshine.com>
+#   Guido Tabbernuk <boamaod at gmail.com>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -58,22 +60,36 @@ class AdminConsole(gobject.GObject):
                                     prefix = "nac")
 
         self.window.connect ('delete-event', self.__on_close_event)
+        self.close_button.connect ('clicked', self.__on_close_event)
         self.help_button.connect ('clicked', self.__on_help_button_clicked)
-        self.close_button.connect ('clicked', self.__on_close_button_clicked)
         self.apply_button.connect ('clicked', self.__on_apply_button_clicked)
         self.unlock_button.connect('clicked', self.__on_unlock_button_clicked)
 
         self.session_hoursday_checkbutton.connect ('toggled', self.__on_session_hoursday_checkbutton_toggled)
         self.session_hoursday_spinbutton.connect ('value-changed', self.__on_session_hoursday_spinbutton_changed)
+        self.session_force_logoff_checkbutton.connect ('toggled', self.__on_session_force_logoff_checkbutton_toggled)
+        self.session_grant_time_button.connect ('clicked', self.__on_session_grant_time_button_clicked)
+        self.session_extrahours_spinbutton.connect ('value-changed', self.__on_session_extrahours_spinbutton_changed)
+        self.session_configure_chores_button.connect ('clicked', self.__on_session_configure_chores_button_clicked)
+        self.session_use_chores_indicator = None
+        self.session_max_contracted_chores = None
+        
         self.browser_configure_proxy_button.connect ('clicked', self.__on_browser_configure_proxy_button_clicked)
-        self.browser_use_proxy_checkbutton.connect ('toggled', self.__on_browser_use_proxy_checkbutton_toggled)
         self.browser_hoursday_checkbutton.connect ('toggled', self.__on_browser_hoursday_checkbutton_toggled)
         self.browser_hoursday_spinbutton.connect ('value-changed', self.__on_browser_hoursday_spinbutton_changed)
+        self.browser_grant_time_button.connect ('clicked', self.__on_browser_grant_time_button_clicked)
+        self.browser_extrahours_spinbutton.connect ('value-changed', self.__on_browser_extrahours_spinbutton_changed)
+        self.browser_use_proxy_indicator = None
+
         self.mail_hoursday_checkbutton.connect ('toggled', self.__on_mail_hoursday_checkbutton_toggled)
         self.mail_hoursday_spinbutton.connect ('value-changed', self.__on_mail_hoursday_spinbutton_changed)
+        self.mail_grant_time_button.connect ('clicked', self.__on_mail_grant_time_button_clicked)
+        self.mail_extrahours_spinbutton.connect ('value-changed', self.__on_mail_extrahours_spinbutton_changed)
+
         self.im_hoursday_checkbutton.connect ('toggled', self.__on_im_hoursday_checkbutton_toggled)
         self.im_hoursday_spinbutton.connect ('value-changed', self.__on_im_hoursday_spinbutton_changed)
-
+        self.im_grant_time_button.connect ('clicked', self.__on_im_grant_time_button_clicked)
+        self.im_extrahours_spinbutton.connect ('value-changed', self.__on_im_extrahours_spinbutton_changed)
 
 
         self.session_schedule_widget = nanny.client.gnome.admin.ScheduleCalendar()
@@ -103,6 +119,12 @@ class AdminConsole(gobject.GObject):
         else:
             self.__on_users_treeview_selection_changed (None)
 
+        # for updating available time
+        gobject.timeout_add(1000, self.__session_timeout_cb)
+        gobject.timeout_add(1000, self.__browser_timeout_cb)
+        gobject.timeout_add(1000, self.__mail_timeout_cb)
+        gobject.timeout_add(1000, self.__im_timeout_cb)
+
         self.window.resize (800, 460)
         self.window.set_position (gtk.WIN_POS_CENTER)
         self.window.show_all ()
@@ -118,32 +140,47 @@ class AdminConsole(gobject.GObject):
 
         self.apply_button.set_sensitive(lock_status)
 
+        self.session_configure_chores_button.set_sensitive(lock_status)
         self.session_hoursday_checkbutton.set_sensitive(lock_status)
+        self.session_extrahours_entry.set_sensitive(lock_status)
         if lock_status == True:
             self.session_hoursday_spinbutton.set_sensitive(self.session_hoursday_checkbutton.get_active())
+            self.session_extrahours_spinbutton.set_sensitive(self.session_hoursday_checkbutton.get_active())
+            self.session_force_logoff_checkbutton.set_sensitive(self.session_hoursday_checkbutton.get_active())
         else:
             self.session_hoursday_spinbutton.set_sensitive(lock_status)
+            self.session_extrahours_spinbutton.set_sensitive(lock_status)
+            self.session_force_logoff_checkbutton.set_sensitive(lock_status)
 
         self.browser_configure_proxy_button.set_sensitive(lock_status)
-        self.browser_use_proxy_checkbutton.set_sensitive(lock_status)
         self.browser_hoursday_checkbutton.set_sensitive(lock_status)
+        self.browser_extrahours_entry.set_sensitive(lock_status)
         if lock_status == True:
             self.browser_hoursday_spinbutton.set_sensitive(self.browser_hoursday_checkbutton.get_active())
+            self.browser_extrahours_spinbutton.set_sensitive(self.browser_hoursday_checkbutton.get_active())
         else:
             self.browser_hoursday_spinbutton.set_sensitive(lock_status)
+            self.browser_extrahours_spinbutton.set_sensitive(lock_status)
 
         self.mail_hoursday_checkbutton.set_sensitive(lock_status)
         self.mail_hoursday_spinbutton.set_sensitive(lock_status)
+        self.mail_extrahours_entry.set_sensitive(lock_status)
         if lock_status == True:
             self.mail_hoursday_spinbutton.set_sensitive(self.mail_hoursday_checkbutton.get_active())
+            self.mail_extrahours_spinbutton.set_sensitive(self.mail_hoursday_checkbutton.get_active())
         else:
             self.mail_hoursday_spinbutton.set_sensitive(lock_status)
+            self.mail_extrahours_spinbutton.set_sensitive(lock_status)
 
         self.im_hoursday_checkbutton.set_sensitive(lock_status)
+        self.im_hoursday_spinbutton.set_sensitive(lock_status)
+        self.im_extrahours_entry.set_sensitive(lock_status)
         if lock_status == True:
             self.im_hoursday_spinbutton.set_sensitive(self.im_hoursday_checkbutton.get_active())
+            self.im_extrahours_spinbutton.set_sensitive(self.im_hoursday_checkbutton.get_active())
         else:
             self.im_hoursday_spinbutton.set_sensitive(lock_status)
+            self.im_extrahours_spinbutton.set_sensitive(lock_status)
 
         self.session_schedule_widget.set_sensitive(lock_status)
         self.browser_schedule_widget.set_sensitive(lock_status)
@@ -203,8 +240,8 @@ class AdminConsole(gobject.GObject):
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(face_file, 50, 50)
             else:
                 if os.name == "posix" :
-                    icon_theme = gtk.IconTheme ()
-                    pixbuf = icon_theme.load_icon ('nobody', 50, gtk.ICON_LOOKUP_USE_BUILTIN)
+                    icon_theme = gtk.icon_theme_get_default()
+                    pixbuf = icon_theme.load_icon ('stock_person', 50, gtk.ICON_LOOKUP_USE_BUILTIN)
                 elif os.name == "nt" :
                     pixbuf = None
 
@@ -225,11 +262,15 @@ class AdminConsole(gobject.GObject):
             self.session_hoursday_checkbutton.set_active (False)
         if self.session_hoursday_checkbutton.get_active ():
             self.session_hoursday_spinbutton.set_sensitive (True)
-            print value
             self.session_hoursday_spinbutton.set_value (value/60.0)
+            self.session_force_logoff_checkbutton.set_sensitive (True)
+            self.session_force_logoff_checkbutton.set_active (self.dbus_client.is_forced_to_close (self.__selected_user_id, 0))
         else:
             self.session_hoursday_spinbutton.set_sensitive (False)
             self.session_hoursday_spinbutton.set_value (0)
+            self.session_force_logoff_checkbutton.set_active (False)
+            self.session_force_logoff_checkbutton.set_sensitive (False)
+        self.session_use_chores_indicator, self.session_max_contracted_chores = self.dbus_client.get_chore_settings (self.__selected_user_id)
 
         # BROWSER
         self.browser_schedule_widget.set_block_data (self.dbus_client.get_blocks (self.__selected_user_id, 1))
@@ -246,11 +287,9 @@ class AdminConsole(gobject.GObject):
             self.browser_hoursday_spinbutton.set_value (0)
 
         if self.__selected_user_id in self.dbus_client.list_WCF ():
-            self.browser_use_proxy_checkbutton.set_active (True)
-            self.browser_configure_proxy_button.set_sensitive (True)
+            self.browser_use_proxy_indicator = True
         else:
-            self.browser_use_proxy_checkbutton.set_active (False)
-            self.browser_configure_proxy_button.set_sensitive (False)
+            self.browser_use_proxy_indicator = False
 
         # MAIL
         self.mail_schedule_widget.set_block_data (self.dbus_client.get_blocks (self.__selected_user_id, 2))
@@ -283,32 +322,41 @@ class AdminConsole(gobject.GObject):
         self.__config_changed = False
 
     def __on_browser_configure_proxy_button_clicked (self, widget, data=None):
-        configure_proxy_dialog = nanny.client.gnome.admin.ConfigureProxyDialog(self.__selected_user_id)
+        configure_proxy_dialog = nanny.client.gnome.admin.ConfigureProxyDialog(self.__selected_user_id, self.browser_use_proxy_indicator)
         configure_proxy_dialog.set_transient_for(self.window)
-        configure_proxy_dialog.run()
+        ret = configure_proxy_dialog.run()
+        if ret != self.browser_use_proxy_indicator:
+            self.browser_use_proxy_indicator = ret
+            self.__config_changed = True
+            
         configure_proxy_dialog.destroy()
 
-    def __on_browser_use_proxy_checkbutton_toggled (self, widget, data=None):
-        if self.browser_use_proxy_checkbutton.get_active():
-            self.browser_configure_proxy_button.set_sensitive (True)
-        else:
-            self.browser_configure_proxy_button.set_sensitive (False)
-        self.__config_changed = True
+    def __on_session_configure_chores_button_clicked (self, widget, data=None):
+        configure_chores_dialog = nanny.client.gnome.admin.ConfigureChoresDialog(self.__selected_user_id, self.session_use_chores_indicator, self.session_max_contracted_chores)
+        configure_chores_dialog.set_transient_for(self.window)
+        ret = configure_chores_dialog.run()
+        if ret[0] != self.session_use_chores_indicator or ret[1] != self.session_max_contracted_chores:
+            self.session_use_chores_indicator = ret[0]
+            self.session_max_contracted_chores = ret[1]
+            self.__config_changed = True
+        configure_chores_dialog.destroy()
 
     def __on_apply_button_clicked (self, widget, data=None):
         # SESSION
         schedule_data = self.session_schedule_widget.get_block_data()
         self.dbus_client.set_blocks (self.__selected_user_id, 0, schedule_data)
+        self.dbus_client.set_chore_settings (self.__selected_user_id, self.session_use_chores_indicator, self.session_max_contracted_chores)
         if self.session_hoursday_checkbutton.get_active ():
             value = self.session_hoursday_spinbutton.get_value()
             self.dbus_client.set_max_use_time(self.__selected_user_id, 0, value*60.0)
+            self.dbus_client.set_forced_to_close (self.__selected_user_id, 0, self.session_force_logoff_checkbutton.get_active ())
         else:
             self.dbus_client.set_max_use_time(self.__selected_user_id, 0, 0)
 
         # BROWSER
         schedule_data = self.browser_schedule_widget.get_block_data()
         self.dbus_client.set_blocks (self.__selected_user_id, 1, schedule_data)
-        if self.browser_use_proxy_checkbutton.get_active ():
+        if self.browser_use_proxy_indicator:
             self.dbus_client.set_active_WCF (self.__selected_user_id, True)
         else:
             self.dbus_client.set_active_WCF (self.__selected_user_id, False)
@@ -336,8 +384,9 @@ class AdminConsole(gobject.GObject):
         else:
             self.dbus_client.set_max_use_time(self.__selected_user_id, 3, 0)
 
+        self.__config_changed = False
         dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_INFO, gtk.BUTTONS_CLOSE,
-                                   _("Your configuration has been saved") )
+                                   _("User's configuration has been saved") )
         dialog.set_property("icon-name", "nanny")
         dialog.set_transient_for(self.window)
         dialog.set_default_response(gtk.RESPONSE_CLOSE)
@@ -346,29 +395,9 @@ class AdminConsole(gobject.GObject):
 
 
     def __on_users_treeview_selection_changed (self, widget):
-        if self.__selected_user_id is not None:
-            if self.__config_changed:
-                dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_INFO, gtk.BUTTONS_YES_NO)
-                dialog.set_property("icon-name", "nanny")
-                dialog.set_markup ("<b>%s</b>" % _('You have made changes'))
-                dialog.format_secondary_markup (_("If you don't press the 'Apply' button, your changes will be lost.\nAre you sure?") )
-                dialog.set_default_response(gtk.RESPONSE_YES)
-                ret = dialog.run()
-                if ret == gtk.RESPONSE_NO:
-                    dialog.destroy()
-
-                    selection = self.users_treeview.get_selection()
-                    selection.disconnect (self.users_selection_change_cb_id)
-                    model = self.users_treeview.get_model ()
-                    for row in model:
-                        if row[0] == self.__selected_user_id:
-                            selection.select_iter (row.iter)
-                            break
-                    self.users_selection_change_cb_id = selection.connect ('changed', self.__on_users_treeview_selection_changed)
-                    return
-
-                dialog.destroy()
-
+        if not self.ignore_changes_made():
+            return
+        
         selection = self.users_treeview.get_selection()
 
         selected_rows =  selection.count_selected_rows()
@@ -379,7 +408,10 @@ class AdminConsole(gobject.GObject):
         if selected_rows > 0:
             model, itera = selection.get_selected ()
             self.__selected_user_id = model.get_value (itera, 0)
-            self.__load_config ()
+
+            if self.dbus_client.is_unlocked():    
+                self.__load_config ()
+            
             self.window.set_title (_('Nanny Admin Console - %s') % self.users_treeview.get_model().get_value (itera, 2))
         else:
             self.__selected_user_id = None
@@ -393,17 +425,49 @@ class AdminConsole(gobject.GObject):
         self.__config_changed = True
         if self.session_hoursday_checkbutton.get_active():
             self.session_hoursday_spinbutton.set_sensitive (True)
+            self.session_extrahours_spinbutton.set_sensitive (True)
+            self.session_extrahours_entry.set_sensitive (True)
+            self.session_force_logoff_checkbutton.set_sensitive(True)
         else:
             self.session_hoursday_spinbutton.set_sensitive (False)
+            self.session_grant_time_button.set_sensitive (False)
+            self.session_extrahours_spinbutton.set_sensitive (False)
+            self.session_extrahours_entry.set_sensitive (False)
+            self.session_force_logoff_checkbutton.set_sensitive(False)
+    def __on_session_force_logoff_checkbutton_toggled (self, widget, data=None):
+        self.__config_changed = True
 
+    def __on_session_extrahours_spinbutton_changed (self, widget, data=None):
+        if self.session_extrahours_spinbutton.get_value() != 0:
+            self.session_grant_time_button.set_sensitive (True)
+        else:
+            self.session_grant_time_button.set_sensitive (False)
+    def __on_session_grant_time_button_clicked (self, widget, data=None):
+        value = self.session_extrahours_spinbutton.get_value()
+        self.dbus_client.add_use_time(self.__selected_user_id, 0, value*60.0)
+        
     def __on_browser_hoursday_spinbutton_changed (self, widget, data=None):
         self.__config_changed = True
     def __on_browser_hoursday_checkbutton_toggled (self, widget, data=None):
         self.__config_changed = True
         if self.browser_hoursday_checkbutton.get_active():
             self.browser_hoursday_spinbutton.set_sensitive (True)
+            self.browser_extrahours_spinbutton.set_sensitive (True)
+            self.browser_extrahours_entry.set_sensitive (True)
         else:
             self.browser_hoursday_spinbutton.set_sensitive (False)
+            self.browser_grant_time_button.set_sensitive (False)
+            self.browser_extrahours_spinbutton.set_sensitive (False)
+            self.browser_extrahours_entry.set_sensitive (False)
+
+    def __on_browser_extrahours_spinbutton_changed (self, widget, data=None):
+        if self.browser_extrahours_spinbutton.get_value() != 0:
+            self.browser_grant_time_button.set_sensitive (True)
+        else:
+            self.browser_grant_time_button.set_sensitive (False)
+    def __on_browser_grant_time_button_clicked (self, widget, data=None):
+        value = self.browser_extrahours_spinbutton.get_value()
+        self.dbus_client.add_use_time(self.__selected_user_id, 1, value*60.0)
 
     def __on_mail_hoursday_spinbutton_changed (self, widget, data=None):
         self.__config_changed = True
@@ -411,8 +475,22 @@ class AdminConsole(gobject.GObject):
         self.__config_changed = True
         if self.mail_hoursday_checkbutton.get_active():
             self.mail_hoursday_spinbutton.set_sensitive (True)
+            self.mail_extrahours_spinbutton.set_sensitive (True)
+            self.mail_extrahours_entry.set_sensitive (True)
         else:
             self.mail_hoursday_spinbutton.set_sensitive (False)
+            self.mail_grant_time_button.set_sensitive (False)
+            self.mail_extrahours_spinbutton.set_sensitive (False)
+            self.mail_extrahours_entry.set_sensitive (False)
+
+    def __on_mail_extrahours_spinbutton_changed (self, widget, data=None):
+        if self.mail_extrahours_spinbutton.get_value() != 0:
+            self.mail_grant_time_button.set_sensitive (True)
+        else:
+            self.mail_grant_time_button.set_sensitive (False)
+    def __on_mail_grant_time_button_clicked (self, widget, data=None):
+        value = self.mail_extrahours_spinbutton.get_value()
+        self.dbus_client.add_use_time(self.__selected_user_id, 2, value*60.0)
 
     def __on_im_hoursday_spinbutton_changed (self, widget, data=None):
         self.__config_changed = True
@@ -420,8 +498,22 @@ class AdminConsole(gobject.GObject):
         self.__config_changed = True
         if self.im_hoursday_checkbutton.get_active():
             self.im_hoursday_spinbutton.set_sensitive (True)
+            self.im_extrahours_spinbutton.set_sensitive (True)
+            self.im_extrahours_entry.set_sensitive (True)
         else:
             self.im_hoursday_spinbutton.set_sensitive (False)
+            self.im_grant_time_button.set_sensitive (False)
+            self.im_extrahours_spinbutton.set_sensitive (False)
+            self.im_extrahours_entry.set_sensitive (False)
+
+    def __on_im_extrahours_spinbutton_changed (self, widget, data=None):
+        if self.im_extrahours_spinbutton.get_value() != 0:
+            self.im_grant_time_button.set_sensitive (True)
+        else:
+            self.im_grant_time_button.set_sensitive (False)
+    def __on_im_grant_time_button_clicked (self, widget, data=None):
+        value = self.im_extrahours_spinbutton.get_value()
+        self.dbus_client.add_use_time(self.__selected_user_id, 3, value*60.0)
 
     def __on_help_button_clicked (self, widget, data=None):
         if os.name == "posix":
@@ -436,10 +528,78 @@ class AdminConsole(gobject.GObject):
 
     def __on_unlock_button_clicked (self, widget, data=None):
         self.dbus_client.unlock()
+        self.__on_users_treeview_selection_changed(None)
         self.__lock_widgets()
 
-    def __on_close_button_clicked (self, widget, data=None):
+    def __on_close_event (self, widget, data=None):
+        if not self.ignore_changes_made():
+            return True
         gtk.main_quit()
 
-    def __on_close_event (self, widget, data=None):
-        gtk.main_quit()
+    def __session_timeout_cb(self):
+        if self.__selected_user_id is not None:
+            if self.dbus_client.is_unlocked():
+                value = self.dbus_client.get_use_time (self.__selected_user_id, 0)
+                if value >= 0:
+                    self.session_extrahours_entry.set_text("{0:.1f}".format(value/60.0))
+                else:
+                    self.session_extrahours_entry.set_text("{0:.1f}".format(0))
+            gobject.timeout_add(1000, self.__session_timeout_cb)
+
+    def __browser_timeout_cb(self):
+        if self.__selected_user_id is not None:
+            if self.dbus_client.is_unlocked():
+                value = self.dbus_client.get_use_time (self.__selected_user_id, 1)
+                if value >= 0:
+                    self.browser_extrahours_entry.set_text("{0:.1f}".format(value/60.0))
+                else:
+                    self.browser_extrahours_entry.set_text("{0:.1f}".format(0))
+            gobject.timeout_add(1000, self.__browser_timeout_cb)
+
+    def __mail_timeout_cb(self):
+        if self.__selected_user_id is not None:
+            if self.dbus_client.is_unlocked():
+                value = self.dbus_client.get_use_time (self.__selected_user_id, 2)
+                if value >= 0:
+                    self.mail_extrahours_entry.set_text("{0:.1f}".format(value/60.0))
+                else:
+                    self.mail_extrahours_entry.set_text("{0:.1f}".format(0))
+            gobject.timeout_add(1000, self.__mail_timeout_cb)
+
+    def __im_timeout_cb(self):
+        if self.__selected_user_id is not None:
+            if self.dbus_client.is_unlocked():
+                value = self.dbus_client.get_use_time (self.__selected_user_id, 3)
+                if value >= 0:
+                    self.im_extrahours_entry.set_text("{0:.1f}".format(value/60.0))
+                else:
+                    self.im_extrahours_entry.set_text("{0:.1f}".format(0))
+            gobject.timeout_add(1000, self.__im_timeout_cb)
+                
+    def ignore_changes_made (self):
+        """Asks confirmation if user doesn't want to save changes. No changes made is equal to ignoring changes."""
+        if self.__config_changed:
+            dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_INFO, gtk.BUTTONS_YES_NO)
+            dialog.set_property("icon-name", "nanny")
+            dialog.set_markup ("<b>%s</b>" % _('You have made changes'))
+            dialog.format_secondary_markup (_("If you don't press the 'Apply' button, your changes will be lost.\nAre you sure?") )
+            dialog.set_default_response(gtk.RESPONSE_YES)
+            ret = dialog.run()
+            if ret == gtk.RESPONSE_NO:
+                dialog.destroy()
+
+                selection = self.users_treeview.get_selection()
+                selection.disconnect (self.users_selection_change_cb_id)
+                model = self.users_treeview.get_model ()
+                for row in model:
+                    if row[0] == self.__selected_user_id:
+                        selection.select_iter (row.iter)
+                        break
+                self.users_selection_change_cb_id = selection.connect ('changed', self.__on_users_treeview_selection_changed)
+                return False
+            else:
+                dialog.destroy()
+                return True
+            
+        return True
+        

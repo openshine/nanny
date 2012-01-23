@@ -8,12 +8,15 @@ client/gnome/admin/data/nanny-admin-console.desktop.in
 [type: gettext/glade]client/gnome/admin/data/ui/nanny_admin_console.ui
 [type: gettext/glade]client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui
 [type: gettext/glade]client/gnome/admin/data/ui/nac_wcf_dialog.ui
+[type: gettext/glade]client/gnome/admin/data/ui/nac_chores_dialog.ui
+[type: gettext/glade]client/gnome/admin/data/ui/nac_chores_edit_dialog.ui
 [type: gettext/glade]client/gnome/admin/data/ui/nbm_pbl_dialog.ui
 [type: gettext/glade]client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui
 [type: gettext/glade]client/gnome/admin/data/ui/nanny_desktop_blocker.ui
 client/gnome/admin/src/__init__.py.in
 client/gnome/admin/src/ScheduleCalendar.py
 client/gnome/admin/src/ConfigureProxyDialog.py
+client/gnome/admin/src/ConfigureChoresDialog.py
 client/gnome/admin/src/AdminConsole.py
 client/gnome/admin/src/BlacklistManager.py
 client/gnome/nanny-firefox-win32/nanny-firefox-blocker

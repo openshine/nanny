@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 
 # Copyright (C) 2009,2010 Junta de Andalucia
+# Copyright (C) 2012 Guido Tabbernuk
 # 
 # Authors:
 #   Roberto Majadas <roberto.majadas at openshine.com>
 #   Cesar Garcia Tapia <cesar.garcia.tapia at openshine.com>
 #   Luis de Bethencourt <luibg at openshine.com>
 #   Pablo Vieytes <pvieytes at openshine.com>
+#   Guido Tabbernuk <boamaod at gmail.com>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -157,8 +159,32 @@ class NannyDBus(dbus.service.Object):
     @dbus.service.method("org.gnome.Nanny",
                          in_signature='si', out_signature='a{sa(ss)}')
     def GetBlocks(self, user_id, app_id) :
-        ret = self.quarterback.get_blocks(user_id, app_id)
-        return ret
+        return self.quarterback.get_blocks(user_id, app_id)
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='s', out_signature='a{i(bii)}')
+    def GetBlockStatusByUID(self, user_id) :
+        return self.quarterback.get_block_status_by_uid(str(user_id))
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='si', out_signature='b')
+    def IsAllowedToUse(self, user_id, app_id) :
+        return self.quarterback.is_allowed_to_use(user_id, app_id)
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='si', out_signature='b')
+    def IsForcedToClose(self, user_id, app_id) :
+        return self.quarterback.is_forced_to_close(user_id, app_id)
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='sib', out_signature='')
+    def SetForcedToClose(self, user_id, app_id, state) :
+        self.quarterback.set_forced_to_close(user_id, app_id, state)
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='si', out_signature='bi')
+    def IsBlocked(self, user_id, app_id) :
+        return self.quarterback.is_blocked(user_id, app_id)
 
     @dbus.service.method("org.gnome.Nanny",
                          in_signature='bs', out_signature='',
@@ -180,9 +206,21 @@ class NannyDBus(dbus.service.Object):
         self.quarterback.set_max_use_time(str(user_id), int(app_id), int(mins))
 
     @dbus.service.method("org.gnome.Nanny",
+                         in_signature='sii', out_signature='',
+                         sender_keyword='sender', connection_keyword='conn')
+    def AddUseTime(self, user_id, app_id, mins, sender=None, conn=None):
+        self._check_polkit_privilege(sender, conn, 'org.gnome.nanny.admin')
+        self.quarterback.add_available_time(str(user_id), int(app_id), int(mins))
+
+    @dbus.service.method("org.gnome.Nanny",
                          in_signature='si', out_signature='i')
     def GetMaxUseTime(self, user_id, app_id):
         return self.quarterback.get_max_use_time(user_id, app_id)
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='si', out_signature='i')
+    def GetUseTime(self, user_id, app_id):
+        return self.quarterback.get_available_time(user_id, app_id)
 
     @dbus.service.signal("org.gnome.Nanny",
                          signature='')
@@ -191,6 +229,109 @@ class NannyDBus(dbus.service.Object):
 
     def __UpdateUsersInfo_cb(self, quarterback):
         self.UpdateUsersInfo()
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='sbi', out_signature='',
+                         sender_keyword='sender', connection_keyword='conn')
+    def SetChoreSettings(self, uid, active, limit, sender=None, conn=None):
+        self._check_polkit_privilege(sender, conn, 'org.gnome.nanny.admin')
+        self.quarterback.set_chore_settings(str(uid), bool(active), int(limit))
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='s', out_signature='bi')
+    def GetChoreSettings(self, uid):
+        return self.quarterback.get_chore_settings(str(uid))
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='s', out_signature='b')
+    def IsChoreAvailable(self, user_id) :
+        return self.quarterback.is_chore_available(user_id)
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='i', out_signature='i')
+    def GetActivatedChoreReward(self, chore_id):
+        return self.quarterback.chore_manager.get_activated_chore_reward(chore_id)
+
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='ssi', out_signature='b',
+                         sender_keyword='sender', connection_keyword='conn')
+    def AddChoreDescription(self, title, description, reward, sender=None, conn=None):
+        self._check_polkit_privilege(sender, conn, 'org.gnome.nanny.admin')
+        return self.quarterback.chore_manager.add_chore_description(unicode(title), unicode(description), int(reward))
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='i', out_signature='a(issi)')
+    def ListChoreDescriptions(self, desc_id):
+        return self.quarterback.chore_manager.list_chore_descriptions(int(desc_id))
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='i', out_signature='b',
+                         sender_keyword='sender', connection_keyword='conn')
+    def RemoveChoreDescription(self, list_id, sender=None, conn=None):
+        self._check_polkit_privilege(sender, conn, 'org.gnome.nanny.admin')
+        return self.quarterback.chore_manager.remove_chore_description(int(list_id))
+    
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='issi', out_signature='b',
+                         sender_keyword='sender', connection_keyword='conn')
+    def UpdateChoreDescription(self, list_id, title, description, reward, sender=None, conn=None):
+        self._check_polkit_privilege(sender, conn, 'org.gnome.nanny.admin')
+        return self.quarterback.chore_manager.update_chore_description(int(list_id),
+                                                                    unicode(title),
+                                                                    unicode(description),
+                                                                    int(reward))
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='is', out_signature='b',
+                         sender_keyword='sender', connection_keyword='conn')
+    def AddChore(self, chore_id, uid, sender=None, conn=None):
+        self._check_polkit_privilege(sender, conn, 'org.gnome.nanny.admin')
+        return self.quarterback.chore_manager.add_chore(int(chore_id), str(uid))
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='sbbb', out_signature='a(iisiiiss)',
+                         sender_keyword='sender', connection_keyword='conn')
+    def ListChores(self, uid, available, contracted, finished, sender=None, conn=None):
+        return self.quarterback.chore_manager.list_chores(str(uid), bool(available), bool(contracted), bool(finished))
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='i', out_signature='b',
+                         sender_keyword='sender', connection_keyword='conn')
+    def RemoveChore(self, list_id, sender=None, conn=None):
+        self._check_polkit_privilege(sender, conn, 'org.gnome.nanny.admin')
+        return self.quarterback.chore_manager.remove_chore(int(list_id))
+    
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='iisii', out_signature='b',
+                         sender_keyword='sender', connection_keyword='conn')
+    def UpdateChore(self, list_id, chore_id, uid, contracted, finished, sender=None, conn=None):
+        self._check_polkit_privilege(sender, conn, 'org.gnome.nanny.admin')
+        return self.quarterback.chore_manager.update_chore(int(list_id),
+                                                            int(chore_id),
+                                                            str(uid),
+                                                            int(contracted),
+                                                            int(finished))
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='isi', out_signature='b')
+    def ContractChore(self, list_id, uid, contracted):
+        return self.quarterback.chore_manager.contract_chore(int(list_id),
+                                                            str(uid),
+                                                            int(contracted))
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='si', out_signature='')
+    def TakeMercy(self, user_id, app_id):
+        self.quarterback.take_mercy(str(user_id), int(app_id))
+
+    @dbus.service.method("org.gnome.Nanny",
+                         in_signature='ii', out_signature='b',
+                         sender_keyword='sender', connection_keyword='conn')
+    def FinishChore(self, list_id, finished, sender=None, conn=None):
+        self._check_polkit_privilege(sender, conn, 'org.gnome.nanny.admin')
+        return self.quarterback.chore_manager.finish_chore(int(list_id),
+                                                            int(finished))
 
     # org.gnome.Nanny.Notification
     # --------------------------------------------------------------
@@ -310,3 +451,5 @@ class NannyDBus(dbus.service.Object):
                                                                                unicode(name),
                                                                                unicode(description),
                                                                                unicode(list_url))
+                                                                               
+

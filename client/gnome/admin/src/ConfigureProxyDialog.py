@@ -2,12 +2,14 @@
 # -*- coding: utf-8 -*-
 
 # Copyright (C) 2009,2010 Junta de Andalucia
+# Copyright (C) 2012 Guido Tabbernuk
 # 
 # Authors:
 #   Roberto Majadas <roberto.majadas at openshine.com>
 #   Cesar Garcia Tapia <cesar.garcia.tapia at openshine.com>
 #   Luis de Bethencourt <luibg at openshine.com>
 #   Pablo Vieytes <pvieytes at openshine.com>
+#   Guido Tabbernuk <boamaod at gmail.com>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -33,8 +35,10 @@ import gobject
 import nanny
 
 class ConfigureProxyDialog (gtk.Dialog):
-    def __init__ (self, selected_user_id):
+    def __init__ (self, selected_user_id, proxies_enabled):
         gtk.Dialog.__init__ (self, title=_("Web Content Filter Configuration"), buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
+
+        self.proxies_enabled = proxies_enabled
 
         nanny.client.common.Utils.ui_magic (self,
                 ui_file = os.path.join (nanny.client.gnome.admin.ui_files_dir, "nac_wcf_dialog.ui"),
@@ -44,8 +48,11 @@ class ConfigureProxyDialog (gtk.Dialog):
         self.dbus_client = nanny.client.common.DBusClient ()
         self.__selected_user_id = selected_user_id
 
-        self.main_notebook.unparent()
-        self.get_content_area().add (self.main_notebook)
+        self.main_vbox.unparent()
+        self.get_content_area().add (self.main_vbox)
+
+        self.browser_use_proxy_checkbutton.set_active(self.proxies_enabled)
+        self.browser_use_proxy_checkbutton.connect('toggled', self.__on_browser_use_proxy_checkbutton_toggled)
 
         self.custom_blacklist_add_button.connect ('clicked', self.__on_custom_blacklist_add_button_clicked)
         self.custom_blacklist_edit_button.connect ('clicked', self.__on_custom_blacklist_edit_button_clicked)
@@ -79,6 +86,11 @@ class ConfigureProxyDialog (gtk.Dialog):
         self.resize (700, 460)
 
         self.show_all ()
+
+    def run(self):
+        super(ConfigureProxyDialog, self).run()
+        
+        return self.proxies_enabled
 
     def __init_custom_treeview (self, treeview):
         base_id = 0
@@ -252,65 +264,71 @@ class ConfigureProxyDialog (gtk.Dialog):
         except:
             return False
 
+    def __on_entry_dialog_essential_values_changed(self, widget, ok_button, name_entry, description_entry, url_entry):
+        """Used for entry dialog value checking, disables "Ok" button when values are not acceptable"""
+        
+        name = name_entry.get_text().strip()
+        description = description_entry.get_text().strip()
+        url = url_entry.get_text().strip()
+        
+        if name == "" or description == "" or url == "":
+            ok_button.set_sensitive (False)
+        else:
+            ok_button.set_sensitive (True)
 
     def __on_custom_blacklist_add_button_clicked (self, widget, data=None):
         xml = self.__load_dialog ()
         self.proxy_rule_dialog = xml.get_object ('wcfed_dialog')
+        self.proxy_rule_dialog.set_title(_("Add blacklist entry"))
         self.proxy_rule_dialog.set_transient_for(self)
         warning_label = xml.get_object ("wcfed_warning_label")
-        warning_label.hide ()
-        while True:
-            ret = self.proxy_rule_dialog.run()
-            if ret == 2:
-                name_entry = xml.get_object ('wcfed_name_entry')
-                description_entry = xml.get_object ('wcfed_description_entry')
-                url_entry = xml.get_object ('wcfed_url_entry')
+        ok_button = xml.get_object ('wcfed_ok_button')
+        name_entry = xml.get_object ('wcfed_name_entry')
+        description_entry = xml.get_object ('wcfed_description_entry')
+        url_entry = xml.get_object ('wcfed_url_entry')
+        
+        name_entry.connect ('changed', self.__on_entry_dialog_essential_values_changed, ok_button, name_entry, description_entry, url_entry)
+        description_entry.connect ('changed', self.__on_entry_dialog_essential_values_changed, ok_button, name_entry, description_entry, url_entry)
+        url_entry.connect ('changed', self.__on_entry_dialog_essential_values_changed, ok_button, name_entry, description_entry, url_entry)
+        
+        ret = self.proxy_rule_dialog.run()
+        if ret == 2:
 
-                name = name_entry.get_text().strip()
-                description = description_entry.get_text().strip()
-                url = url_entry.get_text().strip()
+            name = name_entry.get_text().strip()
+            description = description_entry.get_text().strip()
+            url = url_entry.get_text().strip()
 
-                if name == "" or description == "" or url == "":
-                    warning_label.show()
-                    continue
-
-                self.dbus_client.add_custom_filter (self.__selected_user_id, True, name, description, url)
-                self.__fill_treeviews ()
-                self.proxy_rule_dialog.destroy()
-                break
-            else:
-                self.proxy_rule_dialog.destroy()
-                break
+            self.dbus_client.add_custom_filter (self.__selected_user_id, True, name, description, url)
+            self.__fill_treeviews ()
+            
+        self.proxy_rule_dialog.destroy()
         
     def __on_custom_whitelist_add_button_clicked (self, widget, data=None):
         xml = self.__load_dialog ()
         dialog = xml.get_object ('wcfed_dialog')
+        dialog.set_title(_("Add whitelist entry"))        
         dialog.set_transient_for(self)
+        ok_button = xml.get_object ('wcfed_ok_button')
         warning_label = xml.get_object ("wcfed_warning_label")
-        warning_label.hide ()
+        name_entry = xml.get_object ('wcfed_name_entry')
+        description_entry = xml.get_object ('wcfed_description_entry')
+        url_entry = xml.get_object ('wcfed_url_entry')
 
-        while True:
-            ret = dialog.run()
-            if ret == 2:
-                name_entry = xml.get_object ('wcfed_name_entry')
-                description_entry = xml.get_object ('wcfed_description_entry')
-                url_entry = xml.get_object ('wcfed_url_entry')
+        name_entry.connect ('changed', self.__on_entry_dialog_essential_values_changed, ok_button, name_entry, description_entry, url_entry)
+        description_entry.connect ('changed', self.__on_entry_dialog_essential_values_changed, ok_button, name_entry, description_entry, url_entry)
+        url_entry.connect ('changed', self.__on_entry_dialog_essential_values_changed, ok_button, name_entry, description_entry, url_entry)
+        
+        ret = dialog.run()
+        if ret == 2:
 
-                name = name_entry.get_text().strip()
-                description = description_entry.get_text().strip()
-                url = url_entry.get_text().strip()
+            name = name_entry.get_text().strip()
+            description = description_entry.get_text().strip()
+            url = url_entry.get_text().strip()
 
-                if name == "" or description == "" or url == "":
-                    warning_label.show()
-                    continue
-
-                self.dbus_client.add_custom_filter (self.__selected_user_id, False, name, description, url)
-                self.__fill_treeviews ()
-                dialog.destroy()
-                break
-            else:
-                dialog.destroy()
-                break
+            self.dbus_client.add_custom_filter (self.__selected_user_id, False, name, description, url)
+            self.__fill_treeviews ()
+                
+        dialog.destroy()
 
     def __on_add_dansguardian_list_reply (self, value):
         self.progress_dialog.destroy()
@@ -343,13 +361,17 @@ class ConfigureProxyDialog (gtk.Dialog):
     def __on_custom_blacklist_edit_button_clicked (self, widget, data=None):
         xml = self.__load_dialog ()
         self.proxy_rule_dialog = xml.get_object ('wcfed_dialog')
+        self.proxy_rule_dialog.set_title(_("Edit custom blacklist entry"))
         self.proxy_rule_dialog.set_transient_for(self)
+        ok_button = xml.get_object ('wcfed_ok_button')
         warning_label = xml.get_object ("wcfed_warning_label")
-        warning_label.hide ()
-
         name_entry = xml.get_object ('wcfed_name_entry')
         description_entry = xml.get_object ('wcfed_description_entry')
         url_entry = xml.get_object ('wcfed_url_entry')
+
+        name_entry.connect ('changed', self.__on_entry_dialog_essential_values_changed, ok_button, name_entry, description_entry, url_entry)
+        description_entry.connect ('changed', self.__on_entry_dialog_essential_values_changed, ok_button, name_entry, description_entry, url_entry)
+        url_entry.connect ('changed', self.__on_entry_dialog_essential_values_changed, ok_button, name_entry, description_entry, url_entry)
 
         selection = self.custom_blacklist_treeview.get_selection()
         if selection.count_selected_rows () > 0:
@@ -364,24 +386,16 @@ class ConfigureProxyDialog (gtk.Dialog):
                 description_entry.set_text (filter_description)
                 url_entry.set_text (filter_regex)
 
-        while True:
-            ret = self.proxy_rule_dialog.run()
-            if ret == 2:
-                filter_name = name_entry.get_text().strip()
-                filter_description = description_entry.get_text().strip()
-                filter_url = url_entry.get_text().strip()
+        ret = self.proxy_rule_dialog.run()
+        if ret == 2:
+            filter_name = name_entry.get_text().strip()
+            filter_description = description_entry.get_text().strip()
+            filter_url = url_entry.get_text().strip()
 
-                if filter_name == "" or filter_description == "" or filter_url == "":
-                    warning_label.show()
-                    continue
-
-                self.dbus_client.update_custom_filter (filter_id, filter_name, filter_description, filter_url)
-                self.__fill_treeviews ()
-                self.proxy_rule_dialog.destroy()
-                break
-            else:
-                self.proxy_rule_dialog.destroy()
-                break
+            self.dbus_client.update_custom_filter (filter_id, filter_name, filter_description, filter_url)
+            self.__fill_treeviews ()
+            
+        self.proxy_rule_dialog.destroy()
 
     def __on_custom_whitelist_edit_button_clicked (self, widget, data=None):
         xml = self.__load_dialog ()
@@ -630,6 +644,9 @@ class ConfigureProxyDialog (gtk.Dialog):
 
         self.dbus_client.update_pkg_filter (pkg_id)
         widget.set_sensitive(False)
+
+    def __on_browser_use_proxy_checkbutton_toggled (self, widget, data=None):
+        self.proxies_enabled = self.browser_use_proxy_checkbutton.get_active()
 
     def __load_dialog (self):
         ui_file = os.path.join (nanny.client.gnome.admin.ui_files_dir, "nac_wcf_edit_dialog.ui")

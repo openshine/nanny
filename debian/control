@@ -2,14 +2,17 @@ Source: nanny
 Section: net 
 Priority: optional
 Maintainer: Roberto Majadas <roberto.majadas@openshine.com>
-Build-Depends: debhelper (>= 5), cdbs, python-gtk2-dev, python-dbus , python-gnome2-dev, python-sqlite, libdbus-1-dev, gnome-doc-utils, libsqlite3-dev, python-twisted-core, python-twisted-web, python-imaging, intltool (>= 0.35), python-dev (>= 2.5), python-central (>= 0.5.10)
-Standards-Version: 3.8.3
+Build-Depends: cdbs, debhelper (>= 7), gnome-common, gnome-doc-utils, intltool (>= 0.35), libdbus-1-dev, libsqlite3-dev, python-central (>= 0.5.10), python-dbus , python-dev (>= 2.5), python-gnome2-dev, python-gtk2-dev, python-gtop, python-hachoir-regex, python-imaging, python-sqlite, python-twisted-core, python-twisted-web, scrollkeeper
+Standards-Version: 3.9.2
 XS-Python-Version: current
+Homepage: http://projects.gnome.org/nanny
+Vcs-Browser: http://codebrowse.launchpad.net/~guadalinex-members/nanny/trunk/changes
+Vcs-Bzr: http://bazaar.launchpad.net/~guadalinex-members/nanny/trunk
 
 Package: nanny
 Architecture: any
 XB-Python-Version: ${python:Versions}
-Depends: ${python:Depends}, python-gtk2, python-gnome2, python-glade2, gnome-icon-theme, libgtk2.0-bin, libgnome2-0, python-dbus, python-sqlite, python-twisted-core, python-twisted-web, python-imaging, ${shlibs:Depends}, ${misc:Depends}
+Depends: ${python:Depends}, python-gtk2, python-gnome2, python-glade2, gnome-icon-theme, libgtk2.0-bin, libgnome2-0, python-dbus, python-sqlite, python-twisted-core, python-twisted-web, python-imaging, python-hachoir-regex, python-gtop, ${shlibs:Depends}, ${misc:Depends}
 Description: Parental Control System
  An easy way to control what your kids are doing in the computer.
  You can limit how much time a day each one of them is browsing the web, 

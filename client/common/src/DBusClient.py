@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 # Copyright (C) 2009,2010 Junta de Andalucia
+# Copyright (C) 2012 Guido Tabbernuk
 # 
 # Authors:
 #   Roberto Majadas <roberto.majadas at openshine.com>
@@ -136,6 +137,21 @@ class DBusClient(gobject.GObject):
     def get_blocks (self, user_id, app_id):
         return self.nanny_admin.GetBlocks (user_id, app_id)
 
+    def is_forced_to_close (self, user_id, app_id):
+        return self.nanny_admin.IsForcedToClose(user_id, app_id)
+
+    def set_forced_to_close (self, user_id, app_id, state):
+        return self.nanny_admin.SetForcedToClose(user_id, app_id, state)
+
+    def is_allowed_to_use (self, user_id, app_id):
+        return self.nanny_admin.IsAllowedToUse(user_id, app_id)
+
+    def is_blocked (self, user_id, app_id):
+        return self.nanny_admin.IsBlocked(user_id, app_id)
+
+    def get_block_status_by_uid (self, user_id):
+        return self.nanny_admin.GetBlockStatusByUID (user_id)
+
     def set_blocks (self, user_id, app_id, blocks):
         return self.nanny_admin.SetBlocks (user_id, app_id, blocks)
 
@@ -144,6 +160,57 @@ class DBusClient(gobject.GObject):
 
     def set_max_use_time (self, user_id, app_id, minutes):
         return self.nanny_admin.SetMaxUseTime (user_id, app_id, int(minutes))
+
+    def get_use_time (self, user_id, app_id):
+        return self.nanny_admin.GetUseTime (user_id, app_id)
+
+    def get_activated_chore_reward (self, chore_id):
+        return self.nanny_admin.GetActivatedChoreReward (chore_id)
+
+    def add_use_time (self, user_id, app_id, minutes):
+        return self.nanny_admin.AddUseTime (user_id, app_id, int(minutes))
+
+    def list_chore_descriptions (self, desc_id=-1):
+        return self.nanny_admin.ListChoreDescriptions (desc_id)
+
+    def add_chore_description (self, title, description, reward):
+        return self.nanny_admin.AddChoreDescription (title, description, reward)
+
+    def update_chore_description (self, list_id, title, description, reward):
+        return self.nanny_admin.UpdateChoreDescription (list_id, title, description, reward)
+
+    def remove_chore_description (self, list_id, reply_handler, error_handler):
+        return self.nanny_admin.RemoveChoreDescription (list_id, reply_handler=reply_handler, error_handler=error_handler, timeout=2000000)
+
+    def list_chores (self, uid, available=False, contracted=False, finished=False):
+        return self.nanny_admin.ListChores (uid, available, contracted, finished)
+
+    def add_chore (self, chore_id, uid):
+        return self.nanny_admin.AddChore (chore_id, uid)
+
+    def update_chore (self, list_id, chore_id, uid, contracted, finished):
+        return self.nanny_admin.UpdateChore (list_id, chore_id, uid, contracted, finished)
+
+    def contract_chore (self, list_id, contracted, uid):
+        return self.nanny_admin.ContractChore (list_id, contracted, uid)
+
+    def take_mercy (self, user_id, app_id):
+        self.nanny_admin.TakeMercy (user_id, app_id)
+
+    def finish_chore (self, list_id, finished):
+        return self.nanny_admin.FinishChore (list_id, finished)
+
+    def remove_chore (self, list_id, reply_handler, error_handler):
+        return self.nanny_admin.RemoveChore (list_id, reply_handler=reply_handler, error_handler=error_handler, timeout=2000000)
+
+    def set_chore_settings (self, user_id, active, limit):
+        return self.nanny_admin.SetChoreSettings (user_id, active, limit)
+
+    def get_chore_settings (self, user_id):
+        return self.nanny_admin.GetChoreSettings (user_id)
+
+    def is_chore_available (self, user_id):
+        return self.nanny_admin.IsChoreAvailable(user_id)
 
     def set_active_WCF (self, user_id, active):
         return self.nanny_admin.SetActiveWCF (active, user_id)

@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 #
 # Copyright (C) 2009,2010,2011 Junta de Andalucia
+# Copyright (C) 2012 Guido Tabbernuk
 # 
 # Authors:
 #   Roberto Majadas <roberto.majadas at openshine.com>
+#   Guido Tabbernuk <boamaod at gmail.com>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -105,11 +107,34 @@ class LinuxSessionBlocker(gobject.GObject) :
                     if len(lang_var) > 0 :
                         env_lang_var = lang_var.replace("LANG=","")
                         break
-            
             cmd = ['su', user_name, '-c', 
-                   'LANG=%s DISPLAY=%s nanny-desktop-blocker' % (env_lang_var, 
-                                                                 x11_display)]
+                   'LANG=%s DISPLAY=%s %s &>> /var/tmp/desktop-blocker-%s.log' % (env_lang_var, x11_display, self.sb, user_id)]
+                   
             print cmd
+
+            # hack to start after unity panel has actually been loaded
+            # see https://bugs.launchpad.net/nanny/+bug/916788
+            #
+            # BOH
+            env_session_type = None
+            if len(proclist) > 0 :
+                for proc in proclist :
+                    session_type = Popen('cat /proc/%s/environ | tr "\\000" "\\n" | grep ^DESKTOP_SESSION= ' % proc , 
+                                     shell=True, stdout=PIPE).stdout.readline().strip("\n")
+                    if len(session_type) > 0 :
+                        env_session_type = session_type.replace("DESKTOP_SESSION=","")
+                        break
+            
+            if env_session_type == "ubuntu":
+                SLEEP_INTERVAL = 2
+                intervals_to_wait = 22
+                while os.system("pgrep -fl unity-panel-service | grep -v pgrep") != 0 and intervals_to_wait > 0: 
+                    intervals_to_wait = intervals_to_wait - 1
+                    print "Waiting for the desktop to start", intervals_to_wait
+                    time.sleep(SLEEP_INTERVAL)
+
+            time.sleep(SLEEP_INTERVAL)
+            # EOH
             
             p = Popen(cmd)
             print "[LinuxSessionFiltering] launching blocker (pid : %s)" % p.pid

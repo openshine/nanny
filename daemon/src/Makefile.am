@@ -8,6 +8,7 @@ corelib_PYTHON =	 __init__.py 			\
 			QuarterBack.py			\
 			BlockingDeferred.py		\
 			FilterManager.py		\
+			ChoreManager.py			\
 			LinuxFiltering.py		\
 			LinuxWebContentFiltering.py 	\
 			LinuxUsersManager.py		\

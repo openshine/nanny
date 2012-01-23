@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 # Copyright (C) 2009,2010 Junta de Andalucia
+# Copyright (C) 2012 Guido Tabbernuk
 # 
 # Authors:
 #   Roberto Majadas <roberto.majadas at openshine.com>
@@ -51,7 +52,7 @@ def ui_magic(object, ui_file, prefix):
      from xml.etree.ElementTree import ElementTree 
      xml = ElementTree()
      xml.parse(main_ui_filename)
-     for obj in xml.findall ('//object'):
+     for obj in xml.findall ('.//object'):
           try:
                if obj.attrib["id"].startswith(prefix) :
                     widget = object.xml.get_object(obj.attrib["id"])

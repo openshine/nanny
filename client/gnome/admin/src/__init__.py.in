@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 
 # Copyright (C) 2009,2010 Junta de Andalucia
+# Copyright (C) 2012 Guido Tabbernuk
 # 
 # Authors:
 #   Roberto Majadas <roberto.majadas at openshine.com>
 #   Cesar Garcia Tapia <cesar.garcia.tapia at openshine.com>
 #   Luis de Bethencourt <luibg at openshine.com>
 #   Pablo Vieytes <pvieytes at openshine.com>
+#   Guido Tabbernuk <boamaod at gmail.com>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -47,6 +49,7 @@ icons_files_dir= os.path.join(share_files_dir,"icons")
 
 from AdminConsole import AdminConsole
 from ConfigureProxyDialog import ConfigureProxyDialog
+from ConfigureChoresDialog import ConfigureChoresDialog
 from ScheduleCalendar import ScheduleCalendar
 from BlacklistManager import BlacklistManager
 from DesktopBlocker import DesktopBlocker
