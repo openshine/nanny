@@ -177,6 +177,7 @@ class DesktopBlocker(gtk.Window):
         self.close_button_countdown = 99
         
         if self.dbus_client.is_forced_to_close(self.uid, 0):
+            self.close_button.set_label(self.close_button_text)
             gobject.timeout_add(1000*15, self.__close_the_dialog_by_timeout)
 
     def __setup_background(self):
