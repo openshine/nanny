@@ -133,7 +133,7 @@ class LinuxSessionBlocker(gobject.GObject) :
                     print "Waiting for the desktop to start", intervals_to_wait
                     time.sleep(SLEEP_INTERVAL)
 
-            time.sleep(SLEEP_INTERVAL)
+                time.sleep(SLEEP_INTERVAL)
             # EOH
             
             p = Popen(cmd)
