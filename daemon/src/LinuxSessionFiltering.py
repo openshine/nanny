@@ -99,9 +99,8 @@ class LinuxSessionBlocker(gobject.GObject) :
         try:
             proclist = gtop.proclist(gtop.PROCLIST_KERN_PROC_UID, int(user_id))
             env_lang_var = 'C'
-
-            if len(proclist) > 0 :
-                for proc in proclist :
+            if len(proclist) > 0:
+                for proc in proclist:
                     lang_var = Popen('cat /proc/%s/environ | tr "\\000" "\\n" | grep ^LANG= ' % proc , 
                                      shell=True, stdout=PIPE).stdout.readline().strip("\n")
                     if len(lang_var) > 0 :
@@ -112,28 +111,57 @@ class LinuxSessionBlocker(gobject.GObject) :
                    
             print cmd
 
-            # hack to start after unity panel has actually been loaded
-            # see https://bugs.launchpad.net/nanny/+bug/916788
+            # hack to start after desktop has actually been loaded
+            # see https://bugs.launchpad.net/nanny/+bug/916788 etc
             #
             # BOH
             env_session_type = None
-            if len(proclist) > 0 :
-                for proc in proclist :
+            if len(proclist) > 0:
+                proclist.reverse() # find the last instance with session defined
+                for proc in proclist:
                     session_type = Popen('cat /proc/%s/environ | tr "\\000" "\\n" | grep ^DESKTOP_SESSION= ' % proc , 
                                      shell=True, stdout=PIPE).stdout.readline().strip("\n")
                     if len(session_type) > 0 :
                         env_session_type = session_type.replace("DESKTOP_SESSION=","")
                         break
             
-            if env_session_type == "ubuntu":
-                SLEEP_INTERVAL = 2
-                intervals_to_wait = 22
-                while os.system("pgrep -fl unity-panel-service | grep -v pgrep") != 0 and intervals_to_wait > 0: 
-                    intervals_to_wait = intervals_to_wait - 1
-                    print "Waiting for the desktop to start", intervals_to_wait
+            print "DESKTOP_SESSION=" + env_session_type
+            
+            DEFAULT_SLEEP_TIME = 36
+            SLEEP_INTERVAL = 2
+            INTERVALS = INTERVALS_COUNT = 18
+            
+            if env_session_type == "ubuntu" or env_session_type == "ubuntu-2d":
+                while os.system("pgrep -fl unity-panel-service | grep -v pgrep") != 0 and INTERVALS > 0: 
+                    INTERVALS = INTERVALS - 1
+                    print "Waiting for the desktop to start", INTERVALS
                     time.sleep(SLEEP_INTERVAL)
 
-                time.sleep(SLEEP_INTERVAL)
+            elif env_session_type == "gnome-classic":
+                while os.system("pgrep -fl gnome-panel | grep -v pgrep") != 0 and INTERVALS > 0: 
+                    INTERVALS = INTERVALS - 1
+                    print "Waiting for the desktop to start", INTERVALS
+                    time.sleep(SLEEP_INTERVAL)
+
+            elif env_session_type == "gnome-shell":
+                while os.system("pgrep -fl gnome-shell | grep -v pgrep") != 0 and INTERVALS > 0: 
+                    INTERVALS = INTERVALS - 1
+                    print "Waiting for the desktop to start", INTERVALS
+                    time.sleep(SLEEP_INTERVAL)
+                SLEEP_INTERVAL = DEFAULT_SLEEP_TIME - (INTERVALS_COUNT*SLEEP_INTERVAL - INTERVALS*SLEEP_INTERVAL)
+
+            elif env_session_type == "Lubuntu" or env_session_type == "LXDE":
+                while os.system("pgrep -fl lxpanel | grep -v pgrep") != 0 and INTERVALS > 0: 
+                    INTERVALS = INTERVALS - 1
+                    print "Waiting for the desktop to start", INTERVALS
+                    time.sleep(SLEEP_INTERVAL)
+
+            else:
+                print "Sleeping for %s seconds just like that..." % DEFAULT_SLEEP_TIME
+                time.sleep(DEFAULT_SLEEP_TIME)
+
+            print "Taking a %s second snooze before starting..." % SLEEP_INTERVAL
+            time.sleep(SLEEP_INTERVAL)
             # EOH
             
             p = Popen(cmd)
