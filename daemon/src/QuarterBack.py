@@ -303,7 +303,8 @@ class QuarterBack(gobject.GObject) :
     def is_chore_available(self, user_id):
         count = self.chore_manager.get_contracted_chores_count(user_id)
         limit = self.chore_settings[user_id][1]
-        return count < limit
+        chores_available = len(self.chore_manager.list_chores(user_id, available=True, contracted=False, finished=False))
+        return count < limit and chores_available > 0
 
     def is_blocked(self, user_id, app_id, date_time=None):
         block_status = False

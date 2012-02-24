@@ -155,6 +155,8 @@ class DesktopBlocker(gtk.Window):
             self.inventory.add(hb)
             self.inventory.show_all()
 
+            self.buy_time_button.show()
+
             # to make none of radio buttons selected
             self.inv_none_button.hide()
 
