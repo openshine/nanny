@@ -6,11 +6,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nanny master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nanny&component=general\n"
-"POT-Creation-Date: 2010-12-03 01:37+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-27 14:08+0200\n"
 "PO-Revision-Date: 2011-01-05 17:34+0100\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome at fsf dot hu>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,7 +25,9 @@ msgstr "terhességmegszakítás"
 
 #: ../client/common/src/Categories.py:32
 msgid "Abortion information excluding when related to religion"
-msgstr "Terhességmegszakítással kapcsolatos információk, kivéve ha vallással kapcsolatos"
+msgstr ""
+"Terhességmegszakítással kapcsolatos információk, kivéve ha vallással "
+"kapcsolatos"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:34
@@ -206,7 +209,9 @@ msgstr "asztali bolondságok"
 msgid ""
 "Sites containing screen savers, backgrounds, cursers, pointers. desktop "
 "themes and similar timewasting and potentially dangerous content"
-msgstr "Képernyővédőket, háttereket, kurzorokat, asztali témákat és hasonló időpazarló és potenciálisan veszélyes tartalmakat tartalmazó oldalak"
+msgstr ""
+"Képernyővédőket, háttereket, kurzorokat, asztali témákat és hasonló "
+"időpazarló és potenciálisan veszélyes tartalmakat tartalmazó oldalak"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:74
@@ -340,7 +345,8 @@ msgid "instantmessaging"
 msgstr "azonnali üzenetek"
 
 #: ../client/common/src/Categories.py:102
-msgid "Sites that contain messenger client download and web-based messaging sites"
+msgid ""
+"Sites that contain messenger client download and web-based messaging sites"
 msgstr "Üzenetküldők letöltését tartalmazó, és webes üzenetküldő oldalak"
 
 #. To translators : This string is a category name or a category description
@@ -422,7 +428,8 @@ msgstr "naturizmus"
 
 #: ../client/common/src/Categories.py:120
 msgid "Sites that contain nude pictures and/or promote a nude lifestyle"
-msgstr "Meztelen képeket tartalmazó és/vagy meztelen életmódot népszerűsítő oldalak"
+msgstr ""
+"Meztelen képeket tartalmazó és/vagy meztelen életmódot népszerűsítő oldalak"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:122
@@ -557,7 +564,8 @@ msgstr "szexualitás"
 
 #: ../client/common/src/Categories.py:150
 msgid "Sites dedicated to sexuality, possibly including adult material"
-msgstr "Szexualitásnak szentelt oldalak, amelyek felnőtt anyagokat is tartalmazhatnak"
+msgstr ""
+"Szexualitásnak szentelt oldalak, amelyek felnőtt anyagokat is tartalmazhatnak"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:152
@@ -611,7 +619,9 @@ msgstr "frissítőoldalak"
 
 #: ../client/common/src/Categories.py:162
 msgid "Sites where software updates are downloaded from including virus sigs"
-msgstr "Szoftverfrissítések, beleértve a vírusszignatúrák letöltését felajánló oldalak"
+msgstr ""
+"Szoftverfrissítések, beleértve a vírusszignatúrák letöltését felajánló "
+"oldalak"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:164
@@ -686,11 +696,20 @@ msgstr "fehérlista"
 msgid "Contains site specifically 100% suitable for kids"
 msgstr "Gyermekek számára 100%-ban megfelelő oldalak"
 
-#: ../client/common/src/DBusClient.py:80
+#: ../client/common/src/Utils.py:94
+#, fuzzy
+msgid "Nanny Admin Tools requires Admin user"
+msgstr "Nanny admin konzol – %s"
+
+#: ../client/common/src/Utils.py:95
+msgid "To run any Nanny Admin Tool you must to be admin of the system."
+msgstr ""
+
+#: ../client/common/src/DBusClient.py:81
 msgid "NannyDaemon unavailable"
 msgstr "A NannyDaemon nem érhető el"
 
-#: ../client/common/src/DBusClient.py:81
+#: ../client/common/src/DBusClient.py:82
 msgid ""
 "NannyDaemon is not activated or does not work properly.\n"
 "Please try to reactivate it."
@@ -706,15 +725,11 @@ msgstr "Nanny szülői felügyelet admin konzol"
 msgid "Parental Control"
 msgstr "Szülői felügyelet"
 
-#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:1
-msgid "BlackLists"
-msgstr "Feketelisták"
-
-#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:2
-msgid "Nanny parental control blacklists manager"
-msgstr "Nanny szülői felügyelet feketelistáinak kezelése"
-
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
+msgid "0"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:2
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
 msgid ""
 "<b>You don't have admin privileges</b>\n"
@@ -723,58 +738,75 @@ msgstr ""
 "<b>Nincsenek rendszergazdai jogosultságai</b>\n"
 "Kattintson erre a gombra a módosításhoz."
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:3
-msgid "Configure"
-msgstr "Beállítás"
-
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
+msgid "Configure _chores & rewards"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
+#, fuzzy
+msgid "Configure web filtering"
+msgstr "Webes tartalomszűrés használata"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
+msgid "Force logoff"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
+msgid "Force user either to log off or buy extra time after desktop is blocked"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
 msgid "Instant messaging"
 msgstr "Azonnali üzenetek"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
 msgid "Mail client"
 msgstr "Levelezőkliens"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
 msgid "PC use time"
 msgstr "Számítógép-használat"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
 msgid "Use the computer"
 msgstr "Számítógép használata"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
 msgid "Use the instant messaging"
 msgstr "Azonnali üzenetküldés használata"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:13
 msgid "Use the mail client"
 msgstr "Levelezőkliens használata"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:14
 msgid "Use the web browser"
 msgstr "Webböngésző használata"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
-msgid "Use web content filtering"
-msgstr "Webes tartalomszűrés használata"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
-#: ../client/gnome/systray/src/SystrayNanny.py:46
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:15
 msgid "Web browser"
 msgstr "Webböngésző"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:13
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:16
 msgid "hours a day"
 msgstr "óráig naponta"
 
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:17
+#, fuzzy
+msgid "hours to"
+msgstr "óráig naponta"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:18
+msgid "that's left today"
+msgstr ""
+
 #: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:1
-msgid ""
-"<span color=\"red\">All the fields are mandatory. Please fill all of them.</"
-"span>"
+#, fuzzy
+msgid "All the fields are mandatory, so please fill all of them.\t"
 msgstr "<span color=\"red\">Minden mező kötelező. Töltse ki mindet.</span>"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:2
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:1
 #: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:1
 msgid "Description:"
 msgstr "Leírás:"
@@ -797,78 +829,191 @@ msgid "Blacklists"
 msgstr "Feketelisták"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:3
+#, fuzzy
+msgid "Enable _web content filtering"
+msgstr "Webes tartalomszűrés használata"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
 msgid "Forbidden sites"
 msgstr "Tiltott oldalak"
 
-#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:5
+msgid "_Update"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:1
+msgid "Amount of contracted but unfinished chores allowed"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:2
+msgid "Assign chores"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:3
+msgid "Chores in progress"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:4
+msgid "Enable rewarding time for _contracting chores"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:5
+msgid "Finished chores"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:6
 msgid ""
-"Here you can apply the available blacklists for the selected user. If you "
-"want to add new blacklists please go to System > Administration > Blacklists."
-msgstr "Itt alkalmazhatja az elérhető feketelistákat a kijelölt felhasználóra. Ha új feketelistákat szeretne felvenni, akkor válassza a Rendszer > Adminisztráció > Feketelisták menüpontot."
+"If the amount happens to exceed this value, user cannot contract more chores"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:7
+msgid ""
+"Select an entry and press this button to add or remove chores to or from "
+"user&apos;s enabled chores list"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:8
+msgid ""
+"Select an entry and press this button to add or remove chores to or from "
+"user's enabled chores list"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:9
+msgid "_Finish"
+msgstr ""
+
+#. The time given for contracting the chore
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:3
+msgid "Reward:"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:4
+msgid ""
+"The chores with time rewards will be displayed as an option to obtain more "
+"usage time to user when the session time limit has been reached and blocking "
+"the session is initiated. User can contract the chore to get extra usage "
+"time immediately."
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:5
+msgid "Title:"
+msgstr ""
 
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
 msgstr "Importálás…"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:1
-msgid "5 minutes, please"
-msgstr "még 5 percet kérek"
+#, fuzzy
+msgid ""
+"<span foreground=\"white\"><big>You can still have a moment for closing the "
+"documents or applications</big></span>"
+msgstr ""
+"<span foreground=\"white\"><big>Rendelkezésére áll egy kis idő, ha "
+"dokumentumokat vagy alkalmazásokat szeretne bezárni.</big></span>"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
+#, fuzzy
 msgid ""
-"<span foreground=\"white\"><big>You've time available if you need to close "
-"documents or aplications.</big></span>"
-msgstr "<span foreground=\"white\"><big>Rendelkezésére áll egy kis idő, ha dokumentumokat vagy alkalmazásokat szeretne bezárni.</big></span>"
+"<span size=\"25000\" foreground=\"white\"><b>Your computer usage time is up "
+"now</b></span>"
+msgstr ""
+"<span size=\"25000\" foreground=\"white\"><b>Felhasználta a számítógép-"
+"használati időt</b></span>"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
-msgid ""
-"<span size=\"25000\" foreground=\"white\"><b>You've used your computer use "
-"time</b></span>"
-msgstr "<span size=\"25000\" foreground=\"white\"><b>Felhasználta a számítógép-használati időt</b></span>"
-
-#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
-msgid "close session"
+#, fuzzy
+msgid "Close session now"
 msgstr "munkamenet bezárása"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
+#, fuzzy
+msgid "Five minutes, please"
+msgstr "még 5 percet kérek"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:5
+msgid "Give me more time"
+msgstr ""
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Monday"
 msgstr "Hétfő"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Tuesday"
 msgstr "Kedd"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Wednesday"
 msgstr "Szerda"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Thursday"
 msgstr "Csütörtök"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Friday"
 msgstr "Péntek"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Saturday"
 msgstr "Szombat"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Sunday"
 msgstr "Vasárnap"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:37
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:39
 msgid "Web Content Filter Configuration"
 msgstr "Webtartalom-szűrő beállítása"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:242
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:253
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:187
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:204
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:225
+#, fuzzy
+msgid "Unknown Blacklist Name"
+msgstr "Feketelista importálva"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:206
+#, python-format
+msgid "(version : %s)"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:209
+msgid "There is an update available"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:211
+#, fuzzy, python-format
+msgid "Downloading information (%s%%)"
+msgstr "Fájl letöltése (%s%%)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:213
+#, python-format
+msgid "Installing blacklist (%s%%)"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:215
+#, python-format
+msgid "Updating blacklist (%s%%)"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:282
+msgid "Add blacklist entry"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:309
+#, fuzzy
+msgid "Add whitelist entry"
+msgstr "fehérlista"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:345
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:356
 msgid "Error while importing list from the Internet"
 msgstr "Hiba a lista importálásakor az internetről"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:243
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:254
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:346
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:357
 msgid ""
 "Some error has occured while downloading the list.\n"
 "Please verify the URL and try again."
@@ -876,28 +1021,32 @@ msgstr ""
 "Hiba történt a lista letöltésekor.\n"
 "Ellenőrizze az URL-címet, és próbálja újra."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:345
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:366
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:364
+msgid "Edit custom blacklist entry"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:447
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:469
 msgid "Are you sure you want to delete this filter?"
 msgstr "Biztosan törli ezt a szűrőt?"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:346
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:367
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:448
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:470
 msgid "You will not be able to undo this action."
 msgstr "Ez a művelet nem vonható vissza."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:353
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:374
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:455
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:477
 msgid "Removing filter. Please, wait..."
 msgstr "Szűrő eltávolítása, kis türelmet…"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:393
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:404
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:496
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:507
 msgid "Error while deleting filters"
 msgstr "Hiba a szűrők törlése közben"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:394
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:405
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:497
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:508
 msgid ""
 "Some error has occured while deleting filters.\n"
 "Please try again."
@@ -905,32 +1054,106 @@ msgstr ""
 "Hiba történt a szűrők törlése közben.\n"
 "Próbálja újra."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:436
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:547
 msgid "<b>Select all the categories</b>"
 msgstr "<b>Minden kategória kiválasztása</b>"
 
-#: ../client/gnome/admin/src/AdminConsole.py:46
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:599
+msgid "Introduce the nannycentral repository url"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:607
+msgid ""
+"It's something like http://www.nannycentral.info/blacklist/blacklist.json ..."
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:629
+#: ../client/gnome/admin/src/BlacklistManager.py:156
+msgid "<b>Are you sure you want to delete this blacklist?</b>"
+msgstr "<b>Biztos, hogy törli ezt a feketelistát?</b>"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:630
+#: ../client/gnome/admin/src/BlacklistManager.py:157
+msgid ""
+"This action will remove all the user configuration linked to the blacklist."
+msgstr ""
+"Ez a művelet a feketelistához kapcsolódó összes felhasználói beállítást "
+"eltávolítja."
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:42
+#, fuzzy
+msgid "Chores & Rewards Configuration"
+msgstr "Webtartalom-szűrő beállítása"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:388
+#, fuzzy
+msgid "Add chore description"
+msgstr "Leírás:"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:420
+msgid "Edit chore description"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:459
+#, fuzzy
+msgid "<b>Are you sure you want to delete this chore description entry?</b>"
+msgstr "<b>Biztos, hogy törli ezt a feketelistát?</b>"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:460
+#, fuzzy
+msgid "This action will remove all the user chores linked to the description."
+msgstr ""
+"Ez a művelet a feketelistához kapcsolódó összes felhasználói beállítást "
+"eltávolítja."
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:517
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:526
+#, fuzzy
+msgid "Error while deleting the chore entry"
+msgstr "Hiba a szűrők törlése közben"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:518
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:527
+#, fuzzy
+msgid ""
+"Some error has occured while deleting the chore entry.\n"
+"Please try again."
+msgstr ""
+"Hiba történt a szűrők törlése közben.\n"
+"Próbálja újra."
+
+#: ../client/gnome/admin/src/AdminConsole.py:52
 msgid "Nanny daemon is not started"
 msgstr "A Nanny démon nem indult el"
 
-#: ../client/gnome/admin/src/AdminConsole.py:47
+#: ../client/gnome/admin/src/AdminConsole.py:53
 msgid "To use the parental control, please start up the daemon."
 msgstr "A szülői felügyelet használatához indítsa el a démont."
 
 #. FACE
-#: ../client/gnome/admin/src/AdminConsole.py:159
+#: ../client/gnome/admin/src/AdminConsole.py:200
 msgid "Users"
 msgstr "Felhasználók"
 
-#: ../client/gnome/admin/src/AdminConsole.py:314
-msgid "Your configuration has been saved"
+#: ../client/gnome/admin/src/AdminConsole.py:389
+#, fuzzy
+msgid "User's configuration has been saved"
 msgstr "A beállítások mentve"
 
-#: ../client/gnome/admin/src/AdminConsole.py:326
+#: ../client/gnome/admin/src/AdminConsole.py:415
+#, python-format
+msgid "Nanny Admin Console - %s"
+msgstr "Nanny admin konzol – %s"
+
+#: ../client/gnome/admin/src/AdminConsole.py:418
+msgid "Nanny Admin Console"
+msgstr "Nanny admin konzol"
+
+#: ../client/gnome/admin/src/AdminConsole.py:584
 msgid "You have made changes"
 msgstr "Módosításokat végzett"
 
-#: ../client/gnome/admin/src/AdminConsole.py:327
+#: ../client/gnome/admin/src/AdminConsole.py:585
 msgid ""
 "If you don't press the 'Apply' button, your changes will be lost.\n"
 "Are you sure?"
@@ -938,21 +1161,11 @@ msgstr ""
 "Ha nem nyomja meg az Alkalmaz gombot, akkor a változások elvesznek.\n"
 "Biztosan ezt szeretné?"
 
-#: ../client/gnome/admin/src/AdminConsole.py:356
-#, python-format
-msgid "Nanny Admin Console - %s"
-msgstr "Nanny admin konzol – %s"
-
-#: ../client/gnome/admin/src/AdminConsole.py:359
-msgid "Nanny Admin Console"
-msgstr "Nanny admin konzol"
-
-#: ../client/gnome/admin/src/BlacklistManager.py:37
-#: ../client/gnome/admin/src/BlacklistManager.py:145
+#: ../client/gnome/admin/src/BlacklistManager.py:39
 msgid "Blacklist Filter Configuration"
 msgstr "Feketelista szűrők beállítása"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:112
+#: ../client/gnome/admin/src/BlacklistManager.py:114
 #, python-format
 msgid ""
 "<b>%s (Read only)</b>\n"
@@ -961,65 +1174,72 @@ msgstr ""
 "<b>%s (írásvédett)</b>\n"
 "   %s"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:117
-msgid "Select file to import"
-msgstr "Válassza ki az importálandó fájlt"
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:97
+msgid "Firefox proxy settings change detected"
+msgstr ""
 
-#: ../client/gnome/admin/src/BlacklistManager.py:137
-msgid "<b>Error importing blacklist file</b>"
-msgstr "<b>Hiba a feketelistafájl importálásakor</b>"
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:98
+msgid ""
+"You can't change the proxy settings because you are under parental control."
+msgstr ""
 
-#: ../client/gnome/admin/src/BlacklistManager.py:138
-msgid "Some error has occured importing the blacklist file."
-msgstr "Hiba történt a feketelistafájl importálásakor."
+#: ../client/gnome/systray/src/SystrayNanny.py:53
+#, fuzzy
+msgid "your session"
+msgstr "munkamenet bezárása"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:176
-msgid "<b>Are you sure you want to delete this blacklist?</b>"
-msgstr "<b>Biztos, hogy törli ezt a feketelistát?</b>"
+#: ../client/gnome/systray/src/SystrayNanny.py:54
+#, fuzzy
+msgid "web browser"
+msgstr "Webböngésző"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:177
-msgid "This action will remove all the user configuration linked to the blacklist."
-msgstr "Ez a művelet a feketelistához kapcsolódó összes felhasználói beállítást eltávolítja."
+#: ../client/gnome/systray/src/SystrayNanny.py:55
+#, fuzzy
+msgid "e-mail"
+msgstr "levelezés"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:45
-msgid "Session"
-msgstr "Munkamenet"
-
-#: ../client/gnome/systray/src/SystrayNanny.py:47
-msgid "e-Mail"
-msgstr "E-mail"
-
-#: ../client/gnome/systray/src/SystrayNanny.py:48
-msgid "Instant messanger"
+#: ../client/gnome/systray/src/SystrayNanny.py:56
+#, fuzzy
+msgid "instant messanger"
 msgstr "Azonnali üzenő"
 
+#: ../client/gnome/systray/src/SystrayNanny.py:174
+#, fuzzy, python-format
+msgid "The access to %(app)s granted."
+msgstr "%(time)s múlva hozzáférést kap a(z) %(app)s alkalmazáshoz."
+
 #. To translators: In x-minutes the access to <app> will be granted
-#: ../client/gnome/systray/src/SystrayNanny.py:95
+#: ../client/gnome/systray/src/SystrayNanny.py:177
 #, python-format
 msgid "In %(time)s the access to %(app)s will be granted."
 msgstr "%(time)s múlva hozzáférést kap a(z) %(app)s alkalmazáshoz."
 
+#: ../client/gnome/systray/src/SystrayNanny.py:180
+#, fuzzy, python-format
+msgid "The access to %(app)s denied."
+msgstr "%(time)s múlva a hozzáférés megszűnik a(z) %(app)s alkalmazáshoz."
+
 #. To translators: In x-minutes the access to <app> will be denied
-#: ../client/gnome/systray/src/SystrayNanny.py:98
+#: ../client/gnome/systray/src/SystrayNanny.py:183
 #, python-format
 msgid "In %(time)s the access to %(app)s will be denied."
 msgstr "%(time)s múlva a hozzáférés megszűnik a(z) %(app)s alkalmazáshoz."
 
-#: ../client/gnome/systray/src/SystrayNanny.py:117
+#: ../client/gnome/systray/src/SystrayNanny.py:211
 #, python-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d nap"
 msgstr[1] "%d nap"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:119
+#: ../client/gnome/systray/src/SystrayNanny.py:213
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d óra"
 msgstr[1] "%d óra"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:121
+#: ../client/gnome/systray/src/SystrayNanny.py:215
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1027,7 +1247,7 @@ msgstr[0] "%d perc"
 msgstr[1] "%d perc"
 
 #. Translators: This is the separator between time strings, like '1 day, 2 hours, 3 minutes'
-#: ../client/gnome/systray/src/SystrayNanny.py:123
+#: ../client/gnome/systray/src/SystrayNanny.py:217
 msgid ", "
 msgstr ", "
 
@@ -1062,3 +1282,35 @@ msgstr "Tartományok importálása [kategória: %s] (%s%%)"
 msgid "Importing urls [category: %s] (%s%%)"
 msgstr "URL-ek importálása  [kategória: %s] (%s%%)"
 
+#~ msgid "BlackLists"
+#~ msgstr "Feketelisták"
+
+#~ msgid "Nanny parental control blacklists manager"
+#~ msgstr "Nanny szülői felügyelet feketelistáinak kezelése"
+
+#~ msgid "Configure"
+#~ msgstr "Beállítás"
+
+#~ msgid ""
+#~ "Here you can apply the available blacklists for the selected user. If you "
+#~ "want to add new blacklists please go to System > Administration > "
+#~ "Blacklists."
+#~ msgstr ""
+#~ "Itt alkalmazhatja az elérhető feketelistákat a kijelölt felhasználóra. Ha "
+#~ "új feketelistákat szeretne felvenni, akkor válassza a Rendszer > "
+#~ "Adminisztráció > Feketelisták menüpontot."
+
+#~ msgid "Select file to import"
+#~ msgstr "Válassza ki az importálandó fájlt"
+
+#~ msgid "<b>Error importing blacklist file</b>"
+#~ msgstr "<b>Hiba a feketelistafájl importálásakor</b>"
+
+#~ msgid "Some error has occured importing the blacklist file."
+#~ msgstr "Hiba történt a feketelistafájl importálásakor."
+
+#~ msgid "Session"
+#~ msgstr "Munkamenet"
+
+#~ msgid "e-Mail"
+#~ msgstr "E-mail"

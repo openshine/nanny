@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nanny\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-23 03:07+0200\n"
+"POT-Creation-Date: 2012-02-27 14:08+0200\n"
 "PO-Revision-Date: 2012-01-16 14:18+0000\n"
 "Last-Translator: tabbernuk <boamaod@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -774,7 +774,6 @@ msgid "Use the web browser"
 msgstr "Kasutab veebilehitsejat"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:15
-#: ../client/gnome/systray/src/SystrayNanny.py:53
 msgid "Web browser"
 msgstr "Veebilehitseja"
 
@@ -1153,53 +1152,67 @@ msgid ""
 "You can't change the proxy settings because you are under parental control."
 msgstr ""
 
-#: ../client/gnome/systray/src/SystrayNanny.py:52
-msgid "Session"
-msgstr "Sessioon"
+#: ../client/gnome/systray/src/SystrayNanny.py:53
+msgid "your session"
+msgstr "sinu kasutajasessioonile"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:54
-msgid "e-Mail"
-msgstr "Meil"
+msgid "web browser"
+msgstr "veebilehitsejale"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:55
-msgid "Instant messanger"
-msgstr "Vestluskontod"
+msgid "e-mail"
+msgstr "meilikliendile"
+
+#: ../client/gnome/systray/src/SystrayNanny.py:56
+msgid "instant messanger"
+msgstr "suhtluskontodele"
+
+#: ../client/gnome/systray/src/SystrayNanny.py:174
+#, python-format
+msgid "The access to %(app)s granted."
+msgstr "Ligipääs %(app)s on lubatud."
 
 #. To translators: In x-minutes the access to <app> will be granted
-#: ../client/gnome/systray/src/SystrayNanny.py:134
+#: ../client/gnome/systray/src/SystrayNanny.py:177
 #, python-format
 msgid "In %(time)s the access to %(app)s will be granted."
-msgstr ""
+msgstr "%(time)s pärast lubatakse ligipääs %(app)s."
+
+#: ../client/gnome/systray/src/SystrayNanny.py:180
+#, python-format
+msgid "The access to %(app)s denied."
+msgstr "Ligipääs %(app)s on keelatud."
 
 #. To translators: In x-minutes the access to <app> will be denied
-#: ../client/gnome/systray/src/SystrayNanny.py:137
+#: ../client/gnome/systray/src/SystrayNanny.py:183
 #, python-format
 msgid "In %(time)s the access to %(app)s will be denied."
-msgstr ""
+msgstr "%(time)s pärast keelatakse ligipääs %(app)s."
 
-#: ../client/gnome/systray/src/SystrayNanny.py:160
+#: ../client/gnome/systray/src/SystrayNanny.py:211
 #, python-format
 msgid "%d day"
 msgid_plural "%d days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d päeva"
+msgstr[1] "%d päeva"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:162
+#: ../client/gnome/systray/src/SystrayNanny.py:213
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d tunni"
+msgstr[1] "%d tunni"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:164
+#: ../client/gnome/systray/src/SystrayNanny.py:215
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d minuti"
+msgstr[1] "%d minuti"
 
 #. Translators: This is the separator between time strings, like '1 day, 2 hours, 3 minutes'
-#: ../client/gnome/systray/src/SystrayNanny.py:166
+#: ../client/gnome/systray/src/SystrayNanny.py:217
 msgid ", "
 msgstr ""
 
@@ -1233,3 +1246,6 @@ msgstr ""
 #, python-format
 msgid "Importing urls [category: %s] (%s%%)"
 msgstr ""
+
+#~ msgid "e-Mail"
+#~ msgstr "Meil"

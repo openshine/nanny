@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nanny master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-13 19:53-0300\n"
+"POT-Creation-Date: 2012-02-27 14:08+0200\n"
 "PO-Revision-Date: 2010-06-06 11:38-0200\n"
 "Last-Translator: Djavan Fagundes <djavan@comum.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
@@ -692,11 +692,20 @@ msgstr "Lista branca"
 msgid "Contains site specifically 100% suitable for kids"
 msgstr "Contendo sites 100% adequado para crianças"
 
-#: ../client/common/src/DBusClient.py:80
+#: ../client/common/src/Utils.py:94
+#, fuzzy
+msgid "Nanny Admin Tools requires Admin user"
+msgstr "Console de administração da Nanny - %s"
+
+#: ../client/common/src/Utils.py:95
+msgid "To run any Nanny Admin Tool you must to be admin of the system."
+msgstr ""
+
+#: ../client/common/src/DBusClient.py:81
 msgid "NannyDaemon unavailable"
 msgstr "NannyDaemon não disponível"
 
-#: ../client/common/src/DBusClient.py:81
+#: ../client/common/src/DBusClient.py:82
 msgid ""
 "NannyDaemon is not activated or does not work properly.\n"
 "Please try to reactivate it."
@@ -713,15 +722,11 @@ msgstr "Console de administração da Nanny"
 msgid "Parental Control"
 msgstr "Controle dos pais"
 
-#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:1
-msgid "BlackLists"
-msgstr "Listas negras"
-
-#: ../client/gnome/admin/data/nanny-blacklist-manager.desktop.in.h:2
-msgid "Nanny parental control blacklists manager"
-msgstr "Gerenciador de listas negras do Nanny"
-
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
+msgid "0"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:2
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
 msgid ""
 "<b>You don't have admin privileges</b>\n"
@@ -730,60 +735,77 @@ msgstr ""
 "<b>Você não possui privilégios de administrador</b>\n"
 "Clique neste botão se você quer realizar alterações."
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:3
-msgid "Configure"
-msgstr "Configurar"
-
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
+msgid "Configure _chores & rewards"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
+#, fuzzy
+msgid "Configure web filtering"
+msgstr "Usar filtragem de conteúdo da internet"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
+msgid "Force logoff"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
+msgid "Force user either to log off or buy extra time after desktop is blocked"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
 msgid "Instant messaging"
 msgstr "Mensageiro instantâneo"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
 msgid "Mail client"
 msgstr "Cliente de e-mail"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
 msgid "PC use time"
 msgstr "Tempo de uso do PC"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
 msgid "Use the computer"
 msgstr "Usar o computador"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
 msgid "Use the instant messaging"
 msgstr "Usar o mensageiro instantâneo"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:13
 msgid "Use the mail client"
 msgstr "Usar o cliente de e-mail"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:14
 msgid "Use the web browser"
 msgstr "Usar o navegador de internet"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
-msgid "Use web content filtering"
-msgstr "Usar filtragem de conteúdo da internet"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
-#: ../client/gnome/systray/src/SystrayNanny.py:46
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:15
 msgid "Web browser"
 msgstr "Navegador de internet"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:13
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:16
 msgid "hours a day"
 msgstr "horas ao dia"
 
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:17
+#, fuzzy
+msgid "hours to"
+msgstr "horas ao dia"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:18
+msgid "that's left today"
+msgstr ""
+
 #: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:1
-msgid ""
-"<span color=\"red\">All the fields are mandatory. Please fill all of them.</"
-"span>"
+#, fuzzy
+msgid "All the fields are mandatory, so please fill all of them.\t"
 msgstr ""
 "<span color=\"red\">Todos os campos são obrigatórios. Por favor, preencha "
 "todos.</span>"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:2
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:1
 #: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:1
 msgid "Description:"
 msgstr "Descrição:"
@@ -806,85 +828,191 @@ msgid "Blacklists"
 msgstr "Listas negras"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:3
+#, fuzzy
+msgid "Enable _web content filtering"
+msgstr "Usar filtragem de conteúdo da internet"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
 msgid "Forbidden sites"
 msgstr "Sites proibidos"
 
-#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
-msgid ""
-"Here you can apply the available blacklists for the selected user. If you "
-"want to add new blacklists please go to System > Administration > Blacklists."
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:5
+msgid "_Update"
 msgstr ""
-"Aqui você pode aplicar as listas negras disponíveis para o usuário "
-"selecionado. Se você deseja adicionar novas listas negras, por favor, vá em "
-"Sistema > Administração > Listas negras."
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:1
+msgid "Amount of contracted but unfinished chores allowed"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:2
+msgid "Assign chores"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:3
+msgid "Chores in progress"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:4
+msgid "Enable rewarding time for _contracting chores"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:5
+msgid "Finished chores"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:6
+msgid ""
+"If the amount happens to exceed this value, user cannot contract more chores"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:7
+msgid ""
+"Select an entry and press this button to add or remove chores to or from "
+"user&apos;s enabled chores list"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:8
+msgid ""
+"Select an entry and press this button to add or remove chores to or from "
+"user's enabled chores list"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:9
+msgid "_Finish"
+msgstr ""
+
+#. The time given for contracting the chore
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:3
+msgid "Reward:"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:4
+msgid ""
+"The chores with time rewards will be displayed as an option to obtain more "
+"usage time to user when the session time limit has been reached and blocking "
+"the session is initiated. User can contract the chore to get extra usage "
+"time immediately."
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:5
+msgid "Title:"
+msgstr ""
 
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
 msgstr "Importar..."
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:1
-msgid "5 minutes, please"
-msgstr "5 minutos, por favor"
-
-#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
+#, fuzzy
 msgid ""
-"<span foreground=\"white\"><big>You've time available if you need to close "
-"documents or aplications.</big></span>"
+"<span foreground=\"white\"><big>You can still have a moment for closing the "
+"documents or applications</big></span>"
 msgstr ""
 "<span foreground=\"white\"><big>Você possui tempo disponível, se precisar "
 "para fechar documentos ou aplicativos.</big></span>"
 
-#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
+#, fuzzy
 msgid ""
-"<span size=\"25000\" foreground=\"white\"><b>You've used your computer use "
-"time</b></span>"
+"<span size=\"25000\" foreground=\"white\"><b>Your computer usage time is up "
+"now</b></span>"
 msgstr ""
 "<span size=\"25000\" foreground=\"white\"><b>Você utilizou o seu tempo de "
 "uso do computador</b></span>"
 
-#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
-msgid "close session"
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
+#, fuzzy
+msgid "Close session now"
 msgstr "fechar sessão"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
+#, fuzzy
+msgid "Five minutes, please"
+msgstr "5 minutos, por favor"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:5
+msgid "Give me more time"
+msgstr ""
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Monday"
 msgstr "Segunda-feira"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Tuesday"
 msgstr "Terça-feira"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Wednesday"
 msgstr "Quarta-feira"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Thursday"
 msgstr "Quinta-feira"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Friday"
 msgstr "Sexta-feira"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Saturday"
 msgstr "Sábado"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:295
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Sunday"
 msgstr "Domingo"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:37
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:39
 msgid "Web Content Filter Configuration"
 msgstr "Configuração de filtro de conteúdo da internet"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:242
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:253
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:187
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:204
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:225
+#, fuzzy
+msgid "Unknown Blacklist Name"
+msgstr "Lista negra importada"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:206
+#, python-format
+msgid "(version : %s)"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:209
+msgid "There is an update available"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:211
+#, fuzzy, python-format
+msgid "Downloading information (%s%%)"
+msgstr "Baixando arquivo (%s%%)"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:213
+#, python-format
+msgid "Installing blacklist (%s%%)"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:215
+#, python-format
+msgid "Updating blacklist (%s%%)"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:282
+msgid "Add blacklist entry"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:309
+#, fuzzy
+msgid "Add whitelist entry"
+msgstr "Lista branca"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:345
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:356
 msgid "Error while importing list from the Internet"
 msgstr "Erro ao importar a lista da Internet"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:243
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:254
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:346
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:357
 msgid ""
 "Some error has occured while downloading the list.\n"
 "Please verify the URL and try again."
@@ -892,28 +1020,32 @@ msgstr ""
 "Ocorreram alguns erros ao baixar a lista.\n"
 "Por gentileza verifique a URL e tente novamente."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:345
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:366
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:364
+msgid "Edit custom blacklist entry"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:447
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:469
 msgid "Are you sure you want to delete this filter?"
 msgstr "Você tem certeza que deseja excluir este filtro?"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:346
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:367
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:448
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:470
 msgid "You will not be able to undo this action."
 msgstr "Você não será capaz de desfazer esta ação."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:353
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:374
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:455
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:477
 msgid "Removing filter. Please, wait..."
 msgstr "Removendo filtro. Por favor, aguarde..."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:393
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:404
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:496
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:507
 msgid "Error while deleting filters"
 msgstr "Erro ao excluir filtros"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:394
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:405
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:497
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:508
 msgid ""
 "Some error has occured while deleting filters.\n"
 "Please try again."
@@ -921,33 +1053,108 @@ msgstr ""
 "Ocorreram alguns erros ao excluir os filtros.\n"
 "Por gentileza tente novamente."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:436
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:547
 msgid "<b>Select all the categories</b>"
 msgstr "<b>Selecionar todas as categorias</b>"
 
-#: ../client/gnome/admin/src/AdminConsole.py:46
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:599
+msgid "Introduce the nannycentral repository url"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:607
+msgid ""
+"It's something like http://www.nannycentral.info/blacklist/blacklist.json ..."
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:629
+#: ../client/gnome/admin/src/BlacklistManager.py:156
+msgid "<b>Are you sure you want to delete this blacklist?</b>"
+msgstr "<b>Você tem certeza que deseja excluir esta lista negra?</b>"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:630
+#: ../client/gnome/admin/src/BlacklistManager.py:157
+msgid ""
+"This action will remove all the user configuration linked to the blacklist."
+msgstr ""
+"Esta ação irá remover todas as configurações de usuário vinculadas à lista "
+"negra."
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:42
+#, fuzzy
+msgid "Chores & Rewards Configuration"
+msgstr "Configuração de filtro de conteúdo da internet"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:388
+#, fuzzy
+msgid "Add chore description"
+msgstr "Descrição:"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:420
+msgid "Edit chore description"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:459
+#, fuzzy
+msgid "<b>Are you sure you want to delete this chore description entry?</b>"
+msgstr "<b>Você tem certeza que deseja excluir esta lista negra?</b>"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:460
+#, fuzzy
+msgid "This action will remove all the user chores linked to the description."
+msgstr ""
+"Esta ação irá remover todas as configurações de usuário vinculadas à lista "
+"negra."
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:517
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:526
+#, fuzzy
+msgid "Error while deleting the chore entry"
+msgstr "Erro ao excluir filtros"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:518
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:527
+#, fuzzy
+msgid ""
+"Some error has occured while deleting the chore entry.\n"
+"Please try again."
+msgstr ""
+"Ocorreram alguns erros ao excluir os filtros.\n"
+"Por gentileza tente novamente."
+
+#: ../client/gnome/admin/src/AdminConsole.py:52
 msgid "Nanny daemon is not started"
 msgstr "O daemon da Nanny não foi iniciado"
 
 # Controle Parental, conhecido no Brasil como “Controle dos Pais”. Trata-se de um recurso de monitoração e bloqueio do que os usuários podem fazer no computador.
-#: ../client/gnome/admin/src/AdminConsole.py:47
+#: ../client/gnome/admin/src/AdminConsole.py:53
 msgid "To use the parental control, please start up the daemon."
 msgstr "Para usar o controle dos pais, por favor inicie o daemon."
 
 #. FACE
-#: ../client/gnome/admin/src/AdminConsole.py:159
+#: ../client/gnome/admin/src/AdminConsole.py:200
 msgid "Users"
 msgstr "Usuários"
 
-#: ../client/gnome/admin/src/AdminConsole.py:314
-msgid "Your configuration has been saved"
+#: ../client/gnome/admin/src/AdminConsole.py:389
+#, fuzzy
+msgid "User's configuration has been saved"
 msgstr "Sua configuração foi salva."
 
-#: ../client/gnome/admin/src/AdminConsole.py:326
+#: ../client/gnome/admin/src/AdminConsole.py:415
+#, python-format
+msgid "Nanny Admin Console - %s"
+msgstr "Console de administração da Nanny - %s"
+
+# Mantive Nanny para o usuário se habituar com o nome Nanny, ao invés de Babá. Afinal o programa se chama Nanny. 
+#: ../client/gnome/admin/src/AdminConsole.py:418
+msgid "Nanny Admin Console"
+msgstr "Console de administração da Nanny"
+
+#: ../client/gnome/admin/src/AdminConsole.py:584
 msgid "You have made changes"
 msgstr "Você realizou alterações"
 
-#: ../client/gnome/admin/src/AdminConsole.py:327
+#: ../client/gnome/admin/src/AdminConsole.py:585
 msgid ""
 "If you don't press the 'Apply' button, your changes will be lost.\n"
 "Are you sure?"
@@ -955,22 +1162,11 @@ msgstr ""
 "Se você não pressionar o botão 'Aplicar', suas alterações serão perdidas.\n"
 "Você tem certeza disso?"
 
-#: ../client/gnome/admin/src/AdminConsole.py:356
-#, python-format
-msgid "Nanny Admin Console - %s"
-msgstr "Console de administração da Nanny - %s"
-
-# Mantive Nanny para o usuário se habituar com o nome Nanny, ao invés de Babá. Afinal o programa se chama Nanny. 
-#: ../client/gnome/admin/src/AdminConsole.py:359
-msgid "Nanny Admin Console"
-msgstr "Console de administração da Nanny"
-
-#: ../client/gnome/admin/src/BlacklistManager.py:37
-#: ../client/gnome/admin/src/BlacklistManager.py:145
+#: ../client/gnome/admin/src/BlacklistManager.py:39
 msgid "Blacklist Filter Configuration"
 msgstr "Configuração de filtro de listas negras"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:112
+#: ../client/gnome/admin/src/BlacklistManager.py:114
 #, python-format
 msgid ""
 "<b>%s (Read only)</b>\n"
@@ -979,68 +1175,72 @@ msgstr ""
 "<b>%s (Somente leitura)</b>\n"
 "   %s"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:117
-msgid "Select file to import"
-msgstr "Selecionar arquivo para importar"
-
-#: ../client/gnome/admin/src/BlacklistManager.py:137
-msgid "<b>Error importing blacklist file</b>"
-msgstr "<b>Erro ao importar arquivo de lista negra</b>"
-
-#: ../client/gnome/admin/src/BlacklistManager.py:138
-msgid "Some error has occured importing the blacklist file."
-msgstr "Ocorreram alguns erros ao importar o arquivo de lista negra."
-
-#: ../client/gnome/admin/src/BlacklistManager.py:176
-msgid "<b>Are you sure you want to delete this blacklist?</b>"
-msgstr "<b>Você tem certeza que deseja excluir esta lista negra?</b>"
-
-#: ../client/gnome/admin/src/BlacklistManager.py:177
-msgid ""
-"This action will remove all the user configuration linked to the blacklist."
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:97
+msgid "Firefox proxy settings change detected"
 msgstr ""
-"Esta ação irá remover todas as configurações de usuário vinculadas à lista "
-"negra."
 
-#: ../client/gnome/systray/src/SystrayNanny.py:45
-msgid "Session"
-msgstr "Sessão"
+#: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:98
+msgid ""
+"You can't change the proxy settings because you are under parental control."
+msgstr ""
 
-#: ../client/gnome/systray/src/SystrayNanny.py:47
-msgid "e-Mail"
+#: ../client/gnome/systray/src/SystrayNanny.py:53
+#, fuzzy
+msgid "your session"
+msgstr "fechar sessão"
+
+#: ../client/gnome/systray/src/SystrayNanny.py:54
+#, fuzzy
+msgid "web browser"
+msgstr "Navegador de internet"
+
+#: ../client/gnome/systray/src/SystrayNanny.py:55
+#, fuzzy
+msgid "e-mail"
 msgstr "e-mail"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:48
-msgid "Instant messanger"
+#: ../client/gnome/systray/src/SystrayNanny.py:56
+#, fuzzy
+msgid "instant messanger"
 msgstr "Mensageiro instantâneo"
 
+#: ../client/gnome/systray/src/SystrayNanny.py:174
+#, fuzzy, python-format
+msgid "The access to %(app)s granted."
+msgstr "Em %(time)s o acesso a %(app)s será permitido."
+
 #. To translators: In x-minutes the access to <app> will be granted
-#: ../client/gnome/systray/src/SystrayNanny.py:95
+#: ../client/gnome/systray/src/SystrayNanny.py:177
 #, python-format
 msgid "In %(time)s the access to %(app)s will be granted."
 msgstr "Em %(time)s o acesso a %(app)s será permitido."
 
+#: ../client/gnome/systray/src/SystrayNanny.py:180
+#, fuzzy, python-format
+msgid "The access to %(app)s denied."
+msgstr "Em %(time)s o acesso a %(app)s será negado."
+
 #. To translators: In x-minutes the access to <app> will be denied
-#: ../client/gnome/systray/src/SystrayNanny.py:98
+#: ../client/gnome/systray/src/SystrayNanny.py:183
 #, python-format
 msgid "In %(time)s the access to %(app)s will be denied."
 msgstr "Em %(time)s o acesso a %(app)s será negado."
 
-#: ../client/gnome/systray/src/SystrayNanny.py:117
+#: ../client/gnome/systray/src/SystrayNanny.py:211
 #, python-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d dia"
 msgstr[1] "%d dias"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:119
+#: ../client/gnome/systray/src/SystrayNanny.py:213
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d hora"
 msgstr[1] "%d horas"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:121
+#: ../client/gnome/systray/src/SystrayNanny.py:215
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1048,7 +1248,7 @@ msgstr[0] "%d minuto"
 msgstr[1] "%d minutos"
 
 #. Translators: This is the separator between time strings, like '1 day, 2 hours, 3 minutes'
-#: ../client/gnome/systray/src/SystrayNanny.py:123
+#: ../client/gnome/systray/src/SystrayNanny.py:217
 msgid ", "
 msgstr ","
 
@@ -1084,6 +1284,39 @@ msgstr "Importando domínios [categoria: %s] (%s%%)"
 #, python-format
 msgid "Importing urls [category: %s] (%s%%)"
 msgstr "Importando urls [categoria: %s] (%s%%)"
+
+#~ msgid "BlackLists"
+#~ msgstr "Listas negras"
+
+#~ msgid "Nanny parental control blacklists manager"
+#~ msgstr "Gerenciador de listas negras do Nanny"
+
+#~ msgid "Configure"
+#~ msgstr "Configurar"
+
+#~ msgid ""
+#~ "Here you can apply the available blacklists for the selected user. If you "
+#~ "want to add new blacklists please go to System > Administration > "
+#~ "Blacklists."
+#~ msgstr ""
+#~ "Aqui você pode aplicar as listas negras disponíveis para o usuário "
+#~ "selecionado. Se você deseja adicionar novas listas negras, por favor, vá "
+#~ "em Sistema > Administração > Listas negras."
+
+#~ msgid "Select file to import"
+#~ msgstr "Selecionar arquivo para importar"
+
+#~ msgid "<b>Error importing blacklist file</b>"
+#~ msgstr "<b>Erro ao importar arquivo de lista negra</b>"
+
+#~ msgid "Some error has occured importing the blacklist file."
+#~ msgstr "Ocorreram alguns erros ao importar o arquivo de lista negra."
+
+#~ msgid "Session"
+#~ msgstr "Sessão"
+
+#~ msgid "e-Mail"
+#~ msgstr "e-mail"
 
 #~ msgid "Type of filter:"
 #~ msgstr "Tipo de filtro:"

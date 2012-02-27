@@ -2,16 +2,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nanny\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=nanny&component=general\n"
-"POT-Creation-Date: 2011-02-12 18:29+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-27 14:08+0200\n"
 "PO-Revision-Date: 2011-02-15 14:49+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: gnom@prevod.org\n"
+"Language: Serbian (sr)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: Serbian (sr)\n"
 "Plural-Forms: nplurals=4;    plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 :    n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\\n\n"
 "X-Generator: Virtaal 0.5.2\n"
@@ -345,8 +344,8 @@ msgstr "trenutno dopisivanje"
 msgid ""
 "Sites that contain messenger client download and web-based messaging sites"
 msgstr ""
-"Sajtovi koji sadrže preuzimanje klijenta za dopisivanje i sajtovi koji koriste "
-"veb za dopisivanje"
+"Sajtovi koji sadrže preuzimanje klijenta za dopisivanje i sajtovi koji "
+"koriste veb za dopisivanje"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:104
@@ -698,21 +697,21 @@ msgstr "spisak dozvoljenih"
 msgid "Contains site specifically 100% suitable for kids"
 msgstr "Sadrži sajt koji je 100% pogodan za decu"
 
-#: ../client/common/src/Utils.py:93
+#: ../client/common/src/Utils.py:94
 msgid "Nanny Admin Tools requires Admin user"
 msgstr "Nani administratorski alati zahtevaju korisnika administratora"
 
-#: ../client/common/src/Utils.py:94
+#: ../client/common/src/Utils.py:95
 msgid "To run any Nanny Admin Tool you must to be admin of the system."
 msgstr ""
 "Da pokrenete bilo koji Nani administratorski alat morate biti administrator "
 "sistema."
 
-#: ../client/common/src/DBusClient.py:80
+#: ../client/common/src/DBusClient.py:81
 msgid "NannyDaemon unavailable"
 msgstr "Nani demon nije dostupan"
 
-#: ../client/common/src/DBusClient.py:81
+#: ../client/common/src/DBusClient.py:82
 msgid ""
 "NannyDaemon is not activated or does not work properly.\n"
 "Please try to reactivate it."
@@ -729,6 +728,10 @@ msgid "Parental Control"
 msgstr "Roditeljski nadzor"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
+msgid "0"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:2
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
 msgid ""
 "<b>You don't have admin privileges</b>\n"
@@ -737,58 +740,75 @@ msgstr ""
 "<b>Nemate privilegije administratora</b>\n"
 "Kliknite na ovo dugme ako želite da napravite izmene."
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:3
-msgid "Configure"
-msgstr "Podesi"
-
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
+msgid "Configure _chores & rewards"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
+#, fuzzy
+msgid "Configure web filtering"
+msgstr "Koristi filtriranje veb sadržaja"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
+msgid "Force logoff"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
+msgid "Force user either to log off or buy extra time after desktop is blocked"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
 msgid "Instant messaging"
 msgstr "Trenutne poruke"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
 msgid "Mail client"
 msgstr "Program za poštu"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
 msgid "PC use time"
 msgstr "Računar"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
 msgid "Use the computer"
 msgstr "Može da koristi računar"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
 msgid "Use the instant messaging"
 msgstr "Može da koristi trenutne poruke"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:13
 msgid "Use the mail client"
 msgstr "Može da koristi program za poštu"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:14
 msgid "Use the web browser"
 msgstr "Može da koristi veb pretraživač"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
-msgid "Use web content filtering"
-msgstr "Koristi filtriranje veb sadržaja"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
-#: ../client/gnome/systray/src/SystrayNanny.py:53
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:15
 msgid "Web browser"
 msgstr "Veb pretraživač"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:13
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:16
 msgid "hours a day"
 msgstr "sat(a/i) na dan"
 
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:17
+#, fuzzy
+msgid "hours to"
+msgstr "sat(a/i) na dan"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:18
+msgid "that's left today"
+msgstr ""
+
 #: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:1
-msgid ""
-"<span color=\"red\">All the fields are mandatory. Please fill all of them.</"
-"span>"
+#, fuzzy
+msgid "All the fields are mandatory, so please fill all of them.\t"
 msgstr "<span color=\"red\">Sva polja su obavezna. Molim popunite ih.</span>"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:2
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:1
 #: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:1
 msgid "Description:"
 msgstr "Opis:"
@@ -811,110 +831,190 @@ msgid "Blacklists"
 msgstr "Spisak zabrana"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:3
+#, fuzzy
+msgid "Enable _web content filtering"
+msgstr "Koristi filtriranje veb sadržaja"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
 msgid "Forbidden sites"
 msgstr "Zabranjeni sajtovi"
 
-#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:5
 msgid "_Update"
 msgstr "_Ažuriraj"
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:1
+msgid "Amount of contracted but unfinished chores allowed"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:2
+msgid "Assign chores"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:3
+msgid "Chores in progress"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:4
+msgid "Enable rewarding time for _contracting chores"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:5
+msgid "Finished chores"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:6
+msgid ""
+"If the amount happens to exceed this value, user cannot contract more chores"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:7
+msgid ""
+"Select an entry and press this button to add or remove chores to or from "
+"user&apos;s enabled chores list"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:8
+msgid ""
+"Select an entry and press this button to add or remove chores to or from "
+"user's enabled chores list"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:9
+msgid "_Finish"
+msgstr ""
+
+#. The time given for contracting the chore
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:3
+msgid "Reward:"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:4
+msgid ""
+"The chores with time rewards will be displayed as an option to obtain more "
+"usage time to user when the session time limit has been reached and blocking "
+"the session is initiated. User can contract the chore to get extra usage "
+"time immediately."
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:5
+msgid "Title:"
+msgstr ""
 
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
 msgstr "Uvezi..."
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:1
-msgid "5 minutes, please"
-msgstr "5 minuta, molim"
-
-#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
+#, fuzzy
 msgid ""
-"<span foreground=\"white\"><big>You've time available if you need to close "
-"documents or aplications.</big></span>"
+"<span foreground=\"white\"><big>You can still have a moment for closing the "
+"documents or applications</big></span>"
 msgstr ""
 "<span foreground=\"white\"><big>Imate vremena na raspolaganju ako trebate da "
 "zatvorite dokumenta ili programe.</big></span>"
 
-#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
+#, fuzzy
 msgid ""
-"<span size=\"25000\" foreground=\"white\"><b>You've used your computer use "
-"time</b></span>"
+"<span size=\"25000\" foreground=\"white\"><b>Your computer usage time is up "
+"now</b></span>"
 msgstr ""
 "<span size=\"25000\" foreground=\"white\"><b>Iskoristili ste vaše vreme "
 "korišćenja računara</b></span>"
 
-#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
-msgid "close session"
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
+#, fuzzy
+msgid "Close session now"
 msgstr "zatvori sesiju"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:303
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
+#, fuzzy
+msgid "Five minutes, please"
+msgstr "5 minuta, molim"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:5
+msgid "Give me more time"
+msgstr ""
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Monday"
 msgstr "Ponedeljak"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:303
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Tuesday"
 msgstr "Utorak"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:303
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Wednesday"
 msgstr "Sreda"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:303
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Thursday"
 msgstr "Četvrtak"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:303
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Friday"
 msgstr "Petak"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:303
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Saturday"
 msgstr "Subota"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:303
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Sunday"
 msgstr "Nedelja"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:37
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:39
 msgid "Web Content Filter Configuration"
 msgstr "Podešavanje filtera veb sadržaja"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:175
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:192
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:213
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:187
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:204
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:225
 msgid "Unknown Blacklist Name"
 msgstr "Nepoznato ime spiska zabrana"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:194
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:206
 #, python-format
 msgid "(version : %s)"
 msgstr "(verzija : %s)"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:197
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:209
 msgid "There is an update available"
 msgstr "Dostupno je jedno ažuriranje"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:199
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:211
 #, python-format
 msgid "Downloading information (%s%%)"
 msgstr "Preuzimam informacije (%s%%)"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:201
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:213
 #, python-format
 msgid "Installing blacklist (%s%%)"
 msgstr "Instaliram spisak zabrana (%s%%)"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:203
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:215
 #, python-format
 msgid "Updating blacklist (%s%%)"
 msgstr "Ažuriram spisak zabrana (%s%%)"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:327
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:338
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:282
+msgid "Add blacklist entry"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:309
+#, fuzzy
+msgid "Add whitelist entry"
+msgstr "spisak dozvoljenih"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:345
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:356
 msgid "Error while importing list from the Internet"
 msgstr "Došlo je do greške prilikom uvoženja spiska sa Interneta"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:328
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:339
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:346
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:357
 msgid ""
 "Some error has occured while downloading the list.\n"
 "Please verify the URL and try again."
@@ -922,28 +1022,32 @@ msgstr ""
 "Došlo je do greške prilikom preuzimanja spiska.\n"
 "Molim proverite adresu i pokušajte opet."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:433
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:455
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:364
+msgid "Edit custom blacklist entry"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:447
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:469
 msgid "Are you sure you want to delete this filter?"
 msgstr "Da li ste sigurni da želite da izbrišete ovaj spisak?"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:434
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:456
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:448
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:470
 msgid "You will not be able to undo this action."
 msgstr "Nećete biti u mogućnosti da poništite ovu radnju."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:441
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:463
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:455
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:477
 msgid "Removing filter. Please, wait..."
 msgstr "Uklanjam filter. Molim sačekajte..."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:482
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:493
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:496
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:507
 msgid "Error while deleting filters"
 msgstr "Greška prilikom brisanja filtera"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:483
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:494
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:497
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:508
 msgid ""
 "Some error has occured while deleting filters.\n"
 "Please try again."
@@ -951,54 +1055,107 @@ msgstr ""
 "Došlo je do greške prilikom brisanja filtera.\n"
 "Molim pokušajte opet."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:533
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:547
 msgid "<b>Select all the categories</b>"
 msgstr "<b>Izaberite sve kategorije</b>"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:585
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:599
 msgid "Introduce the nannycentral repository url"
 msgstr "Uvodi adresu centralnog skladišta nanija"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:591
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:607
 msgid ""
 "It's something like http://www.nannycentral.info/blacklist/blacklist.json ..."
 msgstr ""
 "To je nešto kao: http://www.nannycentral.info/blacklist/blacklist.json ..."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:613
-#: ../client/gnome/admin/src/BlacklistManager.py:154
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:629
+#: ../client/gnome/admin/src/BlacklistManager.py:156
 msgid "<b>Are you sure you want to delete this blacklist?</b>"
 msgstr "<b>Da li ste sigurni da želite da obrišete ovaj spisak zabrana?</b>"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:614
-#: ../client/gnome/admin/src/BlacklistManager.py:155
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:630
+#: ../client/gnome/admin/src/BlacklistManager.py:157
 msgid ""
 "This action will remove all the user configuration linked to the blacklist."
 msgstr ""
-"Ova radnja će ukloniti sva korisnička podešavanja povezana sa spiskom zabrana."
+"Ova radnja će ukloniti sva korisnička podešavanja povezana sa spiskom "
+"zabrana."
 
-#: ../client/gnome/admin/src/AdminConsole.py:50
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:42
+#, fuzzy
+msgid "Chores & Rewards Configuration"
+msgstr "Podešavanje filtera veb sadržaja"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:388
+#, fuzzy
+msgid "Add chore description"
+msgstr "Opis:"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:420
+msgid "Edit chore description"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:459
+#, fuzzy
+msgid "<b>Are you sure you want to delete this chore description entry?</b>"
+msgstr "<b>Da li ste sigurni da želite da obrišete ovaj spisak zabrana?</b>"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:460
+#, fuzzy
+msgid "This action will remove all the user chores linked to the description."
+msgstr ""
+"Ova radnja će ukloniti sva korisnička podešavanja povezana sa spiskom "
+"zabrana."
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:517
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:526
+#, fuzzy
+msgid "Error while deleting the chore entry"
+msgstr "Greška prilikom brisanja filtera"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:518
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:527
+#, fuzzy
+msgid ""
+"Some error has occured while deleting the chore entry.\n"
+"Please try again."
+msgstr ""
+"Došlo je do greške prilikom brisanja filtera.\n"
+"Molim pokušajte opet."
+
+#: ../client/gnome/admin/src/AdminConsole.py:52
 msgid "Nanny daemon is not started"
 msgstr "Nani demon nije pokrenut"
 
-#: ../client/gnome/admin/src/AdminConsole.py:51
+#: ../client/gnome/admin/src/AdminConsole.py:53
 msgid "To use the parental control, please start up the daemon."
 msgstr "Da biste koristili roditeljsku kontrolu, molim pokrenite demona."
 
 #. FACE
-#: ../client/gnome/admin/src/AdminConsole.py:163
+#: ../client/gnome/admin/src/AdminConsole.py:200
 msgid "Users"
 msgstr "Korisnici"
 
-#: ../client/gnome/admin/src/AdminConsole.py:339
-msgid "Your configuration has been saved"
+#: ../client/gnome/admin/src/AdminConsole.py:389
+#, fuzzy
+msgid "User's configuration has been saved"
 msgstr "Vaše podešavanje je sačuvano"
 
-#: ../client/gnome/admin/src/AdminConsole.py:352
+#: ../client/gnome/admin/src/AdminConsole.py:415
+#, python-format
+msgid "Nanny Admin Console - %s"
+msgstr "Nani, administratorska konzola — %s"
+
+#: ../client/gnome/admin/src/AdminConsole.py:418
+msgid "Nanny Admin Console"
+msgstr "Nani, administratorska konzola"
+
+#: ../client/gnome/admin/src/AdminConsole.py:584
 msgid "You have made changes"
 msgstr "Napravili ste izmene"
 
-#: ../client/gnome/admin/src/AdminConsole.py:353
+#: ../client/gnome/admin/src/AdminConsole.py:585
 msgid ""
 "If you don't press the 'Apply' button, your changes will be lost.\n"
 "Are you sure?"
@@ -1006,20 +1163,11 @@ msgstr ""
 "Ako ne kliknete na dugme „Primeni“, vaše će izmene biti izgubljene.\n"
 "Da li ste sigurni?"
 
-#: ../client/gnome/admin/src/AdminConsole.py:382
-#, python-format
-msgid "Nanny Admin Console - %s"
-msgstr "Nani, administratorska konzola — %s"
-
-#: ../client/gnome/admin/src/AdminConsole.py:385
-msgid "Nanny Admin Console"
-msgstr "Nani, administratorska konzola"
-
-#: ../client/gnome/admin/src/BlacklistManager.py:37
+#: ../client/gnome/admin/src/BlacklistManager.py:39
 msgid "Blacklist Filter Configuration"
 msgstr "Podešavanje filtera spiska zabrana"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:112
+#: ../client/gnome/admin/src/BlacklistManager.py:114
 #, python-format
 msgid ""
 "<b>%s (Read only)</b>\n"
@@ -1039,31 +1187,49 @@ msgstr ""
 "Ne možete da izmenite podešavanja posrednika zato što ste pod roditeljskim "
 "nadzorom."
 
-#: ../client/gnome/systray/src/SystrayNanny.py:52
-msgid "Session"
-msgstr "sesija"
+#: ../client/gnome/systray/src/SystrayNanny.py:53
+#, fuzzy
+msgid "your session"
+msgstr "zatvori sesiju"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:54
-msgid "e-Mail"
-msgstr "e-pošta"
+#, fuzzy
+msgid "web browser"
+msgstr "Veb pretraživač"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:55
-msgid "Instant messanger"
+#, fuzzy
+msgid "e-mail"
+msgstr "pošta"
+
+#: ../client/gnome/systray/src/SystrayNanny.py:56
+#, fuzzy
+msgid "instant messanger"
 msgstr "Trenutne poruke"
 
+#: ../client/gnome/systray/src/SystrayNanny.py:174
+#, fuzzy, python-format
+msgid "The access to %(app)s granted."
+msgstr "Za %(time)s pristup na %(app)s biće garantovan."
+
 #. To translators: In x-minutes the access to <app> will be granted
-#: ../client/gnome/systray/src/SystrayNanny.py:134
+#: ../client/gnome/systray/src/SystrayNanny.py:177
 #, python-format
 msgid "In %(time)s the access to %(app)s will be granted."
 msgstr "Za %(time)s pristup na %(app)s biće garantovan."
 
+#: ../client/gnome/systray/src/SystrayNanny.py:180
+#, fuzzy, python-format
+msgid "The access to %(app)s denied."
+msgstr "Za %(time)s pristup na %(app)s biće zabranjen."
+
 #. To translators: In x-minutes the access to <app> will be denied
-#: ../client/gnome/systray/src/SystrayNanny.py:137
+#: ../client/gnome/systray/src/SystrayNanny.py:183
 #, python-format
 msgid "In %(time)s the access to %(app)s will be denied."
 msgstr "Za %(time)s pristup na %(app)s biće zabranjen."
 
-#: ../client/gnome/systray/src/SystrayNanny.py:160
+#: ../client/gnome/systray/src/SystrayNanny.py:211
 #, python-format
 msgid "%d day"
 msgid_plural "%d days"
@@ -1072,7 +1238,7 @@ msgstr[1] "%d dana"
 msgstr[2] "%d dana"
 msgstr[3] "%d dan"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:162
+#: ../client/gnome/systray/src/SystrayNanny.py:213
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1081,7 +1247,7 @@ msgstr[1] "%d sata"
 msgstr[2] "%d sati"
 msgstr[3] "%d sat"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:164
+#: ../client/gnome/systray/src/SystrayNanny.py:215
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1091,7 +1257,7 @@ msgstr[2] "%d minuta"
 msgstr[3] "%d minut"
 
 #. Translators: This is the separator between time strings, like '1 day, 2 hours, 3 minutes'
-#: ../client/gnome/systray/src/SystrayNanny.py:166
+#: ../client/gnome/systray/src/SystrayNanny.py:217
 msgid ", "
 msgstr ", "
 
@@ -1127,3 +1293,12 @@ msgstr "Uvozim domene [kategorija: %s] (%s%%)"
 #, python-format
 msgid "Importing urls [category: %s] (%s%%)"
 msgstr "Uvozim adrese [kategorija: %s] (%s%%)"
+
+#~ msgid "Configure"
+#~ msgstr "Podesi"
+
+#~ msgid "Session"
+#~ msgstr "sesija"
+
+#~ msgid "e-Mail"
+#~ msgstr "e-pošta"

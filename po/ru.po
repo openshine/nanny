@@ -8,15 +8,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nanny master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nanny&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-09-24 23:37+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-27 14:08+0200\n"
 "PO-Revision-Date: 2011-11-10 01:40+0300\n"
 "Last-Translator: Yuri Myasoedov <omerta13@yandex.ru>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Lokalize 1.0\n"
 
 #. To translators : This string is a category name or a category description
@@ -44,7 +46,9 @@ msgstr "для взрослых"
 
 #: ../client/common/src/Categories.py:36
 msgid "Sites containing adult material such as swearing but not porn"
-msgstr "Сайты, содержащие материалы только для взрослых, например сквернословие, но не порнографию"
+msgstr ""
+"Сайты, содержащие материалы только для взрослых, например сквернословие, но "
+"не порнографию"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:38
@@ -205,8 +209,12 @@ msgid "desktopsillies"
 msgstr "украшательства для рабочего стола"
 
 #: ../client/common/src/Categories.py:72
-msgid "Sites containing screen savers, backgrounds, cursers, pointers. desktop themes and similar timewasting and potentially dangerous content"
-msgstr "Сайты с экранными заставками, фоновыми изображениями, курсорами, темами для рабочих столов и т.д, могут иметь опасное содержимое"
+msgid ""
+"Sites containing screen savers, backgrounds, cursers, pointers. desktop "
+"themes and similar timewasting and potentially dangerous content"
+msgstr ""
+"Сайты с экранными заставками, фоновыми изображениями, курсорами, темами для "
+"рабочих столов и т.д, могут иметь опасное содержимое"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:74
@@ -215,7 +223,9 @@ msgstr "дозвонщики"
 
 #: ../client/common/src/Categories.py:74
 msgid "Sites with dialers such as those for pornography or trojans"
-msgstr "Сайты с дозвонщиками, выводящими порнографию или содержащие троянские программы"
+msgstr ""
+"Сайты с дозвонщиками, выводящими порнографию или содержащие троянские "
+"программы"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:76
@@ -340,8 +350,11 @@ msgid "instantmessaging"
 msgstr "мгновенные сообщения"
 
 #: ../client/common/src/Categories.py:102
-msgid "Sites that contain messenger client download and web-based messaging sites"
-msgstr "Сайты, позволяющие загрузить программы обмена мгновенными сообщениями или общаться через веб"
+msgid ""
+"Sites that contain messenger client download and web-based messaging sites"
+msgstr ""
+"Сайты, позволяющие загрузить программы обмена мгновенными сообщениями или "
+"общаться через веб"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:104
@@ -422,7 +435,8 @@ msgstr "нудизм"
 
 #: ../client/common/src/Categories.py:120
 msgid "Sites that contain nude pictures and/or promote a nude lifestyle"
-msgstr "Сайты, содержащие изображения обнажённого тела и/или пропагандирующие нудизм"
+msgstr ""
+"Сайты, содержащие изображения обнажённого тела и/или пропагандирующие нудизм"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:122
@@ -557,7 +571,8 @@ msgstr "секс"
 
 #: ../client/common/src/Categories.py:150
 msgid "Sites dedicated to sexuality, possibly including adult material"
-msgstr "Сайты, посвящённые сексу, возможно, включающие материалы только для взрослых"
+msgstr ""
+"Сайты, посвящённые сексу, возможно, включающие материалы только для взрослых"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:152
@@ -611,7 +626,9 @@ msgstr "обновления ПО"
 
 #: ../client/common/src/Categories.py:162
 msgid "Sites where software updates are downloaded from including virus sigs"
-msgstr "Сайты для скачивания обновлений программ, включая вирусные сигнатуры для антивирусов"
+msgstr ""
+"Сайты для скачивания обновлений программ, включая вирусные сигнатуры для "
+"антивирусов"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:164
@@ -686,19 +703,21 @@ msgstr "белый список"
 msgid "Contains site specifically 100% suitable for kids"
 msgstr "Содержит сайты, 100% подходящие для детей"
 
-#: ../client/common/src/Utils.py:93
+#: ../client/common/src/Utils.py:94
 msgid "Nanny Admin Tools requires Admin user"
 msgstr "Nanny Admin Tools требуется пользователь с правами администратора"
 
-#: ../client/common/src/Utils.py:94
+#: ../client/common/src/Utils.py:95
 msgid "To run any Nanny Admin Tool you must to be admin of the system."
-msgstr "Для запуска любого инструмента управления Nanny требуются права администратора."
+msgstr ""
+"Для запуска любого инструмента управления Nanny требуются права "
+"администратора."
 
-#: ../client/common/src/DBusClient.py:80
+#: ../client/common/src/DBusClient.py:81
 msgid "NannyDaemon unavailable"
 msgstr "NannyDaemon недоступна"
 
-#: ../client/common/src/DBusClient.py:81
+#: ../client/common/src/DBusClient.py:82
 msgid ""
 "NannyDaemon is not activated or does not work properly.\n"
 "Please try to reactivate it."
@@ -715,6 +734,10 @@ msgid "Parental Control"
 msgstr "Родительский контроль"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
+msgid "0"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:2
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
 msgid ""
 "<b>You don't have admin privileges</b>\n"
@@ -723,56 +746,77 @@ msgstr ""
 "<b>У вас нет прав администратора</b>\n"
 "Нажмите на эту кнопку, если хотите внести изменения."
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:3
-msgid "Configure"
-msgstr "Настроить"
-
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
+msgid "Configure _chores & rewards"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
+#, fuzzy
+msgid "Configure web filtering"
+msgstr "Использовать фильтрацию веб-контента"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
+msgid "Force logoff"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
+msgid "Force user either to log off or buy extra time after desktop is blocked"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
 msgid "Instant messaging"
 msgstr "Мгновенные сообщения"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
 msgid "Mail client"
 msgstr "Почтовый клиент"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
 msgid "PC use time"
 msgstr "Время использования ПК"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
 msgid "Use the computer"
 msgstr "Использовать компьютер"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
 msgid "Use the instant messaging"
 msgstr "Использовать клиент обмена мгновенными сообщениями"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:13
 msgid "Use the mail client"
 msgstr "Использовать почтовый клиент"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:14
 msgid "Use the web browser"
 msgstr "Использовать веб-браузер"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
-msgid "Use web content filtering"
-msgstr "Использовать фильтрацию веб-контента"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
-#: ../client/gnome/systray/src/SystrayNanny.py:53
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:15
 msgid "Web browser"
 msgstr "Веб-браузер"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:13
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:16
 msgid "hours a day"
 msgstr "часов в день"
 
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:17
+#, fuzzy
+msgid "hours to"
+msgstr "часов в день"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:18
+msgid "that's left today"
+msgstr ""
+
 #: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:1
-msgid "<span color=\"red\">All the fields are mandatory. Please fill all of them.</span>"
-msgstr "<span color=\"red\">Все поля обязательные. Пожалуйста, заполните их все.</span>"
+#, fuzzy
+msgid "All the fields are mandatory, so please fill all of them.\t"
+msgstr ""
+"<span color=\"red\">Все поля обязательные. Пожалуйста, заполните их все.</"
+"span>"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:2
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:1
 #: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:1
 msgid "Description:"
 msgstr "Описание:"
@@ -795,32 +839,111 @@ msgid "Blacklists"
 msgstr "Чёрные списки"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:3
+#, fuzzy
+msgid "Enable _web content filtering"
+msgstr "Использовать фильтрацию веб-контента"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
 msgid "Forbidden sites"
 msgstr "Запрещённые сайты"
 
-#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:5
 msgid "_Update"
 msgstr "_Обновить"
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:1
+msgid "Amount of contracted but unfinished chores allowed"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:2
+msgid "Assign chores"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:3
+msgid "Chores in progress"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:4
+msgid "Enable rewarding time for _contracting chores"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:5
+msgid "Finished chores"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:6
+msgid ""
+"If the amount happens to exceed this value, user cannot contract more chores"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:7
+msgid ""
+"Select an entry and press this button to add or remove chores to or from "
+"user&apos;s enabled chores list"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:8
+msgid ""
+"Select an entry and press this button to add or remove chores to or from "
+"user's enabled chores list"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:9
+msgid "_Finish"
+msgstr ""
+
+#. The time given for contracting the chore
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:3
+msgid "Reward:"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:4
+msgid ""
+"The chores with time rewards will be displayed as an option to obtain more "
+"usage time to user when the session time limit has been reached and blocking "
+"the session is initiated. User can contract the chore to get extra usage "
+"time immediately."
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:5
+msgid "Title:"
+msgstr ""
 
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
 msgstr "Импортировать…"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:1
-msgid "5 minutes, please"
-msgstr "Подождите 5 минут"
+#, fuzzy
+msgid ""
+"<span foreground=\"white\"><big>You can still have a moment for closing the "
+"documents or applications</big></span>"
+msgstr ""
+"<span foreground=\"white\"><big>У вас время, чтобы закрыть документы и "
+"приложения, если это необходимо.</big></span>"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
-msgid "<span foreground=\"white\"><big>You've time available if you need to close documents or aplications.</big></span>"
-msgstr "<span foreground=\"white\"><big>У вас время, чтобы закрыть документы и приложения, если это необходимо.</big></span>"
+#, fuzzy
+msgid ""
+"<span size=\"25000\" foreground=\"white\"><b>Your computer usage time is up "
+"now</b></span>"
+msgstr ""
+"<span size=\"25000\" foreground=\"white\"><b>Ваше время использования "
+"компьютера закончилось</b></span>"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
-msgid "<span size=\"25000\" foreground=\"white\"><b>You've used your computer use time</b></span>"
-msgstr "<span size=\"25000\" foreground=\"white\"><b>Ваше время использования компьютера закончилось</b></span>"
+#, fuzzy
+msgid "Close session now"
+msgstr "закрыть сеанс"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
-msgid "close session"
-msgstr "закрыть сеанс"
+#, fuzzy
+msgid "Five minutes, please"
+msgstr "Подождите 5 минут"
+
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:5
+msgid "Give me more time"
+msgstr ""
 
 #: ../client/gnome/admin/src/ScheduleCalendar.py:310
 msgid "Monday"
@@ -850,47 +973,56 @@ msgstr "Суббота"
 msgid "Sunday"
 msgstr "Воскресенье"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:37
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:39
 msgid "Web Content Filter Configuration"
 msgstr "Настройка фильтра веб-содержимого"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:175
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:192
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:213
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:187
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:204
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:225
 msgid "Unknown Blacklist Name"
 msgstr "Неизвестное имя чёрного списка"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:194
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:206
 #, python-format
 msgid "(version : %s)"
 msgstr "(версия: %s)"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:197
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:209
 msgid "There is an update available"
 msgstr "Имеется обновление"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:199
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:211
 #, python-format
 msgid "Downloading information (%s%%)"
 msgstr "Загружаются данные (%s%%)"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:201
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:213
 #, python-format
 msgid "Installing blacklist (%s%%)"
 msgstr "Устанавливается чёрный список (%s%%)"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:203
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:215
 #, python-format
 msgid "Updating blacklist (%s%%)"
 msgstr "Обновляется чёрный список (%s%%)"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:327
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:338
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:282
+msgid "Add blacklist entry"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:309
+#, fuzzy
+msgid "Add whitelist entry"
+msgstr "белый список"
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:345
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:356
 msgid "Error while importing list from the Internet"
 msgstr "Ошибка при импортировании списка из Интернета"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:328
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:339
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:346
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:357
 msgid ""
 "Some error has occured while downloading the list.\n"
 "Please verify the URL and try again."
@@ -898,28 +1030,32 @@ msgstr ""
 "При загрузке списка произошла ошибка.\n"
 "Пожалуйста, проверьте URL и попробуйте снова."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:433
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:455
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:364
+msgid "Edit custom blacklist entry"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:447
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:469
 msgid "Are you sure you want to delete this filter?"
 msgstr "Уверены, что хотите удалить этот фильтр?"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:434
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:456
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:448
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:470
 msgid "You will not be able to undo this action."
 msgstr "Отменить это действие будет невозможно."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:441
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:463
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:455
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:477
 msgid "Removing filter. Please, wait..."
 msgstr "Выполняется удаление фильтра. Пожалуйста, подождите…"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:482
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:493
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:496
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:507
 msgid "Error while deleting filters"
 msgstr "Ошибка при удалении фильтров"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:483
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:494
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:497
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:508
 msgid ""
 "Some error has occured while deleting filters.\n"
 "Please try again."
@@ -927,50 +1063,105 @@ msgstr ""
 "При удалении фильтров произошла ошибка.\n"
 "Попробуйте снова."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:533
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:547
 msgid "<b>Select all the categories</b>"
 msgstr "<b>Выбрать все категории</b>"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:585
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:599
 msgid "Introduce the nannycentral repository url"
 msgstr "Указать url репозитория nannycentral"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:593
-msgid "It's something like http://www.nannycentral.info/blacklist/blacklist.json ..."
-msgstr "Что-то наподобие http://www.nannycentral.info/blacklist/blacklist.json …"
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:607
+msgid ""
+"It's something like http://www.nannycentral.info/blacklist/blacklist.json ..."
+msgstr ""
+"Что-то наподобие http://www.nannycentral.info/blacklist/blacklist.json …"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:615
-#: ../client/gnome/admin/src/BlacklistManager.py:154
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:629
+#: ../client/gnome/admin/src/BlacklistManager.py:156
 msgid "<b>Are you sure you want to delete this blacklist?</b>"
 msgstr "<b>Уверены, что хотите удалить чёрный список?</b>"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:616
-#: ../client/gnome/admin/src/BlacklistManager.py:155
-msgid "This action will remove all the user configuration linked to the blacklist."
-msgstr "Это действие удалит все настройки пользователя, связанные с чёрным списком."
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:630
+#: ../client/gnome/admin/src/BlacklistManager.py:157
+msgid ""
+"This action will remove all the user configuration linked to the blacklist."
+msgstr ""
+"Это действие удалит все настройки пользователя, связанные с чёрным списком."
 
-#: ../client/gnome/admin/src/AdminConsole.py:50
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:42
+#, fuzzy
+msgid "Chores & Rewards Configuration"
+msgstr "Настройка фильтра веб-содержимого"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:388
+#, fuzzy
+msgid "Add chore description"
+msgstr "Описание:"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:420
+msgid "Edit chore description"
+msgstr ""
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:459
+#, fuzzy
+msgid "<b>Are you sure you want to delete this chore description entry?</b>"
+msgstr "<b>Уверены, что хотите удалить чёрный список?</b>"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:460
+#, fuzzy
+msgid "This action will remove all the user chores linked to the description."
+msgstr ""
+"Это действие удалит все настройки пользователя, связанные с чёрным списком."
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:517
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:526
+#, fuzzy
+msgid "Error while deleting the chore entry"
+msgstr "Ошибка при удалении фильтров"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:518
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:527
+#, fuzzy
+msgid ""
+"Some error has occured while deleting the chore entry.\n"
+"Please try again."
+msgstr ""
+"При удалении фильтров произошла ошибка.\n"
+"Попробуйте снова."
+
+#: ../client/gnome/admin/src/AdminConsole.py:52
 msgid "Nanny daemon is not started"
 msgstr "Служба Nanny не запущена"
 
-#: ../client/gnome/admin/src/AdminConsole.py:51
+#: ../client/gnome/admin/src/AdminConsole.py:53
 msgid "To use the parental control, please start up the daemon."
 msgstr "Чтобы использовать функцию родительского контроля, запустите службу."
 
 #. FACE
-#: ../client/gnome/admin/src/AdminConsole.py:163
+#: ../client/gnome/admin/src/AdminConsole.py:200
 msgid "Users"
 msgstr "Пользователи"
 
-#: ../client/gnome/admin/src/AdminConsole.py:340
-msgid "Your configuration has been saved"
+#: ../client/gnome/admin/src/AdminConsole.py:389
+#, fuzzy
+msgid "User's configuration has been saved"
 msgstr "Ваша настройка сохранена"
 
-#: ../client/gnome/admin/src/AdminConsole.py:353
+#: ../client/gnome/admin/src/AdminConsole.py:415
+#, python-format
+msgid "Nanny Admin Console - %s"
+msgstr "Консоль администратора Nanny — %s"
+
+#: ../client/gnome/admin/src/AdminConsole.py:418
+msgid "Nanny Admin Console"
+msgstr "Консоль администратора Nanny"
+
+#: ../client/gnome/admin/src/AdminConsole.py:584
 msgid "You have made changes"
 msgstr "Вы внесли изменения"
 
-#: ../client/gnome/admin/src/AdminConsole.py:354
+#: ../client/gnome/admin/src/AdminConsole.py:585
 msgid ""
 "If you don't press the 'Apply' button, your changes will be lost.\n"
 "Are you sure?"
@@ -978,20 +1169,11 @@ msgstr ""
 "Если не нажать кнопку «Применить», все изменения будут потеряны.\n"
 "Вы уверены?"
 
-#: ../client/gnome/admin/src/AdminConsole.py:383
-#, python-format
-msgid "Nanny Admin Console - %s"
-msgstr "Консоль администратора Nanny — %s"
-
-#: ../client/gnome/admin/src/AdminConsole.py:386
-msgid "Nanny Admin Console"
-msgstr "Консоль администратора Nanny"
-
-#: ../client/gnome/admin/src/BlacklistManager.py:37
+#: ../client/gnome/admin/src/BlacklistManager.py:39
 msgid "Blacklist Filter Configuration"
 msgstr "Настройка фильтра чёрного списка"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:112
+#: ../client/gnome/admin/src/BlacklistManager.py:114
 #, python-format
 msgid ""
 "<b>%s (Read only)</b>\n"
@@ -1005,34 +1187,55 @@ msgid "Firefox proxy settings change detected"
 msgstr "Обнаружено изменение настроек прокси в Firefox"
 
 #: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:98
-msgid "You can't change the proxy settings because you are under parental control."
-msgstr "Вы не можете изменить настройки прокси, так как включён родительский контроль."
+msgid ""
+"You can't change the proxy settings because you are under parental control."
+msgstr ""
+"Вы не можете изменить настройки прокси, так как включён родительский "
+"контроль."
 
-#: ../client/gnome/systray/src/SystrayNanny.py:52
-msgid "Session"
-msgstr "Компьютеру"
+#: ../client/gnome/systray/src/SystrayNanny.py:53
+#, fuzzy
+msgid "your session"
+msgstr "закрыть сеанс"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:54
-msgid "e-Mail"
-msgstr "Электронной почте"
+#, fuzzy
+msgid "web browser"
+msgstr "Веб-браузер"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:55
-msgid "Instant messanger"
+#, fuzzy
+msgid "e-mail"
+msgstr "почта"
+
+#: ../client/gnome/systray/src/SystrayNanny.py:56
+#, fuzzy
+msgid "instant messanger"
 msgstr "Клиенту обмена мгновенными сообщениями"
 
+#: ../client/gnome/systray/src/SystrayNanny.py:174
+#, fuzzy, python-format
+msgid "The access to %(app)s granted."
+msgstr "Доступ к %(app)s будет предоставлен через %(time)s."
+
 #. To translators: In x-minutes the access to <app> will be granted
-#: ../client/gnome/systray/src/SystrayNanny.py:134
+#: ../client/gnome/systray/src/SystrayNanny.py:177
 #, python-format
 msgid "In %(time)s the access to %(app)s will be granted."
 msgstr "Доступ к %(app)s будет предоставлен через %(time)s."
 
+#: ../client/gnome/systray/src/SystrayNanny.py:180
+#, fuzzy, python-format
+msgid "The access to %(app)s denied."
+msgstr "Доступ к %(app)s будет заблокирован через %(time)s."
+
 #. To translators: In x-minutes the access to <app> will be denied
-#: ../client/gnome/systray/src/SystrayNanny.py:137
+#: ../client/gnome/systray/src/SystrayNanny.py:183
 #, python-format
 msgid "In %(time)s the access to %(app)s will be denied."
 msgstr "Доступ к %(app)s будет заблокирован через %(time)s."
 
-#: ../client/gnome/systray/src/SystrayNanny.py:160
+#: ../client/gnome/systray/src/SystrayNanny.py:211
 #, python-format
 msgid "%d day"
 msgid_plural "%d days"
@@ -1040,7 +1243,7 @@ msgstr[0] "%d день"
 msgstr[1] "%d дня"
 msgstr[2] "%d дней"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:162
+#: ../client/gnome/systray/src/SystrayNanny.py:213
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1048,7 +1251,7 @@ msgstr[0] "%d час"
 msgstr[1] "%d часа"
 msgstr[2] "%d часов"
 
-#: ../client/gnome/systray/src/SystrayNanny.py:164
+#: ../client/gnome/systray/src/SystrayNanny.py:215
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1057,7 +1260,7 @@ msgstr[1] "%d минуты"
 msgstr[2] "%d минут"
 
 #. Translators: This is the separator between time strings, like '1 day, 2 hours, 3 minutes'
-#: ../client/gnome/systray/src/SystrayNanny.py:166
+#: ../client/gnome/systray/src/SystrayNanny.py:217
 msgid ", "
 msgstr ", "
 
@@ -1067,7 +1270,8 @@ msgstr "Управление настройками родительского �
 
 #: ../daemon/data/org.gnome.nanny.policy.in.h:2
 msgid "You need to authenticate to modify the parental control configuration"
-msgstr "Чтобы изменить настройки родительского контроля, требуется аутентификация"
+msgstr ""
+"Чтобы изменить настройки родительского контроля, требуется аутентификация"
 
 #: ../daemon/src/DansGuardianImporter.py:63
 msgid "Blacklist imported"
@@ -1092,3 +1296,11 @@ msgstr "Импортируются домены [категория: %s] (%s%%)"
 msgid "Importing urls [category: %s] (%s%%)"
 msgstr "Импортируются адреса [категория: %s] (%s%%)"
 
+#~ msgid "Configure"
+#~ msgstr "Настроить"
+
+#~ msgid "Session"
+#~ msgstr "Компьютеру"
+
+#~ msgid "e-Mail"
+#~ msgstr "Электронной почте"
