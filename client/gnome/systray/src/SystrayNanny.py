@@ -37,6 +37,8 @@ elif os.name == "nt":
 import gobject
 from gettext import ngettext
 
+from datetime import datetime, timedelta
+
 import nanny.client.common
 import nanny.client.gnome.systray
 import gettext
@@ -46,15 +48,16 @@ ngettext = gettext.ngettext
 
 class SystrayNanny(gtk.StatusIcon):
     def __init__(self):
-        #atributes
-        self.times_left = { 0:[-1, False], 1:[-1, False], 2:[-1, False] , 3:[-1, False] }
-        self.times_show = { 0:-1, 1:-1, 2:-1, 3:-1 }
-        self.app_names = { 0: _("Session"),
-                           1: _("Web browser"),
-                           2: _("e-Mail"),
-                           3: _("Instant messanger")
+        #attributes
+        self.times_left = { 0:[-1, False, False], 1:[-1, False, False], 2:[-1, False, False] , 3:[-1, False, False] }
+        self.app_names = { 0: _("your session"),
+                           1: _("web browser"),
+                           2: _("e-mail"),
+                           3: _("instant messanger")
                          }
-        self.look_times = [ 60, 30, 15, 5, 4, 3, 2, 1 ]
+        self.notified = {0: -1, 1: -1, 2: -1, 3: -1 }
+        self.notify_moments_deny = [ 60, 30, 15, 5, 2, 1, 0 ]
+        self.notify_moments_grant = [ 60, 30, 15, 5, 0 ]
         
         #systray
         gtk.StatusIcon.__init__ (self)
@@ -93,58 +96,106 @@ class SystrayNanny(gtk.StatusIcon):
             available_time = ret[k][2]
             self.__handlerUserNotification(self.dbus,  block_status, 
                                            user_id, app_id, 
-                                           next_change, available_time)
+                                           next_change, available_time, active)
         
         return True
 
-    def __handlerUserNotification(self, dbus, block_status, user_id, app_id, next_change, available_time):
+    def __handlerUserNotification(self, dbus, block_status, user_id, app_id, next_change, available_time, active):
         if os.name == "posix" :
             uid= str(os.getuid())
         elif os.name == "nt":
             uid = self.uid
 
         if uid==user_id:
-            self.times_left[app_id] = [next_change, block_status]
+            print user_id, app_id, next_change, block_status, available_time, active
+
+            # a bit messy right now
+            # this should probably be a special function in QuarterBack
+            # is_blocked now deals only with scheduled blocks
+            minutes_till_midnight = int((datetime.now().replace(day=datetime.now().day+1, minute=0, hour=0, second=0, microsecond=0) - datetime.now()).seconds/60)
+            if (datetime.now() + timedelta(minutes=available_time)).day != datetime.now().day:
+                available_time = minutes_till_midnight + self.dbus.get_max_use_time(userid, appid)
+            elif available_time == 0:
+                if (next_change == -1 or (next_change > minutes_till_midnight and block_status == True)):
+                    next_change = minutes_till_midnight
+                    block_status = True
+            
+            if next_change != -1 or available_time != -1:
+                if next_change != -1 and available_time != -1:
+                    if (available_time == 0 and next_change > 0) or next_change <= available_time:
+                        next_ch_unified = next_change
+                    else:
+                        next_ch_unified = available_time
+                        block_status = False
+                else:
+                    if next_change == -1:
+                        next_ch_unified = available_time
+                        block_status = False
+                    elif available_time == -1:
+                        next_ch_unified = next_change
+            else:
+                next_ch_unified = -1
+
+            self.times_left[app_id] = [next_ch_unified, block_status, active]
 
 
     def __handlerTimer(self):
-        mssg=""
-        mssg_ready=False
+        msg = ""
+        need_to_notify = False
+        
         for app_id in self.times_left:
-            if self.times_left[app_id][0]!=-1:
-                if self.times_show[app_id] == -1:
-                    self.times_show[app_id] = self.times_left[app_id][0] + 60 
-
-                for time in self.look_times:
-                    #first element
-                    if time == self.look_times[0]:
-                        if self.times_left[app_id][0] >= time and self.times_show[app_id]-self.times_left[app_id][0] >= time:
-                            self.times_show[app_id]=self.times_left[app_id][0]
-                            mssg_ready=True
-                    else:
-                        if self.times_left[app_id][0]<= time and self.times_show[app_id]-self.times_left[app_id][0] >= time:
-                            self.times_show[app_id]=self.times_left[app_id][0]
-                            mssg_ready=True
-
-                time = self.__format_time (self.times_left[app_id][0])
-                if len (mssg) > 0:
-                    mssg += "\n"
-                if self.times_left[app_id][1]:
-                    # To translators: In x-minutes the access to <app> will be granted
-                    mssg += _("In %(time)s the access to %(app)s will be granted.") % {'time': time, 'app': self.app_names[app_id]}
+            next_change = self.times_left[app_id][0]
+            block_status = self.times_left[app_id][1]
+            active = self.times_left[app_id][2]
+            if self.times_left[app_id][0] != -1:
+            
+                active_notify = -1
+                if block_status == True:
+                    moments_list = self.notify_moments_grant
                 else:
-                    # To translators: In x-minutes the access to <app> will be denied
-                    mssg += _("In %(time)s the access to %(app)s will be denied.") % {'time': time, 'app': self.app_names[app_id]}
+                    moments_list = self.notify_moments_deny
+                    
+                for moment in moments_list:
+                    if next_change - 1 <= moment:
+                        active_notify = moment
+                        continue
+                    else:
+                        break
 
-        if mssg_ready:
-            self.__showNotification( mssg )
+                if ((active and not block_status) or block_status) and next_change > 1:
+                    # running and will be blocked or will be released and ...
+                    # (not running and will be blocked is of no interest)
+
+                    time = self.__format_time (next_change - 1) # -1 is to overcome lags
+                    if len(msg) > 0:
+                        msg += "\n"
+                    if block_status == True:
+                        if next_change <= 1:
+                            msg += _("The access to %(app)s granted.") % {'app': self.app_names[app_id]}
+                        else:
+                            # To translators: In x-minutes the access to <app> will be granted
+                            msg += _("In %(time)s the access to %(app)s will be granted.") % {'time': time, 'app': self.app_names[app_id]}
+                    else:
+                        if next_change <= 1:
+                            msg += _("The access to %(app)s denied.") % {'app': self.app_names[app_id]}
+                        else:
+                            # To translators: In x-minutes the access to <app> will be denied
+                            msg += _("In %(time)s the access to %(app)s will be denied.") % {'time': time, 'app': self.app_names[app_id]}
+
+                    if self.notified[app_id] != active_notify:
+                        self.notified[app_id] = active_notify
+                        need_to_notify = True
+                        
+        if need_to_notify:
+            print "NOTIFY:", msg
+            self.__showNotification(msg)
         
-        if self.last_tooltip != mssg : 
-            self.set_tooltip( mssg )
-            self.last_tooltip = mssg
-            print mssg
+        if self.last_tooltip != msg : 
+            self.set_tooltip(msg)
+            self.last_tooltip = msg
+            print "TOOLTIP:", msg
         
-        if len(mssg) != 0 :
+        if len(msg) != 0 :
             self.set_visible(True)
         else:
             self.set_visible(False)
@@ -167,12 +218,12 @@ class SystrayNanny(gtk.StatusIcon):
 
         return time
 
-    def __showNotification (self, mssg):
+    def __showNotification (self, msg):
         icon_path = os.path.join (nanny.client.gnome.systray.icons_files_dir, "48x48/apps", "nanny.png")
 
         if os.name == "posix":
             pynotify.init ("aa")
-            self.notificacion = pynotify.Notification ("Nanny", mssg, icon_path)
+            self.notificacion = pynotify.Notification ("Nanny", msg, icon_path)
             self.notificacion.show()
         elif os.name == "nt":
-            self.win_notify.new_popup("Nanny", mssg, icon_path)
+            self.win_notify.new_popup("Nanny", msg, icon_path)

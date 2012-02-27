@@ -337,12 +337,12 @@ class NannyDBus(dbus.service.Object):
     # --------------------------------------------------------------
 
     @dbus.service.signal("org.gnome.Nanny.Notification",
-                         signature='bsiii')
-    def UserNotification(self, block_status, user_id, app_id, next_change, available_time):
+                         signature='bsiiib')
+    def UserNotification(self, block_status, user_id, app_id, next_change, available_time, active):
         pass
 
-    def __UserNotification_cb(self, quarterback, block_status, user_id, app_id, next_change, available_time):
-        self.UserNotification(block_status, user_id, app_id, next_change, available_time)
+    def __UserNotification_cb(self, quarterback, block_status, user_id, app_id, next_change, available_time, active):
+        self.UserNotification(block_status, user_id, app_id, next_change, available_time, active)
 
 
     # org.gnome.Nanny.WebDatabase

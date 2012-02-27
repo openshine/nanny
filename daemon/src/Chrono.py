@@ -62,7 +62,7 @@ class Chrono(gobject.GObject) :
 
         self.quarterback.connect('block-status', self.__update_cb)
 
-    def __update_cb(self, quarterback, block_status, user_id, app_id, next_change, available_time):
+    def __update_cb(self, quarterback, block_status, user_id, app_id, next_change, available_time, active):
         '''Callback that updates the used times of the categories.'''
         if block_status == False:
             app_list = self.__get_application_list(self.categories)
@@ -86,7 +86,6 @@ class Chrono(gobject.GObject) :
                     print "Crash Chrono __update_cb"
             else:
                 category = self.categories[app_id]
-                found = False
                 for proc in proclist:
                     if len(gtop.proc_args(proc)) > 0:
                         process = gtop.proc_args(proc)[0]

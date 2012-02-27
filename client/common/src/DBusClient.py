@@ -44,7 +44,7 @@ class DBusClient(gobject.GObject):
     __metaclass__ = Singleton
 
     __gsignals__ = {'user-notification': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
-                                          (gobject.TYPE_BOOLEAN, gobject.TYPE_STRING, gobject.TYPE_INT, gobject.TYPE_INT, gobject.TYPE_INT))
+                                          (gobject.TYPE_BOOLEAN, gobject.TYPE_STRING, gobject.TYPE_INT, gobject.TYPE_INT, gobject.TYPE_INT, gobject.TYPE_BOOLEAN))
                    }
 
     def __init__(self):
@@ -261,5 +261,5 @@ class DBusClient(gobject.GObject):
     def check_web_access (self, uid, url):
         return self.nanny_wcf.CheckWebAccess (uid, url)
 
-    def __on_user_notification_cb (self, block_status, user_id, app_id, next_change, available_time):
-        self.emit ('user-notification', block_status, user_id, app_id, next_change, available_time)
+    def __on_user_notification_cb (self, block_status, user_id, app_id, next_change, available_time, active):
+        self.emit ('user-notification', block_status, user_id, app_id, next_change, available_time, active)

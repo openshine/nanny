@@ -83,7 +83,7 @@ WEEKDAYS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
 class QuarterBack(gobject.GObject) :
     __gsignals__ = {
         'block-status' : (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
-                          (gobject.TYPE_PYOBJECT, gobject.TYPE_PYOBJECT, gobject.TYPE_PYOBJECT, gobject.TYPE_PYOBJECT, gobject.TYPE_PYOBJECT,)),
+                          (gobject.TYPE_PYOBJECT, gobject.TYPE_PYOBJECT, gobject.TYPE_PYOBJECT, gobject.TYPE_PYOBJECT, gobject.TYPE_PYOBJECT, gobject.TYPE_PYOBJECT,)),
         'update-blocks' : (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
                             (gobject.TYPE_PYOBJECT,)),
         'add-wcf-to-uid' : (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
@@ -146,6 +146,7 @@ class QuarterBack(gobject.GObject) :
                         self.chrono_times[t][c]["extra_time"] = 0
                         self.chrono_times[t][c]["mercy_count"] = 0
                         self.chrono_times[t][c]["force_close"] = 0
+                        self.chrono_times[t][c]["last_active"] = -1
 
         self.__next_update_info = None
         self.usersmanager = UsersManager()
@@ -160,30 +161,6 @@ class QuarterBack(gobject.GObject) :
         self.session_filter = SessionFilter(self)
         
         gobject.timeout_add(1000, self.__polling_cb)
-
-    def __add_to_archive(self):
-        """Appends usage data of the (previous) day to archive"""
-        
-        output = open(ARCHIVE_DB, 'a')
-        writer = csv.writer(output, quoting=csv.QUOTE_NONNUMERIC)
-
-        v=[]
-        for t in self.chrono_times:
-            z=[self.chrono_day, t]
-            for c in self.chrono_times[t]:
-                for s in self.chrono_times[t][c]:
-                    z.append(self.chrono_times[t][c][s])
-            v.append(z)
-
-        writer.writerows(v)
-        output.close()
-
-    def __save(self):        
-        output = open(BLOCK_DB, 'wb')
-        p = [self.blocks, self.chore_settings, self.wcf_uid_list,
-             self.chrono_times, self.chrono_day]
-        pickle.dump(p, output)
-        output.close()
 
     def __polling_cb(self):
         self.__check_users_info()
@@ -200,25 +177,6 @@ class QuarterBack(gobject.GObject) :
         self.__next_update_info = (time.localtime().tm_min + 1) % 60
         return True
 
-    def __refresh_info(self):
-        for user_id in self.blocks.keys() :
-            for app_id in self.blocks[user_id] :
-                block_status, next_change = self.is_blocked(user_id, app_id)
-                available_time = self.get_available_time(user_id, app_id)
-                self.emit("block-status", block_status, user_id, app_id, next_change, available_time)
-
-    def get_block_status_by_uid(self, user_id):
-        if user_id not in self.blocks.keys():
-            return {}
-        
-        ret = {}
-        for app_id in self.blocks[user_id] :
-            block_status, next_change = self.is_blocked(user_id, app_id)
-            available_time = self.get_available_time(user_id, app_id)
-            ret[app_id] = [block_status, next_change, available_time]
-            
-        return ret
-
     def __check_users_info(self):
         some_users_info_changed = False
         if not self.usersmanager.has_changes() :
@@ -230,13 +188,10 @@ class QuarterBack(gobject.GObject) :
                 self.blocks[user_id] = {0: [], 1: [], 2: [], 3: []}
                 some_users_info_changed = True
             if not self.chrono_times.has_key(user_id) :
-                self.chrono_times[user_id] = {0: {"max_use": 0, "used_time": 0, "extra_time": 0, "mercy_count": 0, "force_close": 0},
-                                              1: {"max_use": 0, "used_time": 0, "extra_time": 0, "mercy_count": 0, "force_close": 0},
-                                              2: {"max_use": 0, "used_time": 0, "extra_time": 0, "mercy_count": 0, "force_close": 0},
-                                              3: {"max_use": 0, "used_time": 0, "extra_time": 0, "mercy_count": 0, "force_close": 0}}
+                self.chrono_times[user_id] = self.__new_user_chrono_times()
                 some_users_info_changed = True
             if not self.chore_settings.has_key(user_id) :
-                self.chore_settings[user_id] = [True, 5]
+                self.chore_settings[user_id] = [True, 5] # defaults to: can use chores, max 5 unfinished
                 some_users_info_changed = True
 
         # remove deleted users from lists
@@ -282,6 +237,52 @@ class QuarterBack(gobject.GObject) :
             self.emit("update-users-info")
             self.__refresh_info()
 
+    def __refresh_info(self):
+        for user_id in self.blocks.keys() :
+            for app_id in self.blocks[user_id] :
+                block_status, next_change = self.is_blocked(user_id, app_id)
+                available_time = self.get_available_time(user_id, app_id)
+                self.emit("block-status", block_status, user_id, app_id, next_change, available_time, self.chrono_times[user_id][app_id]["last_active"] + 1 >= int(time.time()/60))
+
+    def __get_min_block_status(self, user_id, app_id, min) :
+        for block in self.blocks[user_id][app_id]:
+            l, r = block
+            if l <= min <= r :
+                return True
+        return False
+
+    def __add_to_archive(self):
+        """Appends usage data of the (previous) day to archive"""
+        
+        output = open(ARCHIVE_DB, 'a')
+        writer = csv.writer(output, quoting=csv.QUOTE_NONNUMERIC)
+
+        v=[]
+        for t in self.chrono_times:
+            z=[self.chrono_day, t]
+            for c in self.chrono_times[t]:
+                for s in self.chrono_times[t][c]:
+                    z.append(self.chrono_times[t][c][s])
+            v.append(z)
+
+        writer.writerows(v)
+        output.close()
+
+
+    def __save(self):        
+        output = open(BLOCK_DB, 'wb')
+        p = [self.blocks, self.chore_settings, self.wcf_uid_list,
+             self.chrono_times, self.chrono_day]
+        pickle.dump(p, output)
+        output.close()
+
+    def __new_user_chrono_times(self):
+        user ={0: {"max_use": 0, "used_time": 0, "extra_time": 0, "mercy_count": 0, "force_close": 0, "last_active": -1},
+               1: {"max_use": 0, "used_time": 0, "extra_time": 0, "mercy_count": 0, "force_close": 0, "last_active": -1},
+               2: {"max_use": 0, "used_time": 0, "extra_time": 0, "mercy_count": 0, "force_close": 0, "last_active": -1},
+               3: {"max_use": 0, "used_time": 0, "extra_time": 0, "mercy_count": 0, "force_close": 0, "last_active": -1}}
+        return user
+
     def is_allowed_to_use(self, user_id, app_id):
         available_time = self.get_available_time(user_id, app_id)
         is_blocked = self.is_blocked(user_id, app_id)[0]
@@ -316,7 +317,6 @@ class QuarterBack(gobject.GObject) :
         if not self.blocks[user_id].has_key(app_id) :
             return block_status, next_block
 
-        
         if date_time == None:
             t = time.localtime()
             h = t.tm_hour
@@ -331,7 +331,7 @@ class QuarterBack(gobject.GObject) :
         atime = int(w)*24*60 + int(h)*60 + int(m)
 
         block_status = self.__get_min_block_status(user_id, app_id, atime)
-            
+
         week_m_list = range(atime+1, 24*60*7) + range(0, atime+1)
 
         for m in week_m_list :
@@ -352,17 +352,23 @@ class QuarterBack(gobject.GObject) :
                     return block_status, next_block
 
         return block_status, next_block
+
                 
+    def get_block_status_by_uid(self, user_id):
+        if user_id not in self.blocks.keys():
+            return {}
+        
+        ret = {}
+        for app_id in self.blocks[user_id] :
+            block_status, next_change = self.is_blocked(user_id, app_id)
+            available_time = self.get_available_time(user_id, app_id)
+            ret[app_id] = [block_status, next_change, available_time]
+            
+        return ret
+
                     
-    def __get_min_block_status(self, user_id, app_id, min) :
-        for block in self.blocks[user_id][app_id]:
-            l, r = block
-            if l <= min <= r :
-                return True
-        return False
-
-
     def set_blocks(self, user_id, app_id, data):
+    
         if not self.blocks.has_key(user_id) :
             self.blocks[user_id] = {} 
 
@@ -479,7 +485,7 @@ class QuarterBack(gobject.GObject) :
             self.chrono_times[userid] = new_user
 
         if not self.chrono_times[userid].has_key(appid):
-            new_app = {"max_use": 0, "used_time": 0, "extra_time": 0, "mercy_count": 0, "force_close": 0}
+            new_app = {"max_use": 0, "used_time": 0, "extra_time": 0, "mercy_count": 0, "force_close": 0, "last_active": -1}
             self.chrono_times[userid][appid] = new_app
 
         self.chrono_times[userid][appid]["max_use"] = mins
@@ -516,11 +522,12 @@ class QuarterBack(gobject.GObject) :
     def subtract_time(self, userid, appid, mins=1):
         if self.chrono_times.has_key(userid):
             if self.chrono_times[userid].has_key(appid):
+                self.chrono_times[userid][appid]["last_active"] = int(time.time()/60)
                 if self.get_available_time(userid, appid) != 0:
-                        self.chrono_times[userid][appid]["used_time"] += mins
-                        print "Substract time (%s, %s) = %s" % (userid, appid, 
-                                                            self.chrono_times[userid][appid]["used_time"])
-                        self.__save()
+                    self.chrono_times[userid][appid]["used_time"] += mins
+                    print "Substract time (%s, %s) = %s" % (userid, appid, 
+                                                        self.chrono_times[userid][appid]["used_time"])
+                    self.__save()
 
     def new_chrono_day(self):
         self.chrono_day = (datetime.today() - datetime.utcfromtimestamp(0)).days
@@ -533,12 +540,8 @@ class QuarterBack(gobject.GObject) :
                 
         self.__save()
 
-    def __new_user_chrono_times(self):
-        user ={0: {"max_use": 0, "used_time": 0, "extra_time": 0, "mercy_count": 0, "force_close": 0},
-               1: {"max_use": 0, "used_time": 0, "extra_time": 0, "mercy_count": 0, "force_close": 0},
-               2: {"max_use": 0, "used_time": 0, "extra_time": 0, "mercy_count": 0, "force_close": 0},
-               3: {"max_use": 0, "used_time": 0, "extra_time": 0, "mercy_count": 0, "force_close": 0}}
-        return user
+
+
 
 gobject.type_register(QuarterBack)
 
