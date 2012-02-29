@@ -112,9 +112,9 @@ class SystrayNanny(gtk.StatusIcon):
             # a bit messy right now
             # this should probably be a special function in QuarterBack
             # is_blocked now deals only with scheduled blocks
-            minutes_till_midnight = int((datetime.now().replace(day=datetime.now().day+1, minute=0, hour=0, second=0, microsecond=0) - datetime.now()).seconds/60)
+            minutes_till_midnight = int(((datetime.now()+timedelta(days=1)).replace(minute=0, hour=0, second=0, microsecond=0) - datetime.now()).seconds/60)
             if (datetime.now() + timedelta(minutes=available_time)).day != datetime.now().day:
-                available_time = minutes_till_midnight + self.dbus.get_max_use_time(userid, appid)
+                available_time = minutes_till_midnight + self.dbus.get_max_use_time(user_id, app_id)
             elif available_time == 0:
                 if (next_change == -1 or (next_change > minutes_till_midnight and block_status == True)):
                     next_change = minutes_till_midnight

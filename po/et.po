@@ -726,7 +726,7 @@ msgid ""
 "Click this button if you want to make changes."
 msgstr ""
 "<b>Haldusõigused pole hetkel tarvitusel</b>\n"
-"Muudatuste tegemiseks vajuta sellele nupule."
+"Muudatuste tegemiseks vajuta sellele nupule"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
 msgid "Configure _chores & rewards"
