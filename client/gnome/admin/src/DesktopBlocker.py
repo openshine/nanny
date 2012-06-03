@@ -92,13 +92,13 @@ class DesktopBlocker(gtk.Window):
         self.add(self.main_vbox)
         self.main_vbox.show_all()
 
-        self.__setup_ui()
-
         self.close_button.connect("clicked", self.__close_button_clicked_cb, None)
         self.time_button.connect("clicked", self.__time_button_clicked_cb, None)
         self.buy_time_button.connect("clicked", self.__buy_time_button_clicked_cb, None)
 
         self.close_button_text = self.close_button.get_label()
+
+        self.__setup_ui()
 
     def __setup_ui(self, mercy_button=True):
 
