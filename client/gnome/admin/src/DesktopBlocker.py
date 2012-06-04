@@ -296,7 +296,7 @@ class DesktopBlocker(gtk.Window):
         for proc in proclist:
             if len(gtop.proc_args(proc))==0:
                 continue
-            if gtop.proc_args(proc)[0] == "x-session-manager" or gtop.proc_args(proc)[0] == "/usr/bin/x-session-manager" or gtop.proc_args(proc)[0] == "/usr/bin/gnome-session" or gtop.proc_args(proc)[0] == "gnome-session":
+            if gtop.proc_args(proc)[0] == "x-session-manager" or gtop.proc_args(proc)[0] == "/usr/bin/x-session-manager" or gtop.proc_args(proc)[0] == "/usr/bin/gnome-session" or gtop.proc_args(proc)[0] == "gnome-session" or gtop.proc_args(proc)[0] == "/usr/bin/lxsession" or gtop.proc_args(proc)[0] == "lxsession":
                 cmd = "kill -9 %s" % (proc)
                 print "Executing fallback:", cmd
                 Popen(cmd, shell=True, stdout=PIPE)
