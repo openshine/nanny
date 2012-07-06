@@ -5,39 +5,40 @@ client/common/src/Singleton.py
 client/common/src/DBusClient.py
 client/common/src/__init__.py
 client/gnome/admin/data/nanny-admin-console.desktop.in
-[type: gettext/glade]client/gnome/admin/data/ui/nanny_admin_console.ui
-[type: gettext/glade]client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui
-[type: gettext/glade]client/gnome/admin/data/ui/nac_wcf_dialog.ui
 [type: gettext/glade]client/gnome/admin/data/ui/nac_chores_dialog.ui
 [type: gettext/glade]client/gnome/admin/data/ui/nac_chores_edit_dialog.ui
+[type: gettext/glade]client/gnome/admin/data/ui/nac_wcf_dialog.ui
+[type: gettext/glade]client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui
+[type: gettext/glade]client/gnome/admin/data/ui/nanny_admin_console.ui
+[type: gettext/glade]client/gnome/admin/data/ui/nanny_desktop_blocker.ui
 [type: gettext/glade]client/gnome/admin/data/ui/nbm_pbl_dialog.ui
 [type: gettext/glade]client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui
-[type: gettext/glade]client/gnome/admin/data/ui/nanny_desktop_blocker.ui
-client/gnome/admin/src/__init__.py.in
-client/gnome/admin/src/ScheduleCalendar.py
-client/gnome/admin/src/ConfigureProxyDialog.py
-client/gnome/admin/src/ConfigureChoresDialog.py
 client/gnome/admin/src/AdminConsole.py
 client/gnome/admin/src/BlacklistManager.py
+client/gnome/admin/src/ConfigureChoresDialog.py
+client/gnome/admin/src/ConfigureProxyDialog.py
+client/gnome/admin/src/DesktopBlocker.py
+client/gnome/admin/src/__init__.py.in
+client/gnome/admin/src/ScheduleCalendar.py
+client/gnome/__init__.py.in
 client/gnome/nanny-firefox-win32/nanny-firefox-blocker
 client/gnome/systray/src/__init__.py.in
 client/gnome/systray/src/SystrayNanny.py
-client/gnome/__init__.py.in
 client/__init__.py
 daemon/data/org.gnome.nanny.policy.in
-daemon/src/DansGuardianImporter.py
-daemon/src/NannyDBus.py
-daemon/src/QuarterBack.py
-daemon/src/LinuxFiltering.py
-daemon/src/LinuxUsersManager.py
 daemon/src/Chrono.py
-daemon/src/LinuxSessionFiltering.py
 daemon/src/Daemon.py
-daemon/src/proxy/Importer.py
-daemon/src/proxy/Proxy.py
-daemon/src/proxy/Controllers.py
-daemon/src/proxy/TwistedProxy.py
-daemon/src/proxy/__init__.py
-daemon/src/LinuxWebContentFiltering.py
+daemon/src/DansGuardianImporter.py
 daemon/src/__init__.py
+daemon/src/LinuxFiltering.py
+daemon/src/LinuxSessionFiltering.py
+daemon/src/LinuxUsersManager.py
+daemon/src/LinuxWebContentFiltering.py
+daemon/src/NannyDBus.py
+daemon/src/proxy/Controllers.py
+daemon/src/proxy/Importer.py
+daemon/src/proxy/__init__.py
+daemon/src/proxy/Proxy.py
+daemon/src/proxy/TwistedProxy.py
+daemon/src/QuarterBack.py
 __init__.py
