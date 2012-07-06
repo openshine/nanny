@@ -17,6 +17,7 @@ ltmain.sh
 missing
 mkinstalldirs
 po/Makefile.in.in
+po/nanny.pot
 po/POTFILES
 po/stamp-it
 py-compile
