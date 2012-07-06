@@ -1217,7 +1217,7 @@ msgid "In %(time)s the access to %(app)s will be denied."
 msgstr "בעוד %(time)s תיחסם הגישה אל %(app)s."
 
 #: ../client/gnome/systray/src/SystrayNanny.py:211
-#, python-format
+#, fuzzy, python-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "יום אחד"
@@ -1225,7 +1225,7 @@ msgstr[1] "%d ימים"
 msgstr[2] "יומיים"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:213
-#, python-format
+#, fuzzy, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "שעה אחת"
@@ -1233,7 +1233,7 @@ msgstr[1] "%d שעות"
 msgstr[2] "שעתיים"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:215
-#, python-format
+#, fuzzy, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "דקה אחת"

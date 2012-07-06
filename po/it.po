@@ -1227,7 +1227,7 @@ msgstr[0] "%d ora"
 msgstr[1] "%d ore"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:215
-#, python-format
+#, fuzzy, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "minuto"
