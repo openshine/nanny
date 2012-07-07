@@ -53,7 +53,7 @@ class SystrayNanny(gtk.StatusIcon):
         self.app_names = { 0: _("your session"),
                            1: _("web browser"),
                            2: _("e-mail"),
-                           3: _("instant messanger")
+                           3: _("instant messenger")
                          }
         self.notified = {0: -1, 1: -1, 2: -1, 3: -1 }
         self.notify_moments_deny = [ 60, 30, 15, 5, 2, 1, 0 ]
