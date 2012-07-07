@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the GNOME Nanny package.
 # Juanje Ojeda Croissier <jojeda@emergya.es>, 2010.
 # Jorge González <jorgegonz@svn.gnome.org>, 2010.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nanny.HEAD\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-27 14:08+0200\n"
-"PO-Revision-Date: 2011-02-06 19:35+0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=nanny&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-07-06 22:13+0000\n"
+"PO-Revision-Date: 2012-07-07 13:07+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -18,6 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 2.91.5\n"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:32
@@ -726,18 +728,180 @@ msgstr ""
 "Intente reactivarlo de nuevo."
 
 #: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:1
-msgid "Nanny parental control admin console"
-msgstr "Consola de administración de Nanny"
-
-#: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:2
 msgid "Parental Control"
 msgstr "Control parental"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
-msgid "0"
+#: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:2
+msgid "Nanny parental control admin console"
+msgstr "Consola de administración de Nanny"
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:1
+msgid ""
+"Select an entry and press this button to add or remove chores to or from "
+"user&apos;s enabled chores list"
 msgstr ""
 
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:2
+msgid ""
+"Select an entry and press this button to add or remove chores to or from "
+"user's enabled chores list"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:3
+msgid "Assign chores"
+msgstr "Asignar tareas"
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:4
+msgid "_Finish"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:5
+msgid "Chores in progress"
+msgstr "Tareas en progreso"
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:6
+msgid "Finished chores"
+msgstr "Tareas terminadas"
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:7
+msgid "Enable rewarding time for _contracting chores"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:8
+msgid "Amount of contracted but unfinished chores allowed"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:9
+msgid ""
+"If the amount happens to exceed this value, user cannot contract more chores"
+msgstr ""
+
+#. The time given for contracting the chore
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:2
+msgid "Reward:"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:3
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:2
+#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:2
+msgid "Description:"
+msgstr "Descripción:"
+
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:4
+msgid "Title:"
+msgstr "Título:"
+
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:5
+msgid ""
+"The chores with time rewards will be displayed as an option to obtain more "
+"usage time to user when the session time limit has been reached and blocking "
+"the session is initiated. User can contract the chore to get extra usage "
+"time immediately."
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:1
+msgid "Forbidden sites"
+msgstr "Sitios prohibidos"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:2
+msgid "Allowed sites"
+msgstr "Sitios permitidos"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:3
+msgid "_Update"
+msgstr "A_ctualizar"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
+msgid "Blacklists"
+msgstr "Listas negras"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:5
+#, fuzzy
+msgid "Enable _web content filtering"
+msgstr "Usar filtrado de contenidos web"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:1
+msgid "URL:"
+msgstr "URL:"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:3
+#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:1
+msgid "Name:"
+msgstr "Nombre:"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:4
+#, fuzzy
+msgid "All the fields are mandatory, so please fill all of them.\t"
+msgstr ""
+"<span color=\"red\">Todos los campos son obligatorios. Rellénelos todos.</"
+"span>"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
+msgid "Use the computer"
+msgstr "Uso del equipo"
+
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:2
+msgid "hours a day"
+msgstr "horas al día"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:3
+msgid "Force logoff"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
+msgid "Force user either to log off or buy extra time after desktop is blocked"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
+#, fuzzy
+msgid "hours to"
+msgstr "horas al día"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
+msgid "0"
+msgstr "0"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
+msgid "that's left today"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
+msgid "Configure _chores & rewards"
+msgstr ""
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
+msgid "PC use time"
+msgstr "Uso del PC"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
+msgid "Use the web browser"
+msgstr "Uso del navegador"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
+msgid "Configure web filtering"
+msgstr "Configurar el filtrado web"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
+msgid "Web browser"
+msgstr "Navegador web"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:13
+msgid "Use the mail client"
+msgstr "Uso del cliente de correo"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:14
+msgid "Mail client"
+msgstr "Cliente de correo"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:15
+msgid "Use the instant messaging"
+msgstr "Uso de la mensajería instantánea"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:16
+msgid "Instant messaging"
+msgstr "Mensajería instantánea"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:17
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
 msgid ""
 "<b>You don't have admin privileges</b>\n"
@@ -746,183 +910,7 @@ msgstr ""
 "<b>No tiene privilegios de administración</b>\n"
 "Pulse este botón si quiere realizar los cambios."
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
-msgid "Configure _chores & rewards"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
-#, fuzzy
-msgid "Configure web filtering"
-msgstr "Usar filtrado de contenidos web"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
-msgid "Force logoff"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
-msgid "Force user either to log off or buy extra time after desktop is blocked"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
-msgid "Instant messaging"
-msgstr "Mensajería instantánea"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
-msgid "Mail client"
-msgstr "Cliente de correo"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
-msgid "PC use time"
-msgstr "Uso del PC"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
-msgid "Use the computer"
-msgstr "Uso del equipo"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
-msgid "Use the instant messaging"
-msgstr "Uso de la mensajería instantánea"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:13
-msgid "Use the mail client"
-msgstr "Uso del cliente de correo"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:14
-msgid "Use the web browser"
-msgstr "Uso del navegador"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:15
-msgid "Web browser"
-msgstr "Navegador web"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:16
-msgid "hours a day"
-msgstr "horas al día"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:17
-#, fuzzy
-msgid "hours to"
-msgstr "horas al día"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:18
-msgid "that's left today"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:1
-#, fuzzy
-msgid "All the fields are mandatory, so please fill all of them.\t"
-msgstr ""
-"<span color=\"red\">Todos los campos son obligatorios. Rellénelos todos.</"
-"span>"
-
-#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:2
-#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:1
-#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:1
-msgid "Description:"
-msgstr "Descripción:"
-
-#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:3
-#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:2
-msgid "Name:"
-msgstr "Nombre:"
-
-#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:4
-msgid "URL:"
-msgstr "URL:"
-
-#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:1
-msgid "Allowed sites"
-msgstr "Sitios permitidos"
-
-#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:2
-msgid "Blacklists"
-msgstr "Listas negras"
-
-#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:3
-#, fuzzy
-msgid "Enable _web content filtering"
-msgstr "Usar filtrado de contenidos web"
-
-#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
-msgid "Forbidden sites"
-msgstr "Sitios prohibidos"
-
-#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:5
-msgid "_Update"
-msgstr "A_ctualizar"
-
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:1
-msgid "Amount of contracted but unfinished chores allowed"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:2
-msgid "Assign chores"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:3
-msgid "Chores in progress"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:4
-msgid "Enable rewarding time for _contracting chores"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:5
-msgid "Finished chores"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:6
-msgid ""
-"If the amount happens to exceed this value, user cannot contract more chores"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:7
-msgid ""
-"Select an entry and press this button to add or remove chores to or from "
-"user&apos;s enabled chores list"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:8
-msgid ""
-"Select an entry and press this button to add or remove chores to or from "
-"user's enabled chores list"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:9
-msgid "_Finish"
-msgstr ""
-
-#. The time given for contracting the chore
-#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:3
-msgid "Reward:"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:4
-msgid ""
-"The chores with time rewards will be displayed as an option to obtain more "
-"usage time to user when the session time limit has been reached and blocking "
-"the session is initiated. User can contract the chore to get extra usage "
-"time immediately."
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:5
-msgid "Title:"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
-msgid "Import..."
-msgstr "Importar..."
-
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:1
-#, fuzzy
-msgid ""
-"<span foreground=\"white\"><big>You can still have a moment for closing the "
-"documents or applications</big></span>"
-msgstr ""
-"<span foreground=\"white\"><big>Usted tiene tiempo disponible si necesita "
-"cerrar documentos o aplicaciones.</big></span>"
-
-#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
 #, fuzzy
 msgid ""
 "<span size=\"25000\" foreground=\"white\"><b>Your computer usage time is up "
@@ -931,47 +919,131 @@ msgstr ""
 "<span size=\"25000\" foreground=\"white\"><b>Usted ha gastado su tiempo de "
 "uso del ordenador</b></span>"
 
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
+msgid ""
+"<span foreground=\"white\"><big>You can still have a moment for closing the "
+"documents or applications</big></span>"
+msgstr ""
+"<span foreground=\"white\"><big>Todavía tiene tiempo para cerrar documentos "
+"o aplicaciones</big></span>"
+
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
-#, fuzzy
-msgid "Close session now"
-msgstr "cerrar sesión"
+msgid "Give me more time"
+msgstr "Obtener más tiempo"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
-#, fuzzy
 msgid "Five minutes, please"
-msgstr "5 minutos, por favor"
+msgstr "Cinco minutos, por favor"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:5
-msgid "Give me more time"
+msgid "Close session now"
+msgstr "Cerrar sesión ahora"
+
+#: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
+msgid "Import..."
+msgstr "Importar..."
+
+#: ../client/gnome/admin/src/AdminConsole.py:52
+msgid "Nanny daemon is not started"
+msgstr "No se ha iniciado el demonio Nanny"
+
+#: ../client/gnome/admin/src/AdminConsole.py:53
+msgid "To use the parental control, please start up the daemon."
+msgstr "Para usar el control parental, inicie el demonio."
+
+#. FACE
+#: ../client/gnome/admin/src/AdminConsole.py:200
+msgid "Users"
+msgstr "Usuarios"
+
+#: ../client/gnome/admin/src/AdminConsole.py:389
+msgid "User's configuration has been saved"
+msgstr "Se guardó la configuración del usuario"
+
+#: ../client/gnome/admin/src/AdminConsole.py:415
+#, python-format
+msgid "Nanny Admin Console - %s"
+msgstr "Consola de administración de Nanny: %s"
+
+#: ../client/gnome/admin/src/AdminConsole.py:418
+msgid "Nanny Admin Console"
+msgstr "Consola de administración de Nanny"
+
+#: ../client/gnome/admin/src/AdminConsole.py:584
+msgid "You have made changes"
+msgstr "Ha realizado cambios"
+
+#: ../client/gnome/admin/src/AdminConsole.py:585
+msgid ""
+"If you don't press the 'Apply' button, your changes will be lost.\n"
+"Are you sure?"
 msgstr ""
+"Se perderán sus cambios si no pulsa el botón «Aplicar».\n"
+"¿Esta seguro?"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:310
-msgid "Monday"
-msgstr "Lunes"
+#: ../client/gnome/admin/src/BlacklistManager.py:39
+msgid "Blacklist Filter Configuration"
+msgstr "Configuración del filtro de contenidos web"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:310
-msgid "Tuesday"
-msgstr "Martes"
+#: ../client/gnome/admin/src/BlacklistManager.py:114
+#, python-format
+msgid ""
+"<b>%s (Read only)</b>\n"
+"   %s"
+msgstr ""
+"<b>%s (Sólo lectura)</b>\n"
+"   %s"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:310
-msgid "Wednesday"
-msgstr "Miércoles"
+#: ../client/gnome/admin/src/BlacklistManager.py:156
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:629
+msgid "<b>Are you sure you want to delete this blacklist?</b>"
+msgstr "<b>¿Está seguro de que desea borrar esta lista negra?</b>"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:310
-msgid "Thursday"
-msgstr "Jueves"
+#: ../client/gnome/admin/src/BlacklistManager.py:157
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:630
+msgid ""
+"This action will remove all the user configuration linked to the blacklist."
+msgstr ""
+"Esta acción borrará todas las configuraciones de usuario relacionadas con "
+"esta lista negra."
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:310
-msgid "Friday"
-msgstr "Viernes"
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:42
+#, fuzzy
+msgid "Chores & Rewards Configuration"
+msgstr "Configuración del filtro de contenidos web"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:310
-msgid "Saturday"
-msgstr "Sábado"
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:388
+msgid "Add chore description"
+msgstr "Añadir descripción de la tarea"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:310
-msgid "Sunday"
-msgstr "Domingo"
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:420
+msgid "Edit chore description"
+msgstr "Editar la descripción de la tarea"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:459
+msgid "<b>Are you sure you want to delete this chore description entry?</b>"
+msgstr ""
+"<b>¿Está seguro de querer eliminar la entrada de la descripción de esta "
+"tarea?</b>"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:460
+msgid "This action will remove all the user chores linked to the description."
+msgstr ""
+"Esta acción quitará todas las tareas de usuario enlazadas a la descripción."
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:517
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:526
+msgid "Error while deleting the chore entry"
+msgstr "Error al eliminar la entrada de la tarea"
+
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:518
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:527
+msgid ""
+"Some error has occured while deleting the chore entry.\n"
+"Please try again."
+msgstr ""
+"Ocurrió un error al eliminar la entrada de la tarea\n"
+"Inténtelo de nuevo."
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:39
 msgid "Web Content Filter Configuration"
@@ -1009,12 +1081,11 @@ msgstr "Actualizando lista negra (%s%%)"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:282
 msgid "Add blacklist entry"
-msgstr ""
+msgstr "Añadir entrada a la lista negra"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:309
-#, fuzzy
 msgid "Add whitelist entry"
-msgstr "lista blanca"
+msgstr "Añadir entrada a la lista blanca"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:345
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:356
@@ -1077,112 +1148,41 @@ msgid ""
 msgstr ""
 "Es algo similar a http://www.nannycentral.info/blacklist/blacklist.json ..."
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:629
-#: ../client/gnome/admin/src/BlacklistManager.py:156
-msgid "<b>Are you sure you want to delete this blacklist?</b>"
-msgstr "<b>¿Está seguro de que desea borrar esta lista negra?</b>"
-
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:630
-#: ../client/gnome/admin/src/BlacklistManager.py:157
-msgid ""
-"This action will remove all the user configuration linked to the blacklist."
-msgstr ""
-"Esta acción borrará todas las configuraciones de usuario relacionadas con "
-"esta lista negra."
-
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:42
-#, fuzzy
-msgid "Chores & Rewards Configuration"
-msgstr "Configuración del filtro de contenidos web"
-
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:388
-#, fuzzy
-msgid "Add chore description"
-msgstr "Descripción:"
-
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:420
-msgid "Edit chore description"
-msgstr ""
-
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:459
-#, fuzzy
-msgid "<b>Are you sure you want to delete this chore description entry?</b>"
-msgstr "<b>¿Está seguro de que desea borrar esta lista negra?</b>"
-
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:460
-#, fuzzy
-msgid "This action will remove all the user chores linked to the description."
-msgstr ""
-"Esta acción borrará todas las configuraciones de usuario relacionadas con "
-"esta lista negra."
-
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:517
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:526
-#, fuzzy
-msgid "Error while deleting the chore entry"
-msgstr "Error al borrar los filtros"
-
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:518
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:527
-#, fuzzy
-msgid ""
-"Some error has occured while deleting the chore entry.\n"
-"Please try again."
-msgstr ""
-"Ocurrió un error al borrar los filtros\n"
-"Inténtelo de nuevo."
-
-#: ../client/gnome/admin/src/AdminConsole.py:52
-msgid "Nanny daemon is not started"
-msgstr "No se ha iniciado el demonio Nanny"
-
-#: ../client/gnome/admin/src/AdminConsole.py:53
-msgid "To use the parental control, please start up the daemon."
-msgstr "Para usar el control parental, inicie el demonio."
-
-#. FACE
-#: ../client/gnome/admin/src/AdminConsole.py:200
-msgid "Users"
-msgstr "Usuarios"
-
-#: ../client/gnome/admin/src/AdminConsole.py:389
-#, fuzzy
-msgid "User's configuration has been saved"
-msgstr "Se guardó su configuración"
-
-#: ../client/gnome/admin/src/AdminConsole.py:415
+#. it could be nice to use 1:06 style layout instead of 1,1
+#. maybe switch to minutes after all
+#. time.strftime(_('%H:%M'), time.gmtime(int(line[3])*60))
+#: ../client/gnome/admin/src/DesktopBlocker.py:133
 #, python-format
-msgid "Nanny Admin Console - %s"
-msgstr "Consola de administración de Nanny: %s"
+msgid " (%s min)"
+msgstr " (%s min)"
 
-#: ../client/gnome/admin/src/AdminConsole.py:418
-msgid "Nanny Admin Console"
-msgstr "Consola de administración de Nanny"
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
+msgid "Monday"
+msgstr "Lunes"
 
-#: ../client/gnome/admin/src/AdminConsole.py:584
-msgid "You have made changes"
-msgstr "Ha realizado cambios"
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
+msgid "Tuesday"
+msgstr "Martes"
 
-#: ../client/gnome/admin/src/AdminConsole.py:585
-msgid ""
-"If you don't press the 'Apply' button, your changes will be lost.\n"
-"Are you sure?"
-msgstr ""
-"Se perderán sus cambios si no pulsa el botón «Aplicar».\n"
-"¿Esta seguro?"
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
+msgid "Wednesday"
+msgstr "Miércoles"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:39
-msgid "Blacklist Filter Configuration"
-msgstr "Configuración del filtro de contenidos web"
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
+msgid "Thursday"
+msgstr "Jueves"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:114
-#, python-format
-msgid ""
-"<b>%s (Read only)</b>\n"
-"   %s"
-msgstr ""
-"<b>%s (Sólo lectura)</b>\n"
-"   %s"
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
+msgid "Friday"
+msgstr "Viernes"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
+msgid "Saturday"
+msgstr "Sábado"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
+msgid "Sunday"
+msgstr "Domingo"
 
 #: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:97
 msgid "Firefox proxy settings change detected"
@@ -1196,29 +1196,25 @@ msgstr ""
 "parental."
 
 #: ../client/gnome/systray/src/SystrayNanny.py:53
-#, fuzzy
 msgid "your session"
-msgstr "cerrar sesión"
+msgstr "su sesión"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:54
-#, fuzzy
 msgid "web browser"
-msgstr "Navegador web"
+msgstr "navegador web"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:55
-#, fuzzy
 msgid "e-mail"
-msgstr "correo electrónico "
+msgstr "correo-e"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:56
-#, fuzzy
-msgid "instant messanger"
-msgstr "Mensajería instantánea"
+msgid "instant messenger"
+msgstr "mensajería instantánea"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:174
-#, fuzzy, python-format
+#, python-format
 msgid "The access to %(app)s granted."
-msgstr "En %(time)s se permitirá el acceso a %(app)s."
+msgstr "Acceso a %(app)s permitido."
 
 #. To translators: In x-minutes the access to <app> will be granted
 #: ../client/gnome/systray/src/SystrayNanny.py:177
@@ -1227,9 +1223,9 @@ msgid "In %(time)s the access to %(app)s will be granted."
 msgstr "En %(time)s se permitirá el acceso a %(app)s."
 
 #: ../client/gnome/systray/src/SystrayNanny.py:180
-#, fuzzy, python-format
+#, python-format
 msgid "The access to %(app)s denied."
-msgstr "En %(time)s se denegará el acceso a %(app)s."
+msgstr "Acceso a %(app)s denegado."
 
 #. To translators: In x-minutes the access to <app> will be denied
 #: ../client/gnome/systray/src/SystrayNanny.py:183
