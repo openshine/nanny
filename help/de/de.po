@@ -2,57 +2,47 @@
 # Copyright (C) 2010 nanny's COPYRIGHT HOLDER
 # This file is distributed under the same license as the nanny package.
 # Mario Blättermann <mariobl@gnome.org>, 2010.
-#
+# Daniel Winzen <d@winzen4.de>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: nanny master\n"
-"POT-Creation-Date: 2010-02-23 17:52+0000\n"
-"PO-Revision-Date: 2010-09-29 10:08+0100\n"
-"Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
+"POT-Creation-Date: 2012-07-10 07:16+0000\n"
+"PO-Revision-Date: 2012-08-12 20:35+0100\n"
+"Last-Translator: Christian Kirbach <Christian.Kirbach@googlemail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/nanny.xml:180(None)
-msgid ""
-"@@image: 'figures/nanny-session.png'; md5=6af68f555e214ab5b56e0aa1ec8c043d"
+#: C/nanny.xml:205(None)
+msgid "@@image: 'figures/nanny-session.png'; md5=6af68f555e214ab5b56e0aa1ec8c043d"
 msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/nanny.xml:210(None)
-msgid ""
-"@@image: 'figures/nanny-add-forbidden-site.png'; "
-"md5=a505de424850262bf01218efa1594120"
+#: C/nanny.xml:235(None)
+msgid "@@image: 'figures/nanny-add-forbidden-site.png'; md5=a505de424850262bf01218efa1594120"
 msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/nanny.xml:224(None)
-msgid ""
-"@@image: 'figures/nanny-web-content-filter-blacklists.png'; "
-"md5=07ddbc0ad4a3c0d4f109dd4841238e72"
-msgstr ""
-
-#. When image changes, this message will be marked fuzzy or untranslated for you.
-#. It doesn't matter what you translate it to: it's not used at all.
-#: C/nanny.xml:243(None)
-msgid ""
-"@@image: 'figures/nanny-select-file-to-import.png'; "
-"md5=a01c0376799f435288fb245fde76040d"
+#: C/nanny.xml:249(None)
+msgid "@@image: 'figures/nanny-web-content-filter-blacklists.png'; md5=4c87d9c2876906c17e9ca9a778ed27cf"
 msgstr ""
 
 #: C/nanny.xml:19(title)
-msgid "Nanny Manual v0.1"
-msgstr "Nanny-Handbuch v0.1"
+msgid "Nanny Parental Control"
+msgstr "Nanny Elternkontrolle"
 
-#: C/nanny.xml:22(year) C/nanny.xml:28(year)
-msgid "2009"
-msgstr "2009"
+#: C/nanny.xml:22(year)
+#: C/nanny.xml:28(year)
+msgid "2009-2011"
+msgstr "2009-2011"
 
 #: C/nanny.xml:23(holder)
 msgid "Roberto Majadas"
@@ -66,405 +56,299 @@ msgstr "Luis de Bethencourt"
 msgid "Cesar Garcia"
 msgstr "Cesar Garcia"
 
-#: C/nanny.xml:29(holder) C/nanny.xml:43(publishername)
+#: C/nanny.xml:29(holder)
+#: C/nanny.xml:44(publishername)
 msgid "openshine.com"
 msgstr "openshine.com"
 
 #: C/nanny.xml:32(para)
-msgid ""
-"<application>Nanny</application> enables you to control what system users do."
-msgstr ""
-"<application>Nanny</application> ermöglicht Ihnen die Kontrolle darüber, was "
-"die Benutzer des Systems tun."
+msgid "<application>Nanny</application> is a parental control capable of controlling the usage time applications, web pages to which the user can connect or not and manage blacklists of web sites."
+msgstr "<application>Nanny</application> ist eine Elternkontrolle, die imstande ist, die Benutzungszeit von Anwendungen sowie Zugang zu Webseiten einzuschränken, und schwarze Listen von Webseiten zu verwalten."
 
-#: C/nanny.xml:50(firstname)
+#: C/nanny.xml:51(firstname)
 msgid "Luis"
 msgstr "Luis"
 
-#: C/nanny.xml:51(surname)
+#: C/nanny.xml:52(surname)
 msgid "de Bethencourt"
 msgstr "de Bethencourt"
 
-#: C/nanny.xml:53(orgname) C/nanny.xml:74(para)
+#: C/nanny.xml:54(orgname)
+#: C/nanny.xml:75(para)
 msgid "GNOME Documentation Project"
 msgstr "GNOME-Dokumentationsprojekt"
 
-#: C/nanny.xml:57(firstname)
+#: C/nanny.xml:58(firstname)
 msgid "Roberto"
 msgstr "Roberto"
 
-#: C/nanny.xml:58(surname)
+#: C/nanny.xml:59(surname)
 msgid "Majadas"
 msgstr "Majadas"
 
-#: C/nanny.xml:60(orgname)
+#: C/nanny.xml:61(orgname)
 msgid "GNOME Documentation project"
 msgstr "GNOME-Dokumentationsprojekt"
 
-#: C/nanny.xml:62(contrib)
+#: C/nanny.xml:63(contrib)
 msgid "Update documentation"
 msgstr "Aktualisierung der Dokumentation"
 
-#: C/nanny.xml:68(revnumber)
+#: C/nanny.xml:69(revnumber)
 msgid "Nanny Manual V1.0"
 msgstr "Nanny-Handbuch V1.0"
 
-#: C/nanny.xml:69(date)
+#: C/nanny.xml:70(date)
 msgid "January 2010"
 msgstr "Januar 2010"
 
-#: C/nanny.xml:71(para)
+#: C/nanny.xml:72(para)
 msgid "Luis de Bethencourt <email>luisbg@openshine.com</email>"
 msgstr "Luis de Bethencourt <email>luisbg@openshine.com</email>"
 
-#: C/nanny.xml:79(releaseinfo)
-msgid "This manual describes version 2.29.2 of GNOME Nanny."
-msgstr "Dieses Handbuch beschreibt Version 2.29.2 von GNOME Nanny."
+#: C/nanny.xml:80(releaseinfo)
+msgid "This manual describes version 2.31.1 of Nanny."
+msgstr "Dieses Handbuch beschreibt Version 2.31.1 Nanny."
 
-#: C/nanny.xml:82(title)
+#: C/nanny.xml:83(title)
 msgid "Feedback"
 msgstr "Rückmeldungen"
 
-#: C/nanny.xml:83(para)
-msgid ""
-"To report a bug or make a suggestion regarding the Nanny application or this "
-"manual, follow the directions in the <ulink url=\"ghelp:gnome-feedback\" type="
-"\"help\">GNOME Feedback Page</ulink>."
-msgstr ""
-"Wenn Sie Fehler finden oder Vorschläge zur Anwendung <application>Nanny</"
-"application> oder zu diesem Handbuch haben, folgen Sie den Anweisungen in der "
-"<ulink url=\"ghelp:gnome-feedback\" type=\"help\">GNOME-Seite für "
-"Rückmeldungen</ulink>."
+#: C/nanny.xml:84(para)
+msgid "To report a bug or make a suggestion regarding the Nanny application or this manual, follow the directions in the <ulink url=\"ghelp:gnome-feedback\" type=\"help\">GNOME Feedback Page</ulink>."
+msgstr "Wenn Sie Fehler finden oder Vorschläge zur Anwendung <application>Nanny</application> oder zu diesem Handbuch haben, folgen Sie den Anweisungen in der <ulink url=\"ghelp:gnome-feedback\" type=\"help\">GNOME-Seite für Rückmeldungen</ulink>."
 
-#: C/nanny.xml:91(primary) C/nanny.xml:94(primary)
-msgid "GNOME Nanny"
-msgstr "GNOME Nanny"
+#: C/nanny.xml:92(primary)
+#: C/nanny.xml:95(primary)
+msgid "Nanny"
+msgstr "Nanny"
 
-#: C/nanny.xml:101(title)
+#: C/nanny.xml:102(title)
 msgid "Introduction"
 msgstr "Einführung"
 
-#: C/nanny.xml:102(para)
-msgid ""
-"The Nanny application enables you to control what system users do. Nanny "
-"provides the following features:"
-msgstr ""
-"Nanny ermöglicht Ihnen die Kontrolle darüber, was die Benutzer des Systems "
-"tun. Nanny stellt die folgenden Funktionsmerkmale bereit:"
+#: C/nanny.xml:103(para)
+msgid "The Nanny application enables you to control what system users do. Nanny provides the following features:"
+msgstr "Nanny ermöglicht Ihnen die Kontrolle darüber, was die Benutzer des Systems tun. Nanny stellt die folgenden Funktionsmerkmale bereit:"
 
-#: C/nanny.xml:106(para)
+#: C/nanny.xml:107(para)
 msgid "Control which websites the user can and can't access."
-msgstr ""
-"Festlegen, welche Webseiten der Benutzer besuchen darf und welche nicht."
+msgstr "Festlegen, welche Webseiten der Benutzer besuchen darf und welche nicht."
 
-#: C/nanny.xml:109(para)
+#: C/nanny.xml:110(para)
 msgid "At what times of the week and for how long a user can:"
-msgstr ""
-"Zu welchen Zeiten der Woche und wie lange ein Benutzer folgendes tun kann:"
+msgstr "Zu welchen Zeiten der Woche und wie lange ein Benutzer folgendes tun kann:"
 
-#: C/nanny.xml:112(para)
+#: C/nanny.xml:113(para)
 msgid "Be using the computer"
 msgstr "den Rechner verwenden"
 
-#: C/nanny.xml:115(para)
+#: C/nanny.xml:116(para)
 msgid "Browse the web"
 msgstr "im Web surfen"
 
-#: C/nanny.xml:118(para)
+#: C/nanny.xml:119(para)
 msgid "Email"
 msgstr "E-Mail benutzen"
 
-#: C/nanny.xml:121(para)
+#: C/nanny.xml:122(para)
 msgid "Instant Message"
 msgstr "Sofortnachrichten senden und empfangen"
 
-#: C/nanny.xml:130(title)
+#: C/nanny.xml:131(title)
 msgid "Getting Started"
 msgstr "Erste Schritte"
 
-#: C/nanny.xml:133(title)
+#: C/nanny.xml:134(title)
 msgid "Running Nanny"
 msgstr "Nanny ausführen"
 
-#: C/nanny.xml:134(para)
-msgid ""
-"Notice that after installation the GNOME Nanny daemon will be running in the "
-"background at all times. This is so to always control system users."
-msgstr ""
-"Beachten Sie, dass nach der Installation der GNOME-Nanny-Hintergrunddienst "
-"ständig im Hintergrund läuft. Dies dient der ständigen Kontrolle der Benutzer "
-"des Systems."
+#: C/nanny.xml:135(para)
+msgid "Notice that after installation the Nanny daemon will be running in the background at all times. This is so to always control system users."
+msgstr "Beachten Sie, dass nach der Installation der Nanny-Hintergrunddienst ständig im Hintergrund läuft. Dies dient der ständigen Kontrolle der Benutzer des Systems."
 
-#: C/nanny.xml:136(para)
-msgid ""
-"To configure GNOME Nanny and decide which users to watch and what they can "
-"and can't do, you need to run the GNOME Nanny administration console."
-msgstr ""
-"Um GNOME Nanny zu konfigurieren und festzulegen, welche Benutzer überwacht "
-"werden sollen und was sie tun dürfen und was nicht, öffnen Sie die Nanny-"
-"Verwaltungskonsole."
+#: C/nanny.xml:137(para)
+msgid "To configure Nanny and decide which users to watch and what they can and can't do, you need to run the Nanny administration console."
+msgstr "Um Nanny zu konfigurieren und festzulegen, welche Benutzer überwacht werden sollen und was sie tun dürfen und was nicht, öffnen Sie die Nanny-Verwaltungskonsole."
 
-#: C/nanny.xml:141(title)
-msgid "To Start GNOME Nanny administration console"
-msgstr "Starten der GNOME Nanny-Verwaltungskonsole"
+#: C/nanny.xml:142(title)
+msgid "To Start Nanny administration console"
+msgstr "Starten der Nanny-Verwaltungskonsole"
 
-#: C/nanny.xml:142(para)
-msgid ""
-"You can start the <application>GNOME Nanny administration console</"
-"application> in the following ways:"
-msgstr ""
-"Sie können die <application>GNOME Nanny-Verwaltungskonsole</application> auf "
-"folgende Weise starten:"
+#: C/nanny.xml:143(para)
+msgid "You can start the <application>Nanny administration console</application> in the following ways:"
+msgstr "Sie können die <application>Nanny-Verwaltungskonsole</application> auf folgende Weise starten:"
 
-#: C/nanny.xml:146(term)
+#: C/nanny.xml:147(para)
+msgid "If you are using Nanny over Gnome Desktop :"
+msgstr "Wenn Sie Nanny auf der Gnome Arbeitsumgebung benutzen:"
+
+#: C/nanny.xml:150(term)
 msgid "<guimenu>System</guimenu> menu"
 msgstr "Menü <guimenu>System</guimenu>"
 
-#: C/nanny.xml:148(para)
-msgid ""
-"Choose <menuchoice><guisubmenu>System</guisubmenu><guisubmenu>Administration</"
-"guisubmenu><guimenuitem>Parental Control</guimenuitem></menuchoice>."
-msgstr ""
-"Wählen Sie <menuchoice><guisubmenu>System</"
-"guisubmenu><guisubmenu>Systemverwaltung</"
-"guisubmenu><guimenuitem>Elternkontrolle</guimenuitem></menuchoice>."
+#: C/nanny.xml:152(para)
+msgid "Choose <menuchoice><guisubmenu>System</guisubmenu><guisubmenu>Administration</guisubmenu><guimenuitem>Parental Control</guimenuitem></menuchoice>."
+msgstr "Wählen Sie <menuchoice><guisubmenu>System</guisubmenu><guisubmenu>Systemverwaltung</guisubmenu><guimenuitem>Elternkontrolle</guimenuitem></menuchoice>."
 
-#: C/nanny.xml:162(title)
+#: C/nanny.xml:164(para)
+msgid "If you are using Nanny over Windows(tm) :"
+msgstr "Wenn Sie Nanny in Windows(tm) benutzen:"
+
+#: C/nanny.xml:167(term)
+msgid "<guimenu>Start</guimenu> button"
+msgstr "<guimenu>Start</guimenu>-Knopf"
+
+#: C/nanny.xml:169(para)
+msgid "Choose <menuchoice><guisubmenu>All Programs</guisubmenu><guisubmenu>Nanny</guisubmenu><guimenuitem>Nanny</guimenuitem></menuchoice>."
+msgstr "Wählen Sie <menuchoice><guisubmenu>Alle Programme</guisubmenu><guisubmenu>Nanny</guisubmenu><guimenuitem>Nanny</guimenuitem></menuchoice>."
+
+#: C/nanny.xml:187(title)
 msgid "Usage"
 msgstr "Benutzung"
 
-#: C/nanny.xml:163(para)
-msgid ""
-"You can use the Nanny application to control the following per computer user:"
-msgstr ""
-"Sie können Nanny dazu verwenden, Folgendes für jeden Benutzer des Rechners "
-"festzulegen:"
+#: C/nanny.xml:188(para)
+msgid "You can use the Nanny application to control the following per computer user:"
+msgstr "Sie können Nanny dazu verwenden, Folgendes für jeden Benutzer des Rechners festzulegen:"
 
-#: C/nanny.xml:169(title)
+#: C/nanny.xml:194(title)
 msgid "Control time of computer usage"
 msgstr "Zeitliche Begrenzung der Rechnernutzung"
 
-#: C/nanny.xml:170(para)
-msgid ""
-"This is is the GNOME Nanny Administration Console. The window is divided into "
-"two sections, users and actions. The users are listed in the column of the "
-"left, and the actions are divided in the tabs at the top of the window."
-msgstr ""
-"Dies ist die GNOME-Nanny-Verwaltungskonsole. Das Fenster ist in zwei Bereiche "
-"unterteilt, für Benutzer und Aktionen. Die Benutzer sind im linken Teil "
-"aufgelistet und die Aktionen stehen in der Reiterleiste am oberen Rand des "
-"Fensters zur Verfügung."
+#: C/nanny.xml:195(para)
+msgid "This is is the Nanny Administration Console. The window is divided into two sections, users and actions. The users are listed in the column of the left, and the actions are divided in the tabs at the top of the window."
+msgstr "Dies ist die Nanny-Verwaltungskonsole. Das Fenster ist in zwei Bereiche unterteilt, für Benutzer und Aktionen. Die Benutzer sind im linken Teil aufgelistet und die Aktionen stehen in der Reiterleiste am oberen Rand des Fensters zur Verfügung."
 
-#: C/nanny.xml:176(title)
+#: C/nanny.xml:201(title)
 msgid "Administration Console"
 msgstr "Verwaltungskonsole"
 
-#: C/nanny.xml:185(para)
-msgid ""
-"This tab controls the maximum number of hours a person can use the computer "
-"each day and at what times."
-msgstr ""
-"In diesem Reiter stellen Sie die maximale Anzahl an Stunden ein, die eine "
-"Person jeden Tag am Rechner verbringen darf, und zu welchen Zeiten dies "
-"geschehen darf."
+#: C/nanny.xml:210(para)
+msgid "This tab controls the maximum number of hours a person can use the computer each day and at what times."
+msgstr "In diesem Reiter stellen Sie die maximale Anzahl an Stunden ein, die eine Person jeden Tag am Rechner verbringen darf, und zu welchen Zeiten dies geschehen darf."
 
-#: C/nanny.xml:186(para)
-msgid ""
-"Change the number at the top to control for how long a person can use the "
-"computer. This is a total number, so the user can use this time in a non-stop "
-"session or break it in several."
-msgstr ""
-"Ändern Sie die Zahl im Einstellfeld, um festzulegen, wie lange eine Person "
-"den Rechner benutzen darf. Es handelt sich hierbei um die Gesamtzahl, was "
-"bedeutet, dass diese Zeit für eine ununterbrochene Sitzung gilt oder auch auf "
-"mehrere Sitzungen aufgeteilt werden darf."
+#: C/nanny.xml:211(para)
+msgid "Change the number at the top to control for how long a person can use the computer. This is a total number, so the user can use this time in a non-stop session or break it in several."
+msgstr "Ändern Sie die Zahl im Einstellfeld, um festzulegen, wie lange eine Person den Rechner benutzen darf. Es handelt sich hierbei um die Gesamtzahl, was bedeutet, dass diese Zeit für eine ununterbrochene Sitzung gilt oder auch auf mehrere Sitzungen aufgeteilt werden darf."
 
-#: C/nanny.xml:187(para)
-msgid ""
-"In the weekly time grid red means blocked time, and green means permitted "
-"time."
-msgstr ""
-"In der Wochenansicht bezeichnet ein grünes Feld einen blockierten Zeitraum "
-"und ein grünes Feld einen zugelassenen Zeitraum."
+#: C/nanny.xml:212(para)
+msgid "In the weekly time grid red means blocked time, and green means permitted time."
+msgstr "In der Wochenansicht bezeichnet ein grünes Feld einen blockierten Zeitraum und ein grünes Feld einen zugelassenen Zeitraum."
 
-#: C/nanny.xml:188(para)
-msgid ""
-"The Apply button needs to be pressed for the changes to be made effective."
-msgstr ""
-"Der <guibutton>Anwenden</guibutton>-Knopf muss gedrückt werden, um die "
-"Änderungen wirksam werden zu lassen."
+#: C/nanny.xml:213(para)
+msgid "The Apply button needs to be pressed for the changes to be made effective."
+msgstr "Der <guibutton>Anwenden</guibutton>-Knopf muss gedrückt werden, um die Änderungen wirksam werden zu lassen."
 
-#: C/nanny.xml:194(title)
+#: C/nanny.xml:219(title)
 msgid "Control what the person can do."
 msgstr "Festlegen, was eine Person tun darf"
 
-#: C/nanny.xml:195(para)
-msgid ""
-"Application use can be controlled in the same way, as defined in <xref "
-"linkend=\"nanny-time-usage\"/>. Each tab controls a different application."
-msgstr ""
-"Die Benutzung von Anwendungen kann auf die gleiche Weise eingeschränkt "
-"werden, wie in <xref linkend=\"nanny-time-usage\"/> festgelegt. Jeder Reiter "
-"bezieht sich auf eine bestimmte Anwendung."
+#: C/nanny.xml:220(para)
+msgid "Application use can be controlled in the same way, as defined in <xref linkend=\"nanny-time-usage\"/>. Each tab controls a different application."
+msgstr "Die Benutzung von Anwendungen kann auf die gleiche Weise eingeschränkt werden, wie in <xref linkend=\"nanny-time-usage\"/> festgelegt. Jeder Reiter bezieht sich auf eine bestimmte Anwendung."
 
-#: C/nanny.xml:197(para)
-msgid ""
-"Notice, each tab has a different 'maximum hours a day' option and weekly time "
-"grid. Have in mind no applications will be used during the blocked times of "
-"PC usage."
-msgstr ""
-"Beachten Sie, dass es für jeden Reiter eine unterschiedliche Option "
-"<guilabel>… Stunden pro Tag benutzen</guilabel> und für die Wochenzeiten "
-"gibt. Denken sie daran, dass während der Blockierungszeiten des gesamten "
-"Rechners auch keine Anwendungen benutzt werden können."
+#: C/nanny.xml:222(para)
+msgid "Notice, each tab has a different 'maximum hours a day' option and weekly time grid. Have in mind no applications will be used during the blocked times of PC usage."
+msgstr "Beachten Sie, dass es für jeden Reiter eine unterschiedliche Option <guilabel>… Stunden pro Tag benutzen</guilabel> und für die Wochenzeiten gibt. Denken sie daran, dass während der Blockierungszeiten des gesamten Rechners auch keine Anwendungen benutzt werden können."
 
-#: C/nanny.xml:198(para)
-msgid ""
-"In the Web Browser action tab there is a 'Use web content filtering' button, "
-"this will enable the control of web filtering, meaning which sites can and "
-"which can't be browed by the user. <xref linkend=\"nanny-web-access\"/> "
-"explains how to do this."
-msgstr ""
-"Im Reiter für den Webbrowser gibt es den Knopf <guibutton>Filterung von "
-"Webinhalten benutzen</guibutton>, welcher die Steuerung der Web-Filterung "
-"aktiviert. Hier wird festgelegt, welche Seiten der Benutzer besuchen darf und "
-"welche nicht. <xref linkend=\"nanny-web-access\"/> beschreibt die "
-"entsprechende Vorgehensweise."
+#: C/nanny.xml:223(para)
+msgid "In the Web Browser action tab there is a 'Use web content filtering' button, this will enable the control of web filtering, meaning which sites can and which can't be browed by the user. <xref linkend=\"nanny-web-access\"/> explains how to do this."
+msgstr "Im Reiter für den Webbrowser gibt es den Knopf <guibutton>Filterung von Webinhalten benutzen</guibutton>, welcher die Steuerung der Web-Filterung aktiviert. Hier wird festgelegt, welche Seiten der Benutzer besuchen darf und welche nicht. <xref linkend=\"nanny-web-access\"/> beschreibt die entsprechende Vorgehensweise."
 
-#: C/nanny.xml:204(title)
+#: C/nanny.xml:229(title)
 msgid "Control web access."
 msgstr "Steuern des Zugriffs auf das Web"
 
-#: C/nanny.xml:206(title)
+#: C/nanny.xml:231(title)
 msgid "Web filtering, Forbidden sites"
 msgstr "Web-Filterung, verbotene Seiten"
 
-#: C/nanny.xml:215(para)
-msgid ""
-"In the Web Content Filter Configuration you can handle which websites are "
-"allowed to be browsed by the user and which websites aren't. To do this you "
-"have three lists divided in tabs: the lists of forbidden sites, allowed "
-"sites, and the blacklists."
-msgstr ""
-"In der Konfiguration zur Filterung von Webinhalten können Sie festlegen, "
-"welche Webseiten der Benutzer besuchen darf und welche nicht. Dazu gibt es "
-"drei in Reitern verfügbare Listen: die verbotenen Seiten, die erlaubten "
-"Seiten und die Negativlisten."
+#: C/nanny.xml:240(para)
+msgid "In the Web Content Filter Configuration you can handle which websites are allowed to be browsed by the user and which websites aren't. To do this you have three lists divided in tabs: the lists of forbidden sites, allowed sites, and the blacklists."
+msgstr "In der Konfiguration zur Filterung von Webinhalten können Sie festlegen, welche Webseiten der Benutzer besuchen darf und welche nicht. Dazu gibt es drei in Reitern verfügbare Listen: die verbotenen Seiten, die erlaubten Seiten und die Negativlisten."
 
-#: C/nanny.xml:216(para)
-msgid ""
-"Inside the Forbidden sites and Allowed sites tabs you can add elements to the "
-"list, edit them or remove them."
-msgstr ""
-"Innerhalb der verbotenen und erlaubten Webseiten können Sie Elemente zur "
-"Liste hinzufügen, diese bearbeiten oder daraus entfernen."
+#: C/nanny.xml:241(para)
+msgid "Inside the Forbidden sites and Allowed sites tabs you can add elements to the list, edit them or remove them."
+msgstr "Innerhalb der verbotenen und erlaubten Webseiten können Sie Elemente zur Liste hinzufügen, diese bearbeiten oder daraus entfernen."
 
-#: C/nanny.xml:217(para)
-msgid ""
-"When adding or edditing a website, it is normally best to write the domain in "
-"the URL field. For example: http://www.badweb.com, because then all the "
-"subpages will be blocked (like http://www.badweb.com/asdas/page01/something."
-"hmtl)."
-msgstr ""
-"Beim Hinzufügen oder Bearbeiten einer Webseite schreiben Sie am besten die "
-"Domäne in das URL-Feld. Beispiel: http://www.badweb.com. Dann werden alle "
-"Unterseiten dieser Domäne ebenfalls blockiert (wie http://www.badweb.com/"
-"asdas/page01/something.hmtl)."
+#: C/nanny.xml:242(para)
+msgid "When adding or edditing a website, it is normally best to write the domain in the URL field. For example: http://www.badweb.com, because then all the subpages will be blocked (like http://www.badweb.com/asdas/page01/something.hmtl)."
+msgstr "Beim Hinzufügen oder Bearbeiten einer Webseite schreiben Sie am besten die Domäne in das URL-Feld. Beispiel: http://www.badweb.com. Dann werden alle Unterseiten dieser Domäne ebenfalls blockiert (wie http://www.badweb.com/asdas/page01/something.hmtl)."
 
-#: C/nanny.xml:220(title)
+#: C/nanny.xml:245(title)
 msgid "Blacklists configuration"
 msgstr "Konfiguration der Negativlisten"
 
-#: C/nanny.xml:229(para)
-msgid ""
-"In the Blacklists tab you can apply the available blacklists and the groups "
-"contained in these blacklists."
-msgstr ""
-"Im Reiter zu den Negativlisten können Sie verfügbare Negativlisten und die "
-"darin enthaltenen Gruppen einfügen ."
+#: C/nanny.xml:254(para)
+msgid "In the Blacklists tab you can apply the available blacklists and the groups contained in these blacklists."
+msgstr "Im Reiter zu den Negativlisten können Sie verfügbare Negativlisten und die darin enthaltenen Gruppen einfügen ."
 
-#: C/nanny.xml:230(para)
-msgid ""
-"Importing of the blacklists is explained in <xref linkend=\"nanny-blacklist-"
-"importing\"/>"
-msgstr ""
-"Das Importieren von Negativlisten wird in <xref linkend=\"nanny-blacklist-"
-"importing\"/> erklärt."
+#: C/nanny.xml:255(para)
+msgid "If you want to add, delete or update a blacklist, use the buttons below the left column."
+msgstr "Wenn Sie eine schwarze Liste hinzufügen, löschen oder aktualisieren möchten, benutzen Sie die Knöpfe unten."
 
-#: C/nanny.xml:235(title)
-msgid "Blacklist Configuration."
-msgstr "Konfiguration von Negativlisten"
-
-#: C/nanny.xml:236(para)
-msgid ""
-"The Blacklist Configuration window is accesible from System &gt; "
-"Administration &gt; Blacklists. This is where you can import, edit and remove "
-"blacklists."
-msgstr ""
-"Das Fenster zur Negativlisten-Konfiguration erreichen Sie über "
-"<menuchoice><guisubmenu>System</guisubmenu><guisubmenu>Systemverwaltung</"
-"guisubmenu><guimenuitem>Negativlisten</guimenuitem></menuchoice>. Dort können "
-"Sie Negativlisten importieren, bearbeiten und entfernen."
-
-#: C/nanny.xml:239(title)
-msgid "Blacklist importing"
-msgstr "Import von Negativlisten"
-
-#: C/nanny.xml:249(para)
-msgid ""
-"Blacklists are imported from files. In this example a blacklist file has been "
-"downloaded from dansguardian and is being imported into GNOME Nanny. It is "
-"recommended to keep the blacklists as up to date as possible."
-msgstr ""
-"Negativlisten werden aus Dateien importiert. In diesem Beispiel wurde eine "
-"Negativliste von Dansguardian heruntergeladen und in GNOME Nanny importiert. "
-"Es ist empfehlenswert, die Negativlisten so aktuell wie möglich zu halten."
-
-#: C/nanny.xml:255(title)
+#: C/nanny.xml:261(title)
 msgid "About Nanny"
 msgstr "Info zu Nanny"
 
-#: C/nanny.xml:256(para)
-msgid ""
-"Nanny was written by Roberto Majadas <email>roberto.majadas@openshine.com</"
-"email>, Luis de Bethencourt <email>luisbg@openshine.com</email> and Cesar "
-"Garcia <email>cesar.garcia.tapia@openshine.com</email>. To find more "
-"information about Nanny, please visit the <ulink url=\"http://projects.gnome."
-"org/nanny\" type=\"http\">GNOME Nanny Web page</ulink>."
-msgstr ""
-"Nanny wurde von Roberto Majadas <email>roberto.majadas@openshine.com</email>, "
-"Luis de Bethencourt <email>luisbg@openshine.com</email> und Cesar Garcia "
-"<email>cesar.garcia.tapia@openshine.com</email> geschrieben. Weitere "
-"Informationen über Nanny finden Sie auf der <ulink url=\"http://projects."
-"gnome.org/nanny\" type=\"http\">GNOME Nanny-Webseite</ulink>."
-
-#: C/nanny.xml:261(para)
-msgid ""
-"To report a bug or make a suggestion regarding this application or this "
-"manual, follow the directions in this <ulink url=\"ghelp:gnome-feedback\" "
-"type=\"help\">document</ulink>."
-msgstr ""
-"Um Fehler zu melden oder einen Vorschlag zur dieser Anwendung oder zu diesem "
-"Handbuch zu machen, folgen Sie den Anweisungen in diesem <ulink url=\"ghelp:"
-"gnome-feedback\" type=\"help\">Dokument</ulink>."
+#: C/nanny.xml:262(para)
+msgid "Nanny was written by Roberto Majadas <email>roberto.majadas@openshine.com</email>, Luis de Bethencourt <email>luisbg@openshine.com</email> and Cesar Garcia <email>cesar.garcia.tapia@openshine.com</email>. To find more information about Nanny, please visit the <ulink url=\"http://projects.gnome.org/nanny\" type=\"http\">Nanny Web page</ulink>."
+msgstr "Nanny wurde von Roberto Majadas <email>roberto.majadas@openshine.com</email>, Luis de Bethencourt <email>luisbg@openshine.com</email> und Cesar Garcia <email>cesar.garcia.tapia@openshine.com</email> geschrieben. Weitere Informationen über Nanny finden Sie auf der <ulink url=\"http://projects.gnome.org/nanny\" type=\"http\">Nanny-Webseite</ulink>."
 
 #: C/nanny.xml:267(para)
-msgid ""
-"This program is distributed under the terms of the GNU General Public license "
-"as published by the Free Software Foundation; either version 2 of the "
-"License, or (at your option) any later version. A copy of this license can be "
-"found at this <ulink url=\"ghelp:gpl\" type=\"help\">link</ulink>, or in the "
-"file COPYING included with the source code of this program."
-msgstr ""
-"Dieses Programm ist freie Software. Sie können es unter den Bedingungen der "
-"<citetitle>GNU General Public License</citetitle>, wie von der Free Software "
-"Foundation veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß "
-"Version 2 der Lizenz oder (nach Ihrer Option) jeder späteren Version. Eine "
-"Kopie der <citetitle>GNU General Public License</citetitle> finden Sie in der "
-"<ulink url=\"ghelp:gpl\" type=\"help\">GPL</ulink>, oder in der Datei "
-"COPYING, die im Quellcode dieses Programms enthalten ist."
+msgid "To report a bug or make a suggestion regarding this application or this manual, follow the directions in this <ulink url=\"ghelp:gnome-feedback\" type=\"help\">document</ulink>."
+msgstr "Um Fehler zu melden oder einen Vorschlag zur dieser Anwendung oder zu diesem Handbuch zu machen, folgen Sie den Anweisungen in diesem <ulink url=\"ghelp:gnome-feedback\" type=\"help\">Dokument</ulink>."
+
+#: C/nanny.xml:273(para)
+msgid "This program is distributed under the terms of the GNU General Public license as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. A copy of this license can be found at this <ulink url=\"ghelp:gpl\" type=\"help\">link</ulink>, or in the file COPYING included with the source code of this program."
+msgstr "Dieses Programm ist freie Software. Sie können es unter den Bedingungen der <citetitle>GNU General Public License</citetitle>, wie von der Free Software Foundation veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 2 der Lizenz oder (nach Ihrer Option) jeder späteren Version. Eine Kopie der <citetitle>GNU General Public License</citetitle> finden Sie in der <ulink url=\"ghelp:gpl\" type=\"help\">GPL</ulink>, oder in der Datei COPYING, die im Quellcode dieses Programms enthalten ist."
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: C/nanny.xml:0(None)
 msgid "translator-credits"
-msgstr "Mario Blättermann <mariobl@gnome.org>, 2010"
+msgstr ""
+"Mario Blättermann <mariobl@gnome.org>, 2010\n"
+"Daniel Winzen <d@winzen4.de>, 2012"
+
+#~ msgid "Nanny Manual v0.1"
+#~ msgstr "Nanny-Handbuch v0.1"
+
+#~ msgid ""
+#~ "<application>Nanny</application> enables you to control what system users "
+#~ "do."
+#~ msgstr ""
+#~ "<application>Nanny</application> ermöglicht Ihnen die Kontrolle darüber, "
+#~ "was die Benutzer des Systems tun."
+
+#~ msgid ""
+#~ "Importing of the blacklists is explained in <xref linkend=\"nanny-"
+#~ "blacklist-importing\"/>"
+#~ msgstr ""
+#~ "Das Importieren von Negativlisten wird in <xref linkend=\"nanny-blacklist-"
+#~ "importing\"/> erklärt."
+
+#~ msgid "Blacklist Configuration."
+#~ msgstr "Konfiguration von Negativlisten"
+
+#~ msgid ""
+#~ "The Blacklist Configuration window is accesible from System &gt; "
+#~ "Administration &gt; Blacklists. This is where you can import, edit and "
+#~ "remove blacklists."
+#~ msgstr ""
+#~ "Das Fenster zur Negativlisten-Konfiguration erreichen Sie über "
+#~ "<menuchoice><guisubmenu>System</guisubmenu><guisubmenu>Systemverwaltung</"
+#~ "guisubmenu><guimenuitem>Negativlisten</guimenuitem></menuchoice>. Dort "
+#~ "können Sie Negativlisten importieren, bearbeiten und entfernen."
+
+#~ msgid "Blacklist importing"
+#~ msgstr "Import von Negativlisten"
+
+#~ msgid ""
+#~ "Blacklists are imported from files. In this example a blacklist file has "
+#~ "been downloaded from dansguardian and is being imported into GNOME Nanny. "
+#~ "It is recommended to keep the blacklists as up to date as possible."
+#~ msgstr ""
+#~ "Negativlisten werden aus Dateien importiert. In diesem Beispiel wurde "
+#~ "eine Negativliste von Dansguardian heruntergeladen und in GNOME Nanny "
+#~ "importiert. Es ist empfehlenswert, die Negativlisten so aktuell wie "
+#~ "möglich zu halten."
