@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nanny master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nanny&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-07-07 13:16+0000\n"
-"PO-Revision-Date: 2012-07-10 09:02+0100\n"
+"POT-Creation-Date: 2012-08-15 20:28+0000\n"
+"PO-Revision-Date: 2012-09-03 11:22+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: \n"
@@ -718,11 +718,11 @@ msgstr "Skrbniška konzola starševskega nadzora Nanny"
 
 #: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:1
 msgid "Select an entry and press this button to add or remove chores to or from user&apos;s enabled chores list"
-msgstr ""
+msgstr "Izberite vnos in pritisnite ta gumb za dodajanje ali odstranjevanje opravil na seznam nalog uporabnika"
 
 #: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:2
 msgid "Select an entry and press this button to add or remove chores to or from user's enabled chores list"
-msgstr ""
+msgstr "Izberite vnos in pritisnite ta gumb za dodajanje ali odstranjevanje opravil na seznam nalog uporabnika"
 
 #: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:3
 msgid "Assign chores"
@@ -742,11 +742,11 @@ msgstr "Končana opravila"
 
 #: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:7
 msgid "Enable rewarding time for _contracting chores"
-msgstr ""
+msgstr "Omogoči nagradnim čas za _zavezana opravila"
 
 #: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:8
 msgid "Amount of contracted but unfinished chores allowed"
-msgstr ""
+msgstr "Dovoljeno število zavezanih vendar nekončanih opravil"
 
 #: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:9
 msgid "If the amount happens to exceed this value, user cannot contract more chores"
@@ -769,7 +769,7 @@ msgstr "Naslov:"
 
 #: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:5
 msgid "The chores with time rewards will be displayed as an option to obtain more usage time to user when the session time limit has been reached and blocking the session is initiated. User can contract the chore to get extra usage time immediately."
-msgstr ""
+msgstr "Opravila z nagradnim časom bodo prikazana kot možnost pridobivanja več časa uporabe, ko je dosežena meja dovoljenja seje. Uporabnik se lahko zaveže dodatnim nalogam za takojšnjo pridobitev dodatnega časa."
 
 #: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:1
 msgid "Forbidden sites"
