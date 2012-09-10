@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the GNOME Nanny package.
 # Juanje Ojeda Croissier <jojeda@emergya.es>, 2010.
 # Jorge González <jorgegonz@svn.gnome.org>, 2010.
+# Israel Campoy <churritzu@yahoo.com>, 2012.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2011, 2012.
 #
 msgid ""
@@ -10,15 +11,15 @@ msgstr ""
 "Project-Id-Version: nanny.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nanny&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-07-06 22:13+0000\n"
-"PO-Revision-Date: 2012-07-07 13:07+0200\n"
+"POT-Creation-Date: 2012-09-08 06:03+0000\n"
+"PO-Revision-Date: 2012-09-10 11:43+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "X-Generator: Gtranslator 2.91.5\n"
 
 #. To translators : This string is a category name or a category description
@@ -740,12 +741,16 @@ msgid ""
 "Select an entry and press this button to add or remove chores to or from "
 "user&apos;s enabled chores list"
 msgstr ""
+"Seleccionar una entrada y pulse este botón para agregar o quitar tareas a o "
+"de la lista de usuarios activar tareas"
 
 #: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:2
 msgid ""
 "Select an entry and press this button to add or remove chores to or from "
 "user's enabled chores list"
 msgstr ""
+"Seleccionar una entrada y pulse este botón para agregar o quitar tareas a o "
+"de la lista de usuarios activar tareas"
 
 #: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:3
 msgid "Assign chores"
@@ -753,7 +758,7 @@ msgstr "Asignar tareas"
 
 #: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:4
 msgid "_Finish"
-msgstr ""
+msgstr "_Terminar"
 
 #: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:5
 msgid "Chores in progress"
@@ -765,21 +770,22 @@ msgstr "Tareas terminadas"
 
 #: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:7
 msgid "Enable rewarding time for _contracting chores"
-msgstr ""
+msgstr "Activar el tiempo de recompensa para la _contratación de tareas"
 
 #: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:8
 msgid "Amount of contracted but unfinished chores allowed"
-msgstr ""
+msgstr "Cantidad de tareas contratadas, pero sin terminar permitidas"
 
 #: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:9
 msgid ""
 "If the amount happens to exceed this value, user cannot contract more chores"
 msgstr ""
+"Si la cantidad supera este valor, el usuario no puede contratar más tareas"
 
 #. The time given for contracting the chore
 #: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:2
 msgid "Reward:"
-msgstr ""
+msgstr "Recompensa:"
 
 #: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:3
 #: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:2
@@ -798,6 +804,10 @@ msgid ""
 "the session is initiated. User can contract the chore to get extra usage "
 "time immediately."
 msgstr ""
+"Las tareas con recompensa de tiempo se mostrarán como una opcion para "
+"obtener más tiempo de utilización para el usuario cuando se alcance el "
+"tiempo límite de la sesión y se bloquee la sesión. El usuario puede "
+"contratar la tarea para obtener el tiempo de uso adicional de inmediato. "
 
 #: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:1
 msgid "Forbidden sites"
@@ -816,9 +826,8 @@ msgid "Blacklists"
 msgstr "Listas negras"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:5
-#, fuzzy
 msgid "Enable _web content filtering"
-msgstr "Usar filtrado de contenidos web"
+msgstr "Activar el filtrado de contenidos _web"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:1
 msgid "URL:"
@@ -830,11 +839,10 @@ msgid "Name:"
 msgstr "Nombre:"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:4
-#, fuzzy
 msgid "All the fields are mandatory, so please fill all of them.\t"
 msgstr ""
-"<span color=\"red\">Todos los campos son obligatorios. Rellénelos todos.</"
-"span>"
+"<span color=\"red\">Todos los campos son obligatorios, por lo que debe "
+"rellenarlos todos.</span>\t"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
 msgid "Use the computer"
@@ -846,16 +854,17 @@ msgstr "horas al día"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:3
 msgid "Force logoff"
-msgstr ""
+msgstr "Forzar cierre de sesión"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
 msgid "Force user either to log off or buy extra time after desktop is blocked"
 msgstr ""
+"Forzar al usuario a cerrar la sesión o a comprar tiempo adicional después de "
+"que el escritorio está bloqueado"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
-#, fuzzy
 msgid "hours to"
-msgstr "horas al día"
+msgstr "horas para"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
 msgid "0"
@@ -863,11 +872,11 @@ msgstr "0"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
 msgid "that's left today"
-msgstr ""
+msgstr "esto queda hoy"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
 msgid "Configure _chores & rewards"
-msgstr ""
+msgstr "Configurar _tareas y recompensas"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
 msgid "PC use time"
@@ -911,13 +920,12 @@ msgstr ""
 "Pulse este botón si quiere realizar los cambios."
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:1
-#, fuzzy
 msgid ""
 "<span size=\"25000\" foreground=\"white\"><b>Your computer usage time is up "
 "now</b></span>"
 msgstr ""
-"<span size=\"25000\" foreground=\"white\"><b>Usted ha gastado su tiempo de "
-"uso del ordenador</b></span>"
+"<span size=\"25000\" foreground=\"white\"><b>Su tiempo de uso en el "
+"ordenador se ha acabado</b></span>"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
 msgid ""
@@ -1008,9 +1016,8 @@ msgstr ""
 "esta lista negra."
 
 #: ../client/gnome/admin/src/ConfigureChoresDialog.py:42
-#, fuzzy
 msgid "Chores & Rewards Configuration"
-msgstr "Configuración del filtro de contenidos web"
+msgstr "Configuración de tareas y recompensas"
 
 #: ../client/gnome/admin/src/ConfigureChoresDialog.py:388
 msgid "Add chore description"
@@ -1103,7 +1110,7 @@ msgstr ""
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:364
 msgid "Edit custom blacklist entry"
-msgstr ""
+msgstr "Editar entradas de la lista negra personalizada"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:447
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:469
