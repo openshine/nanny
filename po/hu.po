@@ -2,21 +2,21 @@
 # Copyright 2010 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nanny package.
 #
-# Gabor Kelemen <kelemeng at gnome dot hu>, 2010, 2011.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2010, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: nanny master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-27 14:08+0200\n"
-"PO-Revision-Date: 2011-01-05 17:34+0100\n"
+"POT-Creation-Date: 2012-10-08 12:38+0200\n"
+"PO-Revision-Date: 2012-10-08 08:21+0200\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome at fsf dot hu>\n"
-"Language: \n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.4\n"
 
 #. To translators : This string is a category name or a category description
 #: ../client/common/src/Categories.py:32
@@ -697,13 +697,13 @@ msgid "Contains site specifically 100% suitable for kids"
 msgstr "Gyermekek számára 100%-ban megfelelő oldalak"
 
 #: ../client/common/src/Utils.py:94
-#, fuzzy
 msgid "Nanny Admin Tools requires Admin user"
-msgstr "Nanny admin konzol – %s"
+msgstr "A Nanny admin eszközök rendszergazdai jogot igényel"
 
 #: ../client/common/src/Utils.py:95
 msgid "To run any Nanny Admin Tool you must to be admin of the system."
 msgstr ""
+"A Nanny admin eszközök futtatásához rendszergazdai jogosultság szükséges."
 
 #: ../client/common/src/DBusClient.py:81
 msgid "NannyDaemon unavailable"
@@ -718,18 +718,189 @@ msgstr ""
 "Próbálja meg újra aktiválni."
 
 #: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:1
-msgid "Nanny parental control admin console"
-msgstr "Nanny szülői felügyelet admin konzol"
-
-#: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:2
 msgid "Parental Control"
 msgstr "Szülői felügyelet"
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
-msgid "0"
+#: ../client/gnome/admin/data/nanny-admin-console.desktop.in.h:2
+msgid "Nanny parental control admin console"
+msgstr "Nanny szülői felügyelet admin konzol"
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:1
+msgid ""
+"Select an entry and press this button to add or remove chores to or from "
+"user&apos;s enabled chores list"
 msgstr ""
+"Válasszon egy bejegyzést, és nyomja meg ezt a gombot házimunkák "
+"hozzáadásához vagy eltávolításához a felhasználó engedélyezett házimunkái "
+"listájáról"
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:2
+msgid ""
+"Select an entry and press this button to add or remove chores to or from "
+"user's enabled chores list"
+msgstr ""
+"Válasszon egy bejegyzést, és nyomja meg ezt a gombot házimunkák "
+"hozzáadásához vagy eltávolításához a felhasználó engedélyezett házimunkái "
+"listájáról"
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:3
+msgid "Assign chores"
+msgstr "Házimunkák kiosztása"
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:4
+msgid "_Finish"
+msgstr "Be_fejezés"
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:5
+msgid "Chores in progress"
+msgstr "Folyamatban lévő házimunkák"
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:6
+msgid "Finished chores"
+msgstr "Befejezett házimunkák"
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:7
+msgid "Enable rewarding time for _contracting chores"
+msgstr "_Jutalomidő engedélyezése a házimunkák elvállalásáért"
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:8
+msgid "Amount of contracted but unfinished chores allowed"
+msgstr "Elvállalt, de befejezetlen házimunkák engedélyezett mennyisége"
+
+#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:9
+msgid ""
+"If the amount happens to exceed this value, user cannot contract more chores"
+msgstr ""
+"Ha a mennyiség túllépi ezt az értéket, a felhasználó nem vállalhat el több "
+"házimunkát"
+
+#. The time given for contracting the chore
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:2
+msgid "Reward:"
+msgstr "Jutalom:"
+
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:3
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:2
+#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:2
+msgid "Description:"
+msgstr "Leírás:"
+
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:4
+msgid "Title:"
+msgstr "Cím:"
+
+#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:5
+msgid ""
+"The chores with time rewards will be displayed as an option to obtain more "
+"usage time to user when the session time limit has been reached and blocking "
+"the session is initiated. User can contract the chore to get extra usage "
+"time immediately."
+msgstr ""
+"Az időjutalmakkal rendelkező házimunkák a felhasználási idő "
+"meghosszabbításának módjaként meg fognak jelenni a felhasználónak a "
+"munkamenet időkorlátjának elérésekor és a blokkolás megkezdésekor. Ha a "
+"felhasználó elvállal egy házimunkát, azonnal további használati időt kap."
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:1
+msgid "Forbidden sites"
+msgstr "Tiltott oldalak"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:2
+msgid "Allowed sites"
+msgstr "Engedélyezett oldalak"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:3
+msgid "_Update"
+msgstr "_Frissítés"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
+msgid "Blacklists"
+msgstr "Feketelisták"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:5
+msgid "Enable _web content filtering"
+msgstr "_Webes tartalomszűrés használata"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:1
+msgid "URL:"
+msgstr "URL:"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:3
+#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:1
+msgid "Name:"
+msgstr "Név:"
+
+#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:4
+msgid "All the fields are mandatory, so please fill all of them.\t"
+msgstr "Minden mező kötelező. Töltse ki mindet.\t"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
+msgid "Use the computer"
+msgstr "Számítógép használata"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:2
+msgid "hours a day"
+msgstr "óráig naponta"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:3
+msgid "Force logoff"
+msgstr "Kijelentkezés kényszerítése"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
+msgid "Force user either to log off or buy extra time after desktop is blocked"
+msgstr ""
+"A felhasználó kijelentkezésre vagy további idő vásárlására kényszerítése az "
+"asztal blokkolása után"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
+msgid "hours to"
+msgstr "óra eddig:"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
+msgid "0"
+msgstr "0"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
+msgid "that's left today"
+msgstr "van hátra ma"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
+msgid "Configure _chores & rewards"
+msgstr "_Házimunka és jutalmak beállítása"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
+msgid "PC use time"
+msgstr "Számítógép-használat"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
+msgid "Use the web browser"
+msgstr "Webböngésző használata"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
+msgid "Configure web filtering"
+msgstr "Webes tartalomszűrés beállítása"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
+msgid "Web browser"
+msgstr "Webböngésző"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:13
+msgid "Use the mail client"
+msgstr "Levelezőkliens használata"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:14
+msgid "Mail client"
+msgstr "Levelezőkliens"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:15
+msgid "Use the instant messaging"
+msgstr "Azonnali üzenetküldés használata"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:16
+msgid "Instant messaging"
+msgstr "Azonnali üzenetek"
+
+#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:17
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:1
 msgid ""
 "<b>You don't have admin privileges</b>\n"
@@ -738,230 +909,135 @@ msgstr ""
 "<b>Nincsenek rendszergazdai jogosultságai</b>\n"
 "Kattintson erre a gombra a módosításhoz."
 
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
-msgid "Configure _chores & rewards"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
-#, fuzzy
-msgid "Configure web filtering"
-msgstr "Webes tartalomszűrés használata"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
-msgid "Force logoff"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
-msgid "Force user either to log off or buy extra time after desktop is blocked"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
-msgid "Instant messaging"
-msgstr "Azonnali üzenetek"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:9
-msgid "Mail client"
-msgstr "Levelezőkliens"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:10
-msgid "PC use time"
-msgstr "Számítógép-használat"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
-msgid "Use the computer"
-msgstr "Számítógép használata"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
-msgid "Use the instant messaging"
-msgstr "Azonnali üzenetküldés használata"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:13
-msgid "Use the mail client"
-msgstr "Levelezőkliens használata"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:14
-msgid "Use the web browser"
-msgstr "Webböngésző használata"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:15
-msgid "Web browser"
-msgstr "Webböngésző"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:16
-msgid "hours a day"
-msgstr "óráig naponta"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:17
-#, fuzzy
-msgid "hours to"
-msgstr "óráig naponta"
-
-#: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:18
-msgid "that's left today"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:1
-#, fuzzy
-msgid "All the fields are mandatory, so please fill all of them.\t"
-msgstr "<span color=\"red\">Minden mező kötelező. Töltse ki mindet.</span>"
-
-#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:2
-#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:1
-#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:1
-msgid "Description:"
-msgstr "Leírás:"
-
-#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:3
-#: ../client/gnome/admin/data/ui/nbm_pbl_edit_dialog.ui.h:2
-msgid "Name:"
-msgstr "Név:"
-
-#: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:4
-msgid "URL:"
-msgstr "URL:"
-
-#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:1
-msgid "Allowed sites"
-msgstr "Engedélyezett oldalak"
-
-#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:2
-msgid "Blacklists"
-msgstr "Feketelisták"
-
-#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:3
-#, fuzzy
-msgid "Enable _web content filtering"
-msgstr "Webes tartalomszűrés használata"
-
-#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:4
-msgid "Forbidden sites"
-msgstr "Tiltott oldalak"
-
-#: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:5
-msgid "_Update"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:1
-msgid "Amount of contracted but unfinished chores allowed"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:2
-msgid "Assign chores"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:3
-msgid "Chores in progress"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:4
-msgid "Enable rewarding time for _contracting chores"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:5
-msgid "Finished chores"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:6
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:1
 msgid ""
-"If the amount happens to exceed this value, user cannot contract more chores"
+"<span size=\"25000\" foreground=\"white\"><b>Your computer usage time is up "
+"now</b></span>"
 msgstr ""
+"<span size=\"25000\" foreground=\"white\"><b>Lejárt a számítógép-használati "
+"idő</b></span>"
 
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:7
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
 msgid ""
-"Select an entry and press this button to add or remove chores to or from "
-"user&apos;s enabled chores list"
+"<span foreground=\"white\"><big>You can still have a moment for closing the "
+"documents or applications</big></span>"
 msgstr ""
+"<span foreground=\"white\"><big>Rendelkezésére áll egy kis idő a "
+"dokumentumok vagy alkalmazások bezárására</big></span>"
 
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:8
-msgid ""
-"Select an entry and press this button to add or remove chores to or from "
-"user's enabled chores list"
-msgstr ""
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
+msgid "Give me more time"
+msgstr "Több időt kérek"
 
-#: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:9
-msgid "_Finish"
-msgstr ""
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
+msgid "Five minutes, please"
+msgstr "Még 5 percet kérek"
 
-#. The time given for contracting the chore
-#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:3
-msgid "Reward:"
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:4
-msgid ""
-"The chores with time rewards will be displayed as an option to obtain more "
-"usage time to user when the session time limit has been reached and blocking "
-"the session is initiated. User can contract the chore to get extra usage "
-"time immediately."
-msgstr ""
-
-#: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:5
-msgid "Title:"
-msgstr ""
+#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:5
+msgid "Close session now"
+msgstr "Munkamenet bezárása most"
 
 #: ../client/gnome/admin/data/ui/nbm_pbl_dialog.ui.h:3
 msgid "Import..."
 msgstr "Importálás…"
 
-#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:1
-#, fuzzy
+#: ../client/gnome/admin/src/AdminConsole.py:52
+msgid "Nanny daemon is not started"
+msgstr "A Nanny démon nem indult el"
+
+#: ../client/gnome/admin/src/AdminConsole.py:53
+msgid "To use the parental control, please start up the daemon."
+msgstr "A szülői felügyelet használatához indítsa el a démont."
+
+#. FACE
+#: ../client/gnome/admin/src/AdminConsole.py:200
+msgid "Users"
+msgstr "Felhasználók"
+
+#: ../client/gnome/admin/src/AdminConsole.py:389
+msgid "User's configuration has been saved"
+msgstr "A felhasználó beállításai mentve"
+
+#: ../client/gnome/admin/src/AdminConsole.py:415
+#, python-format
+msgid "Nanny Admin Console - %s"
+msgstr "Nanny admin konzol – %s"
+
+#: ../client/gnome/admin/src/AdminConsole.py:418
+msgid "Nanny Admin Console"
+msgstr "Nanny admin konzol"
+
+#: ../client/gnome/admin/src/AdminConsole.py:584
+msgid "You have made changes"
+msgstr "Módosításokat végzett"
+
+#: ../client/gnome/admin/src/AdminConsole.py:585
 msgid ""
-"<span foreground=\"white\"><big>You can still have a moment for closing the "
-"documents or applications</big></span>"
+"If you don't press the 'Apply' button, your changes will be lost.\n"
+"Are you sure?"
 msgstr ""
-"<span foreground=\"white\"><big>Rendelkezésére áll egy kis idő, ha "
-"dokumentumokat vagy alkalmazásokat szeretne bezárni.</big></span>"
+"Ha nem nyomja meg az Alkalmaz gombot, akkor a változások elvesznek.\n"
+"Biztosan ezt szeretné?"
 
-#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
-#, fuzzy
+#: ../client/gnome/admin/src/BlacklistManager.py:39
+msgid "Blacklist Filter Configuration"
+msgstr "Feketelista szűrők beállítása"
+
+#: ../client/gnome/admin/src/BlacklistManager.py:114
+#, python-format
 msgid ""
-"<span size=\"25000\" foreground=\"white\"><b>Your computer usage time is up "
-"now</b></span>"
+"<b>%s (Read only)</b>\n"
+"   %s"
 msgstr ""
-"<span size=\"25000\" foreground=\"white\"><b>Felhasználta a számítógép-"
-"használati időt</b></span>"
+"<b>%s (írásvédett)</b>\n"
+"   %s"
 
-#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
-#, fuzzy
-msgid "Close session now"
-msgstr "munkamenet bezárása"
+#: ../client/gnome/admin/src/BlacklistManager.py:156
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:629
+msgid "<b>Are you sure you want to delete this blacklist?</b>"
+msgstr "<b>Biztos, hogy törli ezt a feketelistát?</b>"
 
-#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:4
-#, fuzzy
-msgid "Five minutes, please"
-msgstr "még 5 percet kérek"
-
-#: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:5
-msgid "Give me more time"
+#: ../client/gnome/admin/src/BlacklistManager.py:157
+#: ../client/gnome/admin/src/ConfigureProxyDialog.py:630
+msgid ""
+"This action will remove all the user configuration linked to the blacklist."
 msgstr ""
+"Ez a művelet a feketelistához kapcsolódó összes felhasználói beállítást "
+"eltávolítja."
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:310
-msgid "Monday"
-msgstr "Hétfő"
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:42
+msgid "Chores & Rewards Configuration"
+msgstr "Házimunkák és jutalmak beállítása"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:310
-msgid "Tuesday"
-msgstr "Kedd"
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:388
+msgid "Add chore description"
+msgstr "Házimunka leírásának hozzáadása"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:310
-msgid "Wednesday"
-msgstr "Szerda"
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:420
+msgid "Edit chore description"
+msgstr "Házimunka leírásának szerkesztése"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:310
-msgid "Thursday"
-msgstr "Csütörtök"
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:459
+msgid "<b>Are you sure you want to delete this chore description entry?</b>"
+msgstr "<b>Biztos, hogy törli ezt a házimunkaleírást?</b>"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:310
-msgid "Friday"
-msgstr "Péntek"
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:460
+msgid "This action will remove all the user chores linked to the description."
+msgstr "Ez a művelet a leíráshoz kapcsolódó összes házimunkát eltávolítja."
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:310
-msgid "Saturday"
-msgstr "Szombat"
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:517
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:526
+msgid "Error while deleting the chore entry"
+msgstr "Hiba a házimunkabejegyzés törlése közben"
 
-#: ../client/gnome/admin/src/ScheduleCalendar.py:310
-msgid "Sunday"
-msgstr "Vasárnap"
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:518
+#: ../client/gnome/admin/src/ConfigureChoresDialog.py:527
+msgid ""
+"Some error has occured while deleting the chore entry.\n"
+"Please try again."
+msgstr ""
+"Hiba történt a házimunkabejegyzés törlése közben.\n"
+"Próbálja újra."
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:39
 msgid "Web Content Filter Configuration"
@@ -970,42 +1046,40 @@ msgstr "Webtartalom-szűrő beállítása"
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:187
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:204
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:225
-#, fuzzy
 msgid "Unknown Blacklist Name"
-msgstr "Feketelista importálva"
+msgstr "Ismeretlen feketelistanév"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:206
 #, python-format
 msgid "(version : %s)"
-msgstr ""
+msgstr "(%s verzió)"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:209
 msgid "There is an update available"
-msgstr ""
+msgstr "Frissítés áll rendelkezésre"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:211
-#, fuzzy, python-format
+#, python-format
 msgid "Downloading information (%s%%)"
-msgstr "Fájl letöltése (%s%%)"
+msgstr "Információk letöltése (%s%%)"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:213
 #, python-format
 msgid "Installing blacklist (%s%%)"
-msgstr ""
+msgstr "Feketelista telepítése (%s%%)"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:215
 #, python-format
 msgid "Updating blacklist (%s%%)"
-msgstr ""
+msgstr "Feketelista frissítése (%s%%)"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:282
 msgid "Add blacklist entry"
-msgstr ""
+msgstr "Feketelista-bejegyzés hozzáadása"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:309
-#, fuzzy
 msgid "Add whitelist entry"
-msgstr "fehérlista"
+msgstr "Fehérlista-bejegyzés hozzáadása"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:345
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:356
@@ -1023,7 +1097,7 @@ msgstr ""
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:364
 msgid "Edit custom blacklist entry"
-msgstr ""
+msgstr "Egyéni feketelista-bejegyzés szerkesztése"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:447
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:469
@@ -1060,153 +1134,80 @@ msgstr "<b>Minden kategória kiválasztása</b>"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:599
 msgid "Introduce the nannycentral repository url"
-msgstr ""
+msgstr "A nannycentral tároló URL megadása"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:607
 msgid ""
 "It's something like http://www.nannycentral.info/blacklist/blacklist.json ..."
 msgstr ""
+"Ez ehhez hasonló: http://www.nannycentral.info/blacklist/blacklist.json"
 
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:629
-#: ../client/gnome/admin/src/BlacklistManager.py:156
-msgid "<b>Are you sure you want to delete this blacklist?</b>"
-msgstr "<b>Biztos, hogy törli ezt a feketelistát?</b>"
-
-#: ../client/gnome/admin/src/ConfigureProxyDialog.py:630
-#: ../client/gnome/admin/src/BlacklistManager.py:157
-msgid ""
-"This action will remove all the user configuration linked to the blacklist."
-msgstr ""
-"Ez a művelet a feketelistához kapcsolódó összes felhasználói beállítást "
-"eltávolítja."
-
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:42
-#, fuzzy
-msgid "Chores & Rewards Configuration"
-msgstr "Webtartalom-szűrő beállítása"
-
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:388
-#, fuzzy
-msgid "Add chore description"
-msgstr "Leírás:"
-
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:420
-msgid "Edit chore description"
-msgstr ""
-
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:459
-#, fuzzy
-msgid "<b>Are you sure you want to delete this chore description entry?</b>"
-msgstr "<b>Biztos, hogy törli ezt a feketelistát?</b>"
-
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:460
-#, fuzzy
-msgid "This action will remove all the user chores linked to the description."
-msgstr ""
-"Ez a művelet a feketelistához kapcsolódó összes felhasználói beállítást "
-"eltávolítja."
-
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:517
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:526
-#, fuzzy
-msgid "Error while deleting the chore entry"
-msgstr "Hiba a szűrők törlése közben"
-
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:518
-#: ../client/gnome/admin/src/ConfigureChoresDialog.py:527
-#, fuzzy
-msgid ""
-"Some error has occured while deleting the chore entry.\n"
-"Please try again."
-msgstr ""
-"Hiba történt a szűrők törlése közben.\n"
-"Próbálja újra."
-
-#: ../client/gnome/admin/src/AdminConsole.py:52
-msgid "Nanny daemon is not started"
-msgstr "A Nanny démon nem indult el"
-
-#: ../client/gnome/admin/src/AdminConsole.py:53
-msgid "To use the parental control, please start up the daemon."
-msgstr "A szülői felügyelet használatához indítsa el a démont."
-
-#. FACE
-#: ../client/gnome/admin/src/AdminConsole.py:200
-msgid "Users"
-msgstr "Felhasználók"
-
-#: ../client/gnome/admin/src/AdminConsole.py:389
-#, fuzzy
-msgid "User's configuration has been saved"
-msgstr "A beállítások mentve"
-
-#: ../client/gnome/admin/src/AdminConsole.py:415
+#. it could be nice to use 1:06 style layout instead of 1,1
+#. maybe switch to minutes after all
+#. time.strftime(_('%H:%M'), time.gmtime(int(line[3])*60))
+#: ../client/gnome/admin/src/DesktopBlocker.py:133
 #, python-format
-msgid "Nanny Admin Console - %s"
-msgstr "Nanny admin konzol – %s"
+msgid " (%s min)"
+msgstr " (%s perc)"
 
-#: ../client/gnome/admin/src/AdminConsole.py:418
-msgid "Nanny Admin Console"
-msgstr "Nanny admin konzol"
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
+msgid "Monday"
+msgstr "Hétfő"
 
-#: ../client/gnome/admin/src/AdminConsole.py:584
-msgid "You have made changes"
-msgstr "Módosításokat végzett"
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
+msgid "Tuesday"
+msgstr "Kedd"
 
-#: ../client/gnome/admin/src/AdminConsole.py:585
-msgid ""
-"If you don't press the 'Apply' button, your changes will be lost.\n"
-"Are you sure?"
-msgstr ""
-"Ha nem nyomja meg az Alkalmaz gombot, akkor a változások elvesznek.\n"
-"Biztosan ezt szeretné?"
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
+msgid "Wednesday"
+msgstr "Szerda"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:39
-msgid "Blacklist Filter Configuration"
-msgstr "Feketelista szűrők beállítása"
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
+msgid "Thursday"
+msgstr "Csütörtök"
 
-#: ../client/gnome/admin/src/BlacklistManager.py:114
-#, python-format
-msgid ""
-"<b>%s (Read only)</b>\n"
-"   %s"
-msgstr ""
-"<b>%s (írásvédett)</b>\n"
-"   %s"
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
+msgid "Friday"
+msgstr "Péntek"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
+msgid "Saturday"
+msgstr "Szombat"
+
+#: ../client/gnome/admin/src/ScheduleCalendar.py:310
+msgid "Sunday"
+msgstr "Vasárnap"
 
 #: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:97
 msgid "Firefox proxy settings change detected"
-msgstr ""
+msgstr "A Firefox proxybeállításai megváltoztak"
 
 #: ../client/gnome/nanny-firefox-win32/nanny-firefox-blocker:98
 msgid ""
 "You can't change the proxy settings because you are under parental control."
 msgstr ""
+"Nem módosíthatja a proxybeállításokat, mert szülői felügyelet alatt van."
 
 #: ../client/gnome/systray/src/SystrayNanny.py:53
-#, fuzzy
 msgid "your session"
-msgstr "munkamenet bezárása"
+msgstr "az Ön munkamenete"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:54
-#, fuzzy
 msgid "web browser"
-msgstr "Webböngésző"
+msgstr "böngésző"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:55
-#, fuzzy
 msgid "e-mail"
-msgstr "levelezés"
+msgstr "e-mail"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:56
-#, fuzzy
-msgid "instant messanger"
-msgstr "Azonnali üzenő"
+msgid "instant messenger"
+msgstr "azonnali üzenetküldő"
 
 #: ../client/gnome/systray/src/SystrayNanny.py:174
-#, fuzzy, python-format
+#, python-format
 msgid "The access to %(app)s granted."
-msgstr "%(time)s múlva hozzáférést kap a(z) %(app)s alkalmazáshoz."
+msgstr "Hozzáférés megadva a(z) %(app)s alkalmazáshoz."
 
 #. To translators: In x-minutes the access to <app> will be granted
 #: ../client/gnome/systray/src/SystrayNanny.py:177
@@ -1215,9 +1216,9 @@ msgid "In %(time)s the access to %(app)s will be granted."
 msgstr "%(time)s múlva hozzáférést kap a(z) %(app)s alkalmazáshoz."
 
 #: ../client/gnome/systray/src/SystrayNanny.py:180
-#, fuzzy, python-format
+#, python-format
 msgid "The access to %(app)s denied."
-msgstr "%(time)s múlva a hozzáférés megszűnik a(z) %(app)s alkalmazáshoz."
+msgstr "Hozzáférés megtagadva a(z) %(app)s alkalmazáshoz."
 
 #. To translators: In x-minutes the access to <app> will be denied
 #: ../client/gnome/systray/src/SystrayNanny.py:183
