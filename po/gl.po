@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nanny-master-po-gl-226407\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-12 01:24+0200\n"
-"PO-Revision-Date: 2012-10-12 01:31+0200\n"
+"POT-Creation-Date: 2012-11-12 11:59+0100\n"
+"PO-Revision-Date: 2012-11-12 12:02+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: gl\n"
@@ -744,16 +744,20 @@ msgid ""
 "Select an entry and press this button to add or remove chores to or from "
 "user&apos;s enabled chores list"
 msgstr ""
+"Seleccione unha entrada e prema este botón para engadir ou quitar tarefas da "
+"lista de puntuacións activada para un usuario"
 
 #: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:2
 msgid ""
 "Select an entry and press this button to add or remove chores to or from "
 "user's enabled chores list"
 msgstr ""
+"Seleccione unha entrada e prema este botón para engadir ou quitar tarefas da "
+"lista de puntuacións activada para un usuario"
 
 #: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:3
 msgid "Assign chores"
-msgstr ""
+msgstr "Asignar unha puntuación"
 
 #: ../client/gnome/admin/data/ui/nac_chores_dialog.ui.h:4
 msgid "_Finish"
@@ -779,8 +783,7 @@ msgstr "Cantidade de tarefas permitidas e contratadas pero non rematadas"
 msgid ""
 "If the amount happens to exceed this value, user cannot contract more chores"
 msgstr ""
-"Se a cantidade excede este valor, o usuario non poderá contratar máis "
-"tarefas"
+"Se a cantidade excede este valor, o usuario non poderá contratar máis tarefas"
 
 #. The time given for contracting the chore
 #: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:2
@@ -804,6 +807,10 @@ msgid ""
 "the session is initiated. User can contract the chore to get extra usage "
 "time immediately."
 msgstr ""
+"As puntuacións con recompensas de tempo móstranse como unha opción para "
+"obter máis tempo de uso para o usuario cando o límite de tempo de sesión se "
+"alcanzou e se inicia o bloqueo de sesión. O usuario pode contraer a "
+"puntuación para obter tempo de uso adicional de forma inmediata."
 
 #: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:1
 msgid "Forbidden sites"
@@ -853,6 +860,8 @@ msgstr "Forzar o peche de sesión"
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
 msgid "Force user either to log off or buy extra time after desktop is blocked"
 msgstr ""
+"Forzar ao usuario a pechar a sesión ou mercar tempo adicional despois de que "
+"o escritorio se bloquee"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
 msgid "hours to"
@@ -864,7 +873,7 @@ msgstr "0"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
 msgid "that's left today"
-msgstr ""
+msgstr "iso é todo por hoxe"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
 msgid "Configure _chores & rewards"
@@ -924,8 +933,8 @@ msgid ""
 "<span foreground=\"white\"><big>You can still have a moment for closing the "
 "documents or applications</big></span>"
 msgstr ""
-"<span foreground=\"white\"><big>Aínda ten un momento para pechar os documentos "
-"ou aplicativos.</big></span>"
+"<span foreground=\"white\"><big>Aínda ten un momento para pechar os "
+"documentos ou aplicativos.</big></span>"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
 msgid "Give me more time"
@@ -1027,6 +1036,7 @@ msgstr ""
 #: ../client/gnome/admin/src/ConfigureChoresDialog.py:460
 msgid "This action will remove all the user chores linked to the description."
 msgstr ""
+"Esta acción eliminará todas as puntuacións do usuario ligadas na descrición."
 
 #: ../client/gnome/admin/src/ConfigureChoresDialog.py:517
 #: ../client/gnome/admin/src/ConfigureChoresDialog.py:526
