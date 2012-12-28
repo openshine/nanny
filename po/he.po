@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nanny\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-15 22:53+0300\n"
-"PO-Revision-Date: 2012-08-15 23:28+0200\n"
+"POT-Creation-Date: 2012-12-28 14:06+0200\n"
+"PO-Revision-Date: 2012-12-28 14:12+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <sh.yaron@gmail.com>\n"
 "Language: he\n"
@@ -768,7 +768,7 @@ msgstr "כותרת:"
 
 #: ../client/gnome/admin/data/ui/nac_chores_edit_dialog.ui.h:5
 msgid "The chores with time rewards will be displayed as an option to obtain more usage time to user when the session time limit has been reached and blocking the session is initiated. User can contract the chore to get extra usage time immediately."
-msgstr ""
+msgstr "המטלות יחד עם מענקי הזמן יוצגו כאפשרות להשיג זמן שימוש נוסף למשתמש כאשר זמן ההפעלה מסתיים ומופעלת חסימת הפעלה. המשתמש יכול להתחייב למטלות כדי לקבל זמן שימוש נוסף באופן מיידי."
 
 #: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:1
 msgid "Forbidden sites"
@@ -787,9 +787,8 @@ msgid "Blacklists"
 msgstr "רשימות חסימה"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_dialog.ui.h:5
-#, fuzzy
 msgid "Enable _web content filtering"
-msgstr "שימוש בסינון תוכן מקוון"
+msgstr "הפעלת _סינון תוכן מקוון"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:1
 msgid "URL:"
@@ -801,9 +800,8 @@ msgid "Name:"
 msgstr "שם:"
 
 #: ../client/gnome/admin/data/ui/nac_wcf_edit_dialog.ui.h:4
-#, fuzzy
 msgid "All the fields are mandatory, so please fill all of them.\t"
-msgstr "<span color=\"red\">כל השדות מחייבים. נא למלא את כולם.</span>"
+msgstr "כל השדות מחייבים. נא למלא את כולם.\t"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:1
 msgid "Use the computer"
@@ -815,24 +813,23 @@ msgstr "שעות ביום"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:3
 msgid "Force logoff"
-msgstr ""
+msgstr "אילוץ יציאה"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:4
 msgid "Force user either to log off or buy extra time after desktop is blocked"
-msgstr ""
+msgstr "לאלץ את המשתמש לצאת או לקנות זמן נוסף לאחר ששולחן העבודה ננעל"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:5
-#, fuzzy
 msgid "hours to"
-msgstr "שעות ביום"
+msgstr "שעות עד"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:6
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:7
 msgid "that's left today"
-msgstr ""
+msgstr "שנשארו היום"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:8
 msgid "Configure _chores & rewards"
@@ -847,9 +844,8 @@ msgid "Use the web browser"
 msgstr "שימוש בדפדפן האינטרנט"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:11
-#, fuzzy
 msgid "Configure web filtering"
-msgstr "שימוש בסינון תוכן מקוון"
+msgstr "הגדרת סינון אינטרנט"
 
 #: ../client/gnome/admin/data/ui/nanny_admin_console.ui.h:12
 msgid "Web browser"
@@ -881,14 +877,12 @@ msgstr ""
 "יש ללחוץ על לחצן זה אם ברצונך לערוך שינויים."
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:1
-#, fuzzy
 msgid "<span size=\"25000\" foreground=\"white\"><b>Your computer usage time is up now</b></span>"
 msgstr "<span size=\"25000\" foreground=\"white\"><b>כבר ניצלת את זמן השימוש במחשב שלך</b></span>"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:2
-#, fuzzy
 msgid "<span foreground=\"white\"><big>You can still have a moment for closing the documents or applications</big></span>"
-msgstr "<span foreground=\"white\"><big>נותר עוד זמן קצוב אם עליך לסגור מסמכים או יישומים.</big></span>"
+msgstr "<span foreground=\"white\"><big>נותר עוד רגע קט לצורך סגירת מסמכים או יישומים</big></span>"
 
 #: ../client/gnome/admin/data/ui/nanny_desktop_blocker.ui.h:3
 msgid "Give me more time"
@@ -1059,7 +1053,7 @@ msgstr ""
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:364
 msgid "Edit custom blacklist entry"
-msgstr ""
+msgstr "עריכת רשומת חסימה אישית"
 
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:447
 #: ../client/gnome/admin/src/ConfigureProxyDialog.py:469
