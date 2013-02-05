@@ -10,7 +10,7 @@ DOC_FIGURES = figures/nanny-add-forbidden-site.png                   \
               figures/nanny-select-file-to-import.png                \
               figures/nanny-session.png                              \
               figures/nanny-web-content-filter-blacklists.png
-DOC_LINGUAS = cs de el es fr it ro sl
+DOC_LINGUAS = cs de el es fr it pt_BR ro sl
 
 helpdir = $(datadir)/gnome/help/nanny/C/
 help_DATA = C/nanny.xml                                              \
